@@ -8,7 +8,7 @@
 |------|----|-------|
 |first_name|string|null: false, index: true|
 |last_name|string|null:false, index:true|
-|support_id|integer||
+|support_number|integer||
 |company|string||
 |position|string||
 |profile|text||
