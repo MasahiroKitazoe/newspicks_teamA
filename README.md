@@ -50,7 +50,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|comments|text|null: false|
+|comments|text|null: false, index: true|
 |pick_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 
