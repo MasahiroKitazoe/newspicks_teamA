@@ -6,7 +6,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|email|string|null: false, unique: true|
 |first_name|string|null: false, index: true|
 |last_name|string|null:false, index:true|
 |support_id|integer||
@@ -18,6 +17,7 @@
 
 #### Association
 - has_many :picks, through :picks_users
+- has_many :picks_users
 - has_many :comments
 - has_many :keywords
 
@@ -33,7 +33,9 @@
 #### Association
 - has_many :comments
 - has_many :users, through :picks_users
+- has_many :picks_users
 - has_many :themes, through :picks_themes
+- has_many :picks_themes
 
 ### picks_usersテーブル
 
@@ -88,6 +90,7 @@
 
 #### Association
 - has_many :picks, through :picks_themes
+- has_many :picks_themes
 
 ### picks_themesテーブル
 
