@@ -17,7 +17,7 @@
 |real_name|boolean||
 
 #### Association
-- has_many :picks
+- has_many :picks, through :picks_users
 - has_many :comments
 - has_many :keywords
 
@@ -25,15 +25,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|url|string|null: false|
+|url|string|null: false, unique: true|
 |image|string|null: false|
 |title|string|null: false, index: true|
 |body|text|null: false, index: true|
 
 #### Association
 - has_many :comments
-- has_many :users
-- has_many :themes
+- has_many :users, through :picks_users
+- has_many :themes, through :picks_themes
 
 ### picks_usersテーブル
 
@@ -87,7 +87,7 @@
 |theme|string|null: false|
 
 #### Association
-- has_many :picks
+- has_many :picks, through :picks_themes
 
 ### picks_themesテーブル
 
