@@ -1,0 +1,54 @@
+.side-bar {
+  width: 15vw;
+  padding: 45px 5px 5px;
+  float: left;
+  &__user {
+    height: 175px;
+    &__info {
+      text-align: center;
+      padding: 30px 0 35px;
+      border-bottom: 1px solid #eee;
+      &__icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+      }
+      &__name {
+        font-size: 14px;
+      }
+    }
+    &__follow-count {
+      padding: 5px;
+      border-bottom: 1px solid #eee;
+      &:after {
+        clear: both;
+        content: '';
+        display: block;
+      }
+      &__follow {
+        float: left;
+        width: 7vw;
+        text-align: center;
+        &__num {
+          font-size: 18px;
+        }
+        &__unit {
+          font-size: 8px;
+          color: #ccc;
+        }
+      }
+      &__follower {
+        float: right;
+        width: 7vw;
+        text-align: center;
+      }
+    }
+  }
+  &__my-news {
+    clear: both;
+    padding: 20px 0 15px 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 8px;
+    font-weight: bold;
+  }
+}
