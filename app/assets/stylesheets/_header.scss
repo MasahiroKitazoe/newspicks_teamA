@@ -1,0 +1,38 @@
+.header {
+  background: #222;
+  width: 100vw;
+  height: 40px;
+  padding: 5px;
+  box-shadow: 0px 3px 3px rgba(0,0,0,0.6);
+  z-index: 5;
+  position: fixed;
+  &__list {
+    list-style: none;
+    padding: 10px;
+    color: #fff;
+    &__link {
+      text-decoration: none;
+    }
+    &__menu {
+      float: left;
+      padding-right: 10px;
+    }
+    &__search {
+      float: left;
+    }
+    &__user {
+      float: right;
+    }
+    &__news {
+      float: right;
+      padding-left: 10px;
+    }
+    &__new {
+      float: right;
+      padding-left: 10px;
+    }
+    &__logo {
+      text-align: center;
+    }
+  }
+}
