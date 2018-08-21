@@ -3,9 +3,62 @@
   width: calc(85vw - 10px);
   height: calc(100vh - 40px);
   float: right;
-  padding-top: 40px;
+  padding-top: 50px;
+  overflow: scroll;
   &__eyecatch {
-    height: 100%;
+    height: 45vh;
     width: 100%;
+    color: #fff;
+    &__main {
+      height: 100%;
+      width: calc(55vw - 30px);
+      float: left;
+      background-size: cover;
+      padding: 10px;
+      &__pick-count {
+        margin-top: 23vh;
+        margin-left: 30px;
+        border: 1px solid #fff;
+        font-size: 10px;
+        width: 80px;
+        text-align: center;
+        padding: 2px;
+        &__num {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+      &__title {
+        font-size: 28px;
+        font-weight: bold;
+        padding: 0 30px 0;
+      }
+      &__info {
+        padding-left: 30px;
+        font-size: 14px;
+        color: #ccc;
+        &__media {
+          float: left;
+          padding-right: 10px;
+        }
+        &__time {
+          float: left;
+        }
+      }
+    }
+    &__sub {
+      float: right;
+      width: calc(30vw - 4px);
+      height: 45vh;
+    }
+    &__sub-1 {
+      height: 24vh;
+      margin-bottom: 4px;
+      background-size: cover;
+    }
+    &__sub-2 {
+      height: 23vh;
+      background-size: cover;
+    }
   }
 }
