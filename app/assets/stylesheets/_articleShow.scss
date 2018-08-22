@@ -60,6 +60,50 @@ input, textarea, select, button {
     font: 400 11px system-ui;
 }
 
+.pick-count {
+    padding: 16px 36px;
+    pointer-events: none;
+    border: 1px solid #FFF;
+    border-right: none;
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+.pick-count.black {
+    border-color: #FFF;
+    color: #FFF;
+}
+
+.pick-count .picks-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.pick-count .labels {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -6px;
+    line-height: 100%;
+}
+
+.pick-count .labels .unit {
+    text-align: center;
+    font-size: 7px;
+    margin-top: -4px;
+}
+
+.pick-count.black .picks-cover {
+    background-color: #000;
+    opacity: .3;
+    filter: alpha(Opacity=30);
+}
 
 .page-content {
   margin-left: 216px;
