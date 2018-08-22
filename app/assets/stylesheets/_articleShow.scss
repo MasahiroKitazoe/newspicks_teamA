@@ -1,0 +1,351 @@
+.comment-row.with-border {
+    border-top: 1px solid #EAEAEA;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+body {
+    line-height: 1.42857143;
+}
+
+div {
+    display: block;
+}
+
+.center {
+    text-align: center;
+}
+
+.news-summary h1 {
+    line-height: 1.4;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+img {
+    vertical-align: middle;
+    outline: 0;
+    border: 0;
+}
+
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 11px system-ui;
+}
+
+
+.page-content {
+  margin-left: 216px;
+  box-sizing: border-box;
+  .breadcrumbs {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin-left: 192px;
+    z-index: 3;
+    background: #FFF;
+    border-bottom: 1px solid #EAEAEA;
+    opacity: .88;
+    padding-left: 20px;
+  }
+  .news-summary {
+    padding-top: 64px;
+    background-color: #EFEFEF;
+    height: 100%;
+    overflow: auto;
+    .news-summary-container {
+      width: 1024px;
+      margin: 0 auto;
+      .contents-area {
+        width: 656px;
+        position: relative;
+        float: left;
+        margin-bottom: 40px;
+        .news-image {
+          width: 656px;
+          height: 262px;
+          background-size: cover;
+          background-position: center;
+        }
+        .news {
+          padding: 16px 24px;
+          background-color: white;
+          .meta {
+            box-sizing: border-box;
+            .meta-block {
+              margin-top: 10px;
+              .icon-image {
+                width: 16px;
+                margin-right: 8px;
+                float: left;
+                %img{
+                  width: 16px;
+                }
+              }
+              .caption {
+                float: left;
+                font-size: 12px;
+                color: #999;
+                margin-right: 8px;
+                padding-top: 3px;
+              }
+            }
+            .meta-block clear{
+              box-sizing: border-box;
+              margin-top: 10px;
+              .icon-image {
+                width: 16px;
+                margin-right: 8px;
+                float: left;
+              }
+              .caption {
+                float: left;
+                font-size: 12px;
+                color: #999;
+                margin-right: 8px;
+                padding-top: 3px;
+              }
+            }
+            &:after {
+              clear: both;
+              content: '';
+              display: block;
+            }
+          }
+          .read-more {
+            margin-top: 14px;
+            display: block;
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid #221f20;
+            background-color: #FFF;
+            color: #221f20;
+            border-radius: 6px;
+            transition: all .1s linear;
+          }
+        }
+        .news-comment {
+          padding: 0 32px 24px;
+          margin-top: 32px;
+          background-color: #FFF;
+          box-sizing: border-box;
+          .pick-editor {
+            .pick-area {
+              position: relative;
+              .comment-area {
+                color: #221f20;
+                .cover {
+                  margin-top: 16px;
+                  width: 40px;
+                  height: 40px;
+                  float: left;
+                }
+                .comment-container {
+                  margin-left: 12px;
+                  float: left;
+                  margin-top: 16px;
+                  .comment {
+                    width: 284px;
+                    resize: none;
+                    border: 1px solid rgba(34,31,32,.12);
+                    border-radius: 6px;
+                    padding: 13px;
+                    height: 16px;
+                    line-height: 16px;
+                    transition: box-shadow .1s linear,border 1s linear;
+                  }
+                }
+                .pick-control {
+                  float: right;
+                  margin-top: 16px;
+                  margin: 9px 0;
+                  line-height: 40px;
+                  text-align: center;
+                  .description {
+                    font-size: 8px;
+                    color: #999;
+                    padding-right: 8px;
+                    display: table-cell;
+                  }
+                  .twitter {
+                    cursor: pointer;
+                    padding-right: 12px;
+                    display: table-cell;
+                  }
+                  .facebook {
+                    padding-right: 24px;
+                    cursor: pointer;
+                    display: table-cell;
+                  }
+                  .pick {
+                    width: 100px;
+                    cursor: pointer;
+                    display: table-cell;
+                    vertical-align: middle;
+                    outline: 0;
+                  }
+                }
+                &:after {
+                  clear: both;
+                  content: '';
+                  display: block;
+                }
+              }
+            }
+          }
+          .comments {
+            .populars {
+              .section-header {
+                padding-top: 24px;
+                color: #221f20;
+                font-size: 12px;
+                font-weight: 700;
+              }
+              .comment-container {
+                margin-top: 16px;
+                .comment-row{
+                  padding-top: 0;
+                  .user-space {
+                    a{
+                      .user-cover {
+                        width: 40px;
+                        height: 40px;
+                        background: center center;
+                        float: left;
+                      }
+                    }
+                    .user-profile {
+                      margin-left: 56px;
+                      position: relative;
+                      font-size: 14px;
+                      .name-wrapper {
+                        color: #221f20;
+                        font-size: 16px;
+                        font-weight: 700;
+                        max-width: 470px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        .name {
+                          display: inline-block;
+                          float: left;
+                          color: #221f20;
+                          font-size: 16px;
+                          font-weight: 700;
+                          max-width: 470px;
+                          white-space: nowrap;
+                        }
+                      }
+                      .job {
+                        margin-top: 3px;
+                        font-size: 12px;
+                        color: #999;
+                        float: left;
+                        max-width: 290px;
+                        margin-right: 12px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
+                      .picktime {
+                        margin-top: 3px;
+                        font-size: 12px;
+                        color: #999;
+                      }
+                      .drop-down-button {
+                        position: absolute;
+                        top: 0;
+                        right: 1px;
+                        cursor: pointer;
+                        font-size: 18px;
+                        color: #999;
+                        width: 32px;
+                        height: 32px;
+                        text-align: center;
+                      }
+                    }
+                  }
+                  .comment-wrapper {
+                    margin: 8px 0;
+                    position: relative;
+                    min-height: 48px;
+                    font-size: 14px;
+                    .comment {
+                      width: 532px;
+                      padding-left: 56px;
+                      display: block;
+                      line-height: 176%;
+                      hyphens: auto;
+                      box-sizing: border-box;
+                      &:after {
+                        clear: both;
+                        content: '';
+                        display: block;
+                      }
+                    }
+                    .like-panel {
+                      position: absolute;
+                      right: 0;
+                      top: 0;
+                      bottom: 0;
+                      text-align: center;
+                      width: 34px;
+                      .like-wrapper {
+                        display: table;
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        .like {
+                          display: table-cell;
+                          vertical-align: middle;
+                          cursor: pointer;
+                          .thum-up-r {
+                            display: none;
+                            width: 10px;
+                            height: 14px;
+                          }
+                          .thum-up-g {
+                            display: inline;
+                            width: 10px;
+                            height: 14px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
