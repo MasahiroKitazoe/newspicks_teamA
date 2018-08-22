@@ -34,5 +34,17 @@
     &__logo {
       text-align: center;
     }
+    &__logout {
+      float: right;
+      padding-left: 10px;
+    }
+    &__signup {
+      float: right;
+      padding: 0 10px;
+    }
+    &__login {
+      float: right;
+      padding-left: 10px;
+    }
   }
 }
