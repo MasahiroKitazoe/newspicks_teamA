@@ -144,19 +144,7 @@
   &__category {
     clear: both;
     padding: 0 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
-    &__head {
-      width: 100%;
-      height: 40px;
-      &__name {
-        float: left;
-        font-weight: bold;
-      }
-      &__link {
-        float: right;
-        font-size: 14px;
-        padding-right: calc(3vw + 30px);
-      }
-    }
+    @include content_head();
     &__newses {
       clear: both;
       @include one_content();
