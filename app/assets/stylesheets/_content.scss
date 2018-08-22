@@ -109,13 +109,34 @@
       @include one_content();
     }
     &__newest {
-      width: 23vw;
-      height: calc(80vh + 255px);
+      width: 22vw;
+      height: calc(78vh + 255px);
       background-color: #fff;
       float: left;
+      padding: 1vh 1vw;
+      &__head {
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 30px;
+      }
+      &__block {
+        &__content {
+          border-bottom: 1px solid #ccc;
+          padding: 10px 0;
+          &__title {
+            font-size: 14px;
+            font-weight: bold;
+            padding-bottom: 5px;
+          }
+          &__info {
+            font-size: 10px;
+            color: #bbb;
+          }
+        }
+      }
     }
     &__bottom-news {
-      padding-left: 30px;
+      padding: 0 0 50px 30px;
       float: left;
       @include one_content();
     }
