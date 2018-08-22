@@ -1,0 +1,2 @@
+class PickUser < ApplicationRecord
+end
