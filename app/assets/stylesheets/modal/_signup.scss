@@ -1,0 +1,10 @@
+#signup {
+  display: none;
+}
+
+.signup {
+  &__overlay {
+    padding: 80px;
+    z-index: 3;
+  }
+}

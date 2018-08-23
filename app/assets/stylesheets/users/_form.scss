@@ -1,14 +1,19 @@
 .back {
   background-color: rgba(0, 0, 0, 0.75);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+}
+
+.overlay {
   padding: 80px;
-  height: calc(100vh - 160px);
-  overflow: scroll;
-  z-index: 5;
 }
 
 .form {
+  width: 30vw;
   margin: 0 auto;
-  width: 400px;
   text-align: center;
   background-color: #fff;
+  z-index: 4;
 }
