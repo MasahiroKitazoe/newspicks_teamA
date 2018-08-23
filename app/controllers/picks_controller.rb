@@ -11,6 +11,7 @@ class PicksController < ApplicationController
 
   def create
     @pick = Pick.new(picks_params)
+    @pick.get_article_info(params[:pick][:url])
     if @pick.save
       flash[:notice] = "Pickしました"
       redirect_to :root
