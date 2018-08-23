@@ -163,4 +163,12 @@
       }
     }
   }
+  &__comment-ranking {
+    clear: both;
+    padding: 50px 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
+    @include content_head();
+    &__comments {
+
+    }
+  }
 }
