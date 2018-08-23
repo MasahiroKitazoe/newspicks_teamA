@@ -1,0 +1,2 @@
+class PickTheme < ApplicationRecord
+end

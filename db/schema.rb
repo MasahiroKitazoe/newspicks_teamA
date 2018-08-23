@@ -10,7 +10,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180822085810) do
+ActiveRecord::Schema.define(version: 20180823024237) do
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "comment"
+    t.bigint "pick_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pick_id"], name: "index_comments_on_pick_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "keyword", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_keywords_on_user_id"
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "comment_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "pick_themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "pick_id"
+    t.bigint "theme_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pick_id"], name: "index_pick_themes_on_pick_id"
+    t.index ["theme_id"], name: "index_pick_themes_on_theme_id"
+  end
+
+  create_table "pick_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "pick_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pick_id"], name: "index_pick_users_on_pick_id"
+    t.index ["user_id"], name: "index_pick_users_on_user_id"
+  end
+
+  create_table "picks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "url", null: false
+    t.string "image", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_picks_on_title"
+    t.index ["url"], name: "index_picks_on_url"
+  end
+
+  create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "theme", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
@@ -34,4 +96,13 @@ ActiveRecord::Schema.define(version: 20180822085810) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "picks"
+  add_foreign_key "comments", "users"
+  add_foreign_key "keywords", "users"
+  add_foreign_key "likes", "comments"
+  add_foreign_key "likes", "users"
+  add_foreign_key "pick_themes", "picks"
+  add_foreign_key "pick_themes", "themes"
+  add_foreign_key "pick_users", "picks"
+  add_foreign_key "pick_users", "users"
 end
