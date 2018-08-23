@@ -11,7 +11,15 @@ class PicksController < ApplicationController
 
   def create
     @pick = Pick.new(picks_params)
-    @pick.get_article_info(params[:pick][:url])
+
+    # URLの記事をスクレイピングする
+    article_info = @pick.get_article_info(params[:pick][:url])
+
+    #スクレイピングの結果を格納
+    @pick.title = article_info[:title]
+    @pick.body = article_info[:body]
+    @pick.image = article_info[:image]
+
     if @pick.save
       flash[:notice] = "Pickしました"
       redirect_to :root
