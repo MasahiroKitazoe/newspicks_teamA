@@ -42,6 +42,9 @@
     &__logo {
       text-align: center;
       padding-top: 8px;
+      &__image {
+        height: 20px;
+      }
     }
     &__logout {
       float: right;

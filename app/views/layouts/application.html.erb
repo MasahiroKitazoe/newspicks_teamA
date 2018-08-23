@@ -39,7 +39,9 @@
           </li>
         <% end %>
         <li class="header__list__logo">
-          <%= link_to "NEWSPICKS", root_path, class: 'header__list__link'%>
+          <%= link_to root_path, class: 'header__list__link' do %>
+            <%= image_tag 'https://newspicks.com/images/logo_type.598a50a8.png', class: 'header__list__logo__image' %>
+          <% end %>
         </li>
       </ul>
    </nav>
