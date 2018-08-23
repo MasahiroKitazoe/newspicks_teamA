@@ -10,7 +10,6 @@ class PicksController < ApplicationController
   end
 
   def create
-    binding.pry
     @pick = Pick.new(picks_params)
     if @pick.save
       flash[:notice] = "Pickしました"
@@ -22,11 +21,11 @@ class PicksController < ApplicationController
 
     private
     def picks_params
-      params.require(:picks).permit(
-        :url
-        # :image,
-        # :title,
-        # :body
+      params.require(:pick).permit(
+        :url,
+        :image,
+        :title,
+        :body
         )
     end
 end

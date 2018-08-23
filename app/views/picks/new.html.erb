@@ -3,6 +3,11 @@
     <%= form_for @pick do |f| %>
       <%= f.label :URL %>
       <%= f.text_area :url %>
+
+      <%= f.hidden_field :title, value: "aaa" %>
+      <%= f.hidden_field :image, value: "aaa" %>
+      <%= f.hidden_field :body, value: "aaa" %>
+
       <%= f.submit :Pickする %>
     <% end %>
   </div>
