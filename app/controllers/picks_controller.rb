@@ -4,4 +4,22 @@ class PicksController < ApplicationController
 
   def show
   end
+
+  def new
+    
+  end
+
+  def create
+    
+  end
+
+    private
+    def picks_params
+      params.require(:picks).permit(
+        :url,
+        :image,
+        :title,
+        :body
+        )
+    end
 end
