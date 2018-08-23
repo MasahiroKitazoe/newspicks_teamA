@@ -6,5 +6,13 @@ $(function() {
   });
 
   // 背景をクリックするとモーダルを終了
+
   // 「ログイン」クリック時
+  $('#signin-btn').on('click', function(e) {
+    e.preventDefault();
+    $('#signin').css("display", "block");
+  });
+
+  // 背景をクリックするとモーダルを終了
+
 });
