@@ -1,7 +1,7 @@
 .back {
-  background-color: #999;
+  background-color: rgba(0, 0, 0, 0.75);
   padding: 80px;
-  height: 100vh;
+  height: calc(100vh - 160px);
   overflow: scroll;
 }
 

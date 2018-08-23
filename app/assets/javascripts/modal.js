@@ -1,7 +1,7 @@
 $(function() {
   // 「アカウント登録」クリック時
   $('#signup').on('click', function(e) {
-    e.preventDefault();
+    // e.preventDefault();
   })
   // 「ログイン」クリック時
 });
