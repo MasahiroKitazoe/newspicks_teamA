@@ -31,7 +31,7 @@
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header__list__link' %>
           </li>
         <% else %>
-          <li class="header__list__signup">
+          <li class="header__list__signup" id="signup">
             <%= link_to "アカウント登録", new_user_registration_path, class: 'header__list__link' %>
           </li>
           <li class="header__list__login">
