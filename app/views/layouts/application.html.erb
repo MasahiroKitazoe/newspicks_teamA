@@ -11,12 +11,36 @@
   <body>
     <nav class="header">
       <ul class="header__list">
-        <li class="header__list__menu"><a href="#" class="header__list__link">メニュー</a></li>
-        <li class="header__list__search"><input type="text" placeholder="検索する" class="header__list__left"></li>
-        <li class="header__list__new"><a href="#" class="header__list__link">新規Pick作成</a></li>
-        <li class="header__list__news"><a href="#" class="header__list__link">お知らせ</a></li>
-        <li class="header__list__user"><a href="#" class="header__list__link">田中太郎</a></li>
-        <li class="header__list__logo"><a href="#" class="header__list__link">NEWSPICKS</a></li>
+        <li class="header__list__menu">
+          <a href="#" class="header__list__link">メニュー</a>
+        </li>
+        <li class="header__list__search">
+          <input type="text" placeholder="検索する" class="header__list__input">
+        </li>
+        <% if user_signed_in? %>
+          <li class="header__list__new">
+            <a href="#" class="header__list__link">新規Pick作成</a>
+          </li>
+          <li class="header__list__news">
+            <a href="#" class="header__list__link">お知らせ</a>
+          </li>
+          <li class="header__list__user">
+            <%= link_to current_user.last_name + ' ' +  current_user.first_name, edit_user_registration_path, class: 'header__list__link'%>
+          </li>
+          <li class="header__list__logout">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header__list__link' %>
+          </li>
+        <% else %>
+          <li class="header__list__signup">
+            <%= link_to "アカウント登録", new_user_registration_path, class: 'header__list__link' %>
+          </li>
+          <li class="header__list__login">
+            <%= link_to "ログイン", new_user_session_path, class: 'header__list__link' %>
+          </li>
+        <% end %>
+        <li class="header__list__logo">
+          <%= link_to "NEWSPICKS", root_path, class: 'header__list__link'%>
+        </li>
       </ul>
    </nav>
     <%= yield %>

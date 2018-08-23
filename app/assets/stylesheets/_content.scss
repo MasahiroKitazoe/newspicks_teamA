@@ -3,9 +3,213 @@
   width: calc(85vw - 10px);
   height: calc(100vh - 40px);
   float: right;
-  padding-top: 40px;
+  padding-top: 50px;
+  overflow: scroll;
   &__eyecatch {
-    height: 100%;
+    height: 45vh;
     width: 100%;
+    color: #fff;
+    &__main {
+      height: 100%;
+      width: calc(55vw - 30px);
+      float: left;
+      background-size: cover;
+      padding: 10px;
+      &__pick-count {
+        margin-top: 23vh;
+        margin-left: 30px;
+        border: 1px solid #fff;
+        font-size: 10px;
+        width: 80px;
+        text-align: center;
+        padding: 2px;
+        &__num {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+      &__title {
+        font-size: 4vh;
+        font-weight: bold;
+        padding: 0 30px 0;
+      }
+      &__info {
+        padding-left: 30px;
+        font-size: 14px;
+        color: #ccc;
+        &__media {
+          float: left;
+          padding-right: 10px;
+        }
+        &__time {
+          float: left;
+        }
+      }
+    }
+    &__sub {
+      float: right;
+      width: calc(30vw - 4px);
+      height: 45vh;
+    }
+    &__sub-1 {
+      height: 14vh;
+      margin-bottom: 4px;
+      background-size: cover;
+      padding: 10vh 15px 0;
+      &__special {
+        font-size: 10px;
+        margin-bottom: 7px;
+        &__logo {
+          border: 1px solid #fff;
+          width: 30px;
+          height: 15px;
+          text-align: center;
+          float: left;
+          margin-right: 10px;
+        }
+      }
+      &__title {
+        clear: both;
+        font-size: 2.5vh;
+        font-weight: bold;
+        padding-left: 10px;
+      }
+    }
+    &__sub-2 {
+      height: 13vh;
+      margin-bottom: 4px;
+      background-size: cover;
+      padding: 10vh 15px 0;
+      &__special {
+        font-size: 10px;
+        margin-bottom: 7px;
+        &__logo {
+          border: 1px solid #fff;
+          width: 30px;
+          height: 15px;
+          text-align: center;
+          float: left;
+          margin-right: 10px;
+        }
+      }
+      &__title {
+        padding-left: 10px;
+        clear: both;
+        font-size: 2.5vh;
+        font-weight: bold;
+      }
+    }
+  }
+  &__top-news {
+    padding: 50px 24px 32px;
+    &__side-news {
+      padding-left: 30px;
+      float: left;
+      width: 50vw;
+      @include one_content();
+    }
+    &__newest {
+      width: 22vw;
+      height: calc(78vh + 255px);
+      background-color: #fff;
+      float: left;
+      padding: 1vh 1vw;
+      &__head {
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 30px;
+      }
+      &__block {
+        &__content {
+          border-bottom: 1px solid #ccc;
+          padding: 10px 0;
+          &__title {
+            font-size: 14px;
+            font-weight: bold;
+            padding-bottom: 5px;
+          }
+          &__info {
+            font-size: 10px;
+            color: #bbb;
+          }
+        }
+      }
+    }
+    &__bottom-news {
+      padding: 0 0 50px 30px;
+      float: left;
+      @include one_content();
+    }
+  }
+  &__category {
+    clear: both;
+    padding: 0 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
+    @include content_head();
+    &__newses {
+      clear: both;
+      @include one_content();
+    }
+  }
+  &__user-ranking {
+    clear: both;
+    padding: 0 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
+    @include content_head();
+    &__users {
+      &__paragraf-1 {
+        &__user {
+          background-color: #fff;
+          width: 35.5vw;
+          float: left;
+          margin: 0 20px 20px 0;
+          &__image {
+            display: inline-block;
+            height: 100%;
+            &__rank {
+              background-color: #8EB8FF;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              text-align: center;
+              line-height: 40px;
+              display: inline-block;
+            }
+            &__user {
+              width: 48px;
+              height: 48px;
+              border-radius: 50%;
+              display: inline-block;
+            }
+          }
+          &__info {
+            display: inline-block;
+            &__name {
+              font-weight: bold;
+            }
+            &__position {
+              font-size: 12px;
+            }
+            &__like-count {
+              font-size: 10px;
+              color: #aaa;
+              &__num {
+                color: #222;
+              }
+            }
+          }
+          &__follow {
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid #222;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 150%;
+            width: 90px;
+            display: inline-block;
+          }
+        }
+      }
+      &__paragraf-2 {
+      }
+    }
   }
 }
