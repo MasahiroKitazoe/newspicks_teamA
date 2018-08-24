@@ -47,7 +47,7 @@
         <div class= "news-comment">
           <div class="pick-editor">
             <div class="pick-area embedded">
-              <%= form_for @comment do |f| %>
+              <%= form_for [@pick, @comment] do |f| %>
                 <div class="comment-area">
                   <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
                   <div class="comment-container">

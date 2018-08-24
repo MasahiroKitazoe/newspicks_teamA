@@ -44,4 +44,9 @@ class Pick < ApplicationRecord
 
     return results
   end
+  has_many :comments
+  has_many :users, through: :pick_users
+  has_many :pick_users
+  has_many :themes, through: :pick_themes
+  has_many :pick_themes
 end

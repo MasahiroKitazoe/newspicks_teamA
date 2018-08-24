@@ -3,10 +3,13 @@ class PicksController < ApplicationController
   end
 
   def show
+    @pick = Pick.find(params[:id])
+    @comment = Comment.new
+    @comments = @pick.comments.includes(:user)
   end
 
   def new
-    @pick = Pick.new()
+    @pick = Pick.new
   end
 
   def create
