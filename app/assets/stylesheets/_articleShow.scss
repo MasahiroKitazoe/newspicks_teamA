@@ -78,8 +78,8 @@ input, textarea, select, button {
   .news-summary {
     padding-top: 64px;
     background-color: #EFEFEF;
-    height: 100%;
-    overflow: auto;
+    height: calc(100vh - 40px);
+    overflow-y: scroll;
     .news-summary-container {
       width: 1024px;
       margin: 0 auto;
@@ -171,7 +171,7 @@ input, textarea, select, button {
                   margin-left: 12px;
                   float: left;
                   margin-top: 16px;
-                  .comment {
+                  #comment-space {
                     width: 284px;
                     resize: none;
                     border: 1px solid rgba(34,31,32,.12);

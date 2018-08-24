@@ -47,25 +47,27 @@
         <div class= "news-comment">
           <div class="pick-editor">
             <div class="pick-area embedded">
-              <div class="comment-area">
-                <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-                <div class="comment-container">
-                  <textarea class="comment" name="commentValue" placeholder="コメントを書く（任意）"></textarea>
+              <%= form_for @comment do |f| %>
+                <div class="comment-area">
+                  <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                  <div class="comment-container">
+                    <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
+                  </div>
+                  <div class="pick-control">
+                    <div class="description">シェアする</div>
+                    <div class="sns twitter">
+                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </div>
+                    <div class="sns facebook">
+                      <i class="fa fa-facebook-square fa-1g"></i>
+                    </div>
+                    <div class="pick">
+                      Pick
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </div>
+                  </div>
                 </div>
-                <div class="pick-control">
-                  <div class="description">シェアする</div>
-                  <div class="sns twitter">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                  </div>
-                  <div class="sns facebook">
-                    <i class="fa fa-facebook-square fa-1g"></i>
-                  </div>
-                  <div class="pick">
-                    Pick
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
+              <% end %>
               <hr>
               <div class="comments">
                 <div class="populars" style="display: block">
