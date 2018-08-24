@@ -19,6 +19,7 @@ class PicksController < ApplicationController
     @pick.title = article_info[:title]
     @pick.body = article_info[:body]
     @pick.image = article_info[:image]
+    @pick.source = article_info[:source]
 
     if @pick.save
       flash[:notice] = "Pickしました"
