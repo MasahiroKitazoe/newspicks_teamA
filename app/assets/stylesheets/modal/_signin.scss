@@ -1,0 +1,11 @@
+#signin {
+  display: none;
+}
+
+.signin {
+  z-index: 2;
+  &__overlay {
+    padding: 80px;
+    z-index: 3;
+  }
+}
