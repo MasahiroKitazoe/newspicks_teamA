@@ -19,7 +19,7 @@
         </li>
         <% if user_signed_in? %>
           <li class="header__list__new">
-            <a href="#" class="header__list__link">新規Pick作成</a>
+            <%= link_to "Pick", :new_pick %>
           </li>
           <li class="header__list__news">
             <a href="#" class="header__list__link">お知らせ</a>
