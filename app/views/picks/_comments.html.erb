@@ -62,31 +62,39 @@
                       <i class="fa fa-facebook-square fa-1g"></i>
                     </div>
                     <div class="pick">
-                      Pick
-                      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                      <%= f.button :Pick, value: "Pick", class: "fa fa-plus-circle", type: :submit %>
                     </div>
                   </div>
                 </div>
               <% end %>
               <hr>
               <div class="comments">
+                <% if @comments_recommend %>
                 <div class="populars" style="display: block">
                   <div class="section-header">注目のコメント</div>
-                  <%= render partial: "comment" %>
-                  <%= render partial: "comment" %>
+                  <% @comments_recommend.each do |comment| %>
+                    <%= render partial: "comment", locals: {comment: comment} %>
+                  <% end %>
                 </div>
+                <% end %>
+                <% if @comments_following %>
                 <div class="followings" style="display: block">
                   <div class="section-header">フォローしているユーザー</div>
-                  <%= render partial: "comment" %>
-                  <%= render partial: "comment" %>
+                  <% @comments_following.each do |comment| %>
+                    <%= render partial: "comment", locals: {comment: comment} %>
+                  <% end %>
                   </div>
                 </div>
+                <% end %>
+                <% if @comments_other %>
                 <div class="recommends" style="display: block">
                   <div class="section-header">おすすめのユーザー</div>
-                  <%= render partial: "comment" %>
-                  <%= render partial: "comment" %>
+                  <% @comments_other.each do |comment| %>
+                    <%= render partial: "comment", locals: {comment: comment} %>
+                  <% end %>
                 </div>
               </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -95,4 +103,5 @@
     </div>
   </div>
 </div>
+
 

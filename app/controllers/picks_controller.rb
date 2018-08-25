@@ -5,7 +5,9 @@ class PicksController < ApplicationController
   def show
     @pick = Pick.find(params[:id])
     @comment = Comment.new
-    @comments = @pick.comments.includes(:user)
+    @comments_recommend = @pick.comments.includes(:user).limit(2).order('id')
+    @comments_following = @pick.comments.includes(:user).limit(2).order('updated_at')
+    @comments_other = @pick.comments.includes(:user).order('id')
   end
 
   def new

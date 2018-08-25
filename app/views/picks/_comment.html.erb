@@ -8,7 +8,7 @@
         <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
           <div class="name-wrapper">
             <div class="name">
-              横田 孝
+              <%= comment.user.first_name %>
             </div>
           </div>
         </a>
@@ -25,7 +25,7 @@
     </div>
     <div class="comment-wrapper">
       <div class="comment">
-        顔認識技術によって、空港の保安検査の円滑化や無人レジの実現などのメリットがある一方で、とりわけ欧米のメディアでは警戒感が広がっています。最大の理由はプライバシーと、警察などによる無差別のプロファイリングが可能になることへの懸念。<br>フェイスブックはケンブリッジ・アナリティカを巡り8700万人に及ぶ個人情報流出の件で信頼に傷がつき、ネガティブイメージをまだ払拭仕切れていません。その中で顔認識技術を推進しようとしても、理解を得るのはなかなか難しいかもしれません。
+        <%= comment.comment %>
       </div>
       <div class="like-panel">
         <div class="like-wrapper">
