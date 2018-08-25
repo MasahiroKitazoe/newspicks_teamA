@@ -57,7 +57,7 @@ class Pick < ApplicationRecord
       texts = page.search('p')
       i = 0
       while results[:body].length <= 40
-        results[:body] = results[:body] + texts[i]
+        results[:body] += texts[i]
         i += 1
       end
     else
