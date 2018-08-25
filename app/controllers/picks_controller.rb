@@ -1,5 +1,6 @@
 class PicksController < ApplicationController
   def index
+    @pick = Pick.new
   end
 
   def show

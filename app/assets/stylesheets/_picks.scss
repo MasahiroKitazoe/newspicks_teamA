@@ -1,0 +1,132 @@
+.pick-form{
+  resize: none;
+  font-size: 16px;
+  color: #221f20;
+  border-radius: 2px;
+  border-color: #D9D9D9;
+}
+
+#newpick-form{
+  border-radius: 7px;
+  width: 65%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.pick-demand{
+  text-align: center;
+  font-size: 145%;
+  line-height: 1.5;
+  color: #221f20;
+  margin-bottom: 16px;
+}
+
+.pick-window{
+  width: 100%;
+  margin: 0 auto;
+}
+
+#newpick-box{
+  width: 90%;
+  height: 25px;
+  line-height: 20px;
+  padding: 10px;
+}
+
+.site-info{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.page-thumbnail{
+  width: 120px;
+  height: 120px;
+  background: center;
+  background-size: cover;
+  cover: no-repeat;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.pick-text{
+  overflow: initial;
+  width: calc(100% - 120px);
+  float: right;
+}
+
+.pick-title{
+  display: block;
+  font-weight: 700;
+  font-size: 130%;
+  max-height: 50px;
+}
+
+.pick-body{
+  display: block;
+  margin-top: 8px;
+  max-height: 80px;
+  font-size: 14px;
+}
+
+#hr-pick{
+  color: #DFDADA;
+  margin-top: 30px;
+  clear: both;
+}
+
+#pick-user-thumb{
+  float: left;
+}
+
+#newpick-comment{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+#comment-in-modal{
+  width: 80%;
+  float: right;
+  border: 1px solid #CCC;
+  height: 120px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#submit-group{
+  clear: both;
+  text-align: right;
+  i{
+    font-size: 20px;
+  }
+}
+
+#newpick-submit{
+  width: 120px;
+  height: 33px;
+}
+
+#newpick_submit{
+  background-color: #221F20;
+  padding: 10px 30px;
+  border-radius: 40px;
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+.message-gray{
+  display: inline;
+  font-size: 8px;
+  color: #999;
+  padding-right: 8px;
+}
+
+.pick-btn{
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+

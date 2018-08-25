@@ -18,7 +18,7 @@
           <input type="text" placeholder="検索する" class="header__list__input">
         </li>
         <% if user_signed_in? %>
-          <li class="header__list__new">
+          <li class="header__list__new", id="new-pick-btn">
             <%= link_to "Pick", :new_pick %>
           </li>
           <li class="header__list__news">
@@ -48,5 +48,6 @@
     <%= yield %>
     <%= render partial: "./modal/signup" %>
     <%= render partial: "./modal/signin" %>
+    <%= render partial: "./modal/picks" %>
   </body>
 </html>
