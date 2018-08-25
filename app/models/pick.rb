@@ -52,8 +52,16 @@ class Pick < ApplicationRecord
     end
 
     # bodyを取得
-    if page.at('p').inner_text
-      results[:body] = page.at('p').inner_text
+    results[:body] = ""
+    if page.search('p')
+      texts = page.search('p')
+      i = 0
+      while results[:body].length <= 40
+        results[:body] = results[:body] + texts[i]
+        i += 1
+      end
+    else
+      results[:body] = "本文は表示できません"
     end
 
     return results
