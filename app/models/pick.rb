@@ -1,7 +1,7 @@
 class Pick < ApplicationRecord
   validates :url, :image, :title, :body, null: false
 
-  def get_article_info(url)
+  def self.get_article_info(url)
     agent = Mechanize.new()
     results = {}
     page = agent.get(url)
