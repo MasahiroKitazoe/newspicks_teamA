@@ -29,6 +29,7 @@
 |image|string|null: false|
 |title|string|null: false, index: true|
 |body|text|null: false, index: true|
+|source|string|null: false|
 
 #### Association
 - has_many :comments
