@@ -31,7 +31,7 @@ class PicksController < ApplicationController
 
     #ajax処理
     respond_to do |format|
-      format.html { redirect_to root_path  }
+      format.html { redirect_to root_path, flash: {alert: '検索に失敗しました'} }
       format.json
     end
   end
