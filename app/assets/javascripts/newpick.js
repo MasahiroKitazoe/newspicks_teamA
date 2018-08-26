@@ -5,6 +5,9 @@ $(function() {
     // 失敗時メッセージの削除
     if ($('#notfound')) {$('#notfound').remove()}
 
+    // 表示部分の再非表示
+    $('.pick-site').css('display', 'none');
+
     // スクレイピングするURLを変数に格納
     var input = $('#newpick-box').val();
 
