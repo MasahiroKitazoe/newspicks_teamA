@@ -2,7 +2,7 @@
   <!-- トップアイキャッチ -->
   <div class="content__eyecatch">
     <!-- メイン -->
-    <%= link_to "/picks/#{@top_picks[0].id}" do %>
+    <%= link_to "/picks/#{@top_picks[0].id}", class: "content__eyecatch__link" do %>
       <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[0].image %>);">
         <div class="content__eyecatch__main__pick-count">
           <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[0].comments.length %></span>
@@ -19,7 +19,7 @@
     <% end %>
     <div class="content__eyecatch__sub">
       <!-- サブ１ -->
-      <%= link_to "/picks/#{@top_picks[1].id}" do %>
+      <%= link_to "/picks/#{@top_picks[1].id}", class: "content__eyecatch__link" do %>
         <div class="content__eyecatch__sub-1" style="background-image: url(<%= @top_picks[1].image %>);">
           <div class="content__eyecatch__sub-1__special">
             <div class="content__eyecatch__sub-1__special__logo">
@@ -33,7 +33,7 @@
         </div>
       <% end %>
       <!-- サブ２ -->
-      <%= link_to "/picks/#{@top_picks[2].id}" do %>
+      <%= link_to "/picks/#{@top_picks[2].id}", class: "content__eyecatch__sub__link" do %>
         <div class="content__eyecatch__sub-2" style="background-image: url(<%= @top_picks[2].image %>);">
           <div class="content__eyecatch__sub-2__special">
               <div class="content__eyecatch__sub-2__special__logo">
@@ -57,7 +57,7 @@
         <div class="content__top-news__side-news__content">
           <!-- ニュース本編 -->
           <div class="content__top-news__side-news__content__news">
-            <%= link_to "/picks/#{@picks[i].id}" do %>
+            <%= link_to "/picks/#{@picks[i].id}", class: "content__top-news__side-news__content__news__link" do %>
               <div class="content__top-news__side-news__content__news__image" style="background-image: url(<%= @picks[i].image %>);">
               </div>
               <h1 class="content__top-news__side-news__content__news__title"><%= @picks[i].title %></h1>
@@ -99,7 +99,7 @@
       <div class="content__top-news__newest__block">
         <% (0..9).each do |i| %>
           <!-- 一個のニュース -->
-          <%= link_to "/picks/#{@picks[i].id}" do %>
+          <%= link_to "/picks/#{@picks[i].id}", class: "content__top-news__newest__block__link" do %>
             <div class="content__top-news__newest__block__content">
               <div class="content__top-news__newest__block__content__title">
                 <%= @picks[i].title %>
@@ -119,7 +119,7 @@
         <div class="content__top-news__side-news__content">
           <!-- ニュース本編 -->
           <div class="content__top-news__side-news__content__news">
-            <%= link_to "/picks/#{@picks[i].id}" do %>
+            <%= link_to "/picks/#{@picks[i].id}", class: "content__top-news__side-news__content__news__link" do %>
               <div class="content__top-news__side-news__content__news__image" style="background-image: url(<%= @picks[i].image %>);">
               </div>
               <h1 class="content__top-news__side-news__content__news__title"><%= @picks[i].title %></h1>
