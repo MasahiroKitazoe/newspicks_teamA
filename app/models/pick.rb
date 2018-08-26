@@ -1,6 +1,12 @@
 class Pick < ApplicationRecord
   validates :url, :image, :title, :body, null: false
 
+  has_many :comments
+  # has_many :users, through :picks_users
+  # has_many :picks_users
+  # has_many :themes, through :picks_themes
+  # has_many :picks_themes
+
   def self.get_article_info(url)
     agent = Mechanize.new()
     results = {}
