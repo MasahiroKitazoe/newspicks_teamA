@@ -25,8 +25,7 @@ $(function() {
       if (e.target.className == "signin__overlay") {
         $('#signin').css("display", "none");
       }
-  });
-
+    });
   });
 
     // 「Pick」クリック時
@@ -40,7 +39,6 @@ $(function() {
       if (e.target.className == "newpick__overlay") {
         $('#newpick').css("display", "none");
       }
-  });
-
+    });
   });
 });
