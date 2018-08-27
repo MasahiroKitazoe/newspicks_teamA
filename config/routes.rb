@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   get '/picks/search', to: 'picks#search'
   resources :picks, except: [:edit, :update, :destroy]
+
+  get '/library', to: 'users#library'
+  resources :users, only: [:show]
 end
