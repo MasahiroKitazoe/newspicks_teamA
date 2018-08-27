@@ -1,6 +1,5 @@
 class PicksController < ApplicationController
   def index
-    @pick = Pick.new
     # top_picksと普通のpicksを分けておく事で、今後のアルゴリズム追加の土台にする
     @top_picks = Pick.order('created_at DESC').limit(3)
     top_picks_ids = @top_picks.map { |pick| pick.id }
@@ -9,7 +8,6 @@ class PicksController < ApplicationController
   end
 
   def show
-    @pick = Pick.new
   end
 
   def search
