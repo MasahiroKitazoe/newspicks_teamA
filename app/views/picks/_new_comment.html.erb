@@ -1,0 +1,43 @@
+<% if pick.check?(current_user) %>
+  <div class="comment-area">
+    <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+    <%= form_for(pick.comments.find_by(user_id: current_user.id).update, remote: true) do |f| %>
+    <div class="comment-container">
+      <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
+    </div>
+    <div class="pick-control">
+      <div class="description">シェアする</div>
+      <div class="sns twitter">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </div>
+      <div class="sns facebook">
+        <i class="fa fa-facebook-square fa-1g"></i>
+      </div>
+      <div class="pick">
+        <%= f.button :Pick, value: "Pick", class: "fa fa-plus-circle", type: :submit %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="comment-area">
+    <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+    <%= form_for(pick.comments.build, remote: true) do |f| %>
+    <div class="comment-container">
+      <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
+    </div>
+    <div class="pick-control">
+      <div class="description">シェアする</div>
+      <div class="sns twitter">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </div>
+      <div class="sns facebook">
+        <i class="fa fa-facebook-square fa-1g"></i>
+      </div>
+      <div class="pick">
+        <%= f.button :Pick, value: "Pick", class: "fa fa-plus-circle", type: :submit %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+<% end %>

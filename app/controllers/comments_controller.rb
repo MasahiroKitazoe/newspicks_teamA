@@ -1,16 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :set_pick
+  before_action :logged_in_user
 
   def create
-    @comment = @pick.comments.new(comment_params)
-    if @comment.save
-      respond_to do |format|
-        format.html { redirect_to pick_path(@pick), notice: 'pickしました'}
-        format.json
-      end
-    else
-      flash.now[:alert] = 'コメントを入力してください。'
-    end
+    @pick = Pick.find(params[:pick_id])
+    @pick.check(current_user)
+  end
+
+  def update
+    @pick = comment.find(params[:id]).pick
+    @pick.uncheck(current_user)
   end
 
   def destroy
@@ -18,17 +16,8 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
-  def show
-    @comment = Comment.find(params[:id])
-  end
-
   def edit
     @comment = Comment.find(params[:id])
-  end
-
-  def update
-    @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
   end
 
   private
