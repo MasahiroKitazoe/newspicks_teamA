@@ -283,77 +283,47 @@
     <div class="content__user-ranking__users">
       <!-- １行目 -->
       <div class="content__user-ranking__users__paragraf-1">
-        <!-- １ユーザー -->
-        <div class="content__user-ranking__users__paragraf-1__user">
-          <div class="content__user-ranking__users__paragraf-1__user__image">
-            <div class="content__user-ranking__users__paragraf-1__user__image__rank">
-              1
+        <% (0..1).each do |i| %>
+          <!-- １ユーザー -->
+          <div class="content__user-ranking__users__paragraf-1__user">
+            <div class="content__user-ranking__users__paragraf-1__user__image">
+              <div class="content__user-ranking__users__paragraf-1__user__image__rank">
+                <%= i + 1 %>
+              </div>
+              <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
             </div>
-            <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
-          </div>
-          <div class="content__user-ranking__users__paragraf-1__user__info">
-            <p class="content__user-ranking__users__paragraf-1__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-1__user__follow">
-            フォローする
-          </div>
-        </div>
-        <!-- １ユーザー -->
-        <div class="content__user-ranking__users__paragraf-1__user">
-          <div class="content__user-ranking__users__paragraf-1__user__image">
-            <div class="content__user-ranking__users__paragraf-1__user__image__rank">
-              1
+            <div class="content__user-ranking__users__paragraf-1__user__info">
+              <p class="content__user-ranking__users__paragraf-1__user__info__name"><%= @users[i].last_name %> <%= @users[i].first_name %></p>
+              <p class="content__user-ranking__users__paragraf-1__user__info__position"><%= @users[i].position %></p>
+              <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
             </div>
-            <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
+            <div class="content__user-ranking__users__paragraf-1__user__follow">
+              フォローする
+            </div>
           </div>
-          <div class="content__user-ranking__users__paragraf-1__user__info">
-            <p class="content__user-ranking__users__paragraf-1__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-1__user__follow">
-            フォローする
-          </div>
-        </div>
+        <% end %>
       </div>
       <!-- ２行目 -->
       <div class="content__user-ranking__users__paragraf-2">
-        <!-- 1ユーザー -->
-        <div class="content__user-ranking__users__paragraf-2__user">
-          <div class="content__user-ranking__users__paragraf-2__user__image">
-            <div class="content__user-ranking__users__paragraf-2__user__image__rank">
-              1
+        <% (2..3).each do |i| %>
+          <!-- １ユーザー -->
+          <div class="content__user-ranking__users__paragraf-2__user">
+            <div class="content__user-ranking__users__paragraf-2__user__image">
+              <div class="content__user-ranking__users__paragraf-2__user__image__rank">
+                <%= i + 1 %>
+              </div>
+              <img class="content__user-ranking__users__paragraf-2__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
             </div>
-            <img class="content__user-ranking__users__paragraf-2__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
-          </div>
-          <div class="content__user-ranking__users__paragraf-2__user__info">
-            <p class="content__user-ranking__users__paragraf-2__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-2__user__follow">
-            フォローする
-          </div>
-        </div>
-        <!-- １ユーザー -->
-        <div class="content__user-ranking__users__paragraf-2__user">
-          <div class="content__user-ranking__users__paragraf-2__user__image">
-            <div class="content__user-ranking__users__paragraf-2__user__image__rank">
-              1
+            <div class="content__user-ranking__users__paragraf-2__user__info">
+              <p class="content__user-ranking__users__paragraf-2__user__info__name"><%= @users[i].last_name %> <%= @users[i].first_name %></p>
+              <p class="content__user-ranking__users__paragraf-2__user__info__position"><%= @users[i].position %></p>
+              <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
             </div>
-            <img class="content__user-ranking__users__paragraf-2__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
+            <div class="content__user-ranking__users__paragraf-2__user__follow">
+              フォローする
+            </div>
           </div>
-          <div class="content__user-ranking__users__paragraf-2__user__info">
-            <p class="content__user-ranking__users__paragraf-2__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-2__user__follow">
-            フォローする
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
