@@ -2,9 +2,15 @@ class CommentsController < ApplicationController
   before_action :set_pick
 
   def create
-    @comment = @pick.comments.create(comment_params)
-    html = render_to_string partial: 'picks/comment', locals: { comment: @comment }
-    render :json => {:html => html}
+    @comment = @pick.comments.new(comment_params)
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to pick_path(@pick), notice: 'pickしました'}
+        format.json
+      end
+    else
+      flash.now[:alert] = 'コメントを入力してください。'
+    end
   end
 
   def destroy
@@ -27,7 +33,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:text).merge(user_id: current_user.id).merge(pick_id: @pick.id)
+    params.require(:comment).permit(:comment).merge(user_id: current_user.id).merge(pick_id: @pick.id)
   end
 
   def set_pick

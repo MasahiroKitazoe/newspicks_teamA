@@ -1,3 +1,6 @@
+$(function(){
+  function buildHTML(comment){
+    var html = `
 <div class="comment-container">
   <div class="comment-row with-border" data-user="267866" data-news="3250274" follow-user="false" data-comment-version="1" mute-disable="false">
     <div class="user-space">
@@ -8,12 +11,12 @@
         <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
           <div class="name-wrapper">
             <div class="name">
-              <%= comment.user.first_name %>
+              ${ comment.user_first_name }
             </div>
           </div>
         </a>
         <div class="job">
-          <%= comment.user.company %>
+          ${comment.user_company}
         </div>
         <div class="picktime">
           6時間前
@@ -25,13 +28,11 @@
     </div>
     <div class="comment-wrapper">
       <div class="comment">
-        <%= comment.comment %>
+        ${ comment.comment }
       </div>
       <div class="like-panel">
         <div class="like-wrapper">
           <div class="like" onclick="NP.like(this)" data-user="267866" data-liked="false" data-news="3250274">
-<!--             <img class="thumb-up-r" src="/images/like-r.ec360fd4.png"> -->
-<!--             <img class="thumb-up-g" src="/images/like-g.bad78a75.png"> -->
             <div class="count">
               14
             </div>
@@ -44,4 +45,29 @@
     <div class="embedded-pick-editor" style="display:none">
     </div>
   </div>
-</div>
+</div>`;
+  return html;
+  }
+  $("#new_comment").on("submit", function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+    var href = $(this).attr('action');
+
+    $.ajax({
+      type: 'POST',
+      url: href,
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+    })
+    .done(function(data){
+      var html = buildHTML(data);
+      $('.followings').append(html);
+      $('form')[0].reset();
+    })
+    .fail(function(){
+      alert('コメントを送信できませんでした。');
+    })
+  })
+})
