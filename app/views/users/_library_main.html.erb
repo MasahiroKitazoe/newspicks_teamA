@@ -1,0 +1,155 @@
+<div class="tab-content-recommended">
+  <div class="tab-content-selected">
+    <div class="items">
+      <div class="recommended">
+
+        <!-- おすすめピッカー -->
+        <div class="featured">
+          <div class="centering-content">
+            <div class="content-header">
+              <div class="content-header-title">
+                おすすめピッカー
+              </div>
+              <div class="content-header-description">
+                今を読む35テーマの専門家
+              </div>
+            </div>
+            <div class="category-header">
+              <div class="category-title">
+                サイエンス
+              </div>
+            </div>
+
+            <div class="row">
+              <% @users.each do |user| %>
+                <div class="category-recommended-picker">
+                  <div class="picker-info">
+                    <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                    <div class="picker-info-container">
+                      <div class="picker-name">
+                        <%= user.last_name %> <%= user.first_name %>
+                      </div>
+                      <div class="picker-position">
+                        <%= user.position %>
+                      </div>
+                    </div>
+                    <% if user.pro %>
+                      <div class="badge">
+                        <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                      </div>
+                    <% end %>
+                    <div class="follow-btn">
+                      <img src="images/follow-btn.png">
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div><!-- row -->
+
+            <div class="category-header">
+              <div class="category-title">
+                不動産テック
+              </div>
+          </div>
+          <div class="row">
+            <% @users.each do |user| %>
+              <div class="category-recommended-picker">
+                <div class="picker-info">
+                  <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                  <div class="picker-info-container">
+                    <div class="picker-name">
+                      <%= user.last_name %> <%= user.first_name %>
+                    </div>
+                    <div class="picker-position">
+                      <%= user.position %>
+                    </div>
+                  </div>
+                  <% if user.pro %>
+                      <div class="badge">
+                        <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                      </div>
+                    <% end %>
+                  <div class="follow-btn">
+                    <img src="images/follow-btn.png">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div><!-- row -->
+
+        </div> <!-- centering-content -->
+      </div> <!-- featured -->
+      <!-- おすすめピッカーここまで -->
+
+      <!-- カテゴリー別ピッカー -->
+      <div class="categorized">
+        <div class="centering-content">
+          <div class="category-header">
+            <div class="category-title">
+              NewsPicks解説員
+            </div>
+          </div>
+
+          <div class="row">
+            <% @users.each do |user| %>
+              <div class="category-recommended-picker">
+                <div class="picker-info">
+                  <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                  <div class="picker-info-container">
+                    <div class="picker-name">
+                      <%= user.last_name %> <%= user.first_name %>
+                    </div>
+                    <div class="picker-position">
+                      <%= user.position %>
+                    </div>
+                  </div>
+                  <% if user.pro %>
+                    <div class="badge">
+                      <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                    </div>
+                  <% end %>
+                  <div class="follow-btn">
+                    <img src="images/follow-btn.png">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div><!-- row -->
+
+          <div class="category-header">
+            <div class="category-title">
+              トップマネジメントの視点
+            </div>
+          </div>
+          <div class="row">
+            <% @users.each do |user| %>
+              <div class="category-recommended-picker">
+                <div class="picker-info">
+                  <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                  <div class="picker-info-container">
+                    <div class="picker-name">
+                      <%= user.last_name %> <%= user.first_name %>
+                    </div>
+                    <div class="picker-position">
+                      <%= user.position %>
+                    </div>
+                  </div>
+                  <% if user.pro %>
+                      <div class="badge">
+                        <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                      </div>
+                    <% end %>
+                  <div class="follow-btn">
+                    <img src="images/follow-btn.png">
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div><!-- row -->
+
+        </div> <!-- centering-content -->
+      </div> <!-- categorized -->
+      <!-- カテゴリー別ピッカーここまで -->
+    </div>
+  </div>
+</div>

@@ -25,8 +25,7 @@ $(function() {
       if (e.target.className == "signin__overlay") {
         $('#signin').css("display", "none");
       }
-  });
-
+    });
   });
 
     // 「Pick」クリック時
@@ -40,7 +39,20 @@ $(function() {
       if (e.target.className == "newpick__overlay") {
         $('#newpick').css("display", "none");
       }
+    });
   });
 
+  // navbarのユーザ名をクリックした時
+  $('.header__list__link').on('click', function(e){
+    e.preventDefault();
+    $('.user_menu').css('display', 'block');
+  });
+
+  // 背景をクリックするとモーダルを終了
+  $('.user_menu__overlay').on('click', function(e) {
+    console.log(e.target);
+    if (e.target.className == "user_menu__overlay") {
+      $('#user_menu').css("display", "none");
+    }
   });
 });
