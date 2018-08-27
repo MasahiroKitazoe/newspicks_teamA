@@ -6,6 +6,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def google
     @user = User.find_for_google(request.env['omniauth.auth'])
+    @user.save
+    sign_in_and_redirect @user, event: :authentication
   end
 
   # You should also create an action method in this controller like this:

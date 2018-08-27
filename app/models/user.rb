@@ -16,6 +16,7 @@ class User < ApplicationRecord
       return user
     else
       user = User.create(first_name: auth.info.first_name,
+                         email: auth.info.email,
                          last_name:  auth.info.last_name,
                          provider:   auth.provider,
                          uid:        auth.uid,
