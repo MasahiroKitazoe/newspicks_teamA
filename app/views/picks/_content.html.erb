@@ -297,9 +297,21 @@
               <p class="content__user-ranking__users__paragraf-1__user__info__position"><%= @users[i].position %></p>
               <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
             </div>
-            <div class="content__user-ranking__users__paragraf-1__user__follow">
-              フォローする
-            </div>
+            <% if @users[i].id != current_user.id %>
+              <% if current_user.following?(@users[i]) %>
+                <div class="content__user-ranking__users__paragraf-2__user__follow" id="user-follow<%= @users[i].id %>">
+                  <%= link_to relationship_path(@users[i].id), class: "destroy-relation", data: @users[i].id, method: :delete do %>
+                    <img src="images/following-btn.png">
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="content__user-ranking__users__paragraf-2__user__follow" id="user-follow<%= @users[i].id %>">
+                  <%= link_to relationships_path, class: "create-relation", data: @users[i].id, method: :post do %>
+                    <img src="images/follow-btn.png">
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
       </div>
@@ -319,9 +331,21 @@
               <p class="content__user-ranking__users__paragraf-2__user__info__position"><%= @users[i].position %></p>
               <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
             </div>
-            <div class="content__user-ranking__users__paragraf-2__user__follow">
-              フォローする
-            </div>
+            <% if @users[i].id != current_user.id %>
+              <% if current_user.following?(@users[i]) %>
+                <div class="content__user-ranking__users__paragraf-2__user__follow" id="user-follow<%= @users[i].id %>">
+                  <%= link_to relationship_path(@users[i].id), class: "destroy-relation", data: @users[i].id, method: :delete do %>
+                    <img src="images/following-btn.png">
+                  <% end %>
+                </div>
+              <% else %>
+                <div class="content__user-ranking__users__paragraf-2__user__follow" id="user-follow<%= @users[i].id %>">
+                  <%= link_to relationships_path, class: "create-relation", data: @users[i].id, method: :post do %>
+                    <img src="images/follow-btn.png">
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
       </div>
