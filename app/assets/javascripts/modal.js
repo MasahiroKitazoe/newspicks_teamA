@@ -43,7 +43,7 @@ $(function() {
   });
 
   // navbarのユーザ名をクリックした時
-  $('.header__list__link').on('click', function(e){
+  $('#user-menu-trigger').on('click', function(e){
     e.preventDefault();
     $('.user_menu').css('display', 'block');
   });
