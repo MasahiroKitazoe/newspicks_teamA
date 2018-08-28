@@ -46,11 +46,11 @@ class Pick < ApplicationRecord
   end
 
   def check(user)
-    comment.create(user_id: user.id)
+    comments.create(user_id: user.id)
   end
 
   def upcheck(user)
-    comment.find_by(user_id: user.id).update
+    comments.find_by(user_id: user.id).update
   end
 
   def check?(user)

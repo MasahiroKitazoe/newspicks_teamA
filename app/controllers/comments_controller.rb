@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user
 
   def create
     @pick = Pick.find(params[:pick_id])
@@ -16,10 +15,10 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @pick = comment.find(params[:id]).pick
+    @pick = Comment.find(params[:id]).pick
+    @comment = Comment.find(params[:id])
     if @pick.check?(current_user)
-      @pick.upcheck(current_user)
-      @comment = @pick.comments
+      @comment.update(comment_params)
       @pick.reload
       @comment.reload
       respond_to do |format|
