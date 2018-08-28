@@ -5,8 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i(google)
 
-  validates_uniqueness_of :uid, scope: :provider
-
   protected
   def self.find_for_google(auth)
     user = User.find_by(email: auth.info.email)
