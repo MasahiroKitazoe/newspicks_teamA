@@ -18,10 +18,14 @@ class Users::SessionsController < Devise::SessionsController
       if user_signed_in?
         yield resource if block_given?
         format.js { render ajax_redirect_to(root_path) }
-      else
-        @msg = resource.errors.full_messages
-        format.js
       end
+    end
+  end
+
+  def get_error
+    respond_to do |format|
+      @msg = resource.errors.full_messages
+      format.js
     end
   end
 
@@ -31,6 +35,10 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   protected
+
+  def auth_options
+    { scope: resource_name, recall: "#{controller_path}#get_error" }
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
