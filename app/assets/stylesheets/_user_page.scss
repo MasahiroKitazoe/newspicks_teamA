@@ -1,0 +1,104 @@
+.user-page{
+  background: #EFEFEF;
+  padding-top: 50px;
+  width: 100vw;
+  height: 100vh;
+  .profile-box{
+    width: 100%;
+    background-color: #FFF;
+    border-bottom: 1px solid #EAEAEA;
+    .user-profile{
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 75%;
+      margin: auto;
+      .detail-wrapper{
+        :after{
+            content: "";
+            clear: both;
+            display: block;
+          }
+        .detail{
+          .user-image{
+            float: left;
+            img{
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+            }
+          }
+          .user-detail{
+            float: left;
+            padding-top: 10px;
+            padding-left: 30px;
+            .user-name{
+              height: 30px;
+              h1{
+                display: inline-block;
+                font-size: 20px;
+                margin: 0 0 2px;
+                line-height: 1.4em;
+                font-weight: 700;
+                color: #221f20;
+              }
+            }
+            .user-position{
+              color: #999;
+              font-size: 12px;
+              height: 31px;
+            }
+            .user-popular{
+              color: #999;
+              font-size: 12px;
+              height: 31px;
+            }
+            .user-intro{
+              overflow: initial;
+              margin-top: 10px;
+              max-height: 40px;
+              word-break: break-word;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .user-tab-container{
+    background-color: #FFF;
+    overflow: hidden;
+    width: 100%;
+    height: 55px;
+    .tab-items{
+      margin: auto;
+      width: 75%;
+      .tab-item{
+        color: #221f20;
+        height: 50px;
+        float: left;
+        padding: 15px 18px 0;
+        text-align: center;
+        .follow-item{
+          .follow-num{
+            font-size: 20px;
+            pointer-events: none;
+            display: block;
+            line-height: 100%;
+          }
+          .follow{
+            font-size: 10px;
+            color: #999;
+            line-height: 100%;
+            display: block;
+          }
+        }
+      }
+      .selected{
+          color: #221f20;
+          font-weight: 700;
+          cursor: auto;
+          border-bottom: 4px solid #221f20;
+        }
+    }
+  }
+}

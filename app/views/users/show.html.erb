@@ -1,1 +1,46 @@
-<p>hello world</p>
+<div class="user-page">
+  <div class="profile-box">
+    <div class="user-profile">
+      <div class="detail-wrapper">
+        <div class="detail">
+          <div class="user-image">
+            <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+          </div>
+          <div class="user-detail">
+            <div class="user-name">
+              <h1><%= @user.last_name %>  <%= @user.first_name %></h1>
+            </div>
+            <div class="user-position">
+              <%= @user.position %>
+            </div>
+            <div class="user-popular">
+              もらったlike数:
+            </div>
+            <div class="user-intro">
+              <%= @user.profile %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user-tab-container">
+    <div class="tab-items">
+      <div class="tab-item">
+        Picks
+      </div>
+      <div class="tab-item">
+        <div class="follow-item">
+          <span class="follow-num">1000</span>
+          <span class="follow">フォロー</span>
+        </div>
+      </div>
+      <div class="tab-item">
+        <div class="follow-item">
+          <span class="follow-num">1000</span>
+          <span class="follow">フォロワー</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
