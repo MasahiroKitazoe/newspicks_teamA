@@ -31,13 +31,13 @@
       </div>
       <div class="tab-item">
         <div class="follow-item">
-          <span class="follow-num">1000</span>
+          <span class="follow-num"><%= @user.following.count %></span>
           <span class="follow">フォロー</span>
         </div>
       </div>
       <div class="tab-item">
         <div class="follow-item">
-          <span class="follow-num">1000</span>
+          <span class="follow-num"><%= @user.followers.count %></span>
           <span class="follow">フォロワー</span>
         </div>
       </div>
