@@ -47,7 +47,7 @@
         </div>
       </div>
       <% if @user.id != current_user.id %>
-        <div class="tab-item" id="userpage-follow">
+        <div class="tab-item" id="user-follow">
           <% if current_user.following?(@user) %>
             <%= link_to relationship_path, class: "destroy-relation", data: @user.id, method: :delete do %>
               <img src="/images/following-btn.png" class="relation-btn">

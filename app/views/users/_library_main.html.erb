@@ -42,12 +42,16 @@
                     <% end %>
                     <% if current_user.id != user.id %>
                       <% if current_user.following?(user) %>
-                        <div class="follow-btn">
-                          <img src="images/following-btn.png">
+                        <div class="follow-btn" id="user-follow<%= user.id %>">
+                          <%= link_to relationship_path(user.id), class: "destroy-relation", data: user.id, method: :delete do %>
+                            <img src="images/following-btn.png">
+                          <% end %>
                         </div>
                       <% else %>
-                        <div class="follow-btn">
-                          <img src="images/follow-btn.png">
+                        <div class="follow-btn" id="user-follow<%= user.id %>">
+                          <%= link_to relationships_path, class: "create-relation", data: user.id, method: :post do %>
+                            <img src="images/follow-btn.png">
+                          <% end %>
                         </div>
                       <% end %>
                     <% end %>
@@ -77,13 +81,25 @@
                     </div>
                   <% end %>
                   <% if user.pro %>
-                      <div class="badge">
-                        <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                    <div class="badge">
+                      <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                    </div>
+                  <% end %>
+                  <% if current_user.id != user.id %>
+                    <% if current_user.following?(user) %>
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
+                        <%= link_to relationship_path(user.id), class: "destroy-relation", data: user.id, method: :delete do %>
+                          <img src="images/following-btn.png">
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
+                        <%= link_to relationships_path, class: "create-relation", data: user.id, method: :post do %>
+                          <img src="images/follow-btn.png">
+                        <% end %>
                       </div>
                     <% end %>
-                  <div class="follow-btn">
-                    <img src="images/follow-btn.png">
-                  </div>
+                  <% end %>
                 </div>
               </div>
             <% end %>
@@ -122,9 +138,21 @@
                       <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
                     </div>
                   <% end %>
-                  <div class="follow-btn">
-                    <img src="images/follow-btn.png">
-                  </div>
+                  <% if current_user.id != user.id %>
+                    <% if current_user.following?(user) %>
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
+                        <%= link_to relationship_path(user.id), class: "destroy-relation", data: user.id, method: :delete do %>
+                          <img src="images/following-btn.png">
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
+                        <%= link_to relationships_path, class: "create-relation", data: user.id, method: :post do %>
+                          <img src="images/follow-btn.png">
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             <% end %>
@@ -151,13 +179,25 @@
                     </div>
                   <% end %>
                   <% if user.pro %>
-                      <div class="badge">
-                        <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                    <div class="badge">
+                      <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                    </div>
+                  <% end %>
+                  <% if current_user.id != user.id %>
+                    <% if current_user.following?(user) %>
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
+                        <%= link_to relationship_path(user.id), class: "destroy-relation", data: user.id, method: :delete do %>
+                          <img src="images/following-btn.png">
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
+                        <%= link_to relationships_path, class: "create-relation", data: user.id, method: :post do %>
+                          <img src="images/follow-btn.png">
+                        <% end %>
                       </div>
                     <% end %>
-                  <div class="follow-btn">
-                    <img src="images/follow-btn.png">
-                  </div>
+                  <% end %>
                 </div>
               </div>
             <% end %>
