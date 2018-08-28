@@ -3,7 +3,10 @@
     <div class="form">
       <h2>Log in</h2>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: resource, url: :user_session do |f| %>
+
+        <div id="signin-error_msg" class="signin__form__error">
+
         <div class="field">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
