@@ -24,15 +24,17 @@
               <% @users.each do |user| %>
                 <div class="category-recommended-picker">
                   <div class="picker-info">
-                    <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-                    <div class="picker-info-container">
-                      <div class="picker-name">
-                        <%= user.last_name %> <%= user.first_name %>
+                    <%= link_to user_path(user.id) do %>
+                      <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                      <div class="picker-info-container">
+                        <div class="picker-name">
+                          <%= user.last_name %> <%= user.first_name %>
+                        </div>
+                        <div class="picker-position">
+                          <%= user.position %>
+                        </div>
                       </div>
-                      <div class="picker-position">
-                        <%= user.position %>
-                      </div>
-                    </div>
+                    <% end %>
                     <% if user.pro %>
                       <div class="badge">
                         <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
@@ -55,15 +57,17 @@
             <% @users.each do |user| %>
               <div class="category-recommended-picker">
                 <div class="picker-info">
-                  <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-                  <div class="picker-info-container">
-                    <div class="picker-name">
-                      <%= user.last_name %> <%= user.first_name %>
+                  <%= link_to user_path(user.id) do %>
+                    <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                    <div class="picker-info-container">
+                      <div class="picker-name">
+                        <%= user.last_name %> <%= user.first_name %>
+                      </div>
+                      <div class="picker-position">
+                        <%= user.position %>
+                      </div>
                     </div>
-                    <div class="picker-position">
-                      <%= user.position %>
-                    </div>
-                  </div>
+                  <% end %>
                   <% if user.pro %>
                       <div class="badge">
                         <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
@@ -94,15 +98,17 @@
             <% @users.each do |user| %>
               <div class="category-recommended-picker">
                 <div class="picker-info">
-                  <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-                  <div class="picker-info-container">
-                    <div class="picker-name">
-                      <%= user.last_name %> <%= user.first_name %>
+                  <%= link_to user_path(user.id) do %>
+                    <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                    <div class="picker-info-container">
+                      <div class="picker-name">
+                        <%= user.last_name %> <%= user.first_name %>
+                      </div>
+                      <div class="picker-position">
+                        <%= user.position %>
+                      </div>
                     </div>
-                    <div class="picker-position">
-                      <%= user.position %>
-                    </div>
-                  </div>
+                  <% end %>
                   <% if user.pro %>
                     <div class="badge">
                       <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
@@ -125,15 +131,17 @@
             <% @users.each do |user| %>
               <div class="category-recommended-picker">
                 <div class="picker-info">
-                  <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-                  <div class="picker-info-container">
-                    <div class="picker-name">
-                      <%= user.last_name %> <%= user.first_name %>
+                  <%= link_to user_path(user.id) do %>
+                    <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+                    <div class="picker-info-container">
+                      <div class="picker-name">
+                        <%= user.last_name %> <%= user.first_name %>
+                      </div>
+                      <div class="picker-position">
+                        <%= user.position %>
+                      </div>
                     </div>
-                    <div class="picker-position">
-                      <%= user.position %>
-                    </div>
-                  </div>
+                  <% end %>
                   <% if user.pro %>
                       <div class="badge">
                         <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
