@@ -49,19 +49,19 @@ class Pick < ApplicationRecord
     comment.create(user_id: user.id)
   end
 
-  def uncheck(user)
-    comment.find_by(user_id: user.id).destroy
+  def upcheck(user)
+    comment.find_by(user_id: user.id).update
   end
 
   def check?(user)
     check_users.include?(user)
   end
 
-  def
+
   has_many :comments, dependent: :destroy
   has_many :users, through: :pick_users
   has_many :pick_users
   has_many :themes, through: :pick_themes
   has_many :pick_themes
-  has_many :check_users, through: :picks, source: :user
+  has_many :check_users, through: :comments, source: :user
 end

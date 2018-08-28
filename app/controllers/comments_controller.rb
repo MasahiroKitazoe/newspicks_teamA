@@ -3,12 +3,30 @@ class CommentsController < ApplicationController
 
   def create
     @pick = Pick.find(params[:pick_id])
-    @pick.check(current_user)
+    unless @pick.check?(current_user)
+      @pick.check(current_user)
+      @comment = @pick.comments
+      @pick.reload
+      @comment.reload
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url}
+        format.js
+      end
+    end
   end
 
   def update
     @pick = comment.find(params[:id]).pick
-    @pick.uncheck(current_user)
+    if @pick.check?(current_user)
+      @pick.upcheck(current_user)
+      @comment = @pick.comments
+      @pick.reload
+      @comment.reload
+      respond_to do |format|
+        format.html {redirect_to request.referrer || root_url}
+        format.js
+      end
+    end
   end
 
   def destroy
