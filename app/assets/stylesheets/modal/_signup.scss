@@ -5,6 +5,7 @@
 .signup {
   z-index: 2;
   &__form {
+    border-radius: 5px;
     &__error {
       color: red;
     }

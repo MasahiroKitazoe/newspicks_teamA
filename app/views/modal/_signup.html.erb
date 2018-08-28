@@ -14,6 +14,10 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
+        <div>
+          実名登録を推奨しています。
+        </div>
+
         <div class="field">
           <%= f.label :first_name %><br />
           <%= f.text_field :first_name %>
@@ -25,32 +29,22 @@
         </div>
 
         <div class="field">
-          <%= f.label :company %><br />
+          <%= f.label "会社名/組織名" %><br />
           <%= f.text_field :company %>
         </div>
 
         <div class="field">
-          <%= f.label :position %><br />
+          <%= f.label :役職 %><br />
           <%= f.text_field :position %>
         </div>
 
         <div class="field">
-          <%= f.label :profile %><br />
+          <%= f.label :自己紹介文 %><br />
           <%= f.text_area :profile %>
         </div>
 
         <div class="field">
-          <%= f.label :pro %><br />
-          <%= f.check_box :pro, {}, "true", "false" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :real_name %><br />
-          <%= f.check_box :real_name, {}, "true", "false" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password %>
+          <%= f.label :パスワード %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
@@ -58,7 +52,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label "パスワード（確認用）" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
