@@ -1,0 +1,4 @@
+<% if @err_msg %>
+  $('#signin-error_msg').append("<p><%= @err_msg['err_msg1'] %><p>");
+  $('#signin-error_msg').append("<p><%= @err_msg['err_msg2'] %><p>");
+<% end %>
