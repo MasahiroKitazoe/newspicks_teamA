@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get '/picks/search', to: 'picks#search'
   resources :picks, except: [:edit, :update, :destroy]
+
+  resources :relationships, only: [:create, :destroy]
 end

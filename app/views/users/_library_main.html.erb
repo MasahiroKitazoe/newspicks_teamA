@@ -40,9 +40,17 @@
                         <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
                       </div>
                     <% end %>
-                    <div class="follow-btn">
-                      <img src="images/follow-btn.png">
-                    </div>
+                    <% if current_user.id != user.id %>
+                      <% if current_user.following?(user) %>
+                        <div class="follow-btn">
+                          <img src="images/following-btn.png">
+                        </div>
+                      <% else %>
+                        <div class="follow-btn">
+                          <img src="images/follow-btn.png">
+                        </div>
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
               <% end %>

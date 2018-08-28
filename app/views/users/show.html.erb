@@ -20,6 +20,11 @@
               <%= @user.profile %>
             </div>
           </div>
+          <% if @user.pro %>
+            <div class="badge">
+              <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -41,9 +46,19 @@
           <span class="follow">フォロワー</span>
         </div>
       </div>
-      <div class="tab-item" id="userpage-follow">
-        <img src="/images/follow-btn.png">
-      </div>
+      <% if @user.id != current_user.id %>
+        <div class="tab-item" id="userpage-follow">
+          <% if current_user.following?(@user) %>
+            <%= link_to relationship_path, class: "destroy-relation", data: @user.id, method: :delete do %>
+              <img src="/images/following-btn.png" class="relation-btn">
+            <% end %>
+          <% else %>
+            <%= link_to relationships_path, class: "create-relation", data: @user.id, method: :post do %>
+              <img src="/images/follow-btn.png" class="relation-btn">
+            <% end %>
+          <% end %>
+        </div>
+        <% end %>
     </div>
   </div>
   <div class="tab-wrapper">
