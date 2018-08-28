@@ -1,3 +1,5 @@
-<% @msg.each do |msg| %>
-  $('#error_msg').append("<p><%= msg %><p>");
+<% if @msg %>
+  <% @msg.each do |msg| %>
+    $('#error_msg').append("<p><%= msg %><p>");
+  <% end %>
 <% end %>

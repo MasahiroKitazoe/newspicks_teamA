@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  include AjaxHelper
 
   # GET /resource/sign_up
   def new
@@ -19,11 +20,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.persisted?
         if resource.active_for_authentication?
           sign_up(resource_name, resource)
-          format.html {redirect_to after_sign_up_path_for(resource)}
+          format.js { render ajax_redirect_to(root_path) }
         else
           set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
           expire_data_after_sign_in!
-          format.html {redirect_to after_sign_up_path_for(resource)}
+          format.js { render ajax_redirect_to(root_path) }
         end
       else
         @msg = resource.errors.full_messages
@@ -70,7 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    root_path
   end
 
   # The path used after sign up for inactive accounts.
