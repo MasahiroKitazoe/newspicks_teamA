@@ -4,6 +4,11 @@
 
 .signup {
   z-index: 2;
+  &__form {
+    &__error {
+      color: red;
+    }
+  }
   &__overlay {
     padding: 80px;
     z-index: 3;
