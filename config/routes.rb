@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   get '/library', to: 'users#library'
+  post '/follow/:id', to: 'users#follow'
+  delete '/unfollow/:id', to: 'users#unfollow'
   resources :users, only: [:show]
 
   devise_for :users

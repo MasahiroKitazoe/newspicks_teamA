@@ -334,13 +334,13 @@
             <% if @users[i].id != current_user.id %>
               <% if current_user.following?(@users[i]) %>
                 <div class="content__user-ranking__users__paragraf-2__user__follow" id="user-follow<%= @users[i].id %>">
-                  <%= link_to relationship_path(@users[i].id), class: "destroy-relation", data: @users[i].id, method: :delete do %>
+                  <%= link_to "/unfollow/#{@users[i].id}", class: "destroy-relation", data: @users[i].id, method: :delete do %>
                     <img src="images/following-btn.png">
                   <% end %>
                 </div>
               <% else %>
                 <div class="content__user-ranking__users__paragraf-2__user__follow" id="user-follow<%= @users[i].id %>">
-                  <%= link_to relationships_path, class: "create-relation", data: @users[i].id, method: :post do %>
+                  <%= link_to "/follow/#{@users[i].id}", class: "create-relation", data: @users[i].id, method: :post do %>
                     <img src="images/follow-btn.png">
                   <% end %>
                 </div>

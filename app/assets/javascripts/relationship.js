@@ -19,7 +19,7 @@ $(function() {
       dataType: 'json',
       })
       .done(function(data){
-        var html = `<a class="destroy-relation" data=${followed_id} rel="nofollow" data-method="delete" href="/relationships/${data.id}">
+        var html = `<a class="destroy-relation" data=${followed_id} rel="nofollow" data-method="delete" href="/unfollow/${followed_id}">
                       <img src="/images/following-btn.png" class="relation-btn"></a>`
         $(target_id).empty();
         $(target_id).append(html);
@@ -48,7 +48,7 @@ $(function() {
       dataType: 'json',
       })
       .done(function(data){
-        var html = `<a class="create-relation" data=${followed_id} rel="nofollow" data-method="post" href="/relationships">
+        var html = `<a class="create-relation" data=${followed_id} rel="nofollow" data-method="post" href="/follow/${followed_id}">
                       <img src="/images/follow-btn.png" class="relation-btn"></a>`
         $(target_id).empty();
         $(target_id).append(html);
