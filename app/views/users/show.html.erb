@@ -41,7 +41,20 @@
           <span class="follow">フォロワー</span>
         </div>
       </div>
+      <div class="tab-item" id="userpage-follow">
+        <img src="/images/follow-btn.png">
+      </div>
     </div>
   </div>
-  
+  <div class="tab-wrapper">
+    <div class="tab-content">
+      <% if @user.comments.present? %>
+        <% @user.comments.each do |comment| %>
+          <%= render partial: "one_pick" %>
+        <% end %>
+        <% else %>
+          <%= render partial: "no_pick" %>
+      <% end %>
+    </div>
+  </div>
 </div>

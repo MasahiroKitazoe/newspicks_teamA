@@ -2,7 +2,12 @@
   background: #EFEFEF;
   padding-top: 50px;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  :after{
+    content: "";
+    display: block;
+    clear: both;
+  }
   .profile-box{
     width: 100%;
     background-color: #FFF;
@@ -72,6 +77,17 @@
     .tab-items{
       margin: auto;
       width: 75%;
+      #userpage-follow{
+          float: right;
+          img{
+            height: 24px;
+            width: auto;
+            transition: all .1s linear;
+            vertical-align: middle;
+            outline: 0;
+            float: right;
+          }
+        }
       .tab-item{
         color: #221f20;
         height: 50px;
@@ -99,6 +115,18 @@
           cursor: auto;
           border-bottom: 4px solid #221f20;
         }
+    }
+  }
+  .tab-wrapper{
+    min-height: 450px;
+    width: 80%;
+    margin: auto;
+    .tab-content{
+      padding: 30px;
+      @include one_content();
+      .no_pick_message{
+        text-align: center;
+      }
     }
   }
 }
