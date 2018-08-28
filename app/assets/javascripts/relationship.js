@@ -1,7 +1,7 @@
 $(function() {
 
   // フォローする関数
-  $('.create-relation').on('click', function(e){
+  $('.follow-btn').on('click', '.create-relation', function(e){
     e.preventDefault();
     e.stopPropagation();
 
@@ -30,7 +30,7 @@ $(function() {
   });
 
   // フォロー解除の関数
-  $('.destroy-relation').on('click', function(e){
+  $('.follow-btn').on('click', '.destroy-relation', function(e){
     e.preventDefault();
     e.stopPropagation();
 

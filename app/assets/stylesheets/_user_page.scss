@@ -86,15 +86,17 @@
     .tab-items{
       margin: auto;
       width: 75%;
-      #user-follow{
-          float: right;
-          img{
-            height: 24px;
-            width: auto;
-            transition: all .1s linear;
-            vertical-align: middle;
-            outline: 0;
-            float: right;
+      #user-follow-box{
+        float: right;
+        #user-follow{
+            img{
+              height: 24px;
+              width: auto;
+              transition: all .1s linear;
+              vertical-align: middle;
+              outline: 0;
+              float: right;
+            }
           }
         }
       .tab-item{

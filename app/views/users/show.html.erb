@@ -47,15 +47,19 @@
         </div>
       </div>
       <% if @user.id != current_user.id %>
-        <div class="tab-item" id="user-follow">
+        <div class="tab-item" id="user-follow-box">
           <% if current_user.following?(@user) %>
-            <%= link_to "/unfollow/#{@user.id}", class: "destroy-relation", data: @user.id, method: :delete do %>
-              <img src="/images/following-btn.png" class="relation-btn">
-            <% end %>
+            <div class="follow-btn" id="user-follow">
+              <%= link_to "/unfollow/#{@user.id}", class: "destroy-relation", data: @user.id, method: :delete do %>
+                <img src="/images/following-btn.png" class="relation-btn">
+              <% end %>
+            </div>
           <% else %>
-            <%= link_to "/follow/@user.id", class: "create-relation", data: @user.id, method: :post do %>
-              <img src="/images/follow-btn.png" class="relation-btn">
-            <% end %>
+            <div class="follow-btn" id="user-follow">
+              <%= link_to "/follow/@user.id", class: "create-relation", data: @user.id, method: :post do %>
+                <img src="/images/follow-btn.png" class="relation-btn">
+              <% end %>
+            </div>
           <% end %>
         </div>
         <% end %>
