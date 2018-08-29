@@ -38,33 +38,31 @@
       <% end %>
 
       <div class="field edit__form__block__element">
-        <%= f.label :password, class: 'field edit__form__block__element__label' %> <i>(leave blank if you don't want to change it)</i>
+        <%= f.label :新規パスワード, class: 'field edit__form__block__element__label' %> <i>パスワードを変更しない場合は入力しないでください</i>
         <%= f.password_field :password, autocomplete: "new-password", class: 'field edit__form__block__element__text' %>
         <% if @minimum_password_length %>
           <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
+          <em><%= @minimum_password_length %>文字以上の半角英数字</em>
         <% end %>
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :password_confirmation, class: 'field edit__form__block__element__label' %>
+        <%= f.label "もう一度入力してください", class: 'field edit__form__block__element__label' %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'field edit__form__block__element__text' %>
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :current_password, class: 'field edit__form__block__element__label' %> <i>(we need your current password to confirm your changes)</i>
+        <%= f.label :現在のパスワード, class: 'field edit__form__block__element__label' %> <i>変更を保存するには現在のパスワードを入力してください</i>
         <%= f.password_field :current_password, autocomplete: "current-password", class: 'field edit__form__block__element__text' %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Update" %>
+        <%= button_tag "保存する", type: "submit" %>
       </div>
     <% end %>
 
-    <h3>Cancel my account</h3>
+    <%= button_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会してよろしいですか？" }, method: :delete %>
 
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
+    <%= link_to "戻る", :back %>
   </div>
 </div>
