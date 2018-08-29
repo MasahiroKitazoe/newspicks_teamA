@@ -2,6 +2,7 @@
   background-color: #efefef;
   font-size: 14px;
   height: 100vh;
+  overflow: scroll;
   width: calc(100vw - 400px);
   padding: 200px 200px;
   &__form {
@@ -14,12 +15,46 @@
     }
     &__block {
       &__element {
+        width: 100%;
+        padding: 20px 0;
+        font-size: 16px;
+        height: 100%;
+        line-height: 100%;
         &__label {
-          font-size: 16px;
           display: inline-block;
+          width: 230px;
+          float: left;
+          margin: 10px 0 0 10px;
         }
-        &__email {
+        &__text {
           display: inline-block;
+          width: calc(100% - 270px);
+          font-size: 16px;
+          padding: 10px;
+        }
+        &__name {
+          width: calc(100% - 270px);
+          display: inline-block;
+          &__first {
+            width: calc(50% - 25px);
+            font-size: 16px;
+            padding: 10px;
+            float: left;
+          }
+          &__last {
+            width: calc(50% - 25px);
+            font-size: 16px;
+            padding: 10px;
+            float: right;
+          }
+        }
+        &__profile {
+          display: inline-block;
+          width: calc(100% - 270px);
+          height: 160px;
+          font-size: 14px;
+          padding: 10px;
+          border: 1px solid #ddd;
         }
       }
     }

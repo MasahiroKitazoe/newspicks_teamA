@@ -7,42 +7,30 @@
 
       <div class="field edit__form__block__element">
         <%= f.label :メールアドレス, class: 'field edit__form__block__element__label' %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'field edit__form__block__element__email' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'field edit__form__block__element__text' %>
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :first_name, class: 'field edit__form__block__element__label' %><br />
-        <%= f.text_field :first_name %>
+        <%= f.label :氏名, class: 'field edit__form__block__element__label' %>
+        <div class="field edit__form__block__element__name">
+          <%= f.text_field :last_name, class: 'field edit__form__block__element__name__last' %>
+          <%= f.text_field :first_name, class: 'field edit__form__block__element__name__first' %>
+        </div>
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :last_name, class: 'field edit__form__block__element__label' %><br />
-        <%= f.text_field :last_name %>
+        <%= f.label :会社名, class: 'field edit__form__block__element__label' %>
+        <%= f.text_field :company, class: 'field edit__form__block__element__text' %>
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :会社名, class: 'field edit__form__block__element__label' %><br />
-        <%= f.text_field :company %>
+        <%= f.label :役職, class: 'field edit__form__block__element__label' %>
+        <%= f.text_field :position, class: 'field edit__form__block__element__text' %>
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :役職, class: 'field edit__form__block__element__label' %><br />
-        <%= f.text_field :position %>
-      </div>
-
-      <div class="field edit__form__block__element">
-        <%= f.label :プロフィール, class: 'field edit__form__block__element__label' %><br />
-        <%= f.text_area :profile %>
-      </div>
-
-      <div class="field edit__form__block__element">
-        <%= f.label :pro, class: 'field edit__form__block__element__label' %><br />
-        <%= f.check_box :pro, {}, "true", "false" %>
-      </div>
-
-      <div class="field edit__form__block__element">
-        <%= f.label :real_name, class: 'field edit__form__block__element__label' %><br />
-        <%= f.check_box :real_name, {}, "true", "false" %>
+        <%= f.label :プロフィール, class: 'field edit__form__block__element__label' %>
+        <%= f.text_area :profile, class: 'field edit__form__block__element__profile' %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -50,8 +38,8 @@
       <% end %>
 
       <div class="field edit__form__block__element">
-        <%= f.label :password, class: 'field edit__form__block__element__label' %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.label :password, class: 'field edit__form__block__element__label' %> <i>(leave blank if you don't want to change it)</i>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'field edit__form__block__element__text' %>
         <% if @minimum_password_length %>
           <br />
           <em><%= @minimum_password_length %> characters minimum</em>
@@ -59,13 +47,13 @@
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :password_confirmation, class: 'field edit__form__block__element__label' %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.label :password_confirmation, class: 'field edit__form__block__element__label' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'field edit__form__block__element__text' %>
       </div>
 
       <div class="field edit__form__block__element">
-        <%= f.label :current_password, class: 'field edit__form__block__element__label' %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <%= f.label :current_password, class: 'field edit__form__block__element__label' %> <i>(we need your current password to confirm your changes)</i>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: 'field edit__form__block__element__text' %>
       </div>
 
       <div class="actions">
