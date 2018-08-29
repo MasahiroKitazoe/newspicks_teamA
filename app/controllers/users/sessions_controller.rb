@@ -11,22 +11,30 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    self.resource = warden.authenticate!(auth_options)
-    set_flash_message!(:notice, :signed_in)
-    sign_in(resource_name, resource)
+    @msg = []
+    user = User.new(email: params[:user][:email], password: params[:user][:password])
     respond_to do |format|
-      if user_signed_in?
-        yield resource if block_given?
-        format.js { render ajax_redirect_to(root_path) }
+      format.js do
+        if params[:user][:email] == "" && params[:user][:password] == ""
+          @msg << "メールアドレスを入力してください"
+          @msg << "パスワードを入力してください"
+        elsif params[:user][:email] == ""
+          @msg << "メールアドレスを入力してください"
+        elsif params[:user][:password] == ""
+          @msg << "パスワードを入力してください"
+        elsif user.save == false
+          @msg << "メールアドレス、またはパスワードが間違っています"
+        else
+          set_flash_message!(:notice, :signed_in)
+          sign_in(resource_name, resource)
+          if user_signed_in?
+            yield resource if block_given?
+            render ajax_redirect_to(root_path)
+          end
+        end
       end
     end
-  end
 
-  def get_error
-    respond_to do |format|
-      @msg = resource.errors.full_messages
-      format.js
-    end
   end
 
   # DELETE /resource/sign_out
@@ -37,7 +45,7 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def auth_options
-    { scope: resource_name, recall: "#{controller_path}#get_error" }
+    { scope: resource_name, recall: "#{controller_path}#new" }
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

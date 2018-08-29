@@ -1,3 +1,6 @@
+$('#signin-error_msg p').remove();
 <% if @msg %>
-  $('#signin-error_msg').append("<p><%= @msg %></p>");
+  <% @msg.each do |msg| %>
+    $('#signin-error_msg').append("<p><%= msg %></p>");
+  <% end %>
 <% end %>
