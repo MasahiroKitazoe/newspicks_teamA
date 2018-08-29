@@ -11,25 +11,26 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    @msg = []
+    @msg_null = []
+    user = User.find_by(email: params[:user][:email])
     respond_to do |format|
       format.js do
         if params[:user][:email] == "" && params[:user][:password] == ""
-          @msg << "メールアドレスを入力してください"
-          @msg << "パスワードを入力してください"
+          @msg_null << "メールアドレスを入力してください"
+          @msg_null << "パスワードを入力してください"
         elsif params[:user][:email] == ""
-          @msg << "メールアドレスを入力してください"
+          @msg_null << "メールアドレスを入力してください"
         elsif params[:user][:password] == ""
-          @msg << "パスワードを入力してください"
+          @msg_null << "パスワードを入力してください"
         else
-          # if User.find_by(email: params[:user][:email], password: params[:user][:password]).persisted? == false
-            @msg << "メールアドレス、またはパスワードが間違っています"
-          # else
+          if user == nil || user.persisted? == true && user.valid_password?(params[:user][:password]) == false
+            @msg_false = "メールアドレス、またはパスワードが間違っています"
+          else
             self.resource = warden.authenticate!(auth_options)
             set_flash_message!(:notice, :signed_in)
             sign_in(resource_name, resource)
             yield resource if block_given?
-          # end
+          end
         end
       end
     end

@@ -1,8 +1,12 @@
 $('#signin-error_msg p').remove();
-<% if @msg.length != 0 %>
-  <% @msg.each do |msg| %>
+<% if @msg_null.length != 0 %>
+  <% @msg_null.each do |msg| %>
     $('#signin-error_msg').append("<p><%= msg %></p>");
   <% end %>
+<% end %>
+
+<% if @msg_false %>
+  $('#signin-error_msg').append("<p><%= @msg_false %></p>");
 <% end %>
 
 <% if user_signed_in? %>
