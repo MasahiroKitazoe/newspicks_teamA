@@ -1,70 +1,51 @@
 <div class="back signup" id="signup">
   <div class="signup__overlay">
     <div class="form signup__form">
-      <h2>Sign up</h2>
+      <h2 class="signup__form__title">新規登録</h2>
+      <div class="signup__form__signin">
+        既にアカウントをお持ちの方は <span class="signup__form__signin__link"><%= link_to "ログイン", new_session_path(resource_name) %></span> へ
+      </div>
+      <%= link_to user_google_omniauth_authorize_path do %>
+        <div class="signup__form__omniauth">
+          <span class="signup__form__omniauth__text">Googleで新規登録</span>
+        </div>
+      <% end %>
+      <div class="signup__form__or">
+        または
+      </div>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+      <%= form_with model: resource, url: :user_registration do |f| %>
 
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="field signup__form__input">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '登録するメールアドレス', class: 'field signup__form__input__text' %>
         </div>
 
-        <div class="field">
-          <%= f.label :first_name %><br />
-          <%= f.text_field :first_name %>
+        <div class="field signup__form__input">
+          <%= f.text_field :first_name, placeholder: '名', class: 'field signup__form__input__text' %>
         </div>
 
-        <div class="field">
-          <%= f.label :last_name %><br />
-          <%= f.text_field :last_name %>
+        <div class="field signup__form__input">
+          <%= f.text_field :last_name, placeholder: '氏', class: 'field signup__form__input__text' %>
         </div>
 
-        <div class="field">
-          <%= f.label :company %><br />
-          <%= f.text_field :company %>
-        </div>
-
-        <div class="field">
-          <%= f.label :position %><br />
-          <%= f.text_field :position %>
-        </div>
-
-        <div class="field">
-          <%= f.label :profile %><br />
-          <%= f.text_area :profile %>
-        </div>
-
-        <div class="field">
-          <%= f.label :pro %><br />
-          <%= f.check_box :pro, {}, "true", "false" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :real_name %><br />
-          <%= f.check_box :real_name, {}, "true", "false" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :password %>
+        <div class="field signup__form__input">
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: 'パスワード(半角英数字6文字以上)', class: 'field signup__form__input__text' %>
         </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <div class="field signup__form__input">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'もう一度パスワードをご入力ください', class: 'field signup__form__input__text' %>
+        </div>
+
+        <div id="signup-error_msg" class="signup__form__error">
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <%= button_tag "新規登録", type: "submit", class: 'signup__form__submit' %>
         </div>
       <% end %>
-
-      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
