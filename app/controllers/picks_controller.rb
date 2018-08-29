@@ -4,10 +4,19 @@ class PicksController < ApplicationController
 
   def show
     @pick = Pick.find(params[:id])
-    @comment = Comment.new
-    @comments_recommend = @pick.comments.includes(:user).limit(2).order('id')
-    @comments_following = @pick.comments.includes(:user).limit(2).order('updated_at')
-    @comments_other = @pick.comments.includes(:user).order('id')
+    @comments = @pick.comments.includes(:user)
+    #フォローは一旦自分自身のみで定義。コメントではfollowerに自分のコメントが表示される。なのでカレントユーザー情報を持ってくる必要はない。
+    @comments_following = @pick.comments.where(params[:id] == 1).includes(:user)
+    #注目のコメントとその他のコメントを分ける。
+    @comments_recommend = []
+    @comments_other = []
+    @comments.each_with_index do |comment,i|
+      if i <= 2
+        @comments_recommend << comment
+      else
+        @comments_other << comment
+      end
+    end
   end
 
   def new
@@ -33,13 +42,13 @@ class PicksController < ApplicationController
     end
   end
 
-    private
-    def picks_params
-      params.require(:pick).permit(
-        :url,
-        :image,
-        :title,
-        :body
-        )
-    end
+  private
+  def picks_params
+    params.require(:pick).permit(
+      :url,
+      :image,
+      :title,
+      :body
+      )
+  end
 end
