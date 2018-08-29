@@ -1,0 +1,31 @@
+#library-wrapper{
+  .library_page{
+    background: #EFEFEF;
+    float: right;
+    width: calc(85vw - 10px);
+    height: 100%;
+    @include tab();
+    .tab-content-recommended{
+      width: 95%;
+      margin: auto;
+      margin-top: 30px;
+      background-color: #FFF;
+      .tab-content-selected{
+        .items{
+          .recommended{
+            .featured{
+              border-bottom: 8px solid #EAEAEA;
+              @include main_card();
+            }
+            .categorized{
+              border-bottom: 8px solid #EAEAEA;
+              @include main_card();
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

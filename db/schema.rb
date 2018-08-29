@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180827043410) do
+ActiveRecord::Schema.define(version: 20180828063633) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "comment"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180827043410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pick_id"], name: "index_comments_on_pick_id"
+    t.index ["user_id", "pick_id"], name: "index_comments_on_user_id_and_pick_id", unique: true
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -67,6 +68,16 @@ ActiveRecord::Schema.define(version: 20180827043410) do
     t.string "source", null: false
     t.index ["title"], name: "index_picks_on_title"
     t.index ["url"], name: "index_picks_on_url"
+  end
+
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

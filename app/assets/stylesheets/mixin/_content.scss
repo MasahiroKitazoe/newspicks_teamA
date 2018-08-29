@@ -172,13 +172,18 @@
     &__follow {
       font-size: 12px;
       font-weight: bold;
-      border: 1px solid #222;
-      border-radius: 5px;
       text-align: center;
       line-height: 150%;
       width: 90px;
       float: right;
       margin: 41px;
+      a{
+        img{
+          height: 20px;
+          width: auto;
+          border-radius: 0%;
+        }
+      }
     }
   }
 }

@@ -1,0 +1,23 @@
+<div class="back user_menu" id="user_menu">
+  <div class="user_menu__overlay">
+    <div class="user-menu-container">
+      <div class="popover">
+        <div class="nozzle-border">
+        </div>
+        <div class="nozzle">
+        </div>
+        <div class="user-menu">
+          <a class="menu-item" href="/users/<%= current_user.id %>">マイピックス</a>
+          <a class="menu-item" href="/library">ユーザーを探す</a>
+          <hr class="top separator">
+          <a class="menu-item" href="#" target="_blank">プレミアムについて</a>
+          <a class="menu-item" href="#">アカデミアについて</a>
+          <hr class="bottom separator">
+          <a class="menu-item" href="#">設定</a>
+          <a class="menu-item" target="_blank" href="#">お問い合わせ</a>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'menu-item' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

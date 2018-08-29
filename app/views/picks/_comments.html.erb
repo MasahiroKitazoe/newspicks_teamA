@@ -3,7 +3,7 @@
     <div class="link-wrapper">
       <a href="/" class="unknown-page">
         <div>
-          <img src="/images/arrow-left.9f9d0ff2.png">
+<!--           <img src="/images/arrow-left.9f9d0ff2.png"> -->
         </div>
         <div class="label">
           総合トップ
@@ -29,13 +29,13 @@
           <div class="meta">
             <div class="meta-block">
               <div class="icon-image">
-                <img src="/images/publisher.a6ed8ad6.png">
+<!--                 <img src="/images/publisher.a6ed8ad6.png"> -->
               </div>
               <span class="caption">共同通信</span>
             </div>
             <div class="meta-block clear">
               <div class="icon-image">
-                <img src="/images/published.74411437.png">
+<!--                 <img src="/images/published.74411437.png"> -->
               </div>
               <span class="caption">1時間前</span>
             </div>
@@ -47,33 +47,35 @@
         <div class= "news-comment">
           <div class="pick-editor">
             <div class="pick-area embedded">
-              <div class="comment-area">
-                <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-                <div class="comment-container">
-                  <textarea class="comment" name="commentValue" placeholder="コメントを書く（任意）"></textarea>
-                </div>
-                <div class="pick-control">
-                  <div class="description">シェアする</div>
-                  <div class="sns twitter">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                  </div>
-                  <div class="sns facebook">
-                    <i class="fa fa-facebook-square fa-1g"></i>
-                  </div>
-                  <div class="pick">
-                    Pick
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
+            <%= render "new_comment", pick: @pick %>
               <hr>
               <div class="comments">
+                <% if @comments_recommend %>
                 <div class="populars" style="display: block">
                   <div class="section-header">注目のコメント</div>
-                  <%= render partial: "comment" %>
-                  <%= render partial: "comment" %>
+                  <% @comments_recommend.each do |comment| %>
+                    <%= render partial: "comment", locals: {comment: comment} %>
+                  <% end %>
+                </div>
+                <% end %>
+                <% if @comments_following %>
+                <div class="followings" style="display: block">
+                  <div class="section-header">フォローしているユーザー</div>
+                  <% @comments_following.each do |comment| %>
+                    <%= render partial: "comment", locals: {comment: comment} %>
+                  <% end %>
+                  </div>
+                </div>
+                <% end %>
+                <% if @comments_other %>
+                <div class="recommends" style="display: block">
+                  <div class="section-header">おすすめのユーザー</div>
+                  <% @comments_other.each do |comment| %>
+                    <%= render partial: "comment", locals: {comment: comment} %>
+                  <% end %>
                 </div>
               </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -82,4 +84,5 @@
     </div>
   </div>
 </div>
+
 
