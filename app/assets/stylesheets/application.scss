@@ -3,13 +3,22 @@
 @import "./mixin/content.scss";
 @import "./mixin/form.scss";
 @import "pick_tag.scss";
+
 @import "./header.scss";
-@import "./users/form.scss";
 @import "./modal/signup.scss";
 @import "./modal/signin.scss";
 @import "./modal/newpick.scss";
 @import "./side-bar.scss";
+
+@import "./mixin/content.scss";
+@import "./comments_wrapper.scss";
+@import "./content.scss";
+@import "./articleShow.scss";
+@import "./users/form.scss";
+@import "./articleShowRight.scss"
+  
 @import "./content.scss";
 @import "./articleShow.scss";
 @import "./articleShowRight.scss";
 @import "./picks.scss";
+
