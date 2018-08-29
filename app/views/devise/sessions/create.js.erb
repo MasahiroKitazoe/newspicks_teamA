@@ -1,6 +1,10 @@
 $('#signin-error_msg p').remove();
-<% if @msg %>
+<% if @msg.length != 0 %>
   <% @msg.each do |msg| %>
     $('#signin-error_msg').append("<p><%= msg %></p>");
   <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  window.location.replace('/');
 <% end %>
