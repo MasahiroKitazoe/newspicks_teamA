@@ -50,13 +50,13 @@
         <div class="tab-follow">
           <div class="tab-item" id="user-follow-box">
             <% if current_user.following?(@user) %>
-              <div class="follow-btn" id="user-follow">
+              <div class="follow-btn" id="user-follow<%= @user.id %>">
                 <%= link_to "/unfollow/#{@user.id}", class: "destroy-relation", data: @user.id, method: :delete do %>
                   <img src="/images/following-btn.png" class="relation-btn">
                 <% end %>
               </div>
             <% else %>
-              <div class="follow-btn" id="user-follow">
+              <div class="follow-btn" id="user-follow<%= @user.id %>">
                 <%= link_to "/follow/@user.id", class: "create-relation", data: @user.id, method: :post do %>
                   <img src="/images/follow-btn.png" class="relation-btn">
                 <% end %>
@@ -78,10 +78,22 @@
       <% end %>
     </div>
     <div class="tab-content" id="user-page-contents-following" style="display: none;">
-      
+      <% if @user.following.present? %>
+        <%= render partial: "follow-item", locals: {users: @user.following, status: "following"} %>
+      <% else %>
+        <div class="no_pick_message">
+          フォローしているユーザーはいません
+        </div>
+      <% end %>
     </div>
     <div class="tab-content" id="user-page-contents-followers" style="display: none;">
-      
+      <% if @user.followers.present? %>
+        <%= render partial: "follow-item", locals: {users: @user.followers, status: "followers"} %>
+      <% else %>
+        <div class="no_pick_message">
+          フォロワーはいません
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
