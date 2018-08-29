@@ -99,9 +99,15 @@
             }
           }
         }
+      #tab-selected{
+        color: #221f20;
+        font-weight: 700;
+        cursor: auto;
+        border-bottom: 4px solid #221f20;
+      }
       .tab-item{
         color: #221f20;
-        height: 50px;
+        height: 36px;
         float: left;
         padding: 15px 18px 0;
         text-align: center;
