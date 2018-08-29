@@ -1,11 +1,12 @@
 class PicksController < ApplicationController
   def index
-    @pick = Pick.new
     # top_picksと普通のpicksを分けておく事で、今後のアルゴリズム追加の土台にする
     @top_picks = Pick.order('created_at DESC').limit(3)
     top_picks_ids = @top_picks.map { |pick| pick.id }
-
     @picks = Pick.where.not(id: top_picks_ids).order('created_at DESC')
+
+    #ユーザーランキング用
+    @users = User.order('created_at ASC').limit(4) # 暫定的に、古参から順に取得するようにする（※ユーザランキング実装の際に変更してね）
   end
 
   def show

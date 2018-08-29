@@ -46,4 +46,18 @@ $(function() {
       }
     });
   });
+
+  // navbarのユーザ名をクリックした時
+  $('#user-menu-trigger').on('click', function(e){
+    e.preventDefault();
+    $('.user_menu').css('display', 'block');
+  });
+
+  // 背景をクリックするとモーダルを終了
+  $('.user_menu__overlay').on('click', function(e) {
+    console.log(e.target);
+    if (e.target.className == "user_menu__overlay") {
+      $('#user_menu').css("display", "none");
+    }
+  });
 });
