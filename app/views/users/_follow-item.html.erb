@@ -22,17 +22,19 @@
             <span class="t">フォロワー</span>
             <span class="v"><%= user.followers.count %></span>
           </div>
-          <div class="follow-btn" id="user-follow<%= user.id %>">
-            <% if current_user.following?(user) %>
-              <div class="destroy-relation" data="<%= user.id %>">
-                <img src="/images/following-btn.png">
-              </div>
-            <% else %>
-              <div class="create-relation" data="<%= user.id %>">
-                <img src="/images/follow-btn.png">
-              </div>
-            <% end %>
-          </div>
+          <% if current_user.id != user.id %>
+            <div class="follow-btn" id="user-follow<%= user.id %>">
+              <% if current_user.following?(user) %>
+                <div class="destroy-relation" data="<%= user.id %>">
+                  <img src="/images/following-btn.png">
+                </div>
+              <% else %>
+                <div class="create-relation" data="<%= user.id %>">
+                  <img src="/images/follow-btn.png">
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
