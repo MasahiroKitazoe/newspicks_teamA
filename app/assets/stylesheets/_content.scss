@@ -9,6 +9,12 @@
     height: 45vh;
     width: 100%;
     color: #fff;
+    cursor: pointer;
+    &__link{
+      :hover{
+        opacity: 0.7;
+      }
+    }
     &__main {
       height: 100%;
       width: calc(55vw - 30px);
@@ -50,6 +56,11 @@
       float: right;
       width: calc(30vw - 4px);
       height: 45vh;
+      &__link{
+        :hover{
+          opacity: 0.7;
+        }
+      }
     }
     &__sub-1 {
       height: 14vh;
@@ -120,6 +131,11 @@
         padding-bottom: 30px;
       }
       &__block {
+        &__link{
+          :hover{
+            opacity: 0.7;
+          }
+        }
         &__content {
           border-bottom: 1px solid #ccc;
           padding: 10px 0;
@@ -152,64 +168,23 @@
   }
   &__user-ranking {
     clear: both;
-    padding: 0 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
+    padding: 50px 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
     @include content_head();
     &__users {
       &__paragraf-1 {
-        &__user {
-          background-color: #fff;
-          width: 35.5vw;
-          float: left;
-          margin: 0 20px 20px 0;
-          &__image {
-            display: inline-block;
-            height: 100%;
-            &__rank {
-              background-color: #8EB8FF;
-              width: 40px;
-              height: 40px;
-              border-radius: 50%;
-              text-align: center;
-              line-height: 40px;
-              display: inline-block;
-            }
-            &__user {
-              width: 48px;
-              height: 48px;
-              border-radius: 50%;
-              display: inline-block;
-            }
-          }
-          &__info {
-            display: inline-block;
-            &__name {
-              font-weight: bold;
-            }
-            &__position {
-              font-size: 12px;
-            }
-            &__like-count {
-              font-size: 10px;
-              color: #aaa;
-              &__num {
-                color: #222;
-              }
-            }
-          }
-          &__follow {
-            font-size: 12px;
-            font-weight: bold;
-            border: 1px solid #222;
-            border-radius: 5px;
-            text-align: center;
-            line-height: 150%;
-            width: 90px;
-            display: inline-block;
-          }
-        }
+        @include user_of_user_ranking();
       }
       &__paragraf-2 {
+        @include user_of_user_ranking();
       }
+    }
+  }
+  &__comment-ranking {
+    clear: both;
+    padding: 50px 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
+    @include content_head();
+    &__comments {
+
     }
   }
 }

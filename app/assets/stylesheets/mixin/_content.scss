@@ -8,6 +8,11 @@
     &__news {
       border-bottom: 1px solid #ddd;
       margin-bottom: 20px;
+      &__link{
+        :hover{
+          opacity: 0.7;
+        }
+      }
       &__image {
         width: 100%;
         height: 20vh;
@@ -115,6 +120,65 @@
       float: right;
       font-size: 14px;
       padding-right: calc(3vw + 30px);
+    }
+  }
+}
+
+@mixin user_of_user_ranking() {
+  &__user {
+    background-color: #fff;
+    width: 35.5vw;
+    height: 96px;
+    float: left;
+    margin: 0 20px 20px 0;
+    &__image {
+      float: left;
+      padding: 0 15px;
+      margin: 20px 0 28px;
+      &__rank {
+        background-color: #8EB8FF;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        display: inline-block;
+        margin: 4px 4px;
+      }
+      &__user {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
+    &__info {
+      display: inline-block;
+      margin: 20px 0 24px;
+      &__name {
+        font-weight: bold;
+      }
+      &__position {
+        font-size: 12px;
+      }
+      &__like-count {
+        font-size: 10px;
+        color: #aaa;
+        &__num {
+          color: #222;
+        }
+      }
+    }
+    &__follow {
+      font-size: 12px;
+      font-weight: bold;
+      border: 1px solid #222;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 150%;
+      width: 90px;
+      float: right;
+      margin: 41px;
     }
   }
 }

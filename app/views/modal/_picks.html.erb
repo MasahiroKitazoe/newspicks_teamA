@@ -1,0 +1,40 @@
+<div class="back newpick" id="newpick">
+  <div class="newpick__overlay">
+    <div class="form" id="newpick-form">
+      <h2 class="pick-demand">URLを入力して<br>おすすめの記事を共有しましょう</h2>
+      <div class="pick-window">
+        <%= form_for @pick do |f| %>
+          <%= f.text_area :url, class: "pick-form", id: "newpick-box", placeholder: "URLを入力" %>
+          <div class="pick-site">
+            <div class="site-info">
+              <div class="page-thumbnail" style="background-image: url(https://img.footballchannel.jp/wordpress/assets/2018/08/20180825_ueda1_getty.jpg);"></div>
+              <div class="pick-text">
+                <div class="pick-title" style="overflow: initial;">
+                  <span></span>
+                </div>
+                <div class="pick-body" style="overflow: initial;">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            <hr id="hr-pick">
+            <div id="newpick-comment">
+              <img class="side-bar__user__info__icon" id="pick-user-thumb" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="">
+              <%= f.fields_for :comments do |comment_form| %>
+                <%= comment_form.text_area :comment, class: "pick-form", id: "comment-in-modal", placeholder: "コメントを書く(任意)" %>
+              <% end %>
+            </div>
+            <div id="submit-group">
+              <p class="message-gray">シェアする</p>
+              <i class="fa fa-twitter"></i>
+              <i class="fa fa-facebook"></i>
+              <%= button_tag type: :submit, id: "newpick_submit" do %>
+                <p class="pick-btn"><i class="fa fa-plus"></i>  PICK</p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

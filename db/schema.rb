@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180827075520) do
+
+ActiveRecord::Schema.define(version: 20180827043410) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "comment"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180827075520) do
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "source", null: false
     t.index ["title"], name: "index_picks_on_title"
     t.index ["url"], name: "index_picks_on_url"
   end
@@ -91,9 +93,13 @@ ActiveRecord::Schema.define(version: 20180827075520) do
     t.boolean "real_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "provider"
+    t.string "access_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["first_name"], name: "index_users_on_first_name"
     t.index ["last_name"], name: "index_users_on_last_name"
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -1,10 +1,9 @@
-#signin {
+#newpick {
   display: none;
 }
 
-.signin {
+.newpick {
   z-index: 2;
-  @include form_style();
   &__overlay {
     padding: 80px;
     z-index: 3;

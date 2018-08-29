@@ -4,8 +4,10 @@
 
 .signup {
   z-index: 2;
+  @include form_style();
   &__overlay {
     padding: 80px;
     z-index: 3;
+    height: 100%;
   }
 }

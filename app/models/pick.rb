@@ -1,7 +1,13 @@
 class Pick < ApplicationRecord
   validates :url, :image, :title, :body, null: false
 
-  def get_article_info(url)
+  has_many :comments
+  # has_many :users, through :picks_users
+  # has_many :picks_users
+  # has_many :themes, through :picks_themes
+  # has_many :picks_themes
+
+  def self.get_article_info(url)
     agent = Mechanize.new()
     results = {}
     page = agent.get(url)
@@ -21,25 +27,47 @@ class Pick < ApplicationRecord
       results[:title] = page.at('title').inner_text
     end
 
-    # 画像を取得
+    # 画像とsourceを取得
     img_meta = ""
+    source_meta = ""
     elements = page.search('meta')
     elements.each do |ele|
       if ele.get_attribute('property') == "og:image"
         img_meta = ele
-      end
-    end
-    if img_meta
-      if img_meta.get_attribute('content')
-        results[:image] = img_meta.get_attribute('content')
-      else
-        results[:image] = "https://lh3.googleusercontent.com/VVhNlcQA_r1FP-T09tiSPdASiiBAYsQ7jw0StynJmoIzqy1BxteCOJtlh_fXzl-_JCUNj0inwj-MM7-EYgeR3ObcihckA-FjK_CUrmGzIsEGYJfiyBhOH4JDftzEfPEFxFm-3ycY4lQ=w853-h570-no"
+      elsif ele.get_attribute('property') == "og:site_name"
+        source_meta = ele
       end
     end
 
+    #画像の格納
+    if img_meta.present?
+      if img_meta.get_attribute('content')
+        results[:image] = img_meta.get_attribute('content')
+      end
+    else
+      results[:image] = "https://lh3.googleusercontent.com/VVhNlcQA_r1FP-T09tiSPdASiiBAYsQ7jw0StynJmoIzqy1BxteCOJtlh_fXzl-_JCUNj0inwj-MM7-EYgeR3ObcihckA-FjK_CUrmGzIsEGYJfiyBhOH4JDftzEfPEFxFm-3ycY4lQ=w853-h570-no"
+    end
+
+    # sourceの格納
+    if source_meta.present?
+      if source_meta.get_attribute('content')
+        results[:source] = source_meta.get_attribute('content')
+      end
+    else
+      results[:source] = url.match(/http[s]:\/\/([\w.]+)\//)[1]
+    end
+
     # bodyを取得
-    if page.at('p').inner_text
-      results[:body] = page.at('p').inner_text
+    results[:body] = ""
+    if page.search('p')
+      texts = page.search('p')
+      i = 0
+      while results[:body].length <= 40
+        results[:body] += texts[i]
+        i += 1
+      end
+    else
+      results[:body] = "本文は表示できません"
     end
 
     return results
