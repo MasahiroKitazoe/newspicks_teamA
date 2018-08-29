@@ -1,0 +1,27 @@
+.edit {
+  background-color: #efefef;
+  font-size: 14px;
+  height: 100vh;
+  width: calc(100vw - 400px);
+  padding: 200px 200px;
+  &__form {
+    background-color: #fff;
+    padding: 100px;
+    &__title {
+      font-size: 20px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #d9d9d9;
+    }
+    &__block {
+      &__element {
+        &__label {
+          font-size: 16px;
+          display: inline-block;
+        }
+        &__email {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
