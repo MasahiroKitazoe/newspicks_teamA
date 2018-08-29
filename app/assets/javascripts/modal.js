@@ -13,9 +13,14 @@ $(function() {
     });
   });
 
+  // $(".drop-down-button-1").on("click", function() {
+  //   console.log('hello!')
+  // })
+
 
   // 「ログイン」クリック時
   $('#signin-btn').on('click', function(e) {
+    console.log('hello!');
     e.preventDefault();
     $('#signin').css("display", "block");
 

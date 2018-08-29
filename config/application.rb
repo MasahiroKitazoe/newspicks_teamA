@@ -17,5 +17,6 @@ module NewspicksTeama
       routing_specs: false,
       controller_specs: false
     end
+    config.i18n.default_locale = :ja
   end
 end
