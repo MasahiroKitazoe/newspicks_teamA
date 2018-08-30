@@ -210,6 +210,10 @@ input, textarea, select, button {
                     display: table-cell;
                     vertical-align: middle;
                     outline: 0;
+                    height: 50px;
+                    .pick-btn{
+                      width: 100px;
+                    }
                   }
                 }
                 &:after {
