@@ -196,11 +196,15 @@
   }
   &__footer {
     border-top: 1px solid #999;
-    padding: 10px;
+    padding: 20px 60px;
     clear: both;
     &__items {
       font-size: 12px;
       color: #999;
+      &__item {
+        display: inline-block;
+        margin: 0 5px;
+      }
     }
   }
 }
