@@ -3,7 +3,7 @@
     <div class="form signin__form">
       <h2 class="signin__form__title">ログイン</h2>
       <div class="signin__form__signup">
-        まだアカウントをお持ちでない方は <span class="signin__form__signup__link"><%= link_to "新規登録" %></span> へ
+        まだアカウントをお持ちでない方は <span class="signin__form__signup__link" id="signup-link"><%= link_to "新規登録" %></span> へ
       </div>
       <%= link_to user_google_omniauth_authorize_path do %>
         <div class="signin__form__omniauth">

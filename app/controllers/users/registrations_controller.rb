@@ -20,11 +20,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.persisted?
         if resource.active_for_authentication?
           sign_up(resource_name, resource)
-          format.js { render ajax_redirect_to(root_path) }
+          format.js { render ajax_redirect_to(edit_user_registration_path) }
         else
           set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
           expire_data_after_sign_in!
-          format.js { render ajax_redirect_to(root_path) }
+          format.js { render ajax_redirect_to(edit_user_registration_path) }
         end
       else
         @msg = resource.errors.full_messages
