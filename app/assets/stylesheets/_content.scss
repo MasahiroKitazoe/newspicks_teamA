@@ -184,7 +184,114 @@
     padding: 50px 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
     @include content_head();
     &__comments {
-
+      clear: both;
+      padding-top: 25px;
+      &__paragraf-1 {
+        &__comment {
+          background-color: #fff;
+          width: 440px;
+          display: inline-block;
+          margin: 0 20px 20px 0;
+          padding: 20px;
+          position: relative;
+          &__user {
+            &:after {
+              clear: both;
+              content: '';
+              display: block;
+            }
+            &__image {
+              display: inline-block;
+              &__rank {
+                width: 40px;
+                height: 50px;
+                line-height: 50px;
+                background-color: #f2cf01;
+                font-size: 18px;
+                text-align: center;
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 20px;
+              }
+              &__user {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                margin-left: 50px;
+                float: left;
+              }
+            }
+            &__info {
+              display: inline-block;
+              vertical-align: top;
+              margin-left: 10px;
+              &__name {
+                font-weight: bold;
+                font-size: 16px;
+                display: inline-block;
+                &__pro {
+                  font-size: 10px;
+                  font-weight: normal;
+                  display: inline-block;
+                }
+              }
+              &__position {
+                font-size: 12px;
+                color: #999;
+              }
+            }
+            &__right-block {
+              float: right;
+              margin-top: 10px;
+            }
+            &__like-count {
+              font-size: 7px;
+              display: inline-block;
+              margin-right: 7px;
+              &__num {
+                font-size: 20px;
+                font-weight: bold;
+              }
+            }
+            &__follow {
+              height: 20px;
+              width: auto;
+              display: inline-block;
+            }
+          }
+          &__news {
+            margin-top: 10px;
+            border: 1px solid #eaeaea;
+            font-size: 16px;
+            padding: 10px;
+            &__comment {
+              margin: 0 10px 10px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 3;
+              height: 63px;
+            }
+            &__pick {
+              &__title {
+                border-top: 1px solid #eaeaea;
+                padding: 10px 10px 0;
+                margin-bottom: 10px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+              }
+              &__source {
+                font-size: 12px;
+                color: #999;
+                padding-top: 7px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
