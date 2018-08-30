@@ -1,5 +1,5 @@
 class Pick < ApplicationRecord
-  validates :url, :image, :title, :body, null: false
+  validates :url, :image, :title, :body, presence: true
 
   has_many :comments
   # has_many :users, through :picks_users
