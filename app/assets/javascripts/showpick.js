@@ -28,7 +28,14 @@ $(function() {
   //     $('.popover').css('display', 'none');
   //   }
   // });
-
+  // if($('.popover').css('display') === 'block') {
+  //   $('.news-comment').on('click', function(e) {
+  //     console.log($('.popover').css('display'))
+  //     console.log('hello')
+  //     e.preventDefault();
+  //     $('.popover').css('display', 'none');
+  //   });
+  // }
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
   })
