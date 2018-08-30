@@ -36,6 +36,12 @@ $(function() {
   //     $('.popover').css('display', 'none');
   //   });
   // }
+
+  $(document).on('click', '.comment-edit', function(){
+    var comment_id:
+    comment_id = $(this).parent(.attr('id'))
+    return $.get("comments/" + comment_id + "/edit");
+  })
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
   })
