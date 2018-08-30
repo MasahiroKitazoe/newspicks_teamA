@@ -18,6 +18,7 @@
         </li>
         <li class="header__list__search">
           <input type="text" placeholder="検索する" class="header__list__input">
+          <%= fa_icon "search silver", class: 'header__list__search__icon ' %>
         </li>
         <% if user_signed_in? %>
           <li class="header__list__new" id="new-pick-btn">
