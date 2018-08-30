@@ -184,7 +184,27 @@
     padding: 50px 24px 50px 54px;  //top-newsとbottom-newsのpaddingの和から計算
     @include content_head();
     &__comments {
-
+      clear: both;
+      padding-top: 25px;
+      &__paragraf-1 {
+        @include one_comment();
+      }
+      &__paragraf-2 {
+        @include one_comment();
+      }
+    }
+  }
+  &__footer {
+    border-top: 1px solid #999;
+    padding: 20px 60px;
+    clear: both;
+    &__items {
+      font-size: 12px;
+      color: #999;
+      &__item {
+        display: inline-block;
+        margin: 0 5px;
+      }
     }
   }
 }

@@ -31,6 +31,9 @@ class User < ApplicationRecord
   end
 
   protected
+  # ユーザーのGoogleメールアドレスからユーザーを検索
+  # 登録ずみユーザーはGoogleアカウントと関連付け
+  # 未登録ユーザーはGoogleアカウント情報からユーザー登録
   def self.find_for_google(auth)
     user = User.find_by(email: auth.info.email)
 
