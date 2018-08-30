@@ -194,4 +194,13 @@
       }
     }
   }
+  &__footer {
+    border-top: 1px solid #999;
+    padding: 10px;
+    clear: both;
+    &__items {
+      font-size: 12px;
+      color: #999;
+    }
+  }
 }
