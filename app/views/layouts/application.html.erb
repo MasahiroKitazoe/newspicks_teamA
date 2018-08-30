@@ -46,11 +46,11 @@
             </div>
           </li>
         <% else %>
-          <li class="header__list__signup" id="signup-btn">
-            <%= link_to "アカウント登録", new_user_registration_path, class: 'header__list__link' %>
-          </li>
           <li class="header__list__login" id="signin-btn">
             <%= link_to "ログイン", new_user_session_path, class: 'header__list__link' %>
+          </li>
+          <li class="header__list__signup" id="signup-btn">
+            <%= link_to "アカウント登録", new_user_registration_path, class: 'header__list__link' %>
           </li>
         <% end %>
         <li class="header__list__logo">
