@@ -28,8 +28,21 @@
           <li class="header__list__news">
             <a href="#" class="header__list__link"><img src="/images/flag.png" style="height: 23px; width: 23px;"></a>
           </li>
-          <li class="header__list__user">
-            <%= link_to current_user.last_name + ' ' +  current_user.first_name, "", class: 'header__list__link', id: "user-menu-trigger" %>
+          <li class="header__list__user" id="user-menu-trigger">
+            <img src="http://tsubuyaki.m-yossy.com/wp-content/uploads/2018/01/nana.jpg" alt="ユーザーサムネイル" class="header__list__user__image">
+            <div class="header__list__user__text">
+              <%= link_to current_user.last_name + ' ' +  current_user.first_name, "", class: 'header__list__link header__list__user__text__name' %>
+              <div class="header__list__user__text__payment">
+                <% if current_user.pro == 1 %>
+                  有料会員
+                <% else %>
+                  無料会員
+                <% end %>
+              </div>
+            </div>
+            <div class="header__list__user__caret">
+              <%= fa_icon 'caret-down xs silver' %>
+            </div>
           </li>
         <% else %>
           <li class="header__list__signup" id="signup-btn">
