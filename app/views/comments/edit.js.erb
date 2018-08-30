@@ -1,0 +1,5 @@
+$(function(){
+  $( ('#comment_number_<%= @comment.id %>' ) ).html('<%=
+    j( render( 'edit_form',  ) )
+  %>');
+})
