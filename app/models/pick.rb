@@ -1,11 +1,12 @@
 class Pick < ApplicationRecord
   validates :url, :image, :title, :body, presence: true
 
-  has_many :comments
-  # has_many :users, through :picks_users
-  # has_many :picks_users
-  # has_many :themes, through :picks_themes
-  # has_many :picks_themes
+  has_many :comments, dependent: :destroy
+  has_many :users, through: :pick_users
+  has_many :pick_users
+  has_many :themes, through: :pick_themes
+  has_many :pick_themes
+  has_many :check_users, through: :comments, source: :user
 
   def self.get_article_info(url)
     agent = Mechanize.new()
@@ -13,18 +14,20 @@ class Pick < ApplicationRecord
     page = agent.get(url)
 
     # 記事タイトルを取得
-    if page.at('h1').inner_text
+    if page.at('h1')
       results[:title] = page.at('h1').inner_text
-    elsif page.at('h2').inner_text
+    elsif page.at('h2')
       results[:title] = page.at('h2').inner_text
-    elsif page.at('h3').inner_text
+    elsif page.at('h3')
       results[:title] = page.at('h3').inner_text
-    elsif page.at('h4').inner_text
+    elsif page.at('h4')
       results[:title] = page.at('h4').inner_text
-    elsif page.at('h5').inner_text
+    elsif page.at('h5')
       results[:title] = page.at('h5').inner_text
-    else
+    elsif page.at('title')
       results[:title] = page.at('title').inner_text
+    else
+      results[:title] = 'タイトルが見つかりませんでした'
     end
 
     # 画像とsourceを取得
@@ -54,7 +57,7 @@ class Pick < ApplicationRecord
         results[:source] = source_meta.get_attribute('content')
       end
     else
-      results[:source] = url.match(/http[s]:\/\/([\w.]+)\//)[1]
+      results[:source] = url.match(/http[s]:\/\/([-_\w.]+)\//)[1]
     end
 
     # bodyを取得
@@ -62,11 +65,13 @@ class Pick < ApplicationRecord
     if page.search('p')
       texts = page.search('p')
       i = 0
-      while results[:body].length <= 40
+      while texts[i] && results[:body].length <= 40
         results[:body] += texts[i]
         i += 1
       end
-    else
+    end
+
+    if results[:body] == (nil || "")
       results[:body] = "本文は表示できません"
     end
 
@@ -84,12 +89,4 @@ class Pick < ApplicationRecord
   def check?(user)
     check_users.include?(user)
   end
-
-
-  has_many :comments, dependent: :destroy
-  has_many :users, through: :pick_users
-  has_many :pick_users
-  has_many :themes, through: :pick_themes
-  has_many :pick_themes
-  has_many :check_users, through: :comments, source: :user
 end
