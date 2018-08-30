@@ -20,8 +20,10 @@
           <input type="text" placeholder="検索する" class="header__list__input">
         </li>
         <% if user_signed_in? %>
-          <li class="header__list__new", id="new-pick-btn">
-            <%= link_to "Pick", :new_pick %>
+          <li class="header__list__new" id="new-pick-btn">
+            <%= link_to :new_pick do %>
+              <%= fa_icon "share lg silver" %>
+            <% end %>
           </li>
           <li class="header__list__news">
             <a href="#" class="header__list__link"><img src="/images/flag.png" style="height: 23px; width: 23px;"></a>
