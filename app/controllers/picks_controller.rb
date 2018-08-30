@@ -1,9 +1,29 @@
 class PicksController < ApplicationController
   def index
-    @pick = Pick.new
+    # top_picksと普通のpicksを分けておく事で、今後のアルゴリズム追加の土台にする
+    @top_picks = Pick.order('created_at DESC').limit(3)
+    top_picks_ids = @top_picks.map { |pick| pick.id }
+    @picks = Pick.where.not(id: top_picks_ids).order('created_at DESC')
+
+    #ユーザーランキング用
+    @users = User.order('created_at ASC').limit(4) # 暫定的に、古参から順に取得するようにする（※ユーザランキング実装の際に変更してね）
   end
 
   def show
+    @pick = Pick.find(params[:id])
+    @comments = @pick.comments.includes(:user)
+    #フォローは一旦自分自身のみで定義。コメントではfollowerに自分のコメントが表示される。なのでカレントユーザー情報を持ってくる必要はない。
+    @comments_following = @pick.comments.where(params[:id] == 1).includes(:user)
+    #注目のコメントとその他のコメントを分ける。
+    @comments_recommend = []
+    @comments_other = []
+    @comments.each_with_index do |comment,i|
+      if i <= 2
+        @comments_recommend << comment
+      else
+        @comments_other << comment
+      end
+    end
   end
 
   def search
@@ -37,7 +57,7 @@ class PicksController < ApplicationController
   end
 
   def new
-    @pick = Pick.new()
+    @pick = Pick.new
   end
 
   def create
@@ -59,6 +79,7 @@ class PicksController < ApplicationController
       render action: :new
     end
   end
+
 
     private
     def picks_params

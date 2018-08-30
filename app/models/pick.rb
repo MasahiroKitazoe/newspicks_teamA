@@ -1,6 +1,12 @@
 class Pick < ApplicationRecord
   validates :url, :image, :title, :body, null: false
 
+  has_many :comments
+  # has_many :users, through :picks_users
+  # has_many :picks_users
+  # has_many :themes, through :picks_themes
+  # has_many :picks_themes
+
   def self.get_article_info(url)
     agent = Mechanize.new()
     results = {}
@@ -66,4 +72,24 @@ class Pick < ApplicationRecord
 
     return results
   end
+
+  def check(user)
+    comments.create(user_id: user.id)
+  end
+
+  def upcheck(user)
+    comments.find_by(user_id: user.id).update
+  end
+
+  def check?(user)
+    check_users.include?(user)
+  end
+
+
+  has_many :comments, dependent: :destroy
+  has_many :users, through: :pick_users
+  has_many :pick_users
+  has_many :themes, through: :pick_themes
+  has_many :pick_themes
+  has_many :check_users, through: :comments, source: :user
 end

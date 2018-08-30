@@ -4,7 +4,7 @@
       <img class="side-bar__user__info__icon" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="">
       <p class="side-bar__user__info__name">
         <% if user_signed_in? %>
-          <%= current_user.last_name %> <%= current_user.last_name %>
+          <%= current_user.last_name %> <%= current_user.first_name %>
         <% else %>
           Unknown
         <% end %>
@@ -12,11 +12,11 @@
     </div>
     <div class="side-bar__user__follow-count">
       <div class="side-bar__user__follow-count__follow">
-        <p class="side-bar__user__follow-count__follow__num">235</p>
+        <p class="side-bar__user__follow-count__follow__num"><%= current_user.following.count if user_signed_in? %></p>
         <p class="side-bar__user__follow-count__follow__unit">フォロー</p>
       </div>
       <div class="side-bar__user__follow-count__follower">
-        <p class="side-bar__user__follow-count__follow__num">64</p>
+        <p class="side-bar__user__follow-count__follow__num"><%= current_user.followers.count if user_signed_in? %></p>
         <p class="side-bar__user__follow-count__follow__unit">フォロワー</p>
       </div>
     </div>

@@ -1,0 +1,42 @@
+<div class="follow-contents">
+  <% users.each do |user| %>
+    <%= link_to user_path(user.id), class: "usertile" do %>
+      <div class="follow-item-wrapper">
+        <img src="https://pbs.twimg.com/profile_images/1009220670826295297/qfHNpNPM_400x400.jpg">
+        <div class="profile-container">
+          <div class="name-wrapper">
+            <div class="username"><%= user.last_name %> <%= user.first_name %></div>
+          </div>
+          <div class="follow-title">
+            <%= user.position %>
+          </div>
+        </div>
+        <div class="counts">
+          <div class="relation">
+            <span class="t">フォロー</span>
+            <span class="v"><%= user.following.count %></span>
+          </div>
+          <div class="vr">
+          </div>
+          <div class="relation">
+            <span class="t">フォロワー</span>
+            <span class="v"><%= user.followers.count %></span>
+          </div>
+          <% if current_user.id != user.id %>
+            <div class="follow-btn" id="user-follow<%= user.id %>">
+              <% if current_user.following?(user) %>
+                <div class="destroy-relation" data="<%= user.id %>">
+                  <img src="/images/following-btn.png">
+                </div>
+              <% else %>
+                <div class="create-relation" data="<%= user.id %>">
+                  <img src="/images/follow-btn.png">
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

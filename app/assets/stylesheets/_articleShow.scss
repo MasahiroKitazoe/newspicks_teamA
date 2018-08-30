@@ -78,8 +78,8 @@ input, textarea, select, button {
   .news-summary {
     padding-top: 64px;
     background-color: #EFEFEF;
-    height: 100%;
-    overflow: auto;
+    height: calc(100vh - 40px);
+    overflow-y: scroll;
     .news-summary-container {
       width: 1024px;
       margin: 0 auto;
@@ -171,7 +171,7 @@ input, textarea, select, button {
                   margin-left: 12px;
                   float: left;
                   margin-top: 16px;
-                  .comment {
+                  #comment-space {
                     width: 284px;
                     resize: none;
                     border: 1px solid rgba(34,31,32,.12);
@@ -222,125 +222,10 @@ input, textarea, select, button {
           }
           .comments {
             .populars {
-              .section-header {
-                padding-top: 24px;
-                color: #221f20;
-                font-size: 12px;
-                font-weight: 700;
-              }
-              .comment-container {
-                margin-top: 16px;
-                .comment-row{
-                  padding-top: 0;
-                  .user-space {
-                    a{
-                      .user-cover {
-                        width: 40px;
-                        height: 40px;
-                        background: center center;
-                        float: left;
-                      }
-                    }
-                    .user-profile {
-                      margin-left: 56px;
-                      position: relative;
-                      font-size: 14px;
-                      .name-wrapper {
-                        color: #221f20;
-                        font-size: 16px;
-                        font-weight: 700;
-                        max-width: 470px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        .name {
-                          display: inline-block;
-                          float: left;
-                          color: #221f20;
-                          font-size: 16px;
-                          font-weight: 700;
-                          max-width: 470px;
-                          white-space: nowrap;
-                        }
-                      }
-                      .job {
-                        margin-top: 3px;
-                        font-size: 12px;
-                        color: #999;
-                        float: left;
-                        max-width: 290px;
-                        margin-right: 12px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                      }
-                      .picktime {
-                        margin-top: 3px;
-                        font-size: 12px;
-                        color: #999;
-                      }
-                      .drop-down-button {
-                        position: absolute;
-                        top: 0;
-                        right: 1px;
-                        cursor: pointer;
-                        font-size: 18px;
-                        color: #999;
-                        width: 32px;
-                        height: 32px;
-                        text-align: center;
-                      }
-                    }
-                  }
-                  .comment-wrapper {
-                    margin: 8px 0;
-                    position: relative;
-                    min-height: 48px;
-                    font-size: 14px;
-                    .comment {
-                      width: 532px;
-                      padding-left: 56px;
-                      display: block;
-                      line-height: 176%;
-                      hyphens: auto;
-                      box-sizing: border-box;
-                      &:after {
-                        clear: both;
-                        content: '';
-                        display: block;
-                      }
-                    }
-                    .like-panel {
-                      position: absolute;
-                      right: 0;
-                      top: 0;
-                      bottom: 0;
-                      text-align: center;
-                      width: 34px;
-                      .like-wrapper {
-                        display: table;
-                        width: 100%;
-                        height: 100%;
-                        text-align: center;
-                        .like {
-                          display: table-cell;
-                          vertical-align: middle;
-                          cursor: pointer;
-                          .thum-up-r {
-                            display: none;
-                            width: 10px;
-                            height: 14px;
-                          }
-                          .thum-up-g {
-                            display: inline;
-                            width: 10px;
-                            height: 14px;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+            }
+            .followings {
+            }
+            .recommends {
             }
           }
         }

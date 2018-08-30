@@ -1,0 +1,249 @@
+.user-page{
+  background: #EFEFEF;
+  padding-top: 50px;
+  width: 100vw;
+  height: 100%;
+  :after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .profile-box{
+    width: 100%;
+    background-color: #FFF;
+    border-bottom: 1px solid #EAEAEA;
+    .user-profile{
+      padding-top: 30px;
+      padding-bottom: 30px;
+      width: 75%;
+      margin: auto;
+      .detail-wrapper{
+        :after{
+            content: "";
+            clear: both;
+            display: block;
+          }
+        .detail{
+          .user-image{
+            float: left;
+            img{
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+            }
+          }
+          .user-detail{
+            float: left;
+            padding-top: 10px;
+            padding-left: 30px;
+            margin-right: 10px;
+            .user-name{
+              height: 30px;
+              h1{
+                display: inline-block;
+                font-size: 20px;
+                margin: 0 0 2px;
+                line-height: 1.4em;
+                font-weight: 700;
+                color: #221f20;
+              }
+            }
+            .user-position{
+              color: #999;
+              font-size: 12px;
+              height: 31px;
+            }
+            .user-popular{
+              color: #999;
+              font-size: 12px;
+              height: 31px;
+            }
+            .user-intro{
+              overflow: initial;
+              margin-top: 10px;
+              max-height: 40px;
+              word-break: break-word;
+              font-size: 14px;
+            }
+          }
+          .badge{
+            padding-top: 12px;
+            img{
+              height: 20px;
+              width: auto;
+              border-radius: 0%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .user-tab-container{
+    background-color: #FFF;
+    overflow: hidden;
+    width: 100%;
+    height: 55px;
+    .tab-items{
+      margin: auto;
+      width: 75%;
+      #user-follow-box{
+        float: right;
+        .follow-btn{
+            .relation-btn{
+              height: 24px;
+              width: auto;
+              transition: all .1s linear;
+              vertical-align: middle;
+              outline: 0;
+              float: right;
+            }
+          }
+        }
+      #tab-selected{
+        color: #221f20;
+        font-weight: 700;
+        cursor: auto;
+        border-bottom: 4px solid #221f20;
+      }
+      .tab-item{
+        color: #221f20;
+        height: 36px;
+        float: left;
+        padding: 15px 18px 0;
+        text-align: center;
+        .follow-item{
+          .follow-num{
+            font-size: 20px;
+            pointer-events: none;
+            display: block;
+            line-height: 100%;
+          }
+          .follow{
+            font-size: 10px;
+            color: #999;
+            line-height: 100%;
+            display: block;
+          }
+        }
+      }
+      .selected{
+          color: #221f20;
+          font-weight: 700;
+          cursor: auto;
+          border-bottom: 4px solid #221f20;
+        }
+    }
+  }
+  .tab-wrapper{
+    min-height: 450px;
+    width: 80%;
+    margin: auto;
+    .tab-content{
+      padding: 30px;
+      @include one_content();
+      .no_pick_message{
+        text-align: center;
+      }
+      .follow-contents{
+        :after{
+            content: "";
+            display: block;
+            clear: both;
+          }
+        a{
+          :focus{
+            text-decoration: none!important;
+            outline: -webkit-focus-ring-color auto 5px;
+            outline-offset: -2px;
+            color: #23527c;
+          }
+        }
+        .usertile{
+          float: left;
+          margin: 0 15px 15px 0;
+          display: block;
+          background-color: #FFF;
+          .follow-item-wrapper{
+            padding: 16px;
+            position: relative;
+            width: 255px;
+            height: 125px;
+            img{
+              width: 55px;
+              height: 55px;
+              border-radius: 50%;
+              float: left;
+            }
+            .profile-container{
+              margin-left: 65px;
+              .name-wrapper{
+                font-weight: 700;
+                font-size: 18px;
+                height: 20px;
+                .username{
+                  display: inline-block;
+                  float: left;
+                  max-width: 100%;
+                  height: 100%;
+                  color: #221f20;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+              }
+              .follow-title{
+                    font-size: 12px;
+                    color: #999;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 100%;
+                    margin-top: 4px;
+                    min-height: 12px;
+              }
+            }
+            .counts{
+              margin-top: 10px;
+              .relation{
+                text-align: center;
+                display: inline-block;
+                padding: 0 4px;
+                .t{
+                  color: #999;
+                  font-size: 8px;
+                }
+                .v{
+                  color: #221f20;
+                  font-size: 14px;
+                }
+              }
+              .vr{
+                display: inline-block;
+                width: 1px;
+                background: #D9D9D9;
+                height: 25px;
+              }
+              .follow-btn{
+                float: right;
+                .destroy-relation{
+                  img{
+                    height: 24px;
+                    width: auto;
+                    border-radius: 0%;
+                  }
+                }
+                .create-relation{
+                  img{
+                    height: 24px;
+                    width: auto;
+                    border-radius: 0%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

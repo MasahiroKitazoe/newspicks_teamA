@@ -1,4 +1,4 @@
-<div class="comment-container">
+<div class="comment-container" id="comment_number_<%= comment.id %>">
   <div class="comment-row with-border" data-user="267866" data-news="3250274" follow-user="false" data-comment-version="1" mute-disable="false">
     <div class="user-space">
       <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
@@ -8,30 +8,28 @@
         <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
           <div class="name-wrapper">
             <div class="name">
-              横田 孝
+              <%= comment.user.first_name %>
             </div>
           </div>
         </a>
         <div class="job">
-          NewsPicks チーフ・グローバルエディター／副編集長
+          <%= comment.user.company %>
         </div>
         <div class="picktime">
           6時間前
         </div>
-        <div class="drop-down-button">
-          <div>⋮</div>
-        </div>
+        <%= render "edit_button", comment: comment %>
       </div>
     </div>
     <div class="comment-wrapper">
       <div class="comment">
-        顔認識技術によって、空港の保安検査の円滑化や無人レジの実現などのメリットがある一方で、とりわけ欧米のメディアでは警戒感が広がっています。最大の理由はプライバシーと、警察などによる無差別のプロファイリングが可能になることへの懸念。<br>フェイスブックはケンブリッジ・アナリティカを巡り8700万人に及ぶ個人情報流出の件で信頼に傷がつき、ネガティブイメージをまだ払拭仕切れていません。その中で顔認識技術を推進しようとしても、理解を得るのはなかなか難しいかもしれません。
+        <%= comment.comment %>
       </div>
       <div class="like-panel">
         <div class="like-wrapper">
           <div class="like" onclick="NP.like(this)" data-user="267866" data-liked="false" data-news="3250274">
-            <img class="thumb-up-r" src="/images/like-r.ec360fd4.png">
-            <img class="thumb-up-g" src="/images/like-g.bad78a75.png">
+<!--             <img class="thumb-up-r" src="/images/like-r.ec360fd4.png"> -->
+<!--             <img class="thumb-up-g" src="/images/like-g.bad78a75.png"> -->
             <div class="count">
               14
             </div>

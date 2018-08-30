@@ -1,0 +1,17 @@
+<% if comment.user.id == current_user.id %>
+  <div class="comment-menu on">
+    <div class="menu-btn"></div>
+    <div class="popover" style="">
+      <div class="nozzle-border"></div>
+      <div class="nozzle"></div>
+      <div class="comment-menu-items">
+        <div class="comment-menu-item edit">編集</div>
+        <div class="comment-menu-item delete">削除</div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="drop-down-button">
+    <div class="drop-down-button-1">⋮</div>
+  </div>
+<% end %>

@@ -2,392 +2,164 @@
   <!-- トップアイキャッチ -->
   <div class="content__eyecatch">
     <!-- メイン -->
-    <div class="content__eyecatch__main" style="background-image: url(http://www.m-on-music.jp/admin/wp-content/uploads/2016/06/160609-SM-115205.jpg);">
-      <div class="content__eyecatch__main__pick-count">
-        <span class="content__eyecatch__main__pick-count__num">87</span>
-        Picks
+    <%= link_to "/picks/#{@top_picks[0].id}", class: "content__eyecatch__link" do %>
+      <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[0].image %>);">
+        <div class="content__eyecatch__main__pick-count">
+          <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[0].comments.length %></span>
+          Picks
+        </div>
+        <div class="content__eyecatch__main__title">
+          <%= @top_picks[0].title %>
+        </div>
+        <div class="content__eyecatch__main__info">
+          <p class="content__eyecatch__main__info__media"><%= @top_picks[0].source %></p>
+          <p class="content__eyecatch__main__info__time">4時間前</p>
+        </div>
       </div>
-      <div class="content__eyecatch__main__title">
-        My Hair is Bad椎木×話題の美女モデル武居による同世代トーク【前編】
-      </div>
-      <div class="content__eyecatch__main__info">
-        <p class="content__eyecatch__main__info__media">ロイター通信</p>
-        <p class="content__eyecatch__main__info__time">4時間前</p>
-      </div>
-    </div>
+    <% end %>
     <div class="content__eyecatch__sub">
       <!-- サブ１ -->
-      <div class="content__eyecatch__sub-1" style="background-image: url(https://cdnx.natalie.mu/media/news/music/2017/0508/MyHairisBad0504_1_fixw_730_hq.jpg);">
-        <div class="content__eyecatch__sub-1__special">
-          <div class="content__eyecatch__sub-1__special__logo">
-            特集
-          </div>
-          ライブリポート
-        </div>
-        <div class="content__eyecatch__sub-1__title">
-          My Hair is Bad、過去最大のホームラン打った日比谷野音ワンマン
-        </div>
-      </div>
-      <!-- サブ２ -->
-      <div class="content__eyecatch__sub-2" style="background-image: url(http://realsound.jp/wp-content/uploads/2017/09/20170928_mhb1-771x633.jpg);">
-        <div class="content__eyecatch__sub-2__special">
-            <div class="content__eyecatch__sub-2__special__logo">
+      <%= link_to "/picks/#{@top_picks[1].id}", class: "content__eyecatch__link" do %>
+        <div class="content__eyecatch__sub-1" style="background-image: url(<%= @top_picks[1].image %>);">
+          <div class="content__eyecatch__sub-1__special">
+            <div class="content__eyecatch__sub-1__special__logo">
               特集
             </div>
-            リリース情報
+            ライブリポート
+          </div>
+          <div class="content__eyecatch__sub-1__title">
+            <%= @top_picks[1].title %>
+          </div>
         </div>
-        <div class="content__eyecatch__sub-2__title">
-          My Hair is Bad、3rdアルバムのタイトルは『mothers』
+      <% end %>
+      <!-- サブ２ -->
+      <%= link_to "/picks/#{@top_picks[2].id}", class: "content__eyecatch__sub__link" do %>
+        <div class="content__eyecatch__sub-2" style="background-image: url(<%= @top_picks[2].image %>);">
+          <div class="content__eyecatch__sub-2__special">
+              <div class="content__eyecatch__sub-2__special__logo">
+                特集
+              </div>
+              リリース情報
+          </div>
+          <div class="content__eyecatch__sub-2__title">
+            <%= @top_picks[2].title %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
   <!-- トップニュース -->
   <div class="content__top-news">
     <!-- 新着ニュースの横/４つ -->
     <div class="content__top-news__side-news">
-      <!-- 一個のニュース -->
-      <div class="content__top-news__side-news__content">
-        <!-- ニュース本編 -->
-        <div class="content__top-news__side-news__content__news">
-          <div class="content__top-news__side-news__content__news__image" style="background-image: url(https://pbs.twimg.com/media/C9sCf_GV0AIpIOE.jpg);">
+      <% (0..3).each do |i| %>
+        <% if @picks[i] %>
+          <!-- 一個のニュース -->
+          <div class="content__top-news__side-news__content">
+            <!-- ニュース本編 -->
+            <div class="content__top-news__side-news__content__news">
+              <%= link_to "/picks/#{@picks[i].id}", class: "content__top-news__side-news__content__news__link" do %>
+                <div class="content__top-news__side-news__content__news__image" style="background-image: url(<%= @picks[i].image %>);">
+                </div>
+                <h1 class="content__top-news__side-news__content__news__title"><%= @picks[i].title %></h1>
+              <% end %>
+              <div class="content__top-news__side-news__content__news__info">
+                <p class="content__top-news__side-news__content__news__source"><%= @picks[i].source %></p>
+                <p class="content__top-news__side-news__content__news__time">11時間前</p>
+              </div>
+            </div>
+            <!-- コメントしたユーザー -->
+            <div class="content__top-news__side-news__content__users">
+              <div class="content__top-news__side-news__content__users__top-user">
+                <img class="content__top-news__side-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <p class="content__top-news__side-news__content__users__top-user__name">田中太郎
+                  <span class="content__top-news__side-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
+                </p>
+                <p class="content__top-news__side-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
+              </div>
+              <div class="content__top-news__side-news__content__users__others">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <p class="content__top-news__side-news__content__users__others__pick-count">
+                  <span class="content__top-news__side-news__content__users__others__pick-count__num">
+                    <%= @picks[i].comments.length %>
+                  </span>
+                   Picks
+                </p>
+              </div>
+            </div>
           </div>
-          <h1 class="content__top-news__side-news__content__news__title">【MV公開！】New Sg「トナリアウ/ONE’S AGAIN」より「ONE’S AGAIN」のMVを公開！</h1>
-          <div class="content__top-news__side-news__content__news__info">
-            <p class="content__top-news__side-news__content__news__source">THE ORAL CIGARETTES</p>
-            <p class="content__top-news__side-news__content__news__time">11時間前</p>
-          </div>
-        </div>
-        <!-- コメントしたユーザー -->
-        <div class="content__top-news__side-news__content__users">
-          <div class="content__top-news__side-news__content__users__top-user">
-            <img class="content__top-news__side-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__top-user__name">田中太郎
-              <span class="content__top-news__side-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-            </p>
-            <p class="content__top-news__side-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
-          </div>
-          <div class="content__top-news__side-news__content__users__others">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__others__pick-count">
-              <span class="content__top-news__side-news__content__users__others__pick-count__num">
-                265
-              </span>
-               Picks
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- 一個のニュース -->
-      <div class="content__top-news__side-news__content">
-        <!-- ニュース本編 -->
-        <div class="content__top-news__side-news__content__news">
-          <div class="content__top-news__side-news__content__news__image" style="background-image: url(https://pbs.twimg.com/media/C9sCf_GV0AIpIOE.jpg);">
-          </div>
-          <h1 class="content__top-news__side-news__content__news__title">【MV公開！】New Sg「トナリアウ/ONE’S AGAIN」より「ONE’S AGAIN」のMVを公開！</h1>
-          <div class="content__top-news__side-news__content__news__info">
-            <p class="content__top-news__side-news__content__news__source">THE ORAL CIGARETTES</p>
-            <p class="content__top-news__side-news__content__news__time">11時間前</p>
-          </div>
-        </div>
-        <!-- コメントしたユーザー -->
-        <div class="content__top-news__side-news__content__users">
-          <div class="content__top-news__side-news__content__users__top-user">
-            <img class="content__top-news__side-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__top-user__name">田中太郎
-              <span class="content__top-news__side-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-            </p>
-            <p class="content__top-news__side-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
-          </div>
-          <div class="content__top-news__side-news__content__users__others">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__others__pick-count">
-              <span class="content__top-news__side-news__content__users__others__pick-count__num">
-                265
-              </span>
-               Picks
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- 一個のニュース -->
-      <div class="content__top-news__side-news__content">
-        <!-- ニュース本編 -->
-        <div class="content__top-news__side-news__content__news">
-          <div class="content__top-news__side-news__content__news__image" style="background-image: url(https://pbs.twimg.com/media/C9sCf_GV0AIpIOE.jpg);">
-          </div>
-          <h1 class="content__top-news__side-news__content__news__title">【MV公開！】New Sg「トナリアウ/ONE’S AGAIN」より「ONE’S AGAIN」のMVを公開！</h1>
-          <div class="content__top-news__side-news__content__news__info">
-            <p class="content__top-news__side-news__content__news__source">THE ORAL CIGARETTES</p>
-            <p class="content__top-news__side-news__content__news__time">11時間前</p>
-          </div>
-        </div>
-        <!-- コメントしたユーザー -->
-        <div class="content__top-news__side-news__content__users">
-          <div class="content__top-news__side-news__content__users__top-user">
-            <img class="content__top-news__side-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__top-user__name">田中太郎
-              <span class="content__top-news__side-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-            </p>
-            <p class="content__top-news__side-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
-          </div>
-          <div class="content__top-news__side-news__content__users__others">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__others__pick-count">
-              <span class="content__top-news__side-news__content__users__others__pick-count__num">
-                265
-              </span>
-               Picks
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- 一個のニュース -->
-      <div class="content__top-news__side-news__content">
-        <!-- ニュース本編 -->
-        <div class="content__top-news__side-news__content__news">
-          <div class="content__top-news__side-news__content__news__image" style="background-image: url(https://pbs.twimg.com/media/C9sCf_GV0AIpIOE.jpg);">
-          </div>
-          <h1 class="content__top-news__side-news__content__news__title">【MV公開！】New Sg「トナリアウ/ONE’S AGAIN」より「ONE’S AGAIN」のMVを公開！</h1>
-          <div class="content__top-news__side-news__content__news__info">
-            <p class="content__top-news__side-news__content__news__source">THE ORAL CIGARETTES</p>
-            <p class="content__top-news__side-news__content__news__time">11時間前</p>
-          </div>
-        </div>
-        <!-- コメントしたユーザー -->
-        <div class="content__top-news__side-news__content__users">
-          <div class="content__top-news__side-news__content__users__top-user">
-            <img class="content__top-news__side-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__top-user__name">田中太郎
-              <span class="content__top-news__side-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-            </p>
-            <p class="content__top-news__side-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
-          </div>
-          <div class="content__top-news__side-news__content__users__others">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__side-news__content__users__others__pick-count">
-              <span class="content__top-news__side-news__content__users__others__pick-count__num">
-                265
-              </span>
-               Picks
-            </p>
-          </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     </div>
     <!-- 新着ニュース -->
     <div class="content__top-news__newest">
       <p class="content__top-news__newest__head">新着ニュース</p>
       <div class="content__top-news__newest__block">
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
-        <!-- 一個のニュース -->
-        <div class="content__top-news__newest__block__content">
-          <div class="content__top-news__newest__block__content__title">
-            Sassの複数のimportはglobを使って一つにまとめると幸せ
-          </div>
-          <div class="content__top-news__newest__block__content__info">
-            Qiita  10分前
-          </div>
-        </div>
+        <% (0..9).each do |i| %>
+          <% if @picks[i] %>
+            <!-- 一個のニュース -->
+            <%= link_to "/picks/#{@picks[i].id}", class: "content__top-news__newest__block__link" do %>
+              <div class="content__top-news__newest__block__content">
+                <div class="content__top-news__newest__block__content__title">
+                  <%= @picks[i].title %>
+                </div>
+                <div class="content__top-news__newest__block__content__info">
+                  <%= @picks[i].source %>  10分前
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <!-- 残りのトップニュース/３つ -->
     <div class="content__top-news__bottom-news">
-      <!-- 一個のニュース -->
-      <div class="content__top-news__bottom-news__content">
-        <!-- ニュース本編 -->
-        <div class="content__top-news__bottom-news__content__news">
-          <div class="content__top-news__bottom-news__content__news__image" style="background-image: url(https://pbs.twimg.com/media/C9sCf_GV0AIpIOE.jpg);">
+      <% (4..6).each do |i| %>
+        <% if @picks[i] %>
+          <!-- 一個のニュース -->
+          <div class="content__top-news__side-news__content">
+            <!-- ニュース本編 -->
+            <div class="content__top-news__side-news__content__news">
+              <%= link_to "/picks/#{@picks[i].id}", class: "content__top-news__side-news__content__news__link" do %>
+                <div class="content__top-news__side-news__content__news__image" style="background-image: url(<%= @picks[i].image %>);">
+                </div>
+                <h1 class="content__top-news__side-news__content__news__title"><%= @picks[i].title %></h1>
+              <% end %>
+              <div class="content__top-news__side-news__content__news__info">
+                <p class="content__top-news__side-news__content__news__source"><%= @picks[i].source %></p>
+                <p class="content__top-news__side-news__content__news__time">11時間前</p>
+              </div>
+            </div>
+            <!-- コメントしたユーザー -->
+            <div class="content__top-news__side-news__content__users">
+              <div class="content__top-news__side-news__content__users__top-user">
+                <img class="content__top-news__side-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <p class="content__top-news__side-news__content__users__top-user__name">田中太郎
+                  <span class="content__top-news__side-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
+                </p>
+                <p class="content__top-news__side-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
+              </div>
+              <div class="content__top-news__side-news__content__users__others">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                <p class="content__top-news__side-news__content__users__others__pick-count">
+                  <span class="content__top-news__side-news__content__users__others__pick-count__num">
+                    <%= @picks[i].comments.length %>
+                  </span>
+                   Picks
+                </p>
+              </div>
+            </div>
           </div>
-          <h1 class="content__top-news__bottom-news__content__news__title">【MV公開！】New Sg「トナリアウ/ONE’S AGAIN」より「ONE’S AGAIN」のMVを公開！</h1>
-          <div class="content__top-news__bottom-news__content__news__info">
-            <p class="content__top-news__bottom-news__content__news__source">THE ORAL CIGARETTES</p>
-            <p class="content__top-news__bottom-news__content__news__time">11時間前</p>
-          </div>
-        </div>
-        <!-- コメントしたユーザー -->
-        <div class="content__top-news__bottom-news__content__users">
-          <div class="content__top-news__bottom-news__content__users__top-user">
-            <img class="content__top-news__bottom-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__bottom-news__content__users__top-user__name">田中太郎
-              <span class="content__top-news__bottom-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-            </p>
-            <p class="content__top-news__bottom-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
-          </div>
-          <div class="content__top-news__bottom-news__content__users__others">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__bottom-news__content__users__others__pick-count">
-              <span class="content__top-news__bottom-news__content__users__others__pick-count__num">
-                265
-              </span>
-               Picks
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- 一個のニュース -->
-      <div class="content__top-news__bottom-news__content">
-        <!-- ニュース本編 -->
-        <div class="content__top-news__bottom-news__content__news">
-          <div class="content__top-news__bottom-news__content__news__image" style="background-image: url(https://pbs.twimg.com/media/C9sCf_GV0AIpIOE.jpg);">
-          </div>
-          <h1 class="content__top-news__bottom-news__content__news__title">【MV公開！】New Sg「トナリアウ/ONE’S AGAIN」より「ONE’S AGAIN」のMVを公開！</h1>
-          <div class="content__top-news__bottom-news__content__news__info">
-            <p class="content__top-news__bottom-news__content__news__source">THE ORAL CIGARETTES</p>
-            <p class="content__top-news__bottom-news__content__news__time">11時間前</p>
-          </div>
-        </div>
-        <!-- コメントしたユーザー -->
-        <div class="content__top-news__bottom-news__content__users">
-          <div class="content__top-news__bottom-news__content__users__top-user">
-            <img class="content__top-news__bottom-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__bottom-news__content__users__top-user__name">田中太郎
-              <span class="content__top-news__bottom-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-            </p>
-            <p class="content__top-news__bottom-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
-          </div>
-          <div class="content__top-news__bottom-news__content__users__others">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__bottom-news__content__users__others__pick-count">
-              <span class="content__top-news__bottom-news__content__users__others__pick-count__num">
-                265
-              </span>
-               Picks
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- 一個のニュース -->
-      <div class="content__top-news__bottom-news__content">
-        <!-- ニュース本編 -->
-        <div class="content__top-news__bottom-news__content__news">
-          <div class="content__top-news__bottom-news__content__news__image" style="background-image: url(https://pbs.twimg.com/media/C9sCf_GV0AIpIOE.jpg);">
-          </div>
-          <h1 class="content__top-news__bottom-news__content__news__title">【MV公開！】New Sg「トナリアウ/ONE’S AGAIN」より「ONE’S AGAIN」のMVを公開！</h1>
-          <div class="content__top-news__bottom-news__content__news__info">
-            <p class="content__top-news__bottom-news__content__news__source">THE ORAL CIGARETTES</p>
-            <p class="content__top-news__bottom-news__content__news__time">11時間前</p>
-          </div>
-        </div>
-        <!-- コメントしたユーザー -->
-        <div class="content__top-news__bottom-news__content__users">
-          <div class="content__top-news__bottom-news__content__users__top-user">
-            <img class="content__top-news__bottom-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__bottom-news__content__users__top-user__name">田中太郎
-              <span class="content__top-news__bottom-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-            </p>
-            <p class="content__top-news__bottom-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
-          </div>
-          <div class="content__top-news__bottom-news__content__users__others">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <img class="content__top-news__bottom-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-            <p class="content__top-news__bottom-news__content__users__others__pick-count">
-              <span class="content__top-news__bottom-news__content__users__others__pick-count__num">
-                265
-              </span>
-               Picks
-            </p>
-          </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <!-- 各カテゴリーは以下を繰り返す -->
@@ -517,77 +289,87 @@
     <div class="content__user-ranking__users">
       <!-- １行目 -->
       <div class="content__user-ranking__users__paragraf-1">
-        <!-- １ユーザー -->
-        <div class="content__user-ranking__users__paragraf-1__user">
-          <div class="content__user-ranking__users__paragraf-1__user__image">
-            <div class="content__user-ranking__users__paragraf-1__user__image__rank">
-              1
+        <% (0..1).each do |i| %>
+          <% if @users[i] %>
+          <!-- １ユーザー -->
+            <div class="content__user-ranking__users__paragraf-1__user">
+              <div class="content__user-ranking__users__paragraf-1__user__image">
+                <div class="content__user-ranking__users__paragraf-1__user__image__rank">
+                  <%= i + 1 %>
+                </div>
+                <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
+              </div>
+              <div class="content__user-ranking__users__paragraf-1__user__info">
+                <p class="content__user-ranking__users__paragraf-1__user__info__name"><%= @users[i].last_name %> <%= @users[i].first_name %></p>
+                <p class="content__user-ranking__users__paragraf-1__user__info__position"><%= @users[i].position %></p>
+                <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
+              </div>
+              <% if user_signed_in? %>
+                <% if @users[i].id != current_user.id %>
+                  <% if current_user.following?(@users[i]) %>
+                    <div class="content__user-ranking__users__paragraf-2__user__follow">
+                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+                        <%= link_to "/unfollow/#{@users[i].id}", class: "destroy-relation", data: @users[i].id, method: :delete do %>
+                          <img src="images/following-btn.png">
+                        <% end %>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="content__user-ranking__users__paragraf-2__user__follow">
+                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+                        <%= link_to "/follow/#{@users[i].id}", class: "create-relation", data: @users[i].id, method: :post do %>
+                          <img src="images/follow-btn.png">
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
             </div>
-            <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
-          </div>
-          <div class="content__user-ranking__users__paragraf-1__user__info">
-            <p class="content__user-ranking__users__paragraf-1__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-1__user__follow">
-            フォローする
-          </div>
-        </div>
-        <!-- １ユーザー -->
-        <div class="content__user-ranking__users__paragraf-1__user">
-          <div class="content__user-ranking__users__paragraf-1__user__image">
-            <div class="content__user-ranking__users__paragraf-1__user__image__rank">
-              1
-            </div>
-            <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
-          </div>
-          <div class="content__user-ranking__users__paragraf-1__user__info">
-            <p class="content__user-ranking__users__paragraf-1__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-1__user__follow">
-            フォローする
-          </div>
-        </div>
+          <% end %>
+        <% end %>
       </div>
       <!-- ２行目 -->
       <div class="content__user-ranking__users__paragraf-2">
-        <!-- 1ユーザー -->
-        <div class="content__user-ranking__users__paragraf-2__user">
-          <div class="content__user-ranking__users__paragraf-2__user__image">
-            <div class="content__user-ranking__users__paragraf-2__user__image__rank">
-              1
+        <% (2..3).each do |i| %>
+          <% if @users[i] %>
+            <!-- １ユーザー -->
+            <div class="content__user-ranking__users__paragraf-2__user">
+              <div class="content__user-ranking__users__paragraf-2__user__image">
+                <div class="content__user-ranking__users__paragraf-2__user__image__rank">
+                  <%= i + 1 %>
+                </div>
+                <img class="content__user-ranking__users__paragraf-2__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
+              </div>
+              <div class="content__user-ranking__users__paragraf-2__user__info">
+                <p class="content__user-ranking__users__paragraf-2__user__info__name"><%= @users[i].last_name %> <%= @users[i].first_name %></p>
+                <p class="content__user-ranking__users__paragraf-2__user__info__position"><%= @users[i].position %></p>
+                <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
+              </div>
+              <% if user_signed_in? %>
+                <% if @users[i].id != current_user.id %>
+                  <% if current_user.following?(@users[i]) %>
+                    <div class="content__user-ranking__users__paragraf-2__user__follow">
+                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+                        <%= link_to "/unfollow/#{@users[i].id}", class: "destroy-relation", data: @users[i].id, method: :delete do %>
+                          <img src="images/following-btn.png">
+                        <% end %>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="content__user-ranking__users__paragraf-2__user__follow">
+                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+                        <%= link_to "/follow/#{@users[i].id}", class: "create-relation", data: @users[i].id, method: :post do %>
+                          <img src="images/follow-btn.png">
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
             </div>
-            <img class="content__user-ranking__users__paragraf-2__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
-          </div>
-          <div class="content__user-ranking__users__paragraf-2__user__info">
-            <p class="content__user-ranking__users__paragraf-2__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-2__user__follow">
-            フォローする
-          </div>
-        </div>
-        <!-- １ユーザー -->
-        <div class="content__user-ranking__users__paragraf-2__user">
-          <div class="content__user-ranking__users__paragraf-2__user__image">
-            <div class="content__user-ranking__users__paragraf-2__user__image__rank">
-              1
-            </div>
-            <img class="content__user-ranking__users__paragraf-2__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
-          </div>
-          <div class="content__user-ranking__users__paragraf-2__user__info">
-            <p class="content__user-ranking__users__paragraf-2__user__info__name">花本五郎</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__position">弁護士</p>
-            <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
-          </div>
-          <div class="content__user-ranking__users__paragraf-2__user__follow">
-            フォローする
-          </div>
-        </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

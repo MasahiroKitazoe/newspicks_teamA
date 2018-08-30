@@ -4,8 +4,8 @@
     <title>NewspicksTeama</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -22,13 +22,10 @@
             <%= link_to "Pick", :new_pick %>
           </li>
           <li class="header__list__news">
-            <a href="#" class="header__list__link">お知らせ</a>
+            <a href="#" class="header__list__link"><img src="/images/flag.png" style="height: 23px; width: 23px;"></a>
           </li>
           <li class="header__list__user">
-            <%= link_to current_user.last_name + ' ' +  current_user.first_name, edit_user_registration_path, class: 'header__list__link'%>
-          </li>
-          <li class="header__list__logout">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'header__list__link' %>
+            <%= link_to current_user.last_name + ' ' +  current_user.first_name, "", class: 'header__list__link', id: "user-menu-trigger" %>
           </li>
         <% else %>
           <li class="header__list__signup" id="signup-btn">
@@ -44,7 +41,8 @@
           <% end %>
         </li>
       </ul>
-   </nav>
+    </nav>
+    <%= render partial: "./shared/user_menu" if user_signed_in? %>
     <%= yield %>
     <%= render partial: "./modal/signup" %>
     <%= render partial: "./modal/signin" %>

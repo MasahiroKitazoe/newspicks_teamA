@@ -9,6 +9,12 @@
     height: 45vh;
     width: 100%;
     color: #fff;
+    cursor: pointer;
+    &__link{
+      :hover{
+        opacity: 0.7;
+      }
+    }
     &__main {
       height: 100%;
       width: calc(55vw - 30px);
@@ -50,6 +56,11 @@
       float: right;
       width: calc(30vw - 4px);
       height: 45vh;
+      &__link{
+        :hover{
+          opacity: 0.7;
+        }
+      }
     }
     &__sub-1 {
       height: 14vh;
@@ -120,6 +131,11 @@
         padding-bottom: 30px;
       }
       &__block {
+        &__link{
+          :hover{
+            opacity: 0.7;
+          }
+        }
         &__content {
           border-bottom: 1px solid #ccc;
           padding: 10px 0;
