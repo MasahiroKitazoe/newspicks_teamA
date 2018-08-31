@@ -14,6 +14,7 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :likes
 
   mount_uploader :image, ImageUploader
 
@@ -30,6 +31,14 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def liked?(comment)
+    if likes.find_by(comment_id: comment.id)
+      return true
+    else
+      return false
+    end
   end
 
   protected

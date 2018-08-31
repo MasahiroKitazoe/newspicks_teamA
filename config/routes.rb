@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   post '/follow/:id', to: 'users#follow'
   delete '/unfollow/:id', to: 'users#unfollow'
 
+  resources :likes, only: [:create, :destroy]
+
 end

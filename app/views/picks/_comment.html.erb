@@ -26,15 +26,26 @@
         <%= comment.comment %>
       </div>
       <div class="like-panel">
-        <div class="like-wrapper">
-          <div class="like" onclick="NP.like(this)" data-user="267866" data-liked="false" data-news="3250274">
-            <img class="thumb-up-r" src="/images/like-btn.png">
-            <div class="count">
-              14
+        <div class="like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
+          <% if current_user.liked?(comment) %>
+            <div class="liked" data="<%= comment.get_like_id %>">
+              <img class="thumb-up-r" src="/images/done-like-btn.png">
+              <div class="count-r">
+                <%= comment.likes.count %>
+              </div>
+              <div class="like-label-r">Likes
+              </div>
             </div>
-            <div class="like-label">Likes
+          <% else %>
+            <div class="like">
+              <img class="thumb-up-g" src="/images/like-btn.png">
+              <div class="count">
+                <%= comment.likes.count %>
+              </div>
+              <div class="like-label">Likes
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
