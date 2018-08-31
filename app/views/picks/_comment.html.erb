@@ -27,16 +27,25 @@
       </div>
       <div class="like-panel">
         <div class="like-wrapper">
-          <% if  %>
+          <% if current_user.liked?(comment) %>
+            <div class="like">
+              <img class="thumb-up-r" src="/images/done-like-btn.png">
+              <div class="count-r">
+                <%= comment.likes.count %>
+              </div>
+              <div class="like-label-r">Likes
+              </div>
+            </div>
+          <% else %>
           <div class="like">
-            <img class="thumb-up-r" src="/images/done-like-btn.png">
-            <img class="thumb-up-g" src="/images/like-btn.png">
-            <div class="count">
-              <%= comment.likes.count %>
+              <img class="thumb-up-g" src="/images/like-btn.png">
+              <div class="count">
+                <%= comment.likes.count %>
+              </div>
+              <div class="like-label">Likes
+              </div>
             </div>
-            <div class="like-label">Likes
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
