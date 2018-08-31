@@ -139,10 +139,17 @@
         &__content {
           border-bottom: 1px solid #ccc;
           padding: 10px 0;
+          height: 60px;
+          overflow: hidden;
           &__title {
             font-size: 14px;
             font-weight: bold;
             padding-bottom: 5px;
+            height: 37px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
           }
           &__info {
             font-size: 10px;
