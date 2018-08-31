@@ -9,7 +9,7 @@ class Comment < ApplicationRecord
     likes.create(user_id: user.id)
   end
 
-  def undo_unlike(user)
+  def undo_like(user)
     likes.find_by(user_id: user.id).destroy
   end
 end

@@ -31,6 +31,14 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def liked?(comment)
+    if likes.find_by(comment_id: comment.id)
+      return true
+    else
+      return false
+    end
+  end
+
   protected
   # ユーザーのGoogleメールアドレスからユーザーを検索
   # 登録ずみユーザーはGoogleアカウントと関連付け
