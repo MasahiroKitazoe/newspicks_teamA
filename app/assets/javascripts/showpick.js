@@ -13,35 +13,21 @@ $(function() {
   // current_userのコメント欄で横のボタンをクリックした場合に表示
   $('.menu-btn').on('click', function(e){
     e.preventDefault();
-    $('.popover').css('display', 'block');
+    if($('.comment-menu .popover').css('display') == 'none') {
+      $('.popover').css('display', 'block');
+    // } else {
+    //   $('.popover').css('display', 'none');
+    }
   });
-  // current_userのコメント欄で横のボタンをクリックした場合に表示
-  // $('.news-comment').on('click', function(e) {
-  //   console.log('hello')
-  //   e.preventDefault();
-  //   $('.popover').css('display', 'none');
-  // });
 
-  // $(document).on('click touchend', function(event) {
-  //   if (!$(event.target).closest('.popover').length) {
-  //     console.log('hello');
-  //     $('.popover').css('display', 'none');
-  //   }
-  // });
-  // if($('.popover').css('display') === 'block') {
-  //   $('.news-comment').on('click', function(e) {
-  //     console.log($('.popover').css('display'))
-  //     console.log('hello')
-  //     e.preventDefault();
-  //     $('.popover').css('display', 'none');
-  //   });
-  // }
-
-  $(document).on('click', '.comment-edit', function(){
-    var comment_id:
-    comment_id = $(this).parent(.attr('id'))
-    return $.get("comments/" + comment_id + "/edit");
+  // current_userのコメント欄で編集・削除ボタンがある時その他のコメント欄をクリックした場合に非表示
+  $('.news-comment').on('click',function(e) {
+    if(!$(e.target).closest('.menu-btn').length && $('.comment-menu .popover').css('display') == 'block') {
+      e.preventDefault();
+      $('.comment-menu .popover').css('display', 'none');
+    };
   })
+
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
   })
