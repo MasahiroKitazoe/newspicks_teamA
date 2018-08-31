@@ -121,6 +121,7 @@
     }
     &__newest {
       width: 22vw;
+      min-width: 300px;
       height: calc(78vh + 255px);
       background-color: #fff;
       float: left;
