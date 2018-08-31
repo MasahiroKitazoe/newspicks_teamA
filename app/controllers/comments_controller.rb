@@ -1,12 +1,10 @@
 class CommentsController < ApplicationController
 
   def create
-    @pick = Pick.find(params[:pick_id])
+    @pick = Pick.find(comment_params[:pick_id])
     unless @pick.check?(current_user)
-      @pick.check(current_user)
-      @comment = @pick.comments
+      @comment = Comment.create(comment_params)
       @pick.reload
-      @comment.reload
       respond_to do |format|
         format.html { redirect_to request.referrer || root_url}
         format.js
@@ -35,6 +33,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    respond_to do |format|
+      format.html {redirect_to request.refferrer || root_url}
+      format.js
+    end
   end
 
   def edit
@@ -43,7 +45,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:comment).merge(user_id: current_user.id).merge(pick_id: @pick.id)
+    params.require(:comment).permit(:comment, :pick_id).merge(user_id: current_user.id)
   end
 
   def set_pick

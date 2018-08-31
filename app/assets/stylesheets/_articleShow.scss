@@ -2,6 +2,10 @@
     border-top: 1px solid #EAEAEA;
 }
 
+textarea {
+    overflow: auto;
+}
+
 button, input, select, textarea {
     font-family: inherit;
     font-size: inherit;

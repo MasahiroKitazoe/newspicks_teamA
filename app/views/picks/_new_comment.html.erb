@@ -25,6 +25,7 @@
     <%= form_for(pick.comments.build, remote: true) do |f| %>
     <div class="comment-container">
       <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
+      <%= f.hidden_field :pick_id, value: pick.id %>
     </div>
     <div class="pick-control">
       <div class="description">シェアする</div>

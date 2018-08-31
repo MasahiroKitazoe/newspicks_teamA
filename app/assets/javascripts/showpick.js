@@ -15,8 +15,6 @@ $(function() {
     e.preventDefault();
     if($('.comment-menu .popover').css('display') == 'none') {
       $('.popover').css('display', 'block');
-    // } else {
-    //   $('.popover').css('display', 'none');
     }
   });
 
@@ -27,6 +25,22 @@ $(function() {
       $('.comment-menu .popover').css('display', 'none');
     };
   })
+
+// 編集ボタンをクリックすることで編集画面を表示。
+  $('.comment-edit-btn').on('click', function(e) {
+    e.preventDefault();
+    $('.comment-wrapper').css('display', 'none');
+    $('.embedded-pick-editor').css('display', 'block');
+  })
+
+// 編集ボタンを押した後に、キャンセルをクリックすると編集画面を閉じる。
+  $('.cancel-wrapper').on('click', function(e) {
+    e.preventDefault();
+    $('.comment-wrapper').css('display', 'block');
+    $('.embedded-pick-editor').css('display', 'none');
+  })
+
+
 
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')

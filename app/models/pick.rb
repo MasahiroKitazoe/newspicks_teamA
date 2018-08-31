@@ -73,9 +73,6 @@ class Pick < ApplicationRecord
     return results
   end
 
-  def check(user)
-    comments.create(user_id: user.id)
-  end
 
   def upcheck(user)
     comments.find_by(user_id: user.id).update
