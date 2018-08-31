@@ -14,6 +14,10 @@
 |profile|text||
 |pro|boolean||
 |real_name|boolean||
+|uid|string|
+|provider|string|
+|access_token|string|
+|image|string|
 
 #### Association
 - has_many :picks, through :picks_users
