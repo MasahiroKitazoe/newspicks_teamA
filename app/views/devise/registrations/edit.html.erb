@@ -7,7 +7,8 @@
 
       <div class="field edit__form__block__element">
         <%= f.label :写真, class: 'field edit__form__block__element__label' %>
-        <%= f.file_field :image %>
+        <%= image_tag resource.image.url, class: 'field edit__form__block__element__preview' %>
+        <%= f.file_field :image, class: 'field edit__form__block__element__image' %>
       </div>
 
       <div class="field edit__form__block__element">

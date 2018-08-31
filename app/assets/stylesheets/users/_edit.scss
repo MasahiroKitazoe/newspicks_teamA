@@ -26,6 +26,14 @@
           float: left;
           margin: 10px 0 0 10px;
         }
+        &__image {
+
+        }
+        &__preview {
+          width: 65px;
+          height: 65px;
+          border-radius: 50%;
+        }
         &__text {
           display: inline-block;
           width: calc(100% - 270px);
