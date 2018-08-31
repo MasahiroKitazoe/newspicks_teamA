@@ -8,7 +8,10 @@
       <div class="field edit__form__block__element">
         <%= f.label :写真, class: 'field edit__form__block__element__label' %>
         <%= image_tag resource.image.url, class: 'field edit__form__block__element__preview' %>
-        <%= f.file_field :image, class: 'field edit__form__block__element__image' %>
+        <%= f.label :image do %>
+          <%= f.file_field :image, class: 'field edit__form__block__element__image' %>
+          <%= fa_icon "image", text: "変更する" %>
+        <% end %>
       </div>
 
       <div class="field edit__form__block__element">
