@@ -99,7 +99,7 @@
     <div class="content__top-news__newest">
       <p class="content__top-news__newest__head">新着ニュース</p>
       <div class="content__top-news__newest__block">
-        <% (0..9).each do |i| %>
+        <% (0..8).each do |i| %>
           <% if @picks[i] %>
             <!-- 一個のニュース -->
             <%= link_to "/picks/#{@picks[i].id}", class: "content__top-news__newest__block__link" do %>

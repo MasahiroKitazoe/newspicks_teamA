@@ -13,7 +13,7 @@
           <a class="menu-item" href="#" target="_blank">プレミアムについて</a>
           <a class="menu-item" href="#">アカデミアについて</a>
           <hr class="bottom separator">
-          <a class="menu-item" href="#">設定</a>
+          <%= link_to "アカウント設定", edit_user_registration_path, class: 'menu-item' %>
           <a class="menu-item" target="_blank" href="#">お問い合わせ</a>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'menu-item' %>
         </div>

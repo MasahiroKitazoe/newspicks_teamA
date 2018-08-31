@@ -2,6 +2,7 @@
   &__content {
     background-color: #fff;
     width: 23vw;
+    min-width: 300px;
     height: calc(38vh + 135px);
     float: left;
     margin: 0 2vw 2vh 0;
@@ -19,10 +20,11 @@
         background-size: cover;
       }
       &__title {
-        font-size: 2.5vh;
+        font-size: 2.7vh;
         font-weight: bold;
-        padding: 10px;
-        height: 6vh;
+        padding: 15px;
+        height: 5vh;
+        line-height: 130%;
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -78,7 +80,7 @@
           clear: both;
           padding-left: 40px;
           overflow: hidden;
-          height: 8vh;
+          height: 50px;
           display: -webkit-box;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 3;
@@ -128,6 +130,7 @@
   &__user {
     background-color: #fff;
     width: 35.5vw;
+    min-width: 480px;
     height: 96px;
     float: left;
     margin: 0 20px 20px 0;

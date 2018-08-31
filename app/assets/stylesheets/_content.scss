@@ -121,10 +121,12 @@
     }
     &__newest {
       width: 22vw;
-      height: calc(78vh + 255px);
+      min-width: 300px;
+      // height: calc(78vh + 255px);
+      height: 100%;
       background-color: #fff;
       float: left;
-      padding: 1vh 1vw;
+      padding: 1vh 1vw 20px;
       &__head {
         font-size: 20px;
         font-weight: bold;
@@ -139,14 +141,28 @@
         &__content {
           border-bottom: 1px solid #ccc;
           padding: 10px 0;
+          height: 60px;
+          overflow: hidden;
           &__title {
             font-size: 14px;
+            color: #333;
             font-weight: bold;
             padding-bottom: 5px;
+            height: 37px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
           }
           &__info {
             font-size: 10px;
             color: #bbb;
+            height: 14px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
           }
         }
       }

@@ -12,27 +12,45 @@
     <nav class="header">
       <ul class="header__list">
         <li class="header__list__menu">
-          <a href="#" class="header__list__link">メニュー</a>
+          <a href="#" class="header__list__link">
+            <%= fa_icon "bars 2x silver" %>
+          </a>
         </li>
         <li class="header__list__search">
           <input type="text" placeholder="検索する" class="header__list__input">
+          <%= fa_icon "search silver", class: 'header__list__search__icon ' %>
         </li>
         <% if user_signed_in? %>
-          <li class="header__list__new", id="new-pick-btn">
-            <%= link_to "Pick", :new_pick %>
+          <li class="header__list__new" id="new-pick-btn">
+            <%= link_to :new_pick do %>
+              <%= fa_icon "share lg silver" %>
+            <% end %>
           </li>
           <li class="header__list__news">
             <a href="#" class="header__list__link"><img src="/images/flag.png" style="height: 23px; width: 23px;"></a>
           </li>
-          <li class="header__list__user">
-            <%= link_to current_user.last_name + ' ' +  current_user.first_name, "", class: 'header__list__link', id: "user-menu-trigger" %>
+          <li class="header__list__user" id="user-menu-trigger">
+            <img src="http://tsubuyaki.m-yossy.com/wp-content/uploads/2018/01/nana.jpg" alt="ユーザーサムネイル" class="header__list__user__image">
+            <div class="header__list__user__text">
+              <%= link_to current_user.last_name + ' ' +  current_user.first_name, "", class: 'header__list__link header__list__user__text__name' %>
+              <div class="header__list__user__text__payment">
+                <% if current_user.pro == 1 %>
+                  有料会員
+                <% else %>
+                  無料会員
+                <% end %>
+              </div>
+            </div>
+            <div class="header__list__user__caret">
+              <%= fa_icon 'caret-down xs silver' %>
+            </div>
           </li>
         <% else %>
-          <li class="header__list__signup" id="signup-btn">
-            <%= link_to "アカウント登録", new_user_registration_path, class: 'header__list__link' %>
-          </li>
           <li class="header__list__login" id="signin-btn">
             <%= link_to "ログイン", new_user_session_path, class: 'header__list__link', id: "header-list-link-login" %>
+          </li>
+          <li class="header__list__signup" id="signup-btn">
+            <%= link_to "アカウント登録", new_user_registration_path, class: 'header__list__link' %>
           </li>
         <% end %>
         <li class="header__list__logo">
