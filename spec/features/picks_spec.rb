@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature "Picks", type: :feature do
-  pending "add some scenarios (or delete) #{__FILE__}"
+
+  before do
+  end
+
+  scenario 'user creates a new pick' do
+  end
 end

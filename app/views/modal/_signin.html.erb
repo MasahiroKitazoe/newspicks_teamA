@@ -17,11 +17,11 @@
       <%= form_with model: resource, url: :user_session do |f| %>
 
         <div class="field signin__form__input">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '登録したメールアドレス', class: 'field signin__form__input__text' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: '登録したメールアドレス', class: 'field signin__form__input__text', id: "signin-email-field" %>
         </div>
 
         <div class="field signin__form__input">
-          <%= f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード', class: 'field signin__form__input__text' %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード', class: 'field signin__form__input__text', id: "signin-password-field" %>
         </div>
 
         <% if devise_mapping.rememberable? -%>
