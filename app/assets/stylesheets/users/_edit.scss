@@ -29,6 +29,13 @@
         &__image {
           display: none;
         }
+        &__image-btn {
+          background-color: #ddd;
+          color: #555;
+          padding: 10px;
+          margin-left: 20px;
+          border-radius: 3px;
+        }
         &__preview {
           width: 65px;
           height: 65px;
