@@ -122,10 +122,11 @@
     &__newest {
       width: 22vw;
       min-width: 300px;
-      height: calc(78vh + 255px);
+      // height: calc(78vh + 255px);
+      height: 100%;
       background-color: #fff;
       float: left;
-      padding: 1vh 1vw;
+      padding: 1vh 1vw 20px;
       &__head {
         font-size: 20px;
         font-weight: bold;
@@ -148,6 +149,7 @@
             font-weight: bold;
             padding-bottom: 5px;
             height: 37px;
+            margin-bottom: 10px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;

@@ -19,4 +19,21 @@ $(function() {
   $('.drop-down-button').on("click", function() {
     console.log('hello!')
   })
+
+
+  // レスポンシブ対応
+  var windowWidth = $(window).width();
+  // windowWidthが1300px以下条件分岐
+  if (windowWidth < 1250) {
+    $('.side-bar').css("display", "none");
+    $('.content').css("width", "100vw");
+    $('.content__eyecatch__main').css("width", "100vw");
+    $('.content__eyecatch__sub').css("display", "none");
+    $('.content__top-news__newest').css("display", "none");
+    $('.content__top-news__side-news').css("width", "100vw");
+  }
+
+  // リサイズで1300px以下になた時の条件分岐
+
+
 });
