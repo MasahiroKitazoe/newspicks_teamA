@@ -4,7 +4,7 @@
   height: 100vh;
   overflow: scroll;
   width: calc(100vw - 400px);
-  padding: 200px 200px;
+  padding: 100px 200px 200px;
   &__form {
     background-color: #fff;
     padding: 100px;
@@ -30,8 +30,8 @@
           display: none;
         }
         &__image-btn {
-          background-color: #ddd;
-          color: #555;
+          background-color: #efefef;
+          color: #222;
           padding: 10px;
           margin-left: 20px;
           border-radius: 3px;
