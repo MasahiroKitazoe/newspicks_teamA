@@ -30,7 +30,7 @@
             <a href="#" class="header__list__link"><img src="/images/flag.png" style="height: 23px; width: 23px;"></a>
           </li>
           <li class="header__list__user" id="user-menu-trigger">
-            <img src="http://tsubuyaki.m-yossy.com/wp-content/uploads/2018/01/nana.jpg" alt="ユーザーサムネイル" class="header__list__user__image">
+            <%= image_tag current_user.image.url, class: 'header__list__user__image' %>
             <div class="header__list__user__text">
               <%= link_to current_user.last_name + ' ' +  current_user.first_name, "", class: 'header__list__link header__list__user__text__name' %>
               <div class="header__list__user__text__payment">
