@@ -49,7 +49,7 @@ $(function() {
       // appendする要素の生成
       html = buildLikeView(data);
 
-      // 未Likeビューを生成＆append
+      // 未Likeビューをappend
       $(trigger_id).append(html);
     })
     .fail(function(){
@@ -77,7 +77,7 @@ $(function() {
       // appendする要素の生成
       html = buildUnlikeView(data);
 
-      // 未Likeビューを生成＆append
+      // 未Likeビューをappend
       $(trigger_id).append(html);
     })
     .fail(function(){
