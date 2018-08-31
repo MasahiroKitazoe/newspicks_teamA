@@ -6,6 +6,11 @@
       <%= devise_error_messages! %>
 
       <div class="field edit__form__block__element">
+        <%= f.label :写真, class: 'field edit__form__block__element__label' %>
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="field edit__form__block__element">
         <%= f.label :メールアドレス, class: 'field edit__form__block__element__label' %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'field edit__form__block__element__text' %>
       </div>
