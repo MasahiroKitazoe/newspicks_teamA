@@ -4,7 +4,7 @@
   height: 100vh;
   overflow: scroll;
   width: calc(100vw - 400px);
-  padding: 200px 200px;
+  padding: 100px 200px 200px;
   &__form {
     background-color: #fff;
     padding: 100px;
@@ -25,6 +25,21 @@
           width: 230px;
           float: left;
           margin: 10px 0 0 10px;
+        }
+        &__image {
+          display: none;
+        }
+        &__image-btn {
+          background-color: #efefef;
+          color: #222;
+          padding: 10px;
+          margin-left: 20px;
+          border-radius: 3px;
+        }
+        &__preview {
+          width: 65px;
+          height: 65px;
+          border-radius: 50%;
         }
         &__text {
           display: inline-block;
