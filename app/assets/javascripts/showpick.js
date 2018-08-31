@@ -21,17 +21,37 @@ $(function() {
   })
 
 
+  // var windowWidth = $(window).width();
   // レスポンシブ対応
-  var windowWidth = $(window).width();
   // windowWidthが1300px以下条件分岐
-  if (windowWidth < 1250) {
-    $('.side-bar').css("display", "none");
-    $('.content').css("width", "100vw");
-    $('.content__eyecatch__main').css("width", "100vw");
-    $('.content__eyecatch__sub').css("display", "none");
-    $('.content__top-news__newest').css("display", "none");
-    $('.content__top-news__side-news').css("width", "100vw");
-  }
+  // if (windowWidth < 1250) {
+  //   $('.side-bar').css("display", "none");
+  //   $('.content').css("width", "100vw");
+  //   $('.content__eyecatch__main').css("width", "100vw");
+  //   $('.content__eyecatch__sub').css("display", "none");
+  //   $('.content__top-news__newest').css("display", "none");
+  //   $('.content__top-news__side-news').css("width", "100vw");
+  // }
+
+  $(window).on('load resize', function(){
+  // 処理を記載
+    var windowWidth = $(window).width();
+    if (windowWidth < 1300) {
+      $('.side-bar').css("display", "none");
+      $('.content').css("width", "100vw");
+      $('.content__eyecatch__main').css("width", "100vw");
+      $('.content__eyecatch__sub').css("display", "none");
+      $('.content__top-news__newest').css("display", "none");
+      $('.content__top-news__side-news').css("width", "100vw");
+    } else {
+      $('.side-bar').css("display", "block");
+      $('.content').css("width", "calc(85vw - 10px)");
+      $('.content__eyecatch__main').css("width", "calc(55vw - 30px)");
+      $('.content__eyecatch__sub').css("display", "block");
+      $('.content__top-news__newest').css("display", "block");
+      $('.content__top-news__side-news').css("width", "50vw");
+    }
+  });
 
   // リサイズで1300px以下になた時の条件分岐
 
