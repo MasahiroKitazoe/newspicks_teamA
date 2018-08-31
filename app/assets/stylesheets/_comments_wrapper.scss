@@ -112,25 +112,10 @@
           height: 100%;
           text-align: center;
           .like {
-            display: table-cell;
-            vertical-align: middle;
-            cursor: pointer;
-            .thumb-up-r {
-              display: inline;
-              width: 10px;
-              height: 14px;
-            }
-            .thumb-up-g {
-              display: inline;
-              width: 10px;
-              height: 14px;
-            }
-            .count-r{
-              color: #D74029;
-            }
-            .like-label-r{
-              color: #D74029;
-            }
+            @include like_container();
+          }
+          .liked{
+            @include like_container();
           }
         }
       }

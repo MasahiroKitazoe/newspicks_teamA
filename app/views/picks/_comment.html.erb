@@ -26,9 +26,9 @@
         <%= comment.comment %>
       </div>
       <div class="like-panel">
-        <div class="like-wrapper">
+        <div class="like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
           <% if current_user.liked?(comment) %>
-            <div class="like">
+            <div class="liked" data="<%= comment.get_like_id %>">
               <img class="thumb-up-r" src="/images/done-like-btn.png">
               <div class="count-r">
                 <%= comment.likes.count %>
@@ -37,7 +37,7 @@
               </div>
             </div>
           <% else %>
-          <div class="like">
+            <div class="like">
               <img class="thumb-up-g" src="/images/like-btn.png">
               <div class="count">
                 <%= comment.likes.count %>
