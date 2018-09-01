@@ -337,6 +337,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   sass-rails (~> 5.0)
+  sassc
   selenium-webdriver
   spring
   spring-commands-rspec
@@ -347,4 +348,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
