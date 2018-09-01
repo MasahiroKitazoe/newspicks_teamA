@@ -1,6 +1,9 @@
 # config valid only for current version of Capistrano
 lock '3.11.0'
 
+# secrets.yml用のシンボリックリンクを追加
+set :linked_files, %w{ config/secrets.yml }
+
 set :application, 'newspicks_teamA'
 set :repo_url,  'git@github.com:MasahiroKitazoe/newspicks_teamA.git'
 
@@ -47,6 +50,3 @@ set :default_env, {
   AWS_ACCESS_KEY_ID_NP: ENV["AWS_ACCESS_KEY_ID_NP"],
   AWS_SECRET_ACCESS_KEY_NP: ENV["AWS_SECRET_ACCESS_KEY_NP"]
 }
-
-# secrets.yml用のシンボリックリンクを追加
-set :linked_files, %w{ config/secrets.yml }
