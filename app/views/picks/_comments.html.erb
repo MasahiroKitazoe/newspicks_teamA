@@ -50,7 +50,7 @@
             <%= render "new_comment", pick: @pick %>
               <hr>
               <div class="comments">
-                <% if @comments_recommend %>
+                <% unless @comments_recommend.empty? %>
                 <div class="populars" style="display: block">
                   <div class="section-header">注目のコメント</div>
                   <% @comments_recommend.each do |comment| %>
@@ -58,7 +58,7 @@
                   <% end %>
                 </div>
                 <% end %>
-                <% if @comments_following %>
+                <% unless @comments_following.empty? %>
                 <div class="followings" style="display: block">
                   <div class="section-header">フォローしているユーザー</div>
                   <% @comments_following.each do |comment| %>
@@ -67,7 +67,7 @@
                   </div>
                 </div>
                 <% end %>
-                <% if @comments_other %>
+                <% unless @comments_other.empty? %>
                 <div class="recommends" style="display: block">
                   <div class="section-header">おすすめのユーザー</div>
                   <% @comments_other.each do |comment| %>
