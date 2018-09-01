@@ -15,15 +15,15 @@
     <div class="news-summary-container">
       <div class= "contents-area">
         <div>
-          <a class="news-image-link" href="https://this.kiji.is/404381710525383777" target="_blank">
-            <div class="news-image" style="background-image:url(https://contents.newspicks.com/images/news/3257853?updatedAt=20180821015534)">
+          <a class="news-image-link" href="<%= @pick.url %>" target="_blank">
+            <div class="news-image" style="background-image:url(<%= @pick.image %>)">
             </div>
           </a>
         </div>
         <div class="news">
-          <a class="title-link" href="https://this.kiji.is/404381710525383777" target="_blank">
+          <a class="title-link" href="<%= @pick.url %>" target="_blank">
             <h1 class="title bordered economic ">
-              総裁選、9月20日投開票に決定 首相と石破氏一騎打ちへ
+              <%= @pick.title %>
             </h1>
           </a>
           <div class="meta">
@@ -41,7 +41,7 @@
             </div>
           </div>
           <div>
-            <a class="read-more center" href="https://this.kiji.is/404381710525383777" target="_blank">続きを読む</a>
+            <a class="read-more center" href="<%= @pick.url %>" target="_blank">続きを読む</a>
           </div>
         </div>
         <div class= "news-comment">
