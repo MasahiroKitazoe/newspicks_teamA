@@ -1,1 +1,1 @@
-$('.followings').append("<%= render 'picks/comment', comment: @comment %>");
+$('.followings').append("<%= escape_javascript(render "picks/comment", comment: @comment) %>");

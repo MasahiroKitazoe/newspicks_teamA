@@ -2,6 +2,10 @@
     border-top: 1px solid #EAEAEA;
 }
 
+textarea {
+    overflow: auto;
+}
+
 button, input, select, textarea {
     font-family: inherit;
     font-size: inherit;
@@ -194,15 +198,14 @@ input, textarea, select, button {
                     padding-right: 8px;
                     display: table-cell;
                   }
-                  .twitter {
+                  .sns {
                     cursor: pointer;
                     padding-right: 12px;
                     display: table-cell;
-                  }
-                  .facebook {
-                    padding-right: 24px;
-                    cursor: pointer;
-                    display: table-cell;
+                    img {
+                      width: 16px;
+                      height: 16px;
+                    }
                   }
                   .pick {
                     width: 100px;

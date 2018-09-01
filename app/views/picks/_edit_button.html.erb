@@ -1,12 +1,12 @@
 <% if comment.user.id == current_user.id %>
-  <div class="comment-menu">
+  <div class="comment-menu" id="<% comment.id %>">
     <div class="menu-btn"></div>
     <div class="popover" style="">
       <div class="nozzle-border"></div>
       <div class="nozzle"></div>
       <div class="comment-menu-items">
-        <div class="comment-menu-item edit">編集</div>
-        <div class="comment-menu-item delete">削除</div>
+        <div class="comment-menu-item comment-edit-btn">編集</div>
+        <%= link_to "削除", "/comments/#{comment.id}", method: :delete, class: "comment-menu-item comment-delete-btn", remote: true%>
       </div>
     </div>
   </div>
