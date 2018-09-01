@@ -2,12 +2,17 @@ class CommentsController < ApplicationController
 
   def create
     @pick = Pick.find(comment_params[:pick_id])
-    unless @pick.check?(current_user)
+    if Comment.where(pick_id: comment_params[:pick_id]).blank?
       @comment = Comment.create(comment_params)
       @pick.reload
       respond_to do |format|
         format.html { redirect_to request.referrer || root_url}
         format.js
+      end
+    else
+      @pick.reload
+      respond_to do |format|
+        format.js { render :edit }
       end
     end
   end
@@ -18,7 +23,6 @@ class CommentsController < ApplicationController
     if @pick.check?(current_user)
       @comment.update(comment_params)
       @pick.reload
-      @comment.reload
       respond_to do |format|
         format.html {redirect_to request.referrer || root_url}
         format.js

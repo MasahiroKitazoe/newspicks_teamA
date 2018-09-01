@@ -18,6 +18,14 @@ $(function() {
     }
   });
 
+  // create後に削除ボタンが作用しないので、そこを直している途中。
+  $('.following').on('click', 'menu-btn', function(e){
+    e.preventDefault();
+    if($('.comment-menu .popover').css('display') == 'none') {
+      $('.popover').css('display', 'block');
+    }
+  })
+
   // current_userのコメント欄で編集・削除ボタンがある時その他のコメント欄をクリックした場合に非表示
   $('.news-comment').on('click',function(e) {
     if(!$(e.target).closest('.menu-btn').length && $('.comment-menu .popover').css('display') == 'block') {
