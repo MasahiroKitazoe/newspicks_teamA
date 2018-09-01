@@ -23,7 +23,6 @@ set :default_env, {
   AWS_SECRET_ACCESS_KEY_NP: ENV["AWS_SECRET_ACCESS_KEY_NP"]
 }
 
-# secrets.yml用のシンボリックリンクを追加
 set :linked_files, %w{ config/secrets.yml }
 
 after 'deploy:publishing', 'deploy:restart'
