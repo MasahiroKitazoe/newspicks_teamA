@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
+      @comment = Comment.new(comment_params)
       @pick.reload
       respond_to do |format|
         format.js { render :edit }

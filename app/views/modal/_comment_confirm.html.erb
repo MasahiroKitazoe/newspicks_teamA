@@ -1,4 +1,5 @@
 <div class="modal-comment-confirm" >
+  <% if defined?(pick) and defined?(comment) %>
   <div class="background"></div>
   <div class="modal-content-wrapper">
     <div class="modal-content dialog">
@@ -7,11 +8,16 @@
           <div class="title">Pickを上書きしてもよろしいですか？</div>
           <div class="message">すでにPickしたことがあるニュースです。<br>再度Pickするとコメントが上書きされます。</div>
         </div>
+        <%= form_for(pick.comments.find_by(user_id: current_user.id), remote: true) do |f| %>
         <div class="buttons">
           <div class="negative-button">キャンセル</div>
-          <div class="positive-button">上書きしてPickする</div>
+          <%= f.hidden_field :comment, value: comment.comment %>
+          <%= f.submit "上書きしてPickする" , class: "positive-button" %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
+  <% end %>
 </div>
+
