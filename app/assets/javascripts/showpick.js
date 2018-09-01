@@ -49,12 +49,16 @@ $(function() {
   })
 
 // 確認画面を見た後、キャンセルボタンを押した後元に戻る
-  $('.negative-button').on('click', function(e){
-    console.log('hallo!')
+  $('.modal-comment-confirm').on('click','.negative-button',function(e){
+    console.log('hello!')
     e.preventDefault();
     $('.modal-comment-confirm').css('display', 'none');
   })
 
+  $(document).on('ajax:complete', '.edit_comment', function() {
+    console.log('hello!')
+    $('.modal-comment-confirm').css('display', 'none');
+  });
 
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
