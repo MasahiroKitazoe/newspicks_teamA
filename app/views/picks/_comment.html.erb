@@ -8,7 +8,7 @@
         <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
           <div class="name-wrapper">
             <div class="name">
-              <%= comment.user.first_name %>
+              <%= comment.user.last_name %> <%= comment.user.first_name %>
             </div>
           </div>
         </a>
@@ -16,7 +16,8 @@
           <%= comment.user.company %>
         </div>
         <div class="picktime">
-          6時間前
+          <!-- 下記の定義はapplication_helperに定義 -->
+          <%= comment_time(comment) %>
         </div>
         <%= render "picks/edit_button", comment: comment %>
       </div>
