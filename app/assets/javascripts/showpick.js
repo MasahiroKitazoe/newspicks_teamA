@@ -11,15 +11,8 @@ $(function() {
   });
 
   // current_userのコメント欄で横のボタンをクリックした場合に表示
-  $('.menu-btn').on('click', function(e){
-    e.preventDefault();
-    if($('.comment-menu .popover').css('display') == 'none') {
-      $('.popover').css('display', 'block');
-    }
-  });
-
-  // create後に削除ボタンが作用しないので、そこを直している途中。
-  $('.following').on('click', 'menu-btn', function(e){
+  $('#user-comments').on('click', '.menu-btn', function(e){
+    console.log('hello!')
     e.preventDefault();
     if($('.comment-menu .popover').css('display') == 'none') {
       $('.popover').css('display', 'block');
@@ -28,6 +21,8 @@ $(function() {
 
   // current_userのコメント欄で編集・削除ボタンがある時その他のコメント欄をクリックした場合に非表示
   $('.news-comment').on('click',function(e) {
+    console.log($('.comment-menu .popover').css('display'))
+    console.log('hello')
     if(!$(e.target).closest('.menu-btn').length && $('.comment-menu .popover').css('display') == 'block') {
       e.preventDefault();
       $('.comment-menu .popover').css('display', 'none');
@@ -35,7 +30,8 @@ $(function() {
   })
 
 // 編集ボタンをクリックすることで編集画面を表示。
-  $('.comment-edit-btn').on('click', function(e) {
+  $('.following').on('click','.comment-edit-btn', function(e) {
+    console.log('hello')
     e.preventDefault();
     $('.comment-wrapper').css('display', 'none');
     $('.embedded-pick-editor').css('display', 'block');
@@ -50,15 +46,15 @@ $(function() {
 
 // 確認画面を見た後、キャンセルボタンを押した後元に戻る
   $('.modal-comment-confirm').on('click','.negative-button',function(e){
-    console.log('hello!')
     e.preventDefault();
     $('.modal-comment-confirm').css('display', 'none');
   })
-
+// 編集をした後に元の画面に戻るように変更
   $(document).on('ajax:complete', '.edit_comment', function() {
-    console.log('hello!')
     $('.modal-comment-confirm').css('display', 'none');
   });
+
+
 
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
