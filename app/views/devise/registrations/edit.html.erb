@@ -57,6 +57,7 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'field edit__form__block__element__text' %>
       </div>
 
+      <!-- Googleで最初にログインした人は変更ができない事になってしまっている -->
       <div class="field edit__form__block__element">
         <%= f.label :現在のパスワード, class: 'field edit__form__block__element__label' %>
         <%= f.password_field :current_password, autocomplete: "current-password", class: 'field edit__form__block__element__text' %>

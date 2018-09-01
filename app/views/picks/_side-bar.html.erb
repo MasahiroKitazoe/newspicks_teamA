@@ -1,7 +1,11 @@
 <div class="side-bar">
   <div class="side-bar__user">
     <div class="side-bar__user__info">
-      <%= image_tag current_user.image.url, class: 'side-bar__user__info__icon' %>
+      <% if user_signed_in? %>
+        <%= image_tag current_user.image.url, class: 'side-bar__user__info__icon' %>
+      <% else %>
+        <%= image_tag "https://newspicks.com/users/0/cover?width=96&height=96&circle=true", class: 'side-bar__user__info__icon' %>
+      <% end %>
       <p class="side-bar__user__info__name">
         <% if user_signed_in? %>
           <%= current_user.last_name %> <%= current_user.first_name %>
