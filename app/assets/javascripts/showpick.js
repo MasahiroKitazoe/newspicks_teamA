@@ -48,6 +48,12 @@ $(function() {
     $('.embedded-pick-editor').css('display', 'none');
   })
 
+// 確認画面を見た後、キャンセルボタンを押した後元に戻る
+  $('.negative-button').on('click', function(e){
+    console.log('hallo!')
+    e.preventDefault();
+    $('.modal-comment-confirm').css('display', 'none');
+  })
 
 
   $('.side-bar__my-news').on("click", function() {
