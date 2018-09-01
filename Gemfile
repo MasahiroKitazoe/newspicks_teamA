@@ -79,5 +79,6 @@ gem 'omniauth-google-oauth2'
 
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog-aws'
 
 gem 'sassc'
