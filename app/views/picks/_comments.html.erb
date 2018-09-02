@@ -54,7 +54,7 @@
                 <div class="populars" style="display: block">
                   <div class="section-header">注目のコメント</div>
                   <% @comments_recommend.each do |comment| %>
-                    <%= render partial: "comment", locals: {comment: comment} %>
+                    <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
                 <% end %>
@@ -62,7 +62,7 @@
                 <div class="followings" style="display: block">
                   <div class="section-header">フォローしているユーザー</div>
                   <% @comments_following.each do |comment| %>
-                    <%= render partial: "comment", locals: {comment: comment} %>
+                    <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
                 <% end %>
@@ -70,7 +70,7 @@
                 <div class="recommends" style="display: block">
                   <div class="section-header">おすすめのユーザー</div>
                   <% @comments_other.each do |comment| %>
-                    <%= render partial: "comment", locals: {comment: comment} %>
+                    <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
               <% end %>

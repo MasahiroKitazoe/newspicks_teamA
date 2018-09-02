@@ -61,18 +61,6 @@ $(function() {
     $(".message-box-edit").css('display', 'none');
   });
 
-  $(document).on('ajax:complete', '.edit_comment', function() {
-    $('.modal-comment-confirm').css('display', 'none');
-    $(".message-box-edit").css('display', 'none');
-  });
-
-  // 編集をした後に元の画面に戻るように変更
-  $(document).on('ajax:complete', '.edit_comment', function() {
-    $('.modal-comment-confirm').css('display', 'none');
-    $(".message-box-edit").css('display', 'none');
-  });
-
-
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
   })

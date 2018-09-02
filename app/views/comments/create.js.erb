@@ -1,2 +1,2 @@
 $(".comment-area").html("<%= escape_javascript(render "picks/new_comment", {comment: @comment, pick: @pick}) %>");
-$('.followings').append("<%= escape_javascript(render "picks/comment", comment: @comment) %>");
+$('.followings').append("<%= escape_javascript(render "picks/comment", {comment: @comment, pick: @pick}) %>");

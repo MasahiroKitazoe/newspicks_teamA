@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="embedded-pick-editor" >
-      <%= form_for(@pick.comments.find_by(user_id: current_user.id), remote: true) do |f| %>
+      <%= form_for(pick.comments.find_by(user_id: current_user.id), remote: true) do |f| %>
       <div class="pick-area comment-edit">
         <%= f.text_field :comment, class: 'comment on-focus', type: :text %>
         <div class="pick-control">
