@@ -1,44 +1,22 @@
-<% if pick.check?(current_user) %>
-  <div class="comment-area">
-    <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-    <%= form_for(pick.comments.find_by(user_id: current_user.id), remote: true) do |f| %>
-    <div class="comment-container">
-      <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
-    </div>
-    <div class="pick-control">
-      <div class="description">シェアする</div>
-      <div class="sns twitter">
-        <img src ="/images/comment_twitter.png">
-      </div>
-      <div class="sns facebook">
-        <img class = "share-normal" src ="/images/comment_facebook.png">
-      </div>
-      <div class="pick">
-        <%= f.submit :Pick, type: :image, :src => "/images/pick-btn.png" , class: 'pick-btn' %>
-      </div>
-    <% end %>
-    </div>
+<div class="comment-area">
+  <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+  <%= form_for(pick.comments.build, remote: true) do |f| %>
+  <div class="comment-container">
+    <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
+    <%= f.hidden_field :pick_id, value: pick.id %>
   </div>
-<% else %>
-  <div class="comment-area">
-    <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-    <%= form_for(pick.comments.build, remote: true) do |f| %>
-    <div class="comment-container">
-      <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
-      <%= f.hidden_field :pick_id, value: pick.id %>
+  <div class="pick-control">
+    <div class="description">シェアする</div>
+    <div class="sns twitter">
+      <img src ="/images/comment_twitter.png">
     </div>
-    <div class="pick-control">
-      <div class="description">シェアする</div>
-      <div class="sns twitter">
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-      </div>
-      <div class="sns facebook">
-        <i class="fa fa-facebook-square fa-1g"></i>
-      </div>
-      <div class="pick">
-        <%= f.submit :Pick, type: :image, :src => "/images/pick-btn.png" , class: 'pick-btn' %>
-      </div>
-    <% end %>
+    <div class="sns facebook">
+      <img class = "share-normal" src ="/images/comment_facebook.png">
     </div>
+    <div class="pick">
+      <%= f.submit :Pick, type: :image, :src => "/images/pick-btn.png" , class: 'pick-btn' %>
+    </div>
+  <% end %>
   </div>
-<% end %>
+</div>
+

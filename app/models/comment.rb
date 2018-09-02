@@ -5,6 +5,10 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
   validates :pick_id, presence: true
 
+  def do_time(comment)
+    Time.now - comment.created_at
+  end
+
   def do_like(user)
     likes.create(user_id: user.id, comment_id: self.id)
   end

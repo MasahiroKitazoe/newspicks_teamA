@@ -1,0 +1,54 @@
+.modal-comment-confirm {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 8000;
+  .background{
+    position: fixed;
+    background: #221f20;
+    width: 100%;
+    height: 100%;
+    filter: alpha(Opacity=90);
+    opacity: .9;
+  }
+  .modal-content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    text-align: center;
+    overflow-y: auto;
+    height: 100%;
+    font-size: 14px;
+    .dialog {
+      text-align: left;
+      position: relative;
+      display: inline-block;
+      .message-box-edit {
+        background: #FFF;
+        display: none;
+        padding-top: 56px;
+        border-radius: 5px;
+        color: #221f20;
+        margin: auto;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      .message-box-delete {
+        background: #FFF;
+        display: none;
+        padding-top: 56px;
+        border-radius: 5px;
+        color: #221f20;
+        margin: auto;
+        text-align: center;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@
         <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
           <div class="name-wrapper">
             <div class="name">
-              <%= comment.user.first_name %>
+              <%= comment.user.last_name %> <%= comment.user.first_name %>
             </div>
           </div>
         </a>
@@ -16,7 +16,8 @@
           <%= comment.user.company %>
         </div>
         <div class="picktime">
-          6時間前
+          <!-- 下記はapplication_helperに定義 -->
+          <%= comment_time(comment) %>
         </div>
         <%= render "picks/edit_button", comment: comment %>
       </div>
@@ -50,9 +51,10 @@
       </div>
     </div>
     <div class="embedded-pick-editor" >
-      <%= form_for(@pick.comments.find_by(user_id: current_user.id), remote: true) do |f| %>
+      <%= form_for(pick.comments.build, remote: true) do |f| %>
       <div class="pick-area comment-edit">
-        <%= f.text_field :comment, class: 'comment on-focus', type: :text %>
+        <%= f.text_field :comment, class: 'comment on-focus', value: pick.comments.where(user_id: current_user.id).first.comment %>
+        <%= f.hidden_field :pick_id, value: pick.id %>
         <div class="pick-control">
           <div class="description">シェアする</div>
           <div class="sns twitter">

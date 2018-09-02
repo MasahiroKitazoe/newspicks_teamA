@@ -15,15 +15,15 @@
     <div class="news-summary-container">
       <div class= "contents-area">
         <div>
-          <a class="news-image-link" href="https://this.kiji.is/404381710525383777" target="_blank">
-            <div class="news-image" style="background-image:url(https://contents.newspicks.com/images/news/3257853?updatedAt=20180821015534)">
+          <a class="news-image-link" href="<%= @pick.url %>" target="_blank">
+            <div class="news-image" style="background-image:url(<%= @pick.image %>)">
             </div>
           </a>
         </div>
         <div class="news">
-          <a class="title-link" href="https://this.kiji.is/404381710525383777" target="_blank">
+          <a class="title-link" href="<%= @pick.url %>" target="_blank">
             <h1 class="title bordered economic ">
-              総裁選、9月20日投開票に決定 首相と石破氏一騎打ちへ
+              <%= @pick.title %>
             </h1>
           </a>
           <div class="meta">
@@ -41,7 +41,7 @@
             </div>
           </div>
           <div>
-            <a class="read-more center" href="https://this.kiji.is/404381710525383777" target="_blank">続きを読む</a>
+            <a class="read-more center" href="<%= @pick.url %>" target="_blank">続きを読む</a>
           </div>
         </div>
         <div class= "news-comment">
@@ -49,33 +49,32 @@
             <div class="pick-area embedded">
             <%= render "new_comment", pick: @pick %>
               <hr>
-              <div class="comments">
-                <% if @comments_recommend %>
+              <div id="user-comments">
+                <% unless @comments_recommend.empty? %>
                 <div class="populars" style="display: block">
                   <div class="section-header">注目のコメント</div>
                   <% @comments_recommend.each do |comment| %>
-                    <%= render partial: "comment", locals: {comment: comment} %>
+                    <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
                 <% end %>
-                <% if @comments_following %>
+                <% unless @comments_following.empty? %>
                 <div class="followings" style="display: block">
                   <div class="section-header">フォローしているユーザー</div>
                   <% @comments_following.each do |comment| %>
-                    <%= render partial: "comment", locals: {comment: comment} %>
+                    <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
-                  </div>
                 </div>
                 <% end %>
-                <% if @comments_other %>
+                <% unless @comments_other.empty? %>
                 <div class="recommends" style="display: block">
                   <div class="section-header">おすすめのユーザー</div>
                   <% @comments_other.each do |comment| %>
-                    <%= render partial: "comment", locals: {comment: comment} %>
+                    <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
-              </div>
               <% end %>
+              </div>
             </div>
           </div>
         </div>
