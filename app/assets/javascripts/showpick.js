@@ -59,6 +59,8 @@ $(function() {
   $(document).on('ajax:complete', '.edit_comment', function() {
     $('.modal-comment-confirm').css('display', 'none');
     $(".message-box-edit").css('display', 'none');
+    $(".embedded-pick-editor").css('display', 'none');
+    $(".comment-wrapper").css('display', 'block');
   });
 
   $('.side-bar__my-news').on("click", function() {

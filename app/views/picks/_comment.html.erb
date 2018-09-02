@@ -51,9 +51,10 @@
       </div>
     </div>
     <div class="embedded-pick-editor" >
-      <%= form_for(pick.comments.find_by(user_id: current_user.id), remote: true) do |f| %>
+      <%= form_for(pick.comments.build, remote: true) do |f| %>
       <div class="pick-area comment-edit">
-        <%= f.text_field :comment, class: 'comment on-focus', type: :text %>
+        <%= f.text_field :comment, class: 'comment on-focus', value: pick.comments.where(user_id: current_user.id).first.comment %>
+        <%= f.hidden_field :pick_id, value: pick.id %>
         <div class="pick-control">
           <div class="description">シェアする</div>
           <div class="sns twitter">
