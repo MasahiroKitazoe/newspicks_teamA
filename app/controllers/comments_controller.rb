@@ -31,8 +31,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  # modal削除確認画面として、showメソッドを使用
   def show
+    @pick = Comment.find(params[:id]).pick
     @comment = Comment.find(params[:id])
+    respond_to do |format|
+      format.html {redirect_to request.referrer || root_url}
+      format.js
+    end
   end
 
   def destroy

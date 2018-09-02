@@ -1,4 +1,6 @@
 $(function() {
+
+// 入力画面に関するJavascript
   // コメント入力時に画面を大きく
   $("#comment-space").focusin(function(e) {
     e.preventDefault();
@@ -10,9 +12,10 @@ $(function() {
     $(this).css("width", "284px");
   });
 
+
+// current_userのコメント欄に対するJavascript
   // current_userのコメント欄で横のボタンをクリックした場合に表示
   $('#user-comments').on('click', '.menu-btn', function(e){
-    console.log('hello!')
     e.preventDefault();
     if($('.comment-menu .popover').css('display') == 'none') {
       $('.popover').css('display', 'block');
@@ -21,39 +24,53 @@ $(function() {
 
   // current_userのコメント欄で編集・削除ボタンがある時その他のコメント欄をクリックした場合に非表示
   $('.news-comment').on('click',function(e) {
-    console.log($('.comment-menu .popover').css('display'))
-    console.log('hello')
     if(!$(e.target).closest('.menu-btn').length && $('.comment-menu .popover').css('display') == 'block') {
       e.preventDefault();
       $('.comment-menu .popover').css('display', 'none');
     };
   })
 
-// 編集ボタンをクリックすることで編集画面を表示。
-  $('.following').on('click','.comment-edit-btn', function(e) {
+  // 編集ボタンをクリックすることで編集画面を表示。
+  $('.followings').on('click','.comment-edit-btn', function(e) {
     console.log('hello')
     e.preventDefault();
     $('.comment-wrapper').css('display', 'none');
     $('.embedded-pick-editor').css('display', 'block');
   })
 
-// 編集ボタンを押した後に、キャンセルをクリックすると編集画面を閉じる。
+  // 編集ボタンを押した後に、キャンセルをクリックすると編集画面を閉じる。
   $('.cancel-wrapper').on('click', function(e) {
     e.preventDefault();
     $('.comment-wrapper').css('display', 'block');
     $('.embedded-pick-editor').css('display', 'none');
   })
 
-// 確認画面を見た後、キャンセルボタンを押した後元に戻る
+// modal発生後に関するJavascript
+
+  // 確認画面を見た後、キャンセルボタンを押した後元に戻る
   $('.modal-comment-confirm').on('click','.negative-button',function(e){
     e.preventDefault();
     $('.modal-comment-confirm').css('display', 'none');
+    $(".message-box-edit").css('display', 'none');
+    $(".message-box-delete").css('display', 'none');
   })
-// 編集をした後に元の画面に戻るように変更
+
+  // 編集をした後に元の画面に戻るように変更
   $(document).on('ajax:complete', '.edit_comment', function() {
     $('.modal-comment-confirm').css('display', 'none');
+    $(".message-box-edit").css('display', 'none');
   });
 
+  $(document).on('ajax:complete', '.edit_comment', function() {
+    $('.modal-comment-confirm').css('display', 'none');
+    $(".message-box-edit").css('display', 'none');
+  });
+
+  // 編集をした後に元の画面に戻るように変更
+  $(document).on('ajax:complete', '.edit_comment', function() {
+    $('.modal-comment-confirm').css('display', 'none');
+    $(".message-box-edit").css('display', 'none');
+  });
 
 
   $('.side-bar__my-news').on("click", function() {
