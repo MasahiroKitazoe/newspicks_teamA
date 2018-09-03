@@ -260,10 +260,14 @@
           font-weight: bold;
         }
       }
-      &__follow {
-        height: 20px;
-        width: auto;
-        display: inline-block;
+      .follow-btn {
+        a{
+          img{
+            height: 20px;
+            width: auto;
+            display: inline-block;
+          }
+        }
       }
     }
     &__news {

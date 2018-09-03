@@ -2,7 +2,6 @@ $(function() {
 
   function switchContent(item){
     var target_id = `#tab-selected-${item}`
-    console.log(target_id);
 
     // 現在の表示コンテンツを消す
     $('.tab-content').css('display', 'none');

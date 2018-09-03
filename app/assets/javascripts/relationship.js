@@ -10,7 +10,9 @@ $(function() {
 
     // フォローボタン付きリンクをappendする親要素のidを取得
     var parent_id = $(this).parent().attr('id')
+    console.log(parent_id);
     var target_id = `#${parent_id}`
+    console.log(target_id);
 
     $.ajax({
       type: "POST",
@@ -34,12 +36,14 @@ $(function() {
     e.preventDefault();
     e.stopPropagation();
 
-    // フォローするユーザーのidを取得
+    // フォロー解除するユーザーのidを取得
     var followed_id = $(this).attr('data')
 
     // フォローボタン付きリンクをappendする親要素のidを取得
     var parent_id = $(this).parent().attr('id')
+    console.log(parent_id);
     var target_id = `#${parent_id}`
+    console.log(target_id);
 
     $.ajax({
       type: "DELETE",
