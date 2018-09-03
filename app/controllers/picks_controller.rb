@@ -20,8 +20,8 @@ class PicksController < ApplicationController
     @comments.each do |comment|
       if current_user.following?(comment.user) or comment.user == current_user
         @comments_following << comment
-      else
-        @comment_other << comment
+      elsif comment.present?
+        @comments_other << comment
       end
     end
   end
