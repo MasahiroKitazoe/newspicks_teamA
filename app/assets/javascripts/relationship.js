@@ -34,7 +34,7 @@ $(function() {
     e.preventDefault();
     e.stopPropagation();
 
-    // フォローするユーザーのidを取得
+    // フォロー解除するユーザーのidを取得
     var followed_id = $(this).attr('data')
 
     // フォローボタン付きリンクをappendする親要素のidを取得

@@ -1,7 +1,7 @@
 $(function() {
 
   function switchContent(item){
-    var target_id = `#user-page-contents-${item}`
+    var target_id = `#tab-selected-${item}`
 
     // 現在の表示コンテンツを消す
     $('.tab-content').css('display', 'none');
@@ -28,7 +28,7 @@ $(function() {
     $(this).siblings().removeClass('selected');
 
     // 表示コンテンツの特定
-    var item = $(this).attr('data')
+    var item = $(this).attr('data');
 
     // タブのCSS変更
     $(this).siblings().attr('id', '');

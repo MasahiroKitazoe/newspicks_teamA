@@ -1,0 +1,64 @@
+<% @comment_ranking.each_with_index do |comment, i| %>
+  <!-- １行目 -->
+  <div class="tab-content__paragraf">
+    <!-- １つのコメント -->
+    <div class="tab-content__paragraf__comment">
+      <!-- ユーザー部分 -->
+      <div class="tab-content__paragraf__comment__user">
+        <div class="tab-content__paragraf__comment__user__image">
+          <div class="tab-content__paragraf__comment__user__image__rank">
+            <%= i + 1 %>
+          </div>
+          <%= image_tag "https://img-mdpr.freetls.fastly.net/article/XivX/nm/XivXbktSszs_je4SpZtjLS8zK9ZoyznUdVkG4nAFiVU.jpg?width=700&disable=upscale&auto=webp", alt: 'ユーザーイメージ', class: 'tab-content__paragraf__comment__user__image__user' %>
+        </div>
+        <div class="tab-content__paragraf__comment__user__info">
+          <div class="tab-content__paragraf__comment__user__info__name">
+            <%= comment.user.last_name %>  <%= comment.user.first_name %>
+            <% if comment.user.pro %>
+              <div class="badge">
+                <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+              </div>
+            <% end %>
+          </div>
+          <div class="tab-content__paragraf__comment__user__info__position">
+            <%= comment.user.position %>
+          </div>
+        </div>
+        <div class="tab-content__paragraf__comment__user__right-block">
+          <div class="tab-content__paragraf__comment__user__like-count">
+            <span class="tab-content__paragraf__comment__user__like-count__num"><%= comment.likes.count %></span> Likes
+          </div>
+          <% if current_user.id != comment.user.id %>
+            <% if current_user.following?(comment.user) %>
+              <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
+                <%= link_to "/unfollow/#{comment.user.id}", class: "destroy-relation", data: comment.user.id, method: :delete do %>
+                  <img src="images/following-btn.png">
+                <% end %>
+              </div>
+            <% else %>
+              <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
+                <%= link_to "/follow/#{comment.user.id}", class: "create-relation", data: comment.user.id, method: :post do %>
+                  <img src="images/follow-btn.png">
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <!-- ニュース部分 -->
+      <div class="tab-content__paragraf__comment__news">
+        <div class="tab-content__paragraf__comment__news__comment">
+          <%= comment.comment %>
+        </div>
+        <div class="tab-content__paragraf__comment__news__pick">
+          <div class="tab-content__paragraf__comment__news__pick__title">
+            <%= comment.pick.title %>
+          </div>
+          <div class="tab-content__paragraf__comment__news__pick__source">
+            <%= comment.pick.source %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

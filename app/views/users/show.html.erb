@@ -68,16 +68,16 @@
     </div>
   </div>
   <div class="tab-wrapper">
-    <div class="tab-content" id="user-page-contents-picks">
+    <div class="tab-content" id="tab-selected-picks">
       <% if @user.comments.present? %>
         <% @user.comments.each do |comment| %>
-          <%= render partial: "one_pick" %>
+          <%= render partial: "one_pick", locals: {comment: comment, pick: comment.pick} %>
         <% end %>
         <% else %>
           <%= render partial: "no_pick" %>
       <% end %>
     </div>
-    <div class="tab-content" id="user-page-contents-following" style="display: none;">
+    <div class="tab-content" id="tab-selected-following" style="display: none;">
       <% if @user.following.present? %>
         <%= render partial: "follow-item", locals: {users: @user.following, status: "following"} %>
       <% else %>
@@ -86,7 +86,7 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-content" id="user-page-contents-followers" style="display: none;">
+    <div class="tab-content" id="tab-selected-followers" style="display: none;">
       <% if @user.followers.present? %>
         <%= render partial: "follow-item", locals: {users: @user.followers, status: "followers"} %>
       <% else %>

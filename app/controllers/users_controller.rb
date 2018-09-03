@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def library
     @users = User.order('created_at ASC')
+
+    @comment_ranking = Comment.rank_comment(30)
   end
 
   def show
