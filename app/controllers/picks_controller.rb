@@ -7,6 +7,9 @@ class PicksController < ApplicationController
 
     #ユーザーランキング用
     @users = User.order('created_at ASC').limit(4) # 暫定的に、古参から順に取得するようにする（※ユーザランキング実装の際に変更してね）
+
+    #コメントランキング用
+    @comment_ranking = Comment.rank_comment(4)
   end
 
   def show
