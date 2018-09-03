@@ -78,47 +78,57 @@
 
   <!-- 検索結果（コメント） -->
   <div class="search-result__comments">
-    <!-- 一つComment -->
-    <div class="search-result__comments__comment">
-      <!-- ユーザー部分 -->
-      <div class="search-result__comments__comment__user">
-        <img class="search-result__comments__comment__user__image" src="https://img-mdpr.freetls.fastly.net/article/XivX/nm/XivXbktSszs_je4SpZtjLS8zK9ZoyznUdVkG4nAFiVU.jpg?width=700&disable=upscale&auto=webp" alt="ユーザーイメージ">
-        <div class="search-result__comments__comment__user__info">
-          <div class="search-result__comments__comment__user__info__name">
-            白石麻衣
+    <% if @comments.length != 0 %>
+      <% @comments.each do |comment| %>
+        <!-- 一つComment -->
+        <div class="search-result__comments__comment">
+          <!-- ユーザー部分 -->
+          <div class="search-result__comments__comment__user">
+            <%= image_tag comment.user.image.url, class: 'search-result__comments__comment__user__image' %>
+            <div class="search-result__comments__comment__user__info">
+              <div class="search-result__comments__comment__user__info__name">
+                <%= comment.user.last_name %> <%= comment.user.first_name %>
+              </div>
+              <div class="search-result__comments__comment__user__info__more">
+                <% if comment.user.position %>
+                  <span class="search-result__comments__comment__user__info__more__position">
+                    <%= comment.user.position %>
+                  </span>
+                <% end %>
+                <span class="search-result__comments__comment__user__info__more__date">
+                  <%= comment.created_at %>
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="search-result__comments__comment__user__info__more">
-            <span class="search-result__comments__comment__user__info__more__position">
-              乃木坂46 １期生
-            </span>
-            <span  class="search-result__comments__comment__user__info__more__date">
-              2018年5月9日
-            </span>
+          <div class="search-result__comments__comment__body">
+            <%= comment.comment %>
+          </div>
+          <div class="search-result__comments__comment__like">
+            <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
+            <div class="search-result__comments__comment__like__likes-count">
+              <%= comment.likes.count %> Likes
+            </div>
+          </div>
+          <div class="search-result__comments__comment__news">
+            <div class="search-result__comments__comment__news__title">
+              <%= comment.pick.title %>
+            </div>
+            <div class="search-result__comments__comment__news__info">
+              <span class="search-result__comments__comment__news__info__source">
+                <%= comment.pick.source %>
+              </span> |
+              <span class="search-result__comments__comment__news__info__date">
+                <%= comment.pick.created_at %>
+              </span>
+            </div>
           </div>
         </div>
+      <% end %>
+    <% else %>
+      <div class="search-result__comments__comment">
+        一致するコメントがありません。
       </div>
-      <div class="search-result__comments__comment__body">
-        西洋美術は特に近代以前は宗教と切り離せませんし、そこに描かれるモチーフを読み解くには教養が必要です。また現代アートも今では美術史を理解しないことには難しい作品も多く、その是非はともかくアートは多かれ少なかれ文脈に依存するものであると言えます。
-      </div>
-      <div class="search-result__comments__comment__like">
-        <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
-        <div class="search-result__comments__comment__like__likes-count">
-          36 Likes
-        </div>
-      </div>
-      <div class="search-result__comments__comment__news">
-        <div class="search-result__comments__comment__news__title">
-          アートを感性で語る残念な日本のエリート - 美術作品は感性ではなく理性で読む
-        </div>
-        <div class="search-result__comments__comment__news__info">
-          <span class="search-result__comments__comment__news__info__source">
-            PRESIDENT Online
-          </span> |
-          <span class="search-result__comments__comment__news__info__date">
-            2018年5月9日
-          </span>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
