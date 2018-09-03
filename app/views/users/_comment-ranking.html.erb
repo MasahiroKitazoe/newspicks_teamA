@@ -1,0 +1,50 @@
+<% if @ranking.present? %>
+  <% @ranking.each do |comment| %>
+    <!-- １行目 -->
+    <div class="tab-content__paragraf">
+      <!-- １つのコメント -->
+      <div class="tab-content__paragraf__comment">
+        <!-- ユーザー部分 -->
+        <div class="tab-content__paragraf__comment__user">
+          <div class="tab-content__paragraf__comment__user__image">
+            <div class="tab-content__paragraf__comment__user__image__rank">
+              1
+            </div>
+            <%= image_tag "https://img-mdpr.freetls.fastly.net/article/XivX/nm/XivXbktSszs_je4SpZtjLS8zK9ZoyznUdVkG4nAFiVU.jpg?width=700&disable=upscale&auto=webp", alt: 'ユーザーイメージ', class: 'tab-content__paragraf__comment__user__image__user' %>
+          </div>
+          <div class="tab-content__paragraf__comment__user__info">
+            <div class="tab-content__paragraf__comment__user__info__name">
+              <%= comment.user.last_name %>  <%= comment.user.first_name %>
+              <div class="tab-content__paragraf__comment__user__info__name__pro">
+                pro
+              </div>
+            </div>
+            <div class="tab-content__paragraf__comment__user__info__position">
+              <%= comment.user.position %>
+            </div>
+          </div>
+          <div class="tab-content__paragraf__comment__user__right-block">
+            <div class="tab-content__paragraf__comment__user__like-count">
+              <span class="tab-content__paragraf__comment__user__like-count__num"><%= comment.likes.count %></span> Likes
+            </div>
+            <img src="images/follow-btn.png" alt="フォローボタン" class="tab-content__paragraf__comment__user__follow">
+          </div>
+        </div>
+        <!-- ニュース部分 -->
+        <div class="tab-content__paragraf__comment__news">
+          <div class="tab-content__paragraf__comment__news__comment">
+            <%= comment.comment %>
+          </div>
+          <div class="tab-content__paragraf__comment__news__pick">
+            <div class="tab-content__paragraf__comment__news__pick__title">
+              <%= comment.pick.title %>
+            </div>
+            <div class="tab-content__paragraf__comment__news__pick__source">
+              <%= comment.pick.source %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
