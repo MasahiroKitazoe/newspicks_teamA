@@ -20,6 +20,10 @@
       font-weight: bold;
       height: 48px;
       line-height: 48px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7
+      }
     }
     &__comments {
       display: inline-block;
@@ -30,6 +34,10 @@
       font-weight: bold;
       height: 48px;
       line-height: 48px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7
+      }
     }
     &__users {
       display: inline-block;
@@ -40,6 +48,10 @@
       font-weight: bold;
       height: 48px;
       line-height: 48px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7
+      }
     }
   }
   &__sort {
@@ -77,7 +89,7 @@
   }
   &__picks {
     padding: 20px 40px;
-    display: none;
+    display: block;
     &__news {
       background-color: #fff;
       padding: 16px;
@@ -214,7 +226,8 @@
     }
   }
   &__users {
-    padding: 16px;
+    padding: 20px 40px;
+    display: none;
     &__user {
       width: 328px;
       height: 98px;
