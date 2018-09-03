@@ -1,7 +1,7 @@
 $(function() {
 
   function switchContent(item){
-    var target_id = `#user-page-contents-${item}`
+    var target_id = `#tab-selected-${item}`
 
     // 現在の表示コンテンツを消す
     $('.tab-content').css('display', 'none');
