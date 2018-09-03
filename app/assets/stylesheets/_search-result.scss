@@ -79,8 +79,34 @@
         background-size: cover;
         margin-right: 16px;
         width: 250px;
-        height: 108p  x;
+        height: 108px;
         float: left;
+        position: relative;
+        &__back {
+          position: absolute;
+          height: 31px;
+          width: 61px;
+          right: 0;
+          top: 10px;
+          background-color: rgb(0, 0, 0);
+          opacity: 0.3;
+        }
+        &__picks-count {
+          position: absolute;
+          right: 0;
+          top: 10px;
+          padding: 3px 0;
+          border: 1px solid #fff;
+          &__num {
+            font-weight: bold;
+            font-size: 12px;
+            color: #FFF;
+          }
+          &__text {
+            font-size: 12px;
+            color: #FFF;
+          }
+        }
       }
       &__above {
         &__title {
