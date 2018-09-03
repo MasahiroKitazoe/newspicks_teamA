@@ -179,6 +179,16 @@
       }
       &__like {
         float: right;
+        margin-right: 16px;
+        text-align: center;
+        &__icon {
+          width: 10px;
+          height: 14px;
+        }
+        &__likes-count {
+          font-size: 90%;
+          color: #B1B1B3;
+        }
       }
       &__news {
         clear: both;
