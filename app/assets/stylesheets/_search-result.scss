@@ -69,6 +69,17 @@
     }
   }
   &__picks {
-    padding: 20px;
+    padding: 20px 40px;
+    &__news {
+      background-color: #fff;
+      &__image {
+        background-position: center;
+        background-size: cover;
+        margin: 16px 0 16px 16px;
+        width: 250px;
+        height: 100px;
+        float: left;
+      }
+    }
   }
 }
