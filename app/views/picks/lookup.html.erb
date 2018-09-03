@@ -134,44 +134,66 @@
   <!-- 検索結果（ユーザー） -->
   <div class="search-result__users">
     <!-- 一つのユーザー -->
-    <div class="search-result__users__user">
-      <div class="search-result__users__user__above">
-        <img class="search-result__users__user__above__image" src="http://keyakizaka-46.org/wp-content/uploads/2017/07/maxresdefault-1.jpg" alt="ユーザーイメージ">
-        <div class="search-result__users__user__above__info">
-          <div class="search-result__users__user__above__info__name">
-          渡邉理佐
-          </div>
-          <div class="search-result__users__user__above__info__more">
-            <div class="search-result__users__user__above__info__more__campany">
-              チームラボ
+    <% if @users.length != 0 %>
+      <% @users.each do |user| %>
+        <div class="search-result__users__user">
+          <div class="search-result__users__user__above">
+            <%= image_tag user.image.url, class: 'search-result__users__user__above__image' %>
+            <div class="search-result__users__user__above__info">
+              <div class="search-result__users__user__above__info__name">
+                <%= user.last_name %> <%= user.first_name %>
+              </div>
+              <div class="search-result__users__user__above__info__more">
+                <div class="search-result__users__user__above__info__more__campany">
+                  <%= user.company %>
+                </div>
+                <div class="search-result__users__user__above__info__more__pisition">
+                  <%= user.position %>
+                </div>
+              </div>
             </div>
-            <div class="search-result__users__user__above__info__more__pisition">
-              カタリスト
+          </div>
+          <div class="search-result__users__user__bottom">
+            <div class="search-result__users__user__bottom__follow">
+              <div class="search-result__users__user__bottom__follow__tag">
+                フォロー
+              </div>
+              <div class="search-result__users__user__bottom__follow__num">
+                <%= user.following.count %>
+              </div>
             </div>
+            <div class="search-result__users__user__bottom__follower">
+              <div class="search-result__users__user__bottom__follower__tag">
+                フォロワー
+              </div>
+              <div class="search-result__users__user__bottom__follower__num">
+                <%= user.followers.count %>
+              </div>
+            </div>
+            <% if user_signed_in? %>
+              <% if user.id != current_user.id %>
+                <% if current_user.following?(user) %>
+                    <div class="search-result__users__user__bottom__btn" id="user-follow<%= user.id %>">
+                      <%= link_to "/unfollow/#{user.id}", class: "destroy-relation", data: user.id, method: :delete do %>
+                        <img class="search-result__users__user__bottom__btn__image" src="/images/following-btn.png">
+                      <% end %>
+                    </div>
+                <% else %>
+                    <div class="search-result__users__user__bottom__btn" id="user-follow<%= user.id %>">
+                      <%= link_to "/follow/#{user.id}", class: "create-relation", data: user.id, method: :post do %>
+                        <img class="search-result__users__user__bottom__btn__image" src="/images/follow-btn.png">
+                      <% end %>
+                    </div>
+                <% end %>
+              <% end %>
+            <% end %>
           </div>
         </div>
+      <% end %>
+    <% else %>
+      <div class="search-result__users__user">
+        一致するユーザーがいません。
       </div>
-      <div class="search-result__users__user__bottom">
-        <div class="search-result__users__user__bottom__follow">
-          <div class="search-result__users__user__bottom__follow__tag">
-            フォロー
-          </div>
-          <div class="search-result__users__user__bottom__follow__num">
-            394
-          </div>
-        </div>
-        <div class="search-result__users__user__bottom__follower">
-          <div class="search-result__users__user__bottom__follower__tag">
-            フォロワー
-          </div>
-          <div class="search-result__users__user__bottom__follower__num">
-            394
-          </div>
-        </div>
-        <div class="search-result__users__user__bottom__btn">
-          <img class="search-result__users__user__bottom__btn__image" src="/images/follow-btn.png">
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
