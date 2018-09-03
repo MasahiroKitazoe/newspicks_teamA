@@ -236,10 +236,13 @@
           font-weight: bold;
           font-size: 16px;
           display: inline-block;
-          &__pro {
-            font-size: 10px;
-            font-weight: normal;
+          .badge {
             display: inline-block;
+            img{
+              height: 20px;
+              width: auto;
+              border-radius: 0%;
+            }
           }
         }
         &__position {

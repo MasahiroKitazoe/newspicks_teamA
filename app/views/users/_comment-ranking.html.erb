@@ -14,9 +14,11 @@
         <div class="tab-content__paragraf__comment__user__info">
           <div class="tab-content__paragraf__comment__user__info__name">
             <%= comment.user.last_name %>  <%= comment.user.first_name %>
-            <div class="tab-content__paragraf__comment__user__info__name__pro">
-              pro
-            </div>
+            <% if comment.user.pro %>
+              <div class="badge">
+                <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+              </div>
+            <% end %>
           </div>
           <div class="tab-content__paragraf__comment__user__info__position">
             <%= comment.user.position %>
