@@ -53,6 +53,12 @@
       color: #221f20;
       padding: 0 10px;
     }
+    &__like-count {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
     &__period {
       display: inline-block;
       font-size: 12px;
@@ -71,6 +77,7 @@
   }
   &__picks {
     padding: 20px 40px;
+    display: none;
     &__news {
       background-color: #fff;
       padding: 16px;
@@ -130,6 +137,65 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+      }
+    }
+  }
+  &__comments {
+    padding: 20px 40px;
+    &__comment {
+      background-color: #fff;
+      padding: 16px;
+      &__user {
+        &__image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          float: left;
+        }
+        &__info {
+          padding: 0 0 16px 20px;
+          display: inline-block;
+          &__name {
+            font-size: 14px;
+            font-weight: bold;
+          }
+          &__more {
+            color: #999;
+            font-size: 12px;
+            &__position {
+
+            }
+            &__date {
+
+            }
+          }
+        }
+      }
+      &__body {
+        font-size: 14px;
+        width: 900px;
+        padding-bottom: 16px;
+      }
+      &__like {
+        float: right;
+      }
+      &__news {
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+        &__title {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &__info {
+          font-size: 12px;
+          color: #999;
+          &__source {
+
+          }
+          &__date {
+
+          }
+        }
       }
     }
   }
