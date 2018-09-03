@@ -29,40 +29,45 @@
   </div>
   <!-- 検索結果（PICKS） -->
   <div class="search-result__picks">
-    <!-- 一つのPick -->
-    <div class="search-result__picks__news">
-      <div>
-        <!-- 左部 -->
-          <div class="search-result__picks__news__image" style="background-image: url(https://geinou-navi.com/wp-content/uploads/2018/08/12db3fcc.jpg">
-            <div class="search-result__picks__news__image__back">
-
-            </div>
-            <span class="search-result__picks__news__image__picks-count">
-              <span class="search-result__picks__news__image__picks-count__num">
-                364
-              </span>
-              <span class="search-result__picks__news__image__picks-count__text">
-                Picks
-              </span>
-            </span>
+    <% if @picks %>
+      <% @picks.each do |pick| %>
+        <!-- 一つのPick -->
+        <div class="search-result__picks__news">
+          <div>
+            <!-- 左部 -->
+              <div class="search-result__picks__news__image" style="background-image: url(<%= pick.image %>)">
+                <div class="search-result__picks__news__image__back">
+                </div>
+                <span class="search-result__picks__news__image__picks-count">
+                  <span class="search-result__picks__news__image__picks-count__num">
+                    <%= pick.comments.count %>
+                  </span>
+                  <span class="search-result__picks__news__image__picks-count__text">
+                    Picks
+                  </span>
+                </span>
+              </div>
+            <!-- 右部 -->
+              <!-- 上部 -->
+              <div class="search-result__picks__news__above">
+                <div class="search-result__picks__news__above__title">
+                  <%= pick.title %>
+                </div>
+                <div class="search-result__picks__news__above__source">
+                  <%= pick.source %> | <%= pick.created_at %>
+                </div>
+              </div>
+              <!-- 下部 -->
+              <div class="search-result__picks__news__body">
+                <%= pick.body %>
+              </div>
           </div>
-        <!-- 右部 -->
-          <!-- 上部 -->
-          <div class="search-result__picks__news__above">
-            <div class="search-result__picks__news__above__title">
-              現代人の新たな教養。アートの歴史と業界地図
-            </div>
-            <div class="search-result__picks__news__above__source">
-              NewsPicks編集部 | 2018年07月16日
-            </div>
-          </div>
-          <!-- 下部 -->
-          <div class="search-result__picks__news__body">
-            2018年夏、東京・お台場。酷暑の中、長蛇の列ができる人気施設がある。
-            6月に開館した「森ビル デジタルアートミュージアム：エプソン チームラボ ボーダレス」。森ビルとチームラボがタッグを組んで開設した、世界でも珍しいデジタルアートを常設する美術館だ。
-            オープン直後に7月までの入場チケットが売り切れるほどの人気を博している。
-          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="search-result__picks__news">
+        一致するニュースがありません。
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

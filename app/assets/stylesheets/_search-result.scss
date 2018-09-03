@@ -74,6 +74,8 @@
     &__news {
       background-color: #fff;
       padding: 16px;
+      margin-bottom: 16px;
+      min-height: 108px;
       &__image {
         background-position: center;
         background-size: cover;
@@ -95,7 +97,9 @@
           position: absolute;
           right: 0;
           top: 10px;
-          padding: 3px 0;
+          padding: 3px;
+          height: 25px;
+          width: 55px;
           border: 1px solid #fff;
           &__num {
             font-weight: bold;
