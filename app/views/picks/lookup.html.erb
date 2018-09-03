@@ -1,0 +1,59 @@
+<%= render partial: "side-bar" %>
+<div class="search-result">
+  <!-- カテゴリ -->
+  <div class="search-result__class">
+    <div class="search-result__class__picks">
+      トップ
+    </div>
+    <div class="search-result__class__comments">
+      コメント
+    </div>
+    <div class="search-result__class__users">
+      ユーザー
+    </div>
+  </div>
+  <!-- ソート -->
+  <div class="search-result__sort">
+    <div class="search-result__sort__pick-count">
+      PICK数：
+      <span class="search-result__select">指定なし</span>
+    </div>
+    <div class="search-result__sort__period">
+      期間：
+      <span class="search-result__select">指定なし</span>
+    </div>
+    <div class="search-result__sort__desc">
+      ソート順：
+      <span class="search-result__select">公開日</span>
+    </div>
+  </div>
+  <!-- 検索結果（PICKS） -->
+  <div class="search-result__picks">
+    <!-- 一つのPick -->
+    <div class="search-result__picks__news">
+      <div>
+        <!-- 左部 -->
+          <img class="search-result__picks__news__image" src="https://images-na.ssl-images-amazon.com/images/I/71RckcLBrpL._SL1200_.jpg" alt="pickイメージ">
+          <div class="search-result__picks__news__pick-count">
+            <span class="search-result__picks__news__pick-count__num">364</span>Picks
+          </div>
+        <!-- 右部 -->
+          <!-- 上部 -->
+          <div class="search-result__picks__news__above">
+            <div class="search-result__picks__news__above__title">
+              現代人の新たな教養。アートの歴史と業界地図
+            </div>
+            <div class="search-result__picks__news__above__source">
+              NewsPicks編集部  2018年07月16日
+            </div>
+          </div>
+          <!-- 下部 -->
+          <div class="search-result__picks__news__body">
+            2018年夏、東京・お台場。酷暑の中、長蛇の列ができる人気施設がある。
+            6月に開館した「森ビル デジタルアートミュージアム：エプソン チームラボ ボーダレス」。森ビルとチームラボがタッグを組んで開設した、世界でも珍しいデジタルアートを常設する美術館だ。
+            オープン直後に7月までの入場チケットが売り切れるほどの人気を博している。
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
