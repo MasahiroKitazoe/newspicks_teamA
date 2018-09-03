@@ -28,7 +28,7 @@ $(function() {
     $(this).siblings().removeClass('selected');
 
     // 表示コンテンツの特定
-    var item = $(this).attr('data')
+    var item = $(this).attr('data');
 
     // タブのCSS変更
     $(this).siblings().attr('id', '');
