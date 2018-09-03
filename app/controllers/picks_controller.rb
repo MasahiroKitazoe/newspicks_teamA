@@ -81,6 +81,7 @@ class PicksController < ApplicationController
 
     # ヘッダーからの検索
     def lookup
+
     end
   end
 
