@@ -13,14 +13,14 @@ class PicksController < ApplicationController
     @pick = Pick.find(params[:id])
     @comments = @pick.comments.includes(:user)
     #フォローは一旦自分自身のみで定義。コメントではfollowerに自分のコメントが表示される。なのでカレントユーザー情報を持ってくる必要はない。
-    @comments_following = @pick.comments.where(params[:id] == 1).includes(:user)
-    #注目のコメントとその他のコメントを分ける。
     @comments_recommend = []
+    @comments_following = []
     @comments_other = []
-    @comments.each_with_index do |comment,i|
-      if i <= 2
-        @comments_recommend << comment
-      else
+    #注目のコメントとその他のコメントを分ける。
+    @comments.each do |comment|
+      if current_user.following?(comment.user) or comment.user == current_user
+        @comments_following << comment
+      elsif comment.present?
         @comments_other << comment
       end
     end
