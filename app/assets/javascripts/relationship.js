@@ -41,9 +41,7 @@ $(function() {
 
     // フォローボタン付きリンクをappendする親要素のidを取得
     var parent_id = $(this).parent().attr('id')
-    console.log(parent_id);
     var target_id = `#${parent_id}`
-    console.log(target_id);
 
     $.ajax({
       type: "DELETE",
