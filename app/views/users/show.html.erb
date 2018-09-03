@@ -71,7 +71,7 @@
     <div class="tab-content" id="tab-selected-picks">
       <% if @user.comments.present? %>
         <% @user.comments.each do |comment| %>
-          <%= render partial: "one_pick" %>
+          <%= render partial: "one_pick", locals: {comment: comment, pick: comment.pick} %>
         <% end %>
         <% else %>
           <%= render partial: "no_pick" %>

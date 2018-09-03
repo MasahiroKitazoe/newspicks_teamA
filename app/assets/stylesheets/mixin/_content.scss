@@ -63,12 +63,14 @@
           width: 28px;
           height: 28px;
           border-radius: 50%;
+          float: left;
+          margin-right: 15px;
         }
         &__name {
           font-weight: bold;
           font-size: 14px;
           padding-right: 2.5vw;
-          float: right;
+          float: left;
           &__position {
             padding-left: 7px;
             font-size: 12px;
