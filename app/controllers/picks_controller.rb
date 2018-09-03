@@ -78,11 +78,11 @@ class PicksController < ApplicationController
     else
       render action: :new
     end
+  end
 
-    # ヘッダーからの検索
-    def lookup
-
-    end
+  # ヘッダーからの検索
+  def lookup
+    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%")
   end
 
 
