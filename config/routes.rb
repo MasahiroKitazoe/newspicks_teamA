@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   root 'picks#index'
   get '/picks/search', to: 'picks#search'
+  get '/picks/lookup', to: 'picks#lookup'
   resources :picks, except: [:edit, :update, :destroy]
   resources :comments
 
