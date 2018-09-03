@@ -29,7 +29,7 @@
   </div>
   <!-- 検索結果（PICKS） -->
   <div class="search-result__picks">
-    <% if @picks %>
+    <% if @picks.length != 0 %>
       <% @picks.each do |pick| %>
         <!-- 一つのPick -->
         <div class="search-result__picks__news">
