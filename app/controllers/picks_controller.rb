@@ -78,6 +78,10 @@ class PicksController < ApplicationController
     else
       render action: :new
     end
+
+    # ヘッダーからの検索
+    def lookup
+    end
   end
 
 
