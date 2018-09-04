@@ -148,12 +148,13 @@ $(function() {
   $('.pick-count__filter').on('click', function(e) {
     e.preventDefault();
     var num = $(e.currentTarget).data('num');
+    var keyword = $(e.currentTarget).data('keyword');
     // console.log(num); -> num == {num: 0}
-    console.log(num);
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
-      data: { num },
+      data: { num,
+              keyword },
       dataType: 'json'
     })
     .done(function(picks) {
