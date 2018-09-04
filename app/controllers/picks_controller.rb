@@ -88,6 +88,10 @@ class PicksController < ApplicationController
     @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
     @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
 

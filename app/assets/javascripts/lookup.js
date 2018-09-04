@@ -41,6 +41,7 @@ $(function() {
     $(this).css("background-color", "#fff");
     $('.search-result__pick-sort__pick-count__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
+    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__pick-count" && e.target.className != "search-result__pick-sort__pick-count__filter" && e.target.className != "search-result__pick-sort__select") {
         $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text('指定なし');
@@ -57,6 +58,7 @@ $(function() {
     $(this).css("background-color", "#fff");
     $('.search-result__pick-sort__period__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
+    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__period" && e.target.className != "search-result__pick-sort__period__filter" && e.target.className != "search-result__pick-sort__select") {
         $('.search-result__pick-sort__period > .search-result__pick-sort__select').text('指定なし');
@@ -74,6 +76,7 @@ $(function() {
     $(this).css("background-color", "#fff");
     $('.search-result__comment-sort__like-count__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
+    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__like-count" && e.target.className != "search-result__comment-sort__like-count__filter" && e.target.className != "search-result__comment-sort__select") {
         $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text('指定なし');
@@ -90,6 +93,7 @@ $(function() {
     $(this).css("background-color", "#fff");
     $('.search-result__comment-sort__period__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
+    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__period" && e.target.className != "search-result__comment-sort__period__filter" && e.target.className != "search-result__comment-sort__select") {
         $('.search-result__comment-sort__period > .search-result__comment-sort__select').text('指定なし');
@@ -98,5 +102,18 @@ $(function() {
         $('.search-result__comment-sort__period').css("border", "0");
       }
     });
+  });
+
+  // Ajax処理
+  $('#pick-count__filter__0').on('click', function(e) {
+    e.preventDefault();
+    var num = $('#pick-count__filter__0').data();
+    // console.log(num); -> num == {num: 0}
+    $.ajax({
+      type: 'GET',
+      url: '/picks/lookup',
+      data: { num },
+      dataType: 'json'
+    })
   });
 });
