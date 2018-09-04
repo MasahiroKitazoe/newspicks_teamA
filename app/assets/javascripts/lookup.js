@@ -145,7 +145,9 @@ $(function() {
   }
 
   // Ajax処理
-  $('.pick-count__filter').on('click', function(e) {
+  // Picksフィルター
+  // コメント数フィルター
+  $('.pick-comments__filter').on('click', function(e) {
     e.preventDefault();
     var num = $(e.currentTarget).data('num');
     var keyword = $(e.currentTarget).data('keyword');
@@ -173,4 +175,9 @@ $(function() {
       alert('フィルタリングに失敗しました');
     })
   });
+
+  // 期間フィルター
+  $('.pick-period__filter').on('click', function(e) {
+    e.preventDefault();
+  })
 });
