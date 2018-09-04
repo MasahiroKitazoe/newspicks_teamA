@@ -13,11 +13,29 @@
     </div>
   </div>
   <!-- ソート -->
-  <div class="search-result__pick-sort" id="pick-sort">
+  <!-- Picksのソート/フィルター -->
+  <div class="search-result__pick-sort">
+    <!-- PICK数 -->
     <div class="search-result__pick-sort__pick-count">
       PICK数：
       <span class="search-result__pick-sort__select">指定なし</span>
+      <%= link_to "#" do %>
+        <div class="search-result__pick-sort__pick-count__filter">
+          指定なし
+        </div>
+      <% end %>
+      <%= link_to "#" do %>
+        <div class="search-result__pick-sort__pick-count__filter">
+          3以上
+        </div>
+      <% end %>
+      <%= link_to "#" do %>
+        <div class="search-result__pick-sort__pick-count__filter">
+          10以上
+        </div>
+      <% end %>
     </div>
+    <!-- Pickのモーダル -->
     <div class="search-result__pick-sort__period">
       期間：
       <span class="search-result__pick-sort__select">指定なし</span>
@@ -27,6 +45,7 @@
       <span class="search-result__pick-sort__select">公開日</span>
     </div>
   </div>
+  <!-- Commentsのソート/フィルター -->
   <div class="search-result__comment-sort" id="comment-sort">
     <div class="search-result__comment-sort__like-count">
       LIKE数：

@@ -32,4 +32,26 @@ $(function() {
     $('#pick-sort').css("display", "none");
     $('#comment-sort').css("display", "none");
   });
+
+  // ソート/フィルター
+  // Pick
+  // 「PICK数」をクリックしたらメニューを表示
+  $('.search-result__pick-sort__pick-count').on('click', function() {
+    $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text('');
+    $(this).css("background-color", "#fff");
+    $('.search-result__pick-sort__pick-count__filter').css("display", "block");
+    $(this).css("border", "1px solid #aaa");
+    $('.search-result').on('click', function(e) {
+      if (e.target.className != "search-result__pick-sort__pick-count" && e.target.className != "search-result__pick-sort__pick-count__filter" && e.target.className != "search-result__pick-sort__select") {
+        $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text('指定なし');
+        $('.search-result__pick-sort__pick-count').css("background-color", "#ccc");
+        $('.search-result__pick-sort__pick-count__filter').css("display", "none");
+        $('.search-result__pick-sort__pick-count').css("border", "0");
+      }
+    });
+  });
+
+  // 「期間」をクリックしたらメニューを表示
+
+  // Comment
 });

@@ -65,18 +65,29 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      min-width: 104.484px;
+      cursor: pointer;
+      float: left;
+      &__filter {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__period {
       display: inline-block;
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      float: left;
     }
     &__desc {
       display: inline-block;
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      float: left;
     }
     &__select {
       color: #777;
