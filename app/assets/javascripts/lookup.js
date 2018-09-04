@@ -45,7 +45,7 @@ $(function() {
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__pick-count" && e.target.className != "search-result__pick-sort__pick-count__filter" && e.target.className != "search-result__pick-sort__select") {
         $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text('指定なし');
-        $('.search-result__pick-sort__pick-count').css("background-color", "#ccc");
+        $('.search-result__pick-sort__pick-count').css("background-color", "#eee");
         $('.search-result__pick-sort__pick-count__filter').css("display", "none");
         $('.search-result__pick-sort__pick-count').css("border", "0");
       }
@@ -62,7 +62,7 @@ $(function() {
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__period" && e.target.className != "search-result__pick-sort__period__filter" && e.target.className != "search-result__pick-sort__select") {
         $('.search-result__pick-sort__period > .search-result__pick-sort__select').text('指定なし');
-        $('.search-result__pick-sort__period').css("background-color", "#ccc");
+        $('.search-result__pick-sort__period').css("background-color", "#eee");
         $('.search-result__pick-sort__period__filter').css("display", "none");
         $('.search-result__pick-sort__period').css("border", "0");
       }
@@ -80,7 +80,7 @@ $(function() {
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__like-count" && e.target.className != "search-result__comment-sort__like-count__filter" && e.target.className != "search-result__comment-sort__select") {
         $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text('指定なし');
-        $('.search-result__comment-sort__like-count').css("background-color", "#ccc");
+        $('.search-result__comment-sort__like-count').css("background-color", "#eee");
         $('.search-result__comment-sort__like-count__filter').css("display", "none");
         $('.search-result__comment-sort__like-count').css("border", "0");
       }
@@ -97,7 +97,7 @@ $(function() {
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__period" && e.target.className != "search-result__comment-sort__period__filter" && e.target.className != "search-result__comment-sort__select") {
         $('.search-result__comment-sort__period > .search-result__comment-sort__select').text('指定なし');
-        $('.search-result__comment-sort__period').css("background-color", "#ccc");
+        $('.search-result__comment-sort__period').css("background-color", "#eee");
         $('.search-result__comment-sort__period__filter').css("display", "none");
         $('.search-result__comment-sort__period').css("border", "0");
       }
