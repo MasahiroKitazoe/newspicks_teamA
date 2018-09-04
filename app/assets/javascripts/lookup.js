@@ -68,4 +68,35 @@ $(function() {
   });
 
   // Comment
+  // 「LIKE数」をクリックしたらメニューを表示
+  $('.search-result__comment-sort__like-count').on('click', function() {
+    $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text('');
+    $(this).css("background-color", "#fff");
+    $('.search-result__comment-sort__like-count__filter').css("display", "block");
+    $(this).css("border", "1px solid #aaa");
+    $('.search-result').on('click', function(e) {
+      if (e.target.className != "search-result__comment-sort__like-count" && e.target.className != "search-result__comment-sort__like-count__filter" && e.target.className != "search-result__comment-sort__select") {
+        $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text('指定なし');
+        $('.search-result__comment-sort__like-count').css("background-color", "#ccc");
+        $('.search-result__comment-sort__like-count__filter').css("display", "none");
+        $('.search-result__comment-sort__like-count').css("border", "0");
+      }
+    });
+  });
+
+  // 「期間」をクリックしたらメニューを表示
+  $('.search-result__comment-sort__period').on('click', function() {
+    $('.search-result__comment-sort__period > .search-result__comment-sort__select').text('');
+    $(this).css("background-color", "#fff");
+    $('.search-result__comment-sort__period__filter').css("display", "block");
+    $(this).css("border", "1px solid #aaa");
+    $('.search-result').on('click', function(e) {
+      if (e.target.className != "search-result__comment-sort__period" && e.target.className != "search-result__comment-sort__period__filter" && e.target.className != "search-result__comment-sort__select") {
+        $('.search-result__comment-sort__period > .search-result__comment-sort__select').text('指定なし');
+        $('.search-result__comment-sort__period').css("background-color", "#ccc");
+        $('.search-result__comment-sort__period__filter').css("display", "none");
+        $('.search-result__comment-sort__period').css("border", "0");
+      }
+    });
+  });
 });

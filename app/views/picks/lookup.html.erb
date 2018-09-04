@@ -64,7 +64,7 @@
     </div>
     <!-- 公開日降順 -->
     <div class="search-result__pick-sort__desc">
-      ソート順（降順）:
+      ソート順:
       <span class="search-result__pick-sort__select">公開日</span>
     </div>
   </div>
@@ -73,13 +73,50 @@
     <div class="search-result__comment-sort__like-count">
       LIKE数：
       <span class="search-result__comment-sort__select">指定なし</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#" do %>
+        <div class="search-result__comment-sort__like-count__filter">
+          指定なし
+        </div>
+      <% end %>
+      <%= link_to "#" do %>
+        <div class="search-result__comment-sort__like-count__filter">
+          3以上
+        </div>
+      <% end %>
+      <%= link_to "#" do %>
+        <div class="search-result__comment-sort__like-count__filter">
+          10以上
+        </div>
+      <% end %>
     </div>
     <div class="search-result__comment-sort__period">
       期間：
       <span class="search-result__comment-sort__select">指定なし</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#" do %>
+        <div class="search-result__comment-sort__period__filter">
+          指定なし
+        </div>
+      <% end %>
+      <%= link_to "#" do %>
+        <div class="search-result__comment-sort__period__filter">
+          24時間以内
+        </div>
+      <% end %>
+      <%= link_to "#" do %>
+        <div class="search-result__comment-sort__period__filter">
+          1週間以内
+        </div>
+      <% end %>
+      <%= link_to "#" do %>
+        <div class="search-result__comment-sort__period__filter">
+          1ヶ月以内
+        </div>
+      <% end %>
     </div>
     <div class="search-result__comment-sort__desc">
-      ソート順（降順）：
+      ソート順：
       <span class="search-result__comment-sort__select">公開日</span>
     </div>
   </div>

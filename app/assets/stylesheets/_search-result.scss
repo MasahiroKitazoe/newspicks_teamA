@@ -114,6 +114,15 @@
       color: #221f20;
       padding: 0 10px;
       float: left;
+      min-width: 102.484px;
+      cursor: pointer;
+      float: left;
+      &__filter {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__period {
       display: inline-block;
@@ -121,6 +130,15 @@
       color: #221f20;
       padding: 0 10px;
       float: left;
+      min-width: 102.484px;
+      cursor: pointer;
+      float: left;
+      &__filter {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__desc {
       display: inline-block;
