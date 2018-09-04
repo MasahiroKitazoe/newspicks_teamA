@@ -1,4 +1,4 @@
-json.array! @filtered_picks do |filtered_pick|
+json.array! @comments_filtered do |filtered_pick|
   json.id filtered_pick.id
   json.image filtered_pick.image
   json.comments_count filtered_pick.comments.count
