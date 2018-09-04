@@ -153,6 +153,59 @@ $(function() {
     $('#searched-picks').append(html);
   }
 
+  // フィルター後のcommentをappendする処理
+  function appendComment(comment) {
+    var html = `<div class="search-result__comments__comment">
+                  <div class="search-result__comments__comment__user">
+                    <img src="${comment_user.image}", class="search-result__comments__comment__user__image">
+                    <div class="search-result__comments__comment__user__info">
+                      <div class="search-result__comments__comment__user__info__name">
+                        ${comment_user_last_name} ${comment_user_first_name}
+                      </div>
+                      <div class="search-result__comments__comment__user__info__more">
+                        <span class="search-result__comments__comment__user__info__more__position">
+                          ${comment_user_position}
+                        </span>
+                        <span class="search-result__comments__comment__user__info__more__date">
+                          ${comment.created_at}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="search-result__comments__comment__body">
+                    ${comment.comment}
+                  </div>
+                  <div class="search-result__comments__comment__like">
+                    <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
+                    <div class="search-result__comments__comment__like__likes-count">
+                      ${comment_like_count} Likes
+                    </div>
+                  </div>
+                  <div class="search-result__comments__comment__news">
+                    <div class="search-result__comments__comment__news__title">
+                      ${comment_pick_title}
+                    </div>
+                    <div class="search-result__comments__comment__news__info">
+                      <span class="search-result__comments__comment__news__info__source">
+                        ${comment_pick_source}
+                      </span> |
+                      <span class="search-result__comments__comment__news__info__date">
+                        ${comment_pick_created_at}
+                      </span>
+                    </div>
+                  </div>
+                </div>`
+    $('#searched-comments').append(html);
+  }
+
+  // フィルター後commentが存在しない場合の処理
+  function appendNoComment(messgae) {
+    var html = `<div class="search-result__comments__comment">
+                  ${message}
+                </div>`
+    $('#searched-comments').append(html);
+  }
+
   // Ajax処理
   // Picksフィルター
   // コメント数フィルター
@@ -213,4 +266,36 @@ $(function() {
       alert('フィルタリングに失敗しました');
     })
   })
+
+  // Commentsフィルター
+  // Like数フィルター
+  $('.comment-likes__filter').on('click', function(e) {
+    e.preventDefault();
+    var num = $(e.currentTarget).data('num');
+    var keyword = $(e.currentTarget).data('keyword');
+    // console.log(num); -> num == {num: 0}
+    $.ajax({
+      type: 'GET',
+      url: '/picks/lookup',
+      data: { num,
+              keyword },
+      dataType: 'json'
+    })
+    .done(function(comments) {
+      // 既に表示しているpicksを空に
+      $('#searched-comments').empty();
+      // 取得したpicksを一個ずつappend
+      if (comments.length !== 0) {
+        comments.forEach(function(comment) {
+          appendComment(comment);
+        });
+      } else {
+        appendNoComment("該当するコメントがありません")
+      }
+    })
+    .fail(function() {
+      alert('フィルタリングに失敗しました');
+    })
+  });
+  // 期間フィルター
 });
