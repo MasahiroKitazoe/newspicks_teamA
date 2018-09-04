@@ -7,6 +7,9 @@ $(function() {
     $('#select-picks').css("border-bottom", "2px solid #221f20");
     $('#select-comments').css("border-bottom", "2px solid #fff");
     $('#select-users').css("border-bottom", "2px solid #fff");
+    $('#select-picks').css("color", "#221f20");
+    $('#select-comments').css("color", "rgb(153, 153, 153)");
+    $('#select-users').css("color", "rgb(153, 153, 153)");
     $('#comment-sort').css("display", "none");
     $('#pick-sort').css("display", "block");
   });
@@ -18,6 +21,9 @@ $(function() {
     $('#select-picks').css("border-bottom", "2px solid #fff");
     $('#select-users').css("border-bottom", "2px solid #fff");
     $('#select-comments').css("border-bottom", "2px solid #221f20");
+    $('#select-comments').css("color", "#221f20");
+    $('#select-picks').css("color", "rgb(153, 153, 153)");
+    $('#select-users').css("color", "rgb(153, 153, 153)");
     $('#pick-sort').css("display", "none");
     $('#comment-sort').css("display", "block");
   });
@@ -29,6 +35,9 @@ $(function() {
     $('#select-picks').css("border-bottom", "2px solid #fff");
     $('#select-comments').css("border-bottom", "2px solid #fff");
     $('#select-users').css("border-bottom", "2px solid #221f20");
+    $('#select-users').css("color", "#221f20");
+    $('#select-comments').css("color", "rgb(153, 153, 153)");
+    $('#select-picks').css("color", "rgb(153, 153, 153)");
     $('#pick-sort').css("display", "none");
     $('#comment-sort').css("display", "none");
   });
