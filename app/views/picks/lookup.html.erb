@@ -20,17 +20,17 @@
       PICK数：
       <span class="search-result__pick-sort__select">指定なし</span>
       <!-- 以下はクリック時出現 -->
-      <%= link_to "#", data: {num: 0}, id: 'pick-count__filter__0' do %>
+      <%= link_to "#", data: {num: 0}, class: 'pick-count__filter' do %>
         <div class="search-result__pick-sort__pick-count__filter">
           指定なし
         </div>
       <% end %>
-      <%= link_to "#", data: {num: 3}, id: 'pick-count__filter__3' do %>
+      <%= link_to "#", data: {num: 3}, class: 'pick-count__filter' do %>
         <div class="search-result__pick-sort__pick-count__filter">
           3以上
         </div>
       <% end %>
-      <%= link_to "#", data: {num: 10}, id: 'pick-count__filter__10' do %>
+      <%= link_to "#", data: {num: 10}, class: 'pick-count__filter' do %>
         <div class="search-result__pick-sort__pick-count__filter">
           10以上
         </div>

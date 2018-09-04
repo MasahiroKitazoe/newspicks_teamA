@@ -105,10 +105,11 @@ $(function() {
   });
 
   // Ajax処理
-  $('#pick-count__filter__0').on('click', function(e) {
+  $('.pick-count__filter').on('click', function(e) {
     e.preventDefault();
-    var num = $('#pick-count__filter__0').data();
+    var num = $(e.currentTarget).data('num');
     // console.log(num); -> num == {num: 0}
+    console.log(num);
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',

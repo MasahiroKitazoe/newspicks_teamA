@@ -88,6 +88,9 @@ class PicksController < ApplicationController
     @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
     @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
+    if params[:num]
+      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:num].to_i}
+    end
     respond_to do |format|
       format.html
       format.json
