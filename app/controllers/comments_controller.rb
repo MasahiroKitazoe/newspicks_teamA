@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     @pick = Pick.find(comment_params[:pick_id])
-    if Comment.where(pick_id: comment_params[:pick_id]).blank?
+    if Comment.where("pick_id = ? and user_id = ?",comment_params[:pick_id], current_user).blank?
       @comment = Comment.create(comment_params)
       @pick.reload
       respond_to do |format|
