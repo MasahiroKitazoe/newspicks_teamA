@@ -104,6 +104,46 @@ $(function() {
     });
   });
 
+  // フィルター後のpickをappendする処理
+  function appendPick(pick) {
+    var html = `<div class="search-result__picks__news">
+                  <div>
+                      <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
+                        <div class="search-result__picks__news__image__back">
+                        </div>
+                        <span class="search-result__picks__news__image__picks-count">
+                          <span class="search-result__picks__news__image__picks-count__num">
+                            ${pick.comments_count}
+                          </span>
+                          <span class="search-result__picks__news__image__picks-count__text">
+                            Picks
+                          </span>
+                        </span>
+                      </div>
+                      <div class="search-result__picks__news__above">
+                        <div class="search-result__picks__news__above__title">
+                          ${pick.title}
+                        </div>
+                        <div class="search-result__picks__news__above__source">
+                          ${pick.source} | ${pick.created_at}
+                        </div>
+                      </div>
+                      <div class="search-result__picks__news__body">
+                        ${pick.body}
+                      </div>
+                  </div>
+                </div>`
+    $('#searched-picks').append(html);
+  }
+
+  // フィルター後pickが存在しない場合の処理
+  function appendNoPick(message) {
+    var html = `<div class="search-result__picks__news">
+                  ${message}
+                </div>`
+    $('#searched-picks').append(html);
+  }
+
   // Ajax処理
   $('.pick-count__filter').on('click', function(e) {
     e.preventDefault();
@@ -117,10 +157,19 @@ $(function() {
       dataType: 'json'
     })
     .done(function(picks) {
+      // 既に表示しているpicksを空に
+      $('#searched-picks').empty();
       // 取得したpicksを一個ずつappend
+      if (picks.length !== 0) {
+        picks.forEach(function(pick) {
+          appendPick(pick);
+        });
+      } else {
+        appendNoPick("該当する記事がありません")
+      }
     })
     .fail(function() {
-
+      alert('フィルタリングに失敗しました');
     })
   });
 });
