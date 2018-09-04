@@ -54,7 +54,8 @@
       }
     }
   }
-  &__sort {
+  &__pick-sort {
+    display: block;
     height: 50px;
     border-bottom: 1px solid #aaa;
     padding: 0 30px ;
@@ -65,6 +66,28 @@
       color: #221f20;
       padding: 0 10px;
     }
+    &__period {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__desc {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__select {
+      color: #777;
+    }
+  }
+  &__comment-sort {
+    display: none;
+    height: 50px;
+    border-bottom: 1px solid #aaa;
+    padding: 0 30px ;
+    line-height: 50px;
     &__like-count {
       display: inline-block;
       font-size: 12px;

@@ -7,6 +7,8 @@ $(function() {
     $('#select-picks').css("border-bottom", "2px solid #221f20");
     $('#select-comments').css("border-bottom", "2px solid #fff");
     $('#select-users').css("border-bottom", "2px solid #fff");
+    $('#comment-sort').css("display", "none");
+    $('#pick-sort').css("display", "block");
   });
   // コメントクリック時に@commentsを表示
   $('#select-comments').on('click', function() {
@@ -16,6 +18,8 @@ $(function() {
     $('#select-picks').css("border-bottom", "2px solid #fff");
     $('#select-users').css("border-bottom", "2px solid #fff");
     $('#select-comments').css("border-bottom", "2px solid #221f20");
+    $('#pick-sort').css("display", "none");
+    $('#comment-sort').css("display", "block");
   });
   // トップユーザー時に@usersを表示
   $('#select-users').on('click', function() {
@@ -25,5 +29,7 @@ $(function() {
     $('#select-picks').css("border-bottom", "2px solid #fff");
     $('#select-comments').css("border-bottom", "2px solid #fff");
     $('#select-users').css("border-bottom", "2px solid #221f20");
+    $('#pick-sort').css("display", "none");
+    $('#comment-sort').css("display", "none");
   });
 });
