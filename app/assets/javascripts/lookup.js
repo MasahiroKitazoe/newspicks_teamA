@@ -52,6 +52,20 @@ $(function() {
   });
 
   // 「期間」をクリックしたらメニューを表示
+  $('.search-result__pick-sort__period').on('click', function() {
+    $('.search-result__pick-sort__period > .search-result__pick-sort__select').text('');
+    $(this).css("background-color", "#fff");
+    $('.search-result__pick-sort__period__filter').css("display", "block");
+    $(this).css("border", "1px solid #aaa");
+    $('.search-result').on('click', function(e) {
+      if (e.target.className != "search-result__pick-sort__period" && e.target.className != "search-result__pick-sort__period__filter" && e.target.className != "search-result__pick-sort__select") {
+        $('.search-result__pick-sort__period > .search-result__pick-sort__select').text('指定なし');
+        $('.search-result__pick-sort__period').css("background-color", "#ccc");
+        $('.search-result__pick-sort__period__filter').css("display", "none");
+        $('.search-result__pick-sort__period').css("border", "0");
+      }
+    });
+  });
 
   // Comment
 });
