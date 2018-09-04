@@ -50,30 +50,24 @@
             <%= render "new_comment", pick: @pick %>
               <hr>
               <div id="user-comments">
-                <% unless @comments_recommend.empty? %>
-                <div class="populars" style="display: block">
+                <div class="populars" <% if @comments_recommend.empty? %>style="display: none"<% end %>>
                   <div class="section-header">注目のコメント</div>
                   <% @comments_recommend.each do |comment| %>
                     <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
-                <% end %>
-                <% unless @comments_following.empty? %>
-                <div class="followings" style="display: block">
+                <div class="followings" <% if @comments_following.empty? %>style="display: none"<% end %>>
                   <div class="section-header">フォローしているユーザー</div>
                   <% @comments_following.each do |comment| %>
                     <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
-                <% end %>
-                <% unless @comments_other.empty? %>
-                <div class="recommends" style="display: block">
+                <div class="recommends" <% if @comments_other.empty? %>style="display: none"<% end %>>
                   <div class="section-header">おすすめのユーザー</div>
                   <% @comments_other.each do |comment| %>
                     <%= render partial: "comment", locals: {comment: comment, pick: @pick} %>
                   <% end %>
                 </div>
-              <% end %>
               </div>
             </div>
           </div>
