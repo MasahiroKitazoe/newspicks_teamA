@@ -116,5 +116,11 @@ $(function() {
       data: { num },
       dataType: 'json'
     })
+    .done(function(picks) {
+      // 取得したpicksを一個ずつappend
+    })
+    .fail(function() {
+
+    })
   });
 });
