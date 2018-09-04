@@ -89,6 +89,7 @@ $(function() {
     if (windowWidth < 1300) {
       $('.side-bar').css("display", "none");
       $('.content').css("width", "100vw");
+      $('.search-result').css("width", "100vw");
       $('.content__eyecatch__main').css("width", "100vw");
       $('.content__eyecatch__sub').css("display", "none");
       $('.content__top-news__newest').css("display", "none");
@@ -96,6 +97,7 @@ $(function() {
     } else {
       $('.side-bar').css("display", "block");
       $('.content').css("width", "calc(85vw - 10px)");
+      $('.search-result').css("width", "calc(85vw - 11px)");
       $('.content__eyecatch__main').css("width", "calc(55vw - 30px)");
       $('.content__eyecatch__sub').css("display", "block");
       $('.content__top-news__newest').css("display", "block");

@@ -29,6 +29,10 @@
         left: 15px;
       }
     }
+    &__search-form {
+      width: 100%;
+      height: 100%;
+    }
     &__input {
       background-color: #555;
       border: 1px solid #222;
@@ -39,6 +43,9 @@
       width: 100%;
       height: calc(100% - 5px);
       outline: none;
+    }
+    &__search-btn {
+      display: none;
     }
     &__user {
       float: right;

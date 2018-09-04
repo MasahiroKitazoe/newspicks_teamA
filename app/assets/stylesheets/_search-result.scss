@@ -1,0 +1,314 @@
+.search-result {
+  background: #ccc;
+  width: calc(85vw - 11px);
+  height: calc(100vh - 40px);
+  border-left: 1px solid #eee;
+  float: right;
+  padding-top: 50px;
+  overflow: scroll;
+  &__class {
+    background-color: #fff;
+    height: 50px;
+    padding: 10px 30px 0;
+    &__picks {
+      display: inline-block;
+      width: 118px;
+      color: #221f20;
+      border-bottom: 2px solid #221f20;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      height: 48px;
+      line-height: 48px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7
+      }
+    }
+    &__comments {
+      display: inline-block;
+      width: 118px;
+      color: rgb(153, 153, 153);
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      height: 48px;
+      line-height: 48px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7
+      }
+    }
+    &__users {
+      display: inline-block;
+      width: 118px;
+      color: rgb(153, 153, 153);
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      height: 48px;
+      line-height: 48px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7
+      }
+    }
+  }
+  &__pick-sort {
+    display: block;
+    height: 50px;
+    border-bottom: 1px solid #aaa;
+    padding: 0 30px ;
+    line-height: 50px;
+    &__pick-count {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__period {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__desc {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__select {
+      color: #777;
+    }
+  }
+  &__comment-sort {
+    display: none;
+    height: 50px;
+    border-bottom: 1px solid #aaa;
+    padding: 0 30px ;
+    line-height: 50px;
+    &__like-count {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__period {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__desc {
+      display: inline-block;
+      font-size: 12px;
+      color: #221f20;
+      padding: 0 10px;
+    }
+    &__select {
+      color: #777;
+    }
+  }
+  &__picks {
+    padding: 20px 40px;
+    display: block;
+    &__news {
+      background-color: #fff;
+      padding: 16px;
+      margin-bottom: 16px;
+      min-height: 108px;
+      &__image {
+        background-position: center;
+        background-size: cover;
+        margin-right: 16px;
+        width: 250px;
+        height: 108px;
+        float: left;
+        position: relative;
+        &__back {
+          position: absolute;
+          height: 31px;
+          width: 61px;
+          right: 0;
+          top: 10px;
+          background-color: rgb(0, 0, 0);
+          opacity: 0.3;
+        }
+        &__picks-count {
+          position: absolute;
+          right: 0;
+          top: 10px;
+          padding: 3px;
+          height: 25px;
+          width: 55px;
+          border: 1px solid #fff;
+          &__num {
+            font-weight: bold;
+            font-size: 12px;
+            color: #FFF;
+          }
+          &__text {
+            font-size: 12px;
+            color: #FFF;
+          }
+        }
+      }
+      &__above {
+        &__title {
+          font-weight: 700;
+          font-size: 16px;
+          max-height: 20px;
+        }
+        &__source {
+          font-size: 12px;
+          color: #999;
+          padding: 7px 0;
+        }
+      }
+      &__body {
+        font-size: 14px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+    }
+  }
+  &__comments {
+    padding: 20px 40px;
+    display: none;
+    &__comment {
+      background-color: #fff;
+      padding: 16px;
+      margin-bottom: 16px;
+      &__user {
+        &__image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          float: left;
+        }
+        &__info {
+          padding: 0 0 16px 20px;
+          display: inline-block;
+          &__name {
+            font-size: 14px;
+            font-weight: bold;
+          }
+          &__more {
+            color: #999;
+            font-size: 12px;
+            &__position {
+
+            }
+            &__date {
+
+            }
+          }
+        }
+      }
+      &__body {
+        font-size: 14px;
+        width: 900px;
+        padding-bottom: 16px;
+        float: left;
+      }
+      &__like {
+        float: right;
+        margin-right: 16px;
+        text-align: center;
+        &__icon {
+          width: 10px;
+          height: 14px;
+        }
+        &__likes-count {
+          font-size: 90%;
+          color: #B1B1B3;
+        }
+      }
+      &__news {
+        clear: both;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+        &__title {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &__info {
+          font-size: 12px;
+          color: #999;
+          &__source {
+
+          }
+          &__date {
+
+          }
+        }
+      }
+    }
+  }
+  &__users {
+    padding: 20px 40px;
+    display: none;
+    &__user {
+      width: 328px;
+      height: 98px;
+      padding: 16px;
+      background-color: #fff;
+      float: left;
+      margin: 0 16px 16px 0;
+      &__above {
+        min-height: 54px;
+        &__image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          float: left;
+        }
+        &__info {
+          display: inline-block;
+          margin-left: 20px;
+          &__name {
+            font-size: 14px;
+            font-weight: bold;
+          }
+          &__more {
+            font-size: 12px;
+            color: #999;
+          }
+        }
+      }
+      &__bottom {
+        padding-top: 10px;
+        &__follow {
+          font-size: 8px;
+          color: #999;
+          float: left;
+          text-align: center;
+          padding-right: 20px;
+          &__num {
+            color: #221f20;
+            font-size: 12px;
+          }
+        }
+        &__follower {
+          font-size: 8px;
+          color: #999;
+          float: left;
+          text-align: center;
+          &__num {
+            color: #221f20;
+            font-size: 12px;
+          }
+        }
+        &__btn {
+          &__image {
+            height: 24px;
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
