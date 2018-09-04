@@ -179,5 +179,29 @@ $(function() {
   // 期間フィルター
   $('.pick-period__filter').on('click', function(e) {
     e.preventDefault();
+    var time = $(e.currentTarget).data('time');
+    var keyword = $(e.currentTarget).data('keyword');
+    $.ajax({
+      type: 'GET',
+      url: '/picks/lookup',
+      data: { time,
+              keyword },
+      dataType: 'json'
+    })
+    .done(function(picks) {
+      // 既に表示しているpicksを空に
+      $('#searched-picks').empty();
+      // 取得したpicksを一個ずつappend
+      if (picks.length !== 0) {
+        picks.forEach(function(pick) {
+          appendPick(pick);
+        });
+      } else {
+        appendNoPick("該当する記事がありません")
+      }
+    })
+    .fail(function() {
+      alert('フィルタリングに失敗しました');
+    })
   })
 });
