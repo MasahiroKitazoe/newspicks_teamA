@@ -3,7 +3,8 @@
     background: #EFEFEF;
     float: right;
     width: calc(85vw - 10px);
-    height: 100%;
+    height: 100vh;
+    overflow: scroll;
     @include tab();
     .tab-content{
       width: 95%;
