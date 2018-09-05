@@ -1,0 +1,48 @@
+<div class="items-user-ranking">
+  <% @user_ranking.each_with_index do |user, i| %>
+    <%= link_to "#", class: "a-user-in-ranking" do %>
+      <div class="user-ranking-wrapper">
+        <div class="ranking-order">
+          <span class="_<%= i + 1 %>"><%= i + 1 %></span>
+        </div>
+        <div class="usercover">
+          <%= image_tag current_user.image.url, class: "usercover__icon" %>
+        </div>
+        <div class="userinfo">
+          <div class="name-wrapper">
+            <div class="username _ellipsised" style="overflow: initial;">
+              <%= user.last_name %> <%= user.first_name %>
+            </div>
+            <div class="picker-badges small">
+              <div class="picker-badge small">
+                <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+              </div>
+            </div>
+          </div>
+          <div class="title _ellipsised" style="overflow: initial;">
+            <%= user.position %>
+          </div>
+          <div class="likes">
+            <span class="t">週間 Liked ユーザー数: </span><em class="v">2140</em>
+          </div>
+        </div>
+        <% if @users[i].id != current_user.id %>
+          <% if current_user.following?(@users[i]) %>
+            <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+              <%= link_to "/unfollow/#{@users[i].id}", class: "destroy-relation", data: @users[i].id, method: :delete do %>
+                <img src="images/following-btn.png">
+              <% end %>
+            </div>
+          <% else %>
+            <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+              <%= link_to "/follow/#{@users[i].id}", class: "create-relation", data: @users[i].id, method: :post do %>
+                <img src="images/follow-btn.png">
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
