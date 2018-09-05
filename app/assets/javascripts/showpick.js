@@ -12,6 +12,17 @@ $(function() {
     $(this).css("width", "284px");
   });
 
+// 表示されたpopoverの非表示に戻す条件
+  $('.news-comment').on('click',function(e) {
+    if(
+      (!$(e.target).closest('.menu-btn').length && $('.comment-menu .popover').css('display') == 'block') ||
+      (!$(e.target).closest('.drop-down-button').length && $('.drop-down-button .popover').css('display') == 'block')
+      ) {
+      e.preventDefault();
+      $('.comment-menu .popover').css('display', 'none');
+      $('.drop-down-button .popover').css('display', 'none');
+    };
+  })
 
 // current_userのコメント欄に対するJavascript
   // current_userのコメント欄で横のボタンをクリックした場合に表示
@@ -20,14 +31,6 @@ $(function() {
     if($('.comment-menu .popover').css('display') == 'none') {
       $('.popover').css('display', 'block');
     }
-  })
-
-  // current_userのコメント欄で編集・削除ボタンがある時その他のコメント欄をクリックした場合に非表示
-  $('.news-comment').on('click',function(e) {
-    if(!$(e.target).closest('.menu-btn').length && $('.comment-menu .popover').css('display') == 'block') {
-      e.preventDefault();
-      $('.comment-menu .popover').css('display', 'none');
-    };
   })
 
   // 編集ボタンをクリックすることで編集画面を表示。
@@ -39,6 +42,14 @@ $(function() {
   })
 
   // 編集ボタンを押した後に、キャンセルをクリックすると編集画面を閉じる。
+  $('.news-comment').on('click','.drop-down-button', function(e) {
+    console.log('good morning!')
+    e.preventDefault();
+    $('.drop-down-button .popover').css('display', 'block');
+  })
+
+// 自分以外のユーザーで、操作を行う際のjavascript
+  // 編集画面の表示
   $('.cancel-wrapper').on('click', function(e) {
     e.preventDefault();
     $('.comment-wrapper').css('display', 'block');
@@ -65,9 +76,6 @@ $(function() {
 
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
-  })
-  $('.drop-down-button').on("click", function() {
-    console.log('hello!')
   })
 
 
