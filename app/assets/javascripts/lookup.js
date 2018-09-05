@@ -245,12 +245,12 @@ $(function() {
   // 期間フィルター
   $('.pick-period__filter').on('click', function(e) {
     e.preventDefault();
-    var time = $(e.currentTarget).data('time');
+    var pick_time = $(e.currentTarget).data('pick-time');
     var keyword = $(e.currentTarget).data('keyword');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
-      data: { time,
+      data: { pick_time,
               keyword },
       dataType: 'json'
     })
@@ -302,4 +302,32 @@ $(function() {
     })
   });
   // 期間フィルター
+  $('.comment-period__filter').on('click', function(e) {
+    e.preventDefault();
+    var time = $(e.currentTarget).data('time');
+    var keyword = $(e.currentTarget).data('keyword');
+    // console.log(num); -> num == {num: 0}
+    $.ajax({
+      type: 'GET',
+      url: '/picks/lookup',
+      data: { time,
+              keyword },
+      dataType: 'json'
+    })
+    .done(function(comments) {
+      // 既に表示しているpicksを空に
+      $('#searched-comments').empty();
+      // 取得したpicksを一個ずつappend
+      if (comments.length !== 0) {
+        comments.forEach(function(comment) {
+          appendComment(comment);
+        });
+      } else {
+        appendNoComment("該当するコメントがありません")
+      }
+    })
+    .fail(function() {
+      alert('フィルタリングに失敗しました');
+    })
+  });
 });

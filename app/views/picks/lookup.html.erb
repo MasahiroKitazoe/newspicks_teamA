@@ -41,22 +41,22 @@
       期間：
       <span class="search-result__pick-sort__select">指定なし</span>
       <!-- 以下はクリック時出現 -->
-      <%= link_to "#", data: {time: Time.current.years_ago(1), keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+      <%= link_to "#", data: {pick_time: Time.current.years_ago(1), keyword: params[:keyword]}, class: 'pick-period__filter' do %>
         <div class="search-result__pick-sort__period__filter">
           指定なし
         </div>
       <% end %>
-      <%= link_to "#", data: {time: Time.current - 1.days, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+      <%= link_to "#", data: {pick_time: Time.current - 1.days, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
         <div class="search-result__pick-sort__period__filter">
           24時間以内
         </div>
       <% end %>
-      <%= link_to "#", data: {time: Time.current - 7.days, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+      <%= link_to "#", data: {pick_time: Time.current - 7.days, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
         <div class="search-result__pick-sort__period__filter">
           1週間以内
         </div>
       <% end %>
-      <%= link_to "#", data: {time: Time.current - 1.month, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+      <%= link_to "#", data: {pick_time: Time.current - 1.month, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
         <div class="search-result__pick-sort__period__filter">
           1ヶ月以内
         </div>
