@@ -41,30 +41,6 @@ class User < ApplicationRecord
     end
   end
 
-  protected
-  # ユーザーのGoogleメールアドレスからユーザーを検索
-  # 登録ずみユーザーはGoogleアカウントと関連付け
-  # 未登録ユーザーはGoogleアカウント情報からユーザー登録
-  def self.find_for_google(auth)
-    user = User.find_by(email: auth.info.email)
-
-    if user
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.access_token = auth.credentials.token
-      return user
-    else
-      user = User.create(first_name: auth.info.first_name,
-                         email: auth.info.email,
-                         last_name:  auth.info.last_name,
-                         provider:   auth.provider,
-                         uid:        auth.uid,
-                         access_token: auth.credentials.token,
-                         password: Devise.friendly_token[0, 20])
-      return user
-    end
-  end
-
   def self.rank_user(limit_num)
     #1週間以内に生成されたlikeのidを配列に格納
     like_ids = Like.where(created_at: [7.days.ago..Time.now]) { |like| like.id }
@@ -99,5 +75,29 @@ class User < ApplicationRecord
     end
 
     return target_users, weekly_likes
+  end
+
+  protected
+  # ユーザーのGoogleメールアドレスからユーザーを検索
+  # 登録ずみユーザーはGoogleアカウントと関連付け
+  # 未登録ユーザーはGoogleアカウント情報からユーザー登録
+  def self.find_for_google(auth)
+    user = User.find_by(email: auth.info.email)
+
+    if user
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.access_token = auth.credentials.token
+      return user
+    else
+      user = User.create(first_name: auth.info.first_name,
+                         email: auth.info.email,
+                         last_name:  auth.info.last_name,
+                         provider:   auth.provider,
+                         uid:        auth.uid,
+                         access_token: auth.credentials.token,
+                         password: Devise.friendly_token[0, 20])
+      return user
+    end
   end
 end
