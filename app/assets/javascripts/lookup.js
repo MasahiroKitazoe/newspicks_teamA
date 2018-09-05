@@ -106,7 +106,7 @@ $(function() {
 
   // フィルター後のpickをappendする処理
   function appendPick(pick) {
-    var html = `<div class="search-result__picks__news" data-id="${pick.id}">
+    var html = `<div class="search-result__picks__news">
                   <div>
                       <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
                         <div class="search-result__picks__news__image__back">
@@ -206,18 +206,12 @@ $(function() {
     e.preventDefault();
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
-    var appearedPicks = document.querySelectorAll('.search-result__picks__news');
-    var pick_ids = [];
-    appearedPicks.forEach(function(appearedPick) {
-      var pick_id = $(appearedPick).data('id');
-      pick_ids.push(pick_id);
-    });
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
+      // pick_timeを送って再建策
       data: { pick_num,
-              keyword,
-              pick_ids },
+              keyword },
       dataType: 'json'
     })
     .done(function(picks) {
@@ -232,6 +226,8 @@ $(function() {
         appendNoPick("該当する記事がありません")
       }
       $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text($(e.currentTarget).text());
+      // ここにデータをセットして期間フィルタ時にリクエストと一緒に送信する
+      $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('data-pick-num', pick_num);
       $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "inline-block");
       $('.search-result__pick-sort__pick-count').css("background-color", "#eee");
       $('.search-result__pick-sort__pick-count__filter').css("display", "none");
@@ -246,18 +242,14 @@ $(function() {
     e.preventDefault();
     var pick_time = $(e.currentTarget).data('pick-time');
     var keyword = $(e.currentTarget).data('keyword');
-    var appearedPicks = document.querySelectorAll('.search-result__picks__news');
-    var pick_ids = [];
-    appearedPicks.forEach(function(appearedPick) {
-      var pick_id = $(appearedPick).data('id');
-      pick_ids.push(pick_id);
-    });
+    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').data('pickNum');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
+      // pick_numを送って再建策
       data: { pick_time,
               keyword,
-              pick_ids },
+              pick_num },
       dataType: 'json'
     })
     .done(function(picks) {
