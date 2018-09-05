@@ -83,7 +83,6 @@ class PicksController < ApplicationController
     end
   end
 
-  # ヘッダーからの検索
   def lookup
     @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)

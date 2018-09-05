@@ -43,14 +43,11 @@ $(function() {
   });
 
   // ソート/フィルター
-  // Pick
-  // 「PICK数」をクリックしたらメニューを表示
   $('.search-result__pick-sort__pick-count').on('click', function() {
     $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__pick-sort__pick-count__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
-    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__pick-count" && e.target.className != "search-result__pick-sort__pick-count__filter" && e.target.className != "search-result__pick-sort__select") {
         $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "inline-block");
@@ -61,13 +58,11 @@ $(function() {
     });
   });
 
-  // 「期間」をクリックしたらメニューを表示
   $('.search-result__pick-sort__period').on('click', function() {
     $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__pick-sort__period__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
-    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__period" && e.target.className != "search-result__pick-sort__period__filter" && e.target.className != "search-result__pick-sort__select") {
         $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "inline-block");
@@ -79,13 +74,11 @@ $(function() {
   });
 
   // Comment
-  // 「LIKE数」をクリックしたらメニューを表示
   $('.search-result__comment-sort__like-count').on('click', function() {
     $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__comment-sort__like-count__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
-    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__like-count" && e.target.className != "search-result__comment-sort__like-count__filter" && e.target.className != "search-result__comment-sort__select") {
         $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "inline-block");
@@ -96,13 +89,11 @@ $(function() {
     });
   });
 
-  // 「期間」をクリックしたらメニューを表示
   $('.search-result__comment-sort__period').on('click', function() {
     $('.search-result__comment-sort__period > .search-result__comment-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__comment-sort__period__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
-    // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__period" && e.target.className != "search-result__comment-sort__period__filter" && e.target.className != "search-result__comment-sort__select") {
         $('.search-result__comment-sort__period > .search-result__comment-sort__select').css("display", "inline-block");
@@ -211,8 +202,6 @@ $(function() {
   }
 
   // Ajax処理
-  // Picksフィルター
-  // コメント数フィルター
   $('.pick-comments__filter').on('click', function(e) {
     e.preventDefault();
     var pick_num = $(e.currentTarget).data('pick-num');
@@ -247,7 +236,6 @@ $(function() {
     })
   });
 
-  // 期間フィルター
   $('.pick-period__filter').on('click', function(e) {
     e.preventDefault();
     var pick_time = $(e.currentTarget).data('pick-time');
@@ -282,7 +270,6 @@ $(function() {
   })
 
   // Commentsフィルター
-  // Like数フィルター
   $('.comment-likes__filter').on('click', function(e) {
     e.preventDefault();
     var comment_num = $(e.currentTarget).data('comment-num');
@@ -316,7 +303,7 @@ $(function() {
       alert('フィルタリングに失敗しました');
     })
   });
-  // 期間フィルター
+
   $('.comment-period__filter').on('click', function(e) {
     e.preventDefault();
     var comment_time = $(e.currentTarget).data('comment-time');
