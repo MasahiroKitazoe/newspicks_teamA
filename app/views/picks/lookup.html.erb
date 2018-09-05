@@ -13,28 +13,107 @@
     </div>
   </div>
   <!-- ソート -->
+  <!-- Picksのソート/フィルター -->
   <div class="search-result__pick-sort" id="pick-sort">
+    <!-- PICK数 -->
     <div class="search-result__pick-sort__pick-count">
       PICK数：
       <span class="search-result__pick-sort__select">指定なし</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#", data: {pick_num: 0, keyword: params[:keyword]}, class: 'pick-comments__filter' do %>
+        <div class="search-result__pick-sort__pick-count__filter">
+          指定なし
+        </div>
+      <% end %>
+      <%= link_to "#", data: {pick_num: 3, keyword: params[:keyword]}, class: 'pick-comments__filter' do %>
+        <div class="search-result__pick-sort__pick-count__filter">
+          3以上
+        </div>
+      <% end %>
+      <%= link_to "#", data: {pick_num: 10, keyword: params[:keyword]}, class: 'pick-comments__filter' do %>
+        <div class="search-result__pick-sort__pick-count__filter">
+          10以上
+        </div>
+      <% end %>
     </div>
+    <!-- 期間 -->
     <div class="search-result__pick-sort__period">
       期間：
       <span class="search-result__pick-sort__select">指定なし</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#", data: {pick_time: Time.current.years_ago(1), keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+        <div class="search-result__pick-sort__period__filter">
+          指定なし
+        </div>
+      <% end %>
+      <%= link_to "#", data: {pick_time: Time.current - 1.days, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+        <div class="search-result__pick-sort__period__filter">
+          24時間以内
+        </div>
+      <% end %>
+      <%= link_to "#", data: {pick_time: Time.current - 7.days, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+        <div class="search-result__pick-sort__period__filter">
+          1週間以内
+        </div>
+      <% end %>
+      <%= link_to "#", data: {pick_time: Time.current - 1.month, keyword: params[:keyword]}, class: 'pick-period__filter' do %>
+        <div class="search-result__pick-sort__period__filter">
+          1ヶ月以内
+        </div>
+      <% end %>
     </div>
+    <!-- 公開日降順 -->
     <div class="search-result__pick-sort__desc">
-      ソート順：
+      ソート順:
       <span class="search-result__pick-sort__select">公開日</span>
     </div>
   </div>
+  <!-- Commentsのソート/フィルター -->
   <div class="search-result__comment-sort" id="comment-sort">
     <div class="search-result__comment-sort__like-count">
       LIKE数：
       <span class="search-result__comment-sort__select">指定なし</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#", data: {comment_num: 0, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
+        <div class="search-result__comment-sort__like-count__filter">
+          指定なし
+        </div>
+      <% end %>
+      <%= link_to "#", data: {comment_num: 3, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
+        <div class="search-result__comment-sort__like-count__filter">
+          3以上
+        </div>
+      <% end %>
+      <%= link_to "#", data: {comment_num: 10, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
+        <div class="search-result__comment-sort__like-count__filter">
+          10以上
+        </div>
+      <% end %>
     </div>
     <div class="search-result__comment-sort__period">
       期間：
       <span class="search-result__comment-sort__select">指定なし</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#", data: {comment_time: Time.current.years_ago(1), keyword: params[:keyword]}, class: 'comment-period__filter' do %>
+        <div class="search-result__comment-sort__period__filter">
+          指定なし
+        </div>
+      <% end %>
+      <%= link_to "#", data: {comment_time: Time.current - 1.days, keyword: params[:keyword]}, class: 'comment-period__filter' do %>
+        <div class="search-result__comment-sort__period__filter">
+          24時間以内
+        </div>
+      <% end %>
+      <%= link_to "#", data: {comment_time: Time.current - 7.days, keyword: params[:keyword]}, class: 'comment-period__filter' do %>
+        <div class="search-result__comment-sort__period__filter">
+          1週間以内
+        </div>
+      <% end %>
+      <%= link_to "#", data: {comment_time: Time.current - 1.month, keyword: params[:keyword]}, class: 'comment-period__filter' do %>
+        <div class="search-result__comment-sort__period__filter">
+          1ヶ月以内
+        </div>
+      <% end %>
     </div>
     <div class="search-result__comment-sort__desc">
       ソート順：
