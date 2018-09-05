@@ -284,7 +284,9 @@
   <div class="content__user-ranking">
     <div class="content__user-ranking__head">
       <p class="content__user-ranking__head__name">ユーザーランキング</p>
-      <p class="content__user-ranking__head__link">ユーザーランキング 一覧を見る</p>
+      <%= link_to library_path do %>
+        <p class="content__user-ranking__head__link">ユーザーランキング 一覧を見る</p>
+      <% end %>
     </div>
     <div class="content__user-ranking__users">
       <!-- １行目 -->
@@ -334,7 +336,9 @@
   <div class="content__comment-ranking">
     <div class="content__comment-ranking__head">
       <p class="content__comment-ranking__head__name">コメントランキング</p>
-      <p class="content__comment-ranking__head__link">コメントランキング 一覧を見る</p>
+      <%= link_to library_path do %>
+        <p class="content__comment-ranking__head__link">コメントランキング 一覧を見る</p>
+      <% end %>
       <div class="content__comment-ranking__comments">
         <!-- １行目 -->
         <div class="content__comment-ranking__comments__paragraf-1">
