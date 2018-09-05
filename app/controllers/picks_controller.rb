@@ -88,29 +88,19 @@ class PicksController < ApplicationController
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
     @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
     if params[:pick_num] && params[:pick_time]
-      @comments_filtered = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     elsif params[:pick_num]
-      @comments_filtered = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
+      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
     elsif params[:pick_time]
-      @period_filtered_picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @filtered_picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     end
     if params[:comment_num] && params[:comment_time]
-      @likes_fitered = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     elsif params[:comment_num]
-      @likes_fitered = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
+      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
     elsif params[:comment_time]
-      @period_filtered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+      @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     end
-
-    # if params[:pick_num]
-    #   @comments_filtered = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
-    # elsif params[:pick_time]
-    #   @period_filtered_picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
-    # elsif params[:comment_num]
-    #   @likes_fitered = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
-    # elsif params[:comment_time]
-    #   @period_filtered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
-    # end
     respond_to do |format|
       format.html
       format.json
