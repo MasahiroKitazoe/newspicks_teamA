@@ -106,7 +106,7 @@ $(function() {
 
   // フィルター後のpickをappendする処理
   function appendPick(pick) {
-    var html = `<div class="search-result__picks__news">
+    var html = `<div class="search-result__picks__news" data-id="${pick.id}">
                   <div>
                       <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
                         <div class="search-result__picks__news__image__back">
@@ -206,7 +206,14 @@ $(function() {
     e.preventDefault();
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
-    // console.log(num); -> num == {num: 0}
+
+    var appearedPicks = document.querySelectorAll('.search-result__picks__news');
+    var pick_ids = [];
+    appearedPicks.forEach(function(appearedPick) {
+      var pick_id = $(appearedPick).data('id');
+      pick_ids.push(pick_id);
+    })
+      console.log(pick_ids);
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',

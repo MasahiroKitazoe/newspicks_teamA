@@ -125,7 +125,7 @@
     <% if @picks.length != 0 %>
       <% @picks.each do |pick| %>
         <!-- 一つのPick -->
-        <div class="search-result__picks__news">
+        <div class="search-result__picks__news" data-id=<%= pick.id %>>
           <div>
             <!-- 左部 -->
               <div class="search-result__picks__news__image" style="background-image: url(<%= pick.image %>)">
