@@ -46,14 +46,14 @@ $(function() {
   // Pick
   // 「PICK数」をクリックしたらメニューを表示
   $('.search-result__pick-sort__pick-count').on('click', function() {
-    $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text('');
+    $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__pick-sort__pick-count__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
     // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__pick-count" && e.target.className != "search-result__pick-sort__pick-count__filter" && e.target.className != "search-result__pick-sort__select") {
-        $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text('指定なし');
+        $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "inline-block");
         $('.search-result__pick-sort__pick-count').css("background-color", "#eee");
         $('.search-result__pick-sort__pick-count__filter').css("display", "none");
         $('.search-result__pick-sort__pick-count').css("border", "0");
@@ -215,6 +215,7 @@ $(function() {
   // コメント数フィルター
   $('.pick-comments__filter').on('click', function(e) {
     e.preventDefault();
+    console.log($(e.currentTarget).text());
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
     // console.log(num); -> num == {num: 0}
@@ -236,6 +237,11 @@ $(function() {
       } else {
         appendNoPick("該当する記事がありません")
       }
+      $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text($(e.currentTarget).text());
+      $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "inline-block");
+      $('.search-result__pick-sort__pick-count').css("background-color", "#eee");
+      $('.search-result__pick-sort__pick-count__filter').css("display", "none");
+      $('.search-result__pick-sort__pick-count').css("border", "0");
     })
     .fail(function() {
       alert('フィルタリングに失敗しました');
