@@ -8,7 +8,7 @@ json.array! @comments_filtered do |filtered_pick|
   json.body filtered_pick.body
 end
 
-json.array! @period_filtered do |filtered_pick|
+json.array! @period_filtered_picks do |filtered_pick|
   json.id filtered_pick.id
   json.image filtered_pick.image
   json.comments_count filtered_pick.comments.count
