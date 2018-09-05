@@ -206,19 +206,18 @@ $(function() {
     e.preventDefault();
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
-
     var appearedPicks = document.querySelectorAll('.search-result__picks__news');
     var pick_ids = [];
     appearedPicks.forEach(function(appearedPick) {
       var pick_id = $(appearedPick).data('id');
       pick_ids.push(pick_id);
-    })
-      console.log(pick_ids);
+    });
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       data: { pick_num,
-              keyword },
+              keyword,
+              pick_ids },
       dataType: 'json'
     })
     .done(function(picks) {
@@ -247,11 +246,18 @@ $(function() {
     e.preventDefault();
     var pick_time = $(e.currentTarget).data('pick-time');
     var keyword = $(e.currentTarget).data('keyword');
+    var appearedPicks = document.querySelectorAll('.search-result__picks__news');
+    var pick_ids = [];
+    appearedPicks.forEach(function(appearedPick) {
+      var pick_id = $(appearedPick).data('id');
+      pick_ids.push(pick_id);
+    });
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       data: { pick_time,
-              keyword },
+              keyword,
+              pick_ids },
       dataType: 'json'
     })
     .done(function(picks) {
