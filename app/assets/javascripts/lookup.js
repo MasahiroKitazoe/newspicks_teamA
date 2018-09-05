@@ -211,13 +211,13 @@ $(function() {
   // コメント数フィルター
   $('.pick-comments__filter').on('click', function(e) {
     e.preventDefault();
-    var num = $(e.currentTarget).data('num');
+    var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
     // console.log(num); -> num == {num: 0}
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
-      data: { num,
+      data: { pick_num,
               keyword },
       dataType: 'json'
     })

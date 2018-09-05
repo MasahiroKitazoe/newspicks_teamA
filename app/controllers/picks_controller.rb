@@ -88,8 +88,8 @@ class PicksController < ApplicationController
     @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
     @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
-    if params[:num]
-      @comments_filtered = @picks.select{|pick| pick.comments.count >= params[:num].to_i}
+    if params[:pick_num]
+      @comments_filtered = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
     elsif params[:time]
       @period_filtered = @picks.select{|pick| pick.created_at >= params[:time].to_datetime}
     end
