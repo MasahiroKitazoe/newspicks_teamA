@@ -64,14 +64,14 @@ class User < ApplicationRecord
     user_likes.sort_by {|k,v| -v}
 
     #like数の多い順にユーザーを取り出す
-    i = 1
+    i = 0
     target_users = []
     weekly_likes = []
     user_likes.each do |key, val|
       target_users << User.find(key)
       weekly_likes << val
-      return if i >= 30
       i += 1
+      return if i >= limit_num
     end
 
     return target_users, weekly_likes

@@ -6,7 +6,7 @@ class PicksController < ApplicationController
     @picks = Pick.where.not(id: top_picks_ids).order('created_at DESC')
 
     #ユーザーランキング用
-    @user_ranking, @weekly_likes = User.rank_user(30)
+    @user_ranking, @weekly_likes = User.rank_user(4)
 
     #コメントランキング用
     @comment_ranking = Comment.rank_comment(4)
