@@ -92,6 +92,9 @@ class PicksController < ApplicationController
       @comments_filtered = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
     elsif params[:time]
       @period_filtered = @picks.select{|pick| pick.created_at >= params[:time].to_datetime}
+    elsif params[:comment_num]
+      @likes_fitered = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
+      binding.pry
     end
     respond_to do |format|
       format.html

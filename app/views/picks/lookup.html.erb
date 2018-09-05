@@ -74,17 +74,17 @@
       LIKE数：
       <span class="search-result__comment-sort__select">指定なし</span>
       <!-- 以下はクリック時出現 -->
-      <%= link_to "#", data: {num: 0, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
+      <%= link_to "#", data: {comment_num: 0, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
         <div class="search-result__comment-sort__like-count__filter">
           指定なし
         </div>
       <% end %>
-      <%= link_to "#", data: {num: 3, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
+      <%= link_to "#", data: {comment_num: 3, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
         <div class="search-result__comment-sort__like-count__filter">
           3以上
         </div>
       <% end %>
-      <%= link_to "#", data: {num: 10, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
+      <%= link_to "#", data: {comment_num: 10, keyword: params[:keyword]}, class: 'comment-likes__filter' do %>
         <div class="search-result__comment-sort__like-count__filter">
           10以上
         </div>
