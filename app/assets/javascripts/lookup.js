@@ -155,6 +155,12 @@ $(function() {
 
   // フィルター後のcommentをappendする処理
   function appendComment(comment) {
+    var insertPositon = '';
+    if (comment.user_positon) {
+      insertPositon = `<span class="search-result__comments__comment__user__info__more__position">
+                          ${comment.user_position}
+                        </span>`
+    }
     var html = `<div class="search-result__comments__comment">
                   <div class="search-result__comments__comment__user">
                     <img src="${comment.user_image}", class="search-result__comments__comment__user__image">
@@ -163,9 +169,7 @@ $(function() {
                         ${comment.user_last_name} ${comment.user_first_name}
                       </div>
                       <div class="search-result__comments__comment__user__info__more">
-                        <span class="search-result__comments__comment__user__info__more__position">
-                          ${comment.user_position}
-                        </span>
+                        ${insertPositon}
                         <span class="search-result__comments__comment__user__info__more__date">
                           ${comment.created_at}
                         </span>
@@ -199,7 +203,7 @@ $(function() {
   }
 
   // フィルター後commentが存在しない場合の処理
-  function appendNoComment(messgae) {
+  function appendNoComment(message) {
     var html = `<div class="search-result__comments__comment">
                   ${message}
                 </div>`

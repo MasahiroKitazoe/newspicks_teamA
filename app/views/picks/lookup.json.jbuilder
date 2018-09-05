@@ -23,7 +23,7 @@ json.array! @likes_fitered do |filtered_comment|
   json.user_image filtered_comment.user.image.url
   json.user_last_name filtered_comment.user.last_name
   json.user_first_name filtered_comment.user.first_name
-  json.user_positon filtered_comment.user_position
+  json.user_positon filtered_comment.user.position
   json.created_at filtered_comment.created_at
   json.comment filtered_comment.comment
   json.like_count filtered_comment.likes.count
