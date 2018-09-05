@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  def unfollow
+  def undislike
     user = User.find(params[:id])
     current_user.undislike(user)
     redirect_back(fallback_location: root_path)

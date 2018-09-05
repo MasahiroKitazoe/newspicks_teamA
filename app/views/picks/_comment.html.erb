@@ -85,9 +85,11 @@
             <img src="/images/muted-btn.png">
           </div>
           <div class="muted-caption">ユーザーのコメントを非表示にしました。</div>
+          <%= link_to "/undislike/#{comment.user.id}", class: "destroy-relation", data: comment.user.id, method: :delete do %>
           <div class="unmute-button">
             <span>元に戻す</span>
           </div>
+          <% end %>
         </div>
       </div>
     </div>

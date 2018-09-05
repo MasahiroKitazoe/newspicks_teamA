@@ -211,6 +211,11 @@
             @include like_container();
           }
         }
+        &:after {
+          clear: both;
+          content: '';
+          display: block;
+        }
       }
     }
     .embedded-pick-editor{
@@ -340,6 +345,11 @@
               cursor: pointer;
             }
           }
+        }
+        &:after {
+          clear: both;
+          content: '';
+          display: block;
         }
       }
     }
