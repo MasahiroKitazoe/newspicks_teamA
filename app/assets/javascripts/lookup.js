@@ -302,6 +302,7 @@ $(function() {
         appendNoComment("該当するコメントがありません")
       }
       $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text($(e.currentTarget).text());
+      $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('data-comment-num', comment_num);
       $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "inline-block");
       $('.search-result__comment-sort__like-count').css("background-color", "#eee");
       $('.search-result__comment-sort__like-count__filter').css("display", "none");
@@ -316,12 +317,13 @@ $(function() {
     e.preventDefault();
     var comment_time = $(e.currentTarget).data('comment-time');
     var keyword = $(e.currentTarget).data('keyword');
-    // console.log(num); -> num == {num: 0}
+    var comment_num = $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').data('commentNum');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       data: { comment_time,
-              keyword },
+              keyword,
+              comment_num },
       dataType: 'json'
     })
     .done(function(comments) {
