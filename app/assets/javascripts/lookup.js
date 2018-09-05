@@ -63,14 +63,14 @@ $(function() {
 
   // 「期間」をクリックしたらメニューを表示
   $('.search-result__pick-sort__period').on('click', function() {
-    $('.search-result__pick-sort__period > .search-result__pick-sort__select').text('');
+    $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__pick-sort__period__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
     // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__pick-sort__period" && e.target.className != "search-result__pick-sort__period__filter" && e.target.className != "search-result__pick-sort__select") {
-        $('.search-result__pick-sort__period > .search-result__pick-sort__select').text('指定なし');
+        $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "inline-block");
         $('.search-result__pick-sort__period').css("background-color", "#eee");
         $('.search-result__pick-sort__period__filter').css("display", "none");
         $('.search-result__pick-sort__period').css("border", "0");
@@ -81,14 +81,14 @@ $(function() {
   // Comment
   // 「LIKE数」をクリックしたらメニューを表示
   $('.search-result__comment-sort__like-count').on('click', function() {
-    $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text('');
+    $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__comment-sort__like-count__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
     // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__like-count" && e.target.className != "search-result__comment-sort__like-count__filter" && e.target.className != "search-result__comment-sort__select") {
-        $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text('指定なし');
+        $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "inline-block");
         $('.search-result__comment-sort__like-count').css("background-color", "#eee");
         $('.search-result__comment-sort__like-count__filter').css("display", "none");
         $('.search-result__comment-sort__like-count').css("border", "0");
@@ -98,14 +98,14 @@ $(function() {
 
   // 「期間」をクリックしたらメニューを表示
   $('.search-result__comment-sort__period').on('click', function() {
-    $('.search-result__comment-sort__period > .search-result__comment-sort__select').text('');
+    $('.search-result__comment-sort__period > .search-result__comment-sort__select').css("display", "none");
     $(this).css("background-color", "#fff");
     $('.search-result__comment-sort__period__filter').css("display", "block");
     $(this).css("border", "1px solid #aaa");
     // フィルターメニューを閉じる
     $('.search-result').on('click', function(e) {
       if (e.target.className != "search-result__comment-sort__period" && e.target.className != "search-result__comment-sort__period__filter" && e.target.className != "search-result__comment-sort__select") {
-        $('.search-result__comment-sort__period > .search-result__comment-sort__select').text('指定なし');
+        $('.search-result__comment-sort__period > .search-result__comment-sort__select').css("display", "inline-block");
         $('.search-result__comment-sort__period').css("background-color", "#eee");
         $('.search-result__comment-sort__period__filter').css("display", "none");
         $('.search-result__comment-sort__period').css("border", "0");
@@ -215,7 +215,6 @@ $(function() {
   // コメント数フィルター
   $('.pick-comments__filter').on('click', function(e) {
     e.preventDefault();
-    console.log($(e.currentTarget).text());
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
     // console.log(num); -> num == {num: 0}
@@ -271,6 +270,11 @@ $(function() {
       } else {
         appendNoPick("該当する記事がありません")
       }
+      $('.search-result__pick-sort__period > .search-result__pick-sort__select').text($(e.currentTarget).text());
+      $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "inline-block");
+      $('.search-result__pick-sort__period').css("background-color", "#eee");
+      $('.search-result__pick-sort__period__filter').css("display", "none");
+      $('.search-result__pick-sort__period').css("border", "0");
     })
     .fail(function() {
       alert('フィルタリングに失敗しました');
@@ -302,6 +306,11 @@ $(function() {
       } else {
         appendNoComment("該当するコメントがありません")
       }
+      $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text($(e.currentTarget).text());
+      $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "inline-block");
+      $('.search-result__comment-sort__like-count').css("background-color", "#eee");
+      $('.search-result__comment-sort__like-count__filter').css("display", "none");
+      $('.search-result__comment-sort__like-count').css("border", "0");
     })
     .fail(function() {
       alert('フィルタリングに失敗しました');
@@ -331,6 +340,11 @@ $(function() {
       } else {
         appendNoComment("該当するコメントがありません")
       }
+      $('.search-result__comment-sort__period > .search-result__comment-sort__select').text($(e.currentTarget).text());
+      $('.search-result__comment-sort__period > .search-result__comment-sort__select').css("display", "inline-block");
+      $('.search-result__comment-sort__period').css("background-color", "#eee");
+      $('.search-result__comment-sort__period__filter').css("display", "none");
+      $('.search-result__comment-sort__period').css("border", "0");
     })
     .fail(function() {
       alert('フィルタリングに失敗しました');
