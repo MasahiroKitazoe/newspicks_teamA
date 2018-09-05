@@ -84,7 +84,12 @@ class PicksController < ApplicationController
   end
 
   def lookup
-    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
+    if params[:pick_ids]
+      @picks = Pick.where("id IN (?)", params[:pick_ids])
+    else
+      @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
+    end
+    # @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
     @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
     if params[:pick_num]
