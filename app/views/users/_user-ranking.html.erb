@@ -25,7 +25,7 @@
             <%= user.position %>
           </div>
           <div class="likes">
-            <span class="t">週間 Liked ユーザー数: </span><em class="v">2140</em>
+            <span class="t">週間 Liked ユーザー数: </span><em class="v"><%= @weekly_likes[i] %></em>
           </div>
         </div>
         <% if user.id != current_user.id %>

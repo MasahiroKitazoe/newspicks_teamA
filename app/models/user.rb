@@ -64,4 +64,40 @@ class User < ApplicationRecord
       return user
     end
   end
+
+  def self.rank_user(limit_num)
+    #1週間以内に生成されたlikeのidを配列に格納
+    like_ids = Like.where(created_at: [7.days.ago..Time.now]) { |like| like.id }
+
+    #1週間以内にlikeされた全てのコメントのidを取得し、配列に格納
+    grouped_likes = Like.group(:comment_id).where(created_at: [7.days.ago..Time.now])
+    comment_ids = grouped_likes.map { |like| like.comment_id }
+
+    #1週間以内にlikeされたコメントを取り出し、user_idでグループ化し、like数でソート
+    target_comments = Comment.where(id: comment_ids)
+    user_likes = {}
+    target_comments.each do |comment|
+      if user_likes[comment.user_id].nil?
+        user_likes[comment.user_id] = comment.likes.where(id: like_ids).count
+      else
+        user_likes[comment.user_id] += comment.likes.where(id: like_ids).count
+      end
+    end
+
+    #Like数の多い順にハッシュをソート
+    user_likes.sort_by {|k,v| -v}
+
+    #like数の多い順にユーザーを取り出す
+    i = 1
+    target_users = []
+    weekly_likes = []
+    user_likes.each do |key, val|
+      target_users << User.find(key)
+      weekly_likes << val
+      return if i >= 30
+      i += 1
+    end
+
+    return target_users, weekly_likes
+  end
 end

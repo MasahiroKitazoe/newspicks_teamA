@@ -35,7 +35,7 @@ class Comment < ApplicationRecord
       #該当commentが0件のとき、代わりに時期無制限でlikeの多いcommentを取得
       if ranking.nil?
         ids = Like.group(:comment_id).order('count_comment_id DESC').limit(limit_num).count(:comment_id).keys
-        ranking =  ids.map { |id| Comment.find(id) }
+        ranking =  ids.map { |id| Comment.find(id).include(:user) }
       end
 
       return ranking

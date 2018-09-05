@@ -4,8 +4,13 @@ class UsersController < ApplicationController
 
   def library
     @users = User.order('created_at ASC')
+
+    #コメントランキング
     @comment_ranking = Comment.rank_comment(30)
-    @user_ranking = User.all
+
+    #ユーザランキング
+    #まずは、likesテーブルから1週間以内にlikeされたものを取り出す
+    @user_ranking, @weekly_likes = User.rank_user(30)
   end
 
   def show
