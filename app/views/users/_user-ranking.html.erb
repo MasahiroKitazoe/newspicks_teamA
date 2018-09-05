@@ -13,11 +13,13 @@
             <div class="username _ellipsised" style="overflow: initial;">
               <%= user.last_name %> <%= user.first_name %>
             </div>
-            <div class="picker-badges small">
-              <div class="picker-badge small">
-                <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+            <% if user.pro %>
+              <div class="picker-badges small">
+                <div class="picker-badge small">
+                  <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
           <div class="title _ellipsised" style="overflow: initial;">
             <%= user.position %>
@@ -26,22 +28,21 @@
             <span class="t">週間 Liked ユーザー数: </span><em class="v">2140</em>
           </div>
         </div>
-        <% if @users[i].id != current_user.id %>
-          <% if current_user.following?(@users[i]) %>
-            <div class="follow-btn" id="user-follow<%= @users[i].id %>">
-              <%= link_to "/unfollow/#{@users[i].id}", class: "destroy-relation", data: @users[i].id, method: :delete do %>
-                <img src="images/following-btn.png">
-              <% end %>
+        <% if user.id != current_user.id %>
+          <% if current_user.following?(user) %>
+            <div class="follow-btn" id="user-ranking-follow<%= user.id %>">
+              <div class="destroy-relation" data="<%= user.id %>">
+                <img src="/images/following-btn.png" class="relation-btn">
+              </div>
             </div>
           <% else %>
-            <div class="follow-btn" id="user-follow<%= @users[i].id %>">
-              <%= link_to "/follow/#{@users[i].id}", class: "create-relation", data: @users[i].id, method: :post do %>
+            <div class="follow-btn" id="user-ranking-follow<%= user.id %>">
+              <div class="create-relation" data="<%= user.id %>">
                 <img src="images/follow-btn.png">
-              <% end %>
+              </div>
             </div>
           <% end %>
         <% end %>
-        </div>
       </div>
     <% end %>
   <% end %>

@@ -125,6 +125,32 @@
                 }
               }
             }
+            .follow-btn{
+                  position: absolute;
+                  right: 30px;
+                  top: 50%;
+                  margin-top: -14.5px;
+              a{
+                img{
+                  display: table-cell;
+                  height: 24px;
+                  width: auto;
+                  transition: all .1s linear;
+                  vertical-align: middle;
+                  outline: 0;
+                }
+              }
+              div{
+                img{
+                  display: table-cell;
+                  height: 24px;
+                  width: auto;
+                  transition: all .1s linear;
+                  vertical-align: middle;
+                  outline: 0;
+                }
+              }
+            }
           }
         }
       }
