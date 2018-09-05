@@ -87,6 +87,16 @@ $(function() {
     $(".comment-wrapper").css('display', 'block');
   });
 
+  $(document).on('ajax:complete', '#dislike-create-btn', function() {
+    user_id = $(this).attr('data');
+    $('.modal-comment-confirm').css('display', 'none');
+    $(".message-box-dislike").css('display', 'none');
+    $(".embedded-pick-editor").css('display', 'none');
+    $('.drop-down-button .popover').css('display', 'none');
+    $("#muted-panel-container-" + user_id).css('display', 'block');
+  });
+
+
   $('.side-bar__my-news').on("click", function() {
     console.log('hello')
   })

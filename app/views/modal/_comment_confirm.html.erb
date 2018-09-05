@@ -30,6 +30,21 @@
       </div>
     </div>
   </div>
+  <% elsif defined?(user) %>
+  <div class="background"></div>
+  <div class="modal-content-wrapper">
+    <div class="modal-content dialog">
+      <div class="message-box-dislike">
+        <div class="labels">
+          <div class="title"><%= user.last_name %> <%= user.first_name %> さんのコメントを非表示にしますか。</div>
+          <div class="message"><%= user.last_name %> <%= user.first_name %> さんのコメントは画面に表示されなくなり、<br>Like通知なども反映されません。</div>
+        </div>
+        <div class="buttons">
+          <div class="negative-button">キャンセル</div>
+          <%= link_to "OK","/dislike/#{user.id}",id: "dislike-create-btn", class: "positive-button", data: user.id, method: :post, remote: true %>
+        </div>
+    </div>
+  </div>
   <% end %>
 </div>
 
