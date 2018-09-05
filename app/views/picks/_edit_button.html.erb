@@ -12,20 +12,29 @@
   </div>
 <% else %>
   <div class="drop-down-button">
-    <div class="drop-down-button">⋮</div>
+    <div class="drop-down-button-icon">⋮</div>
     <div class="popover" style="top: 30px; left: -280px;">
-      <div class="menu-item follow-item follow" data-permitted="true" data-user="720557">
+      <%= link_to "/follow/#{comment.user.id}", class: "create-relation", data: comment.user.id, method: :post do %>
+      <div class="menu-item follow-item follow" id="follow-<%= comment.user.id %> data-permitted="true" data-user="<%= comment.user.id %>">
         <div class="menu-icon follow-icon">
-          <div class="followed-button" style="display: none;">
-            <img src="/images/followed-btn.png">
-          </div>
           <div class="follow-button">
             <img src="/images/follow-adding-btn.png">
           </div>
         </div>
         <div class="description">このユーザーをフォロー</div>
       </div>
-      <div class="menu-item mute-item" data-user="720557">
+      <% end %>
+      <%= link_to "/unfollow/#{comment.user.id}", class: "destroy-relation", data: comment.user.id, method: :delete do %>
+      <div class="menu-item follow-item following" id="following-<%= comment.user.id %> data-permitted="true" data-user="<%= comment.user.id %>" style= "display: none">
+        <div class="menu-icon follow-icon">
+          <div class="followed-button" >
+            <img src="/images/followed-btn.png">
+          </div>
+        </div>
+        <div class="description">このユーザーのフォローを解除</div>
+      </div>
+      <% end %>
+      <div class="menu-item mute-item" id= "mute-item-<%= comment.user.id %>" data-user="720557">
         <img class="menu-icon mute" src="/images/dislike-btn.png">
         <div class="description">このユーザーのコメントを非表示</div>
       </div>
@@ -37,7 +46,7 @@
         <div class="muted-panel-wrapper">
           <div class="muted-panel">
             <div class="muted-icon">
-              <img src="/images/ic-check-muted.65883152.png">
+              <img src="/images/muted-btn.png">
             </div>
             <div class="muted-caption">ユーザーのコメントを非表示にしました。</div>
             <div class="unmute-button">

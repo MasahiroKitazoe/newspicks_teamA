@@ -15,9 +15,10 @@ $(function() {
 // 表示されたpopoverの非表示に戻す条件
   $('.news-comment').on('click',function(e) {
     if(
-      (!$(e.target).closest('.menu-btn').length && $('.comment-menu .popover').css('display') == 'block') ||
+      (!$(e.target).closest('.comment-menu').length && $('.comment-menu .popover').css('display') == 'block') ||
       (!$(e.target).closest('.drop-down-button').length && $('.drop-down-button .popover').css('display') == 'block')
       ) {
+      console.log('hello')
       e.preventDefault();
       $('.comment-menu .popover').css('display', 'none');
       $('.drop-down-button .popover').css('display', 'none');
@@ -28,14 +29,15 @@ $(function() {
   // current_userのコメント欄で横のボタンをクリックした場合に表示
   $('#user-comments').on('click', '.menu-btn', function(e){
     e.preventDefault();
+    e.stopPropagation();
     if($('.comment-menu .popover').css('display') == 'none') {
+      console.log('hello!')
       $('.popover').css('display', 'block');
     }
   })
 
   // 編集ボタンをクリックすることで編集画面を表示。
   $('.followings').on('click','.comment-edit-btn', function(e) {
-    console.log('hello')
     e.preventDefault();
     $('.comment-wrapper').css('display', 'none');
     $('.embedded-pick-editor').css('display', 'block');
@@ -43,7 +45,6 @@ $(function() {
 
   // 編集ボタンを押した後に、キャンセルをクリックすると編集画面を閉じる。
   $('.news-comment').on('click','.drop-down-button', function(e) {
-    console.log('good morning!')
     e.preventDefault();
     $('.drop-down-button .popover').css('display', 'block');
   })
@@ -54,6 +55,20 @@ $(function() {
     e.preventDefault();
     $('.comment-wrapper').css('display', 'block');
     $('.embedded-pick-editor').css('display', 'none');
+  })
+  // フォローボタンを押した時に画面の変更
+  $('.news-comment').on('click', '.follow', function(e){
+    e.preventDefault();
+    var followed_id = $(this).attr('data-user');
+    if($("#following-" + followed_id).css('display') == "none"){
+      $("#follow-" + followed_id).css('display', 'none')
+      $("#following-" + followed_id).css('display', 'block')
+      $("#mute-item-" + followed_id).css('display', 'none')
+    } else if($("#following-" + followed_id).css('display') == "block"){
+      $("#follow-" + followed_id).css('display', 'block')
+      $("#following-" + followed_id).css('display', 'none')
+      $("#mute-item-" + followed_id).css('display', 'block')
+    }
   })
 
 // modal発生後に関するJavascript
