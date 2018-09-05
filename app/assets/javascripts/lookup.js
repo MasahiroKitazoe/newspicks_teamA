@@ -206,12 +206,14 @@ $(function() {
     e.preventDefault();
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
+    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').data('pickTime');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       // pick_timeを送って再建策
       data: { pick_num,
-              keyword },
+              keyword,
+              pick_time },
       dataType: 'json'
     })
     .done(function(picks) {
@@ -264,6 +266,7 @@ $(function() {
         appendNoPick("該当する記事がありません")
       }
       $('.search-result__pick-sort__period > .search-result__pick-sort__select').text($(e.currentTarget).text());
+      $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('data-pick-time', pick_time);
       $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "inline-block");
       $('.search-result__pick-sort__period').css("background-color", "#eee");
       $('.search-result__pick-sort__period__filter').css("display", "none");
