@@ -304,13 +304,13 @@ $(function() {
   // 期間フィルター
   $('.comment-period__filter').on('click', function(e) {
     e.preventDefault();
-    var time = $(e.currentTarget).data('time');
+    var comment_time = $(e.currentTarget).data('comment-time');
     var keyword = $(e.currentTarget).data('keyword');
     // console.log(num); -> num == {num: 0}
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
-      data: { time,
+      data: { comment_time,
               keyword },
       dataType: 'json'
     })
