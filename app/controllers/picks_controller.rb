@@ -107,6 +107,10 @@ class PicksController < ApplicationController
       @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     end
 
+    if params[:pick_ids]
+      @sorted_picks = Pick.where("id IN (?)", params[:pick_ids]).order("created_at DESC")
+    end
+
     respond_to do |format|
       format.html
       format.json
