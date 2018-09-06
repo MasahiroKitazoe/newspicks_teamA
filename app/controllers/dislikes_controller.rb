@@ -11,7 +11,7 @@ class DislikesController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:disliked_id])
+    user = User.find(params[:id])
     current_user.undislike(user)
     respond_to do |format|
       format.js

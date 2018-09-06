@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   delete '/unfollow/:id', to: 'users#unfollow'
 
   post '/dislike/:id', to: 'users#dislike'
-  delete '/undislike/:id', to: 'users#undislike'
+  # delete '/undislike/:id', to: 'users#undislike'
 
   resources :likes, only: [:create, :destroy]
 
