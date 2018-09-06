@@ -12,6 +12,38 @@
   </div>
 <% else %>
   <div class="drop-down-button">
-    <div class="drop-down-button-1">⋮</div>
+    <div class="drop-down-button-icon">⋮</div>
+    <div class="popover" style="top: 30px; left: -280px;" >
+      <%= link_to "/follow/#{comment.user.id}", class: "create-relation", data: comment.user.id, method: :post do %>
+      <div class="menu-item follow-item follow" id="follow-<%= comment.user.id %> data-permitted="true" data-user="<%= comment.user.id %>" <% if current_user.following?(comment.user)%> style="display: none" <% end %>>
+        <div class="menu-icon follow-icon">
+          <div class="follow-button">
+            <img src="/images/follow-adding-btn.png">
+          </div>
+        </div>
+        <div class="description">このユーザーをフォロー</div>
+      </div>
+      <% end %>
+      <%= link_to "/unfollow/#{comment.user.id}", class: "destroy-relation", data: comment.user.id, method: :delete do %>
+      <div class="menu-item follow-item following" id="following-<%= comment.user.id %> data-permitted="true" data-user="<%= comment.user.id %>" <% unless current_user.following?(comment.user) %>style= "display: none" <% end %>>
+        <div class="menu-icon follow-icon">
+          <div class="followed-button" >
+            <img src="/images/followed-btn.png">
+          </div>
+        </div>
+        <div class="description">このユーザーのフォローを解除</div>
+      </div>
+      <% end %>
+      <%= link_to "/dislikes/#{comment.user.id}",remote: true, data: comment.user.id, method: :get do %>
+      <div class="menu-item mute-item" id= "mute-item-<%= comment.user.id %>" data-user="720557" <% if current_user.following?(comment.user) %>style= "display: none" <% end %>>
+        <img class="menu-icon mute" src="/images/dislike-btn.png">
+        <div class="description">このユーザーのコメントを非表示</div>
+      </div>
+      <% end %>
+      <div class="menu-item report-item" data-news="3290714" data-user="720557" data-comment-version="1">
+        <img class="menu-icon report" src="/images/problem-btn.png">
+        <div class="description">問題を報告</div>
+      </div>
+    </div>
   </div>
 <% end %>

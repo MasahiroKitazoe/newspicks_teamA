@@ -1,5 +1,5 @@
 .search-result {
-  background: #ccc;
+  background: #eee;
   width: calc(85vw - 11px);
   height: calc(100vh - 40px);
   border-left: 1px solid #eee;
@@ -65,18 +65,38 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      min-width: 102.484px;
+      cursor: pointer;
+      float: left;
+      &__filter {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__period {
       display: inline-block;
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      float: left;
+      min-width: 102.484px;
+      cursor: pointer;
+      float: left;
+      &__filter {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__desc {
       display: inline-block;
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      float: left;
     }
     &__select {
       color: #777;
@@ -93,18 +113,39 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      float: left;
+      min-width: 102.484px;
+      cursor: pointer;
+      float: left;
+      &__filter {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__period {
       display: inline-block;
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      float: left;
+      min-width: 102.484px;
+      cursor: pointer;
+      float: left;
+      &__filter {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__desc {
       display: inline-block;
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
+      float: left;
     }
     &__select {
       color: #777;
