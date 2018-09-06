@@ -19,7 +19,6 @@
     <div class="search-result__pick-sort__pick-count">
       PICK数：
       <span class="search-result__pick-sort__select">指定なし</span>
-      <!-- 以下はクリック時出現 -->
       <%= link_to "#", data: {pick_num: 0, keyword: params[:keyword]}, class: 'pick-comments__filter' do %>
         <div class="search-result__pick-sort__pick-count__filter">
           指定なし
@@ -40,7 +39,6 @@
     <div class="search-result__pick-sort__period">
       期間：
       <span class="search-result__pick-sort__select">指定なし</span>
-      <!-- 以下はクリック時出現 -->
       <%= link_to "#", data: {pick_time: Time.current.years_ago(1), keyword: params[:keyword]}, class: 'pick-period__filter' do %>
         <div class="search-result__pick-sort__period__filter">
           指定なし
@@ -66,6 +64,17 @@
     <div class="search-result__pick-sort__desc">
       ソート順:
       <span class="search-result__pick-sort__select">公開日</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#", class: 'pick-period__filter' do %>
+        <div class="search-result__pick-sort__desc__sort">
+          公開日
+        </div>
+      <% end %>
+      <%= link_to "#", class: 'pick-period__filter' do %>
+        <div class="search-result__pick-sort__desc__sort">
+          PICK数
+        </div>
+      <% end %>
     </div>
   </div>
   <!-- Commentsのソート/フィルター -->
