@@ -97,14 +97,9 @@ $(function() {
   });
 
   $(document).on('ajax:complete', '.dislike-destroy-buttton', function() {
-    console.log('hello!')
     user_id = $(this).attr('data');
     $("#muted-panel-container-" + user_id).css('display', 'none');
   });
-
-  $('.side-bar__my-news').on("click", function() {
-    console.log('hello')
-  })
 
 
   // var windowWidth = $(window).width();

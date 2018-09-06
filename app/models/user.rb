@@ -49,17 +49,14 @@ class User < ApplicationRecord
     end
   end
 
-  # ユーザーを非表示にする。
   def dislike(other_user)
     disliking << other_user
   end
 
-  # ユーザーの非表示を解除する。
   def undislike(other_user)
     active_dislikes.find_by(disliked_id: other_user.id).destroy
   end
 
-  # 現在のユーザーが非表示であればtrueを返す。
   def disliking?(other_user)
     disliking.include?(other_user)
   end
