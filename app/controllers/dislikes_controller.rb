@@ -2,9 +2,8 @@ class DislikesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    user = User.find(params[:disliked_id])
+    user = User.find(params[:id])
     current_user.dislike(user)
-    @dislike = curret_user.active_dislikes.find_by(disliked_id: params[:disliked_id])
     respond_to do |format|
       format.js
     end
@@ -25,5 +24,4 @@ class DislikesController < ApplicationController
     end
   end
 end
-
 

@@ -41,7 +41,7 @@
         </div>
         <div class="buttons">
           <div class="negative-button">キャンセル</div>
-          <%= link_to "OK","/dislike/#{user.id}",id: "dislike-create-btn", class: "positive-button", data: user.id, method: :post, remote: true %>
+          <%= link_to "OK","/dislikes/#{user.id}",id: "dislike-create-btn", class: "positive-button", data: user.id, method: :post, remote: true %>
         </div>
     </div>
   </div>

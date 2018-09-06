@@ -22,15 +22,5 @@ class UsersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  def dislike
-    user = User.find(params[:id])
-    current_user.dislike(user)
-    redirect_back(fallback_location: root_path)
-  end
 
-  def undislike
-    user = User.find(params[:id])
-    current_user.undislike(user)
-    redirect_back(fallback_location: root_path)
-  end
 end
