@@ -70,4 +70,24 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  context 'when making relationship links' do
+    before do
+      @user = FactoryBot.create(:user)
+    end
+
+    describe '#show_follow_link' do
+      it 'returns an accurate follow link' do
+        follow_link = @user.show_follow_link
+        expect(follow_link).to eq "/follow/#{@user.id}"
+      end
+    end
+
+    describe '#show_unfollow_link' do
+      it 'returns an accurate unfollow link' do
+        unfollow_link = @user.show_unfollow_link
+        expect(unfollow_link).to eq "/unfollow/#{@user.id}"
+      end
+    end
+  end
 end

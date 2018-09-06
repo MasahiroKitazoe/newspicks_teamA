@@ -113,6 +113,14 @@ class User < ApplicationRecord
     disliking.include?(other_user)
   end
 
+  def show_follow_link
+    "/follow/#{self.id}"
+  end
+
+  def show_unfollow_link
+    "/unfollow/#{self.id}"
+  end
+
   protected
   # ユーザーのGoogleメールアドレスからユーザーを検索
   # 登録ずみユーザーはGoogleアカウントと関連付け
