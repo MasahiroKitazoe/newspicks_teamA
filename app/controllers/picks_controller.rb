@@ -109,6 +109,10 @@ class PicksController < ApplicationController
 
     if params[:pick_ids]
       @sorted_picks = Pick.where("id IN (?)", params[:pick_ids]).order("created_at DESC")
+      if params[:comments_count]
+        # コメント数降順に並び替え
+        @sorted_picks = @sorted_picks.sort{|a, b| b.comments.count <=> a.comments.count}
+      end
     end
 
     respond_to do |format|

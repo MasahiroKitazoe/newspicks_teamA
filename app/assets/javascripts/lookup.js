@@ -294,6 +294,7 @@ $(function() {
 
   $('.pick-sort').on('click', function(e) {
     e.preventDefault();
+    var comments_count = $(e.currentTarget).data('comments-count');
     var nodeList = document.querySelectorAll('.search-result__picks__news');
     var pick_ids = [];
     nodeList.forEach(function(ele) {
@@ -303,7 +304,8 @@ $(function() {
       $.ajax({
         type: 'GET',
         url: '/picks/lookup',
-        data: { pick_ids },
+        data: { pick_ids,
+                comments_count },
         dataType: 'json'
       })
       .done(function(picks) {
