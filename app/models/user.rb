@@ -67,12 +67,12 @@ class User < ApplicationRecord
   def self.get_sorted_users_and_likes(user_likes, limit_num)
     target_users = []
     weekly_likes = []
-    i = 0
+    len_counter = 0
     user_likes.each do |key, val|
       target_users << User.find(key)
       weekly_likes << val
-      i += 1
-      break if i >= limit_num
+      len_counter += 1
+      break if len_counter >= limit_num
     end
     return target_users, weekly_likes
   end
