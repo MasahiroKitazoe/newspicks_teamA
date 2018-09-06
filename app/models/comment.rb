@@ -35,25 +35,15 @@ class Comment < ApplicationRecord
     def get_popular_comment_all_time(limit_num)
       ids = Like.group(:comment_id).order('count_comment_id DESC').limit(limit_num).count(:comment_id).keys
       ranking =  ids.map { |id| Comment.find(id) }
-      if ranking.length == 0
-        ranking = Comment.order('created_at DESC').limit(limit_num)
-      else
-        return ranking
-      end
+      ranking.length == 0 ? Comment.order('created_at DESC').limit(limit_num) : ranking
     end
 
     def rank_comment(limit_num)
-      #1週間以内のCommentのidを取得
-      target_ids = get_comment_id_within_one_week
-
-      #Like数の多いコメントを取得
-      ranking = get_popular_comments(target_ids, limit_num)
+      #Like数の多い1週間以内のコメントを取得
+      ranking = get_popular_comments(get_comment_id_within_one_week, limit_num)
 
       #該当commentが0件のとき、代わりに時期無制限でlikeの多いcommentを取得
-      if ranking.length == 0
-        ranking = get_popular_comment_all_time(limit_num)
-      end
-      return ranking
+      ranking.length == 0 ? get_popular_comment_all_time(limit_num) : ranking
     end
   end
 end

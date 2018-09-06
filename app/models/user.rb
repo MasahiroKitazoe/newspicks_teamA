@@ -64,10 +64,11 @@ class User < ApplicationRecord
       user_likes = {}
       target_comments = Comment.where(id: comment_ids)
       target_comments.each do |comment|
+        likes_count = comment.likes.where(id: like_ids).count
         if user_likes[comment.user_id].nil?
-          user_likes[comment.user_id] = comment.likes.where(id: like_ids).count
+          user_likes[comment.user_id] = likes_count
         else
-          user_likes[comment.user_id] += comment.likes.where(id: like_ids).count
+          user_likes[comment.user_id] += likes_count
         end
       end
       return user_likes
@@ -87,12 +88,8 @@ class User < ApplicationRecord
     end
 
     def rank_user(limit_num)
-      like_ids_within_one_week = get_like_ids_within_one_week
-
-      comment_ids_liked_within_one_week = get_comments_liked_within_one_week
-
       #1週間以内にlikeされたコメントを取り出し、user_idでグループ化、keyがuser_id、valがlike数のハッシュを生成
-      user_likes = create_user_likes_hash(like_ids_within_one_week, comment_ids_liked_within_one_week)
+      user_likes = create_user_likes_hash(get_like_ids_within_one_week, get_comments_liked_within_one_week)
 
       #Like数の多い順にハッシュをソート
       user_likes.sort_by {|k,v| -v}
