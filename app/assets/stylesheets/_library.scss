@@ -1,6 +1,6 @@
 #library-wrapper{
   .library_page{
-    background: #EFEFEF;
+    background: $grayshwhite;
     float: right;
     width: calc(85vw - 10px);
     height: 100vh;
@@ -10,16 +10,16 @@
       width: 95%;
       margin: auto;
       margin-top: 30px;
-      background-color: #FFF;
+      background-color: $white;
       .tab-content-selected{
         .items{
           .recommended{
             .featured{
-              border-bottom: 8px solid #EAEAEA;
+              border-bottom: 8px solid $offwhite;
               @include main_card();
             }
             .categorized{
-              border-bottom: 8px solid #EAEAEA;
+              border-bottom: 8px solid $offwhite;
               @include main_card();
             }
           }
@@ -29,9 +29,9 @@
         @include one_comment();
       }
       .items-user-ranking{
-        background-color: #EFEFEF;
+        background-color: $grayshwhite;
         .a-user-in-ranking{
-          background: #FFF;
+          background: $white;
           display: block;
           position: relative;
           color: inherit;
@@ -57,19 +57,19 @@
                 line-height: 200%;
               }
               ._1{
-                border-color: #DBB25E;
-                background-color: #DBB25E;
-                color: #FFF;
+                border-color: $palegold;
+                background-color: $palegold;
+                color: $white;
               }
               ._2{
-                border-color: #15274D;
-                background-color: #15274D;
-                color: #FFF;
+                border-color: $darkblue;
+                background-color: $darkblue;
+                color: $white;
               }
               ._3{
-                border-color: #BC7845;
-                background-color: #BC7845;
-                color: #FFF;
+                border-color: $brushedorrange;
+                background-color: $brushedorrange;
+                color: $white;
               }
             }
             .usercover{

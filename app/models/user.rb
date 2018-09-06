@@ -101,7 +101,7 @@ class User < ApplicationRecord
 
     return target_users, weekly_likes
   end
-    
+
   def dislike(other_user)
     disliking << other_user
   end
