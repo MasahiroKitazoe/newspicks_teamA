@@ -87,9 +87,10 @@ class PicksController < ApplicationController
   end
 
   def lookup
-    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
+    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").order("created_at DESC").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
     @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
+
     if params[:pick_num] && params[:pick_time]
       @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     elsif params[:pick_num]
@@ -97,6 +98,7 @@ class PicksController < ApplicationController
     elsif params[:pick_time]
       @filtered_picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     end
+
     if params[:comment_num] && params[:comment_time]
       @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     elsif params[:comment_num]
@@ -104,6 +106,7 @@ class PicksController < ApplicationController
     elsif params[:comment_time]
       @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     end
+
     respond_to do |format|
       format.html
       format.json
