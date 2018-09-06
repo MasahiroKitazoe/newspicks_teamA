@@ -67,6 +67,7 @@ class PicksController < ApplicationController
   end
 
   def create
+    # binding.pry
     @pick = Pick.new(picks_params)
 
     # URLの記事をスクレイピングする
@@ -112,7 +113,8 @@ class PicksController < ApplicationController
         :url,
         :image,
         :title,
-        :body
+        :body,
+        {:user_ids => []}
         )
     end
 

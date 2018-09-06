@@ -23,6 +23,7 @@
               <%= f.fields_for :comments do |comment_form| %>
                 <%= comment_form.text_area :comment, class: "pick-form", id: "comment-in-modal", placeholder: "コメントを書く(任意)" %>
               <% end %>
+              <input name="pick[user_ids][]" type="hidden" value="<%= current_user.id %>">/</input>
             </div>
             <div id="submit-group">
               <p class="message-gray">シェアする</p>
