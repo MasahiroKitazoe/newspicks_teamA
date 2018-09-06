@@ -1,5 +1,5 @@
 <div class="comment-area">
-  <img class="cover" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+  <img class="cover" src=<%= current_user.image %>>
   <%= form_for(pick.comments.build, remote: true) do |f| %>
   <div class="comment-container">
     <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>

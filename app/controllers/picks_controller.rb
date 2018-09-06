@@ -15,6 +15,13 @@ class PicksController < ApplicationController
   def show
     @pick = Pick.find(params[:id])
     @users = @pick.users
+    @users_nocomment = []
+    @users.each do |user|
+      if !user.comments.where(pick_id: @pick.id).first.nil? and user.comments.where(pick_id: @pick.id).first.comment.nil?
+        @users_nocomment << user
+      end
+    end
+
     @comments = @pick.comments.includes(:user)
     #フォローは一旦自分自身のみで定義。コメントではfollowerに自分のコメントが表示される。なのでカレントユーザー情報を持ってくる必要はない。
     @comments_recommend = []
