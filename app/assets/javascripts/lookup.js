@@ -73,6 +73,21 @@ $(function() {
     });
   });
 
+  $('.search-result__pick-sort__desc').on('click', function() {
+    $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "none");
+    $(this).css("background-color", "#fff");
+    $('.search-result__pick-sort__desc__sort').css("display", "block");
+    $(this).css("border", "1px solid #aaa");
+    $('.search-result').on('click', function(e) {
+      if (e.target.className != "search-result__pick-sort__desc" && e.target.className != "search-result__pick-sort__desc__sort" && e.target.className != "search-result__pick-sort__select") {
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "inline-block");
+        $('.search-result__pick-sort__desc').css("background-color", "#eee");
+        $('.search-result__pick-sort__desc__sort').css("display", "none");
+        $('.search-result__pick-sort__desc').css("border", "0");
+      }
+    });
+  });
+
   // Comment
   $('.search-result__comment-sort__like-count').on('click', function() {
     $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "none");
