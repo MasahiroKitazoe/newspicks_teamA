@@ -121,7 +121,7 @@ $(function() {
 
   // フィルター後のpickをappendする処理
   function appendPick(pick) {
-    var html = `<div class="search-result__picks__news">
+    var html = `<div class="search-result__picks__news" data-id=${pick.id}>
                   <div>
                       <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
                         <div class="search-result__picks__news__image__back">
