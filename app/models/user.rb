@@ -96,8 +96,6 @@ class User < ApplicationRecord
 
       #like数の多い順にユーザーを取り出す
       target_users, weekly_likes = get_sorted_users_and_likes(user_likes, limit_num)
-
-      return target_users, weekly_likes
     end
   end
 
