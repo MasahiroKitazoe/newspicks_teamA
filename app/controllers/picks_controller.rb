@@ -92,11 +92,11 @@ class PicksController < ApplicationController
     @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
 
     if params[:pick_num] && params[:pick_time]
-      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     elsif params[:pick_num]
-      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
+      @picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
     elsif params[:pick_time]
-      @filtered_picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     end
 
     if params[:comment_num] && params[:comment_time]
@@ -107,12 +107,8 @@ class PicksController < ApplicationController
       @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     end
 
-    if params[:pick_ids]
-      @sorted_picks = Pick.where("id IN (?)", params[:pick_ids]).order("created_at DESC")
-      if params[:comments_count]
-        # コメント数降順に並び替え
-        @sorted_picks = @sorted_picks.sort{|a, b| b.comments.count <=> a.comments.count}
-      end
+    if params[:sort_kind] == "comments_count"
+      @picks = @picks.sort{|a, b| b.comments.count <=> a.comments.count}
     end
 
     respond_to do |format|

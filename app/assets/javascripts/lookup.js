@@ -121,7 +121,7 @@ $(function() {
 
   // フィルター後のpickをappendする処理
   function appendPick(pick) {
-    var html = `<div class="search-result__picks__news" data-id=${pick.id}>
+    var html = `<div class="search-result__picks__news">
                   <div>
                       <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
                         <div class="search-result__picks__news__image__back">
@@ -294,18 +294,17 @@ $(function() {
 
   $('.pick-sort').on('click', function(e) {
     e.preventDefault();
-    var comments_count = $(e.currentTarget).data('comments-count');
-    var nodeList = document.querySelectorAll('.search-result__picks__news');
-    var pick_ids = [];
-    nodeList.forEach(function(ele) {
-      pick_ids.push($(ele).data('id'));
-    })
-    if (pick_ids.length > 0) {
+    var keyword = $(e.currentTarget).data('keyword');
+    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').data('pickTime');
+    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').data('pickNum');
+    var sort_kind = $(e.currentTarget).data('sort-kind');
       $.ajax({
         type: 'GET',
         url: '/picks/lookup',
-        data: { pick_ids,
-                comments_count },
+        data: { keyword,
+                pick_time,
+                pick_num,
+                sort_kind },
         dataType: 'json'
       })
       .done(function(picks) {
@@ -320,7 +319,7 @@ $(function() {
           appendNoPick("該当する記事がありません")
         }
         $('.search-result__pick-sort__desc > .search-result__pick-sort__select').text($(e.currentTarget).text());
-        // $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('data-pick-time', pick_time);
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('data-sort-kind', sort_kind);
         $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "inline-block");
         $('.search-result__pick-sort__desc').css("background-color", "#eee");
         $('.search-result__pick-sort__desc__sort').css("display", "none");
@@ -329,9 +328,6 @@ $(function() {
       .fail(function() {
         alert('並び替えに失敗しました');
       })
-    } else {
-      return false;
-    }
   });
 
   // Commentsフィルター
