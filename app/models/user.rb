@@ -61,7 +61,7 @@ class User < ApplicationRecord
 
   # 現在のユーザーが非表示であればtrueを返す。
   def disliking?(other_user)
-    following.include?(other_user)
+    disliking.include?(other_user)
   end
 
   protected
