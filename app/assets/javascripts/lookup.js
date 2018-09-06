@@ -221,9 +221,8 @@ $(function() {
     e.preventDefault();
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
-    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').data('pickTime');
-    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').data('sortKind');
-    console.log(sort_kind);
+    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time');
+    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
@@ -247,7 +246,7 @@ $(function() {
       }
       $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text($(e.currentTarget).text());
       // ここにデータをセットして期間フィルタ時にリクエストと一緒に送信する
-      $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('data-pick-num', pick_num);
+      $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num', pick_num);
       $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "inline-block");
       $('.search-result__pick-sort__pick-count').css("background-color", "#eee");
       $('.search-result__pick-sort__pick-count__filter').css("display", "none");
@@ -262,8 +261,8 @@ $(function() {
     e.preventDefault();
     var pick_time = $(e.currentTarget).data('pick-time');
     var keyword = $(e.currentTarget).data('keyword');
-    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').data('pickNum');
-    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').data('sortKind');
+    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num');
+    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
@@ -286,7 +285,7 @@ $(function() {
         appendNoPick("該当する記事がありません")
       }
       $('.search-result__pick-sort__period > .search-result__pick-sort__select').text($(e.currentTarget).text());
-      $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('data-pick-time', pick_time);
+      $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time', pick_time);
       $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "inline-block");
       $('.search-result__pick-sort__period').css("background-color", "#eee");
       $('.search-result__pick-sort__period__filter').css("display", "none");
@@ -300,8 +299,8 @@ $(function() {
   $('.pick-sort').on('click', function(e) {
     e.preventDefault();
     var keyword = $(e.currentTarget).data('keyword');
-    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').data('pickTime');
-    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').data('pickNum');
+    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time');
+    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num');
     var sort_kind = $(e.currentTarget).data('sort-kind');
       $.ajax({
         type: 'GET',
@@ -324,7 +323,7 @@ $(function() {
           appendNoPick("該当する記事がありません")
         }
         $('.search-result__pick-sort__desc > .search-result__pick-sort__select').text($(e.currentTarget).text());
-        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('data-sort-kind', sort_kind);
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('sort-kind', sort_kind);
         $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "inline-block");
         $('.search-result__pick-sort__desc').css("background-color", "#eee");
         $('.search-result__pick-sort__desc__sort').css("display", "none");
