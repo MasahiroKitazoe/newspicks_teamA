@@ -70,6 +70,7 @@ class User < ApplicationRecord
           user_likes[comment.user_id] += comment.likes.where(id: like_ids).count
         end
       end
+      return user_likes
     end
 
     def get_sorted_users_and_likes(user_likes, limit_num)

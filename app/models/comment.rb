@@ -29,7 +29,7 @@ class Comment < ApplicationRecord
 
     def get_popular_comments(target_ids, limit_num)
       ids = Like.group(:comment_id).where(comment_id: target_ids).order('count_comment_id DESC').limit(limit_num).count(:comment_id).keys
-      ranking = ids.map { |id| Comment.find(id) }
+      ids.map { |id| Comment.find(id) }
     end
 
     def get_popular_comment_all_time(limit_num)
@@ -37,6 +37,8 @@ class Comment < ApplicationRecord
       ranking =  ids.map { |id| Comment.find(id) }
       if ranking.length == 0
         ranking = Comment.order('created_at DESC').limit(limit_num)
+      else
+        return ranking
       end
     end
 
@@ -51,6 +53,7 @@ class Comment < ApplicationRecord
       if ranking.length == 0
         ranking = get_popular_comment_all_time(limit_num)
       end
+      return ranking
     end
   end
 end
