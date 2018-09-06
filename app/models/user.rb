@@ -41,17 +41,19 @@ class User < ApplicationRecord
     end
   end
 
-  def self.rank_user(limit_num)
-    #1週間以内に生成されたlikeのidを配列に格納
-    like_ids = Like.where(created_at: [7.days.ago..Time.now]) { |like| like.id }
+  def self.get_like_ids_within_one_week
+    tg_likes = Like.where(created_at: [7.days.ago..Time.now])
+    tg_likes.map { |like| like.id }
+  end
 
-    #1週間以内にlikeされた全てのコメントのidを取得し、配列に格納
+  def self.get_comments_liked_within_one_week
     grouped_likes = Like.group(:comment_id).where(created_at: [7.days.ago..Time.now])
     comment_ids = grouped_likes.map { |like| like.comment_id }
+  end
 
-    #1週間以内にlikeされたコメントを取り出し、user_idでグループ化し、like数でソート
-    target_comments = Comment.where(id: comment_ids)
+  def self.create_user_likes_hash(like_ids, comment_ids)
     user_likes = {}
+    target_comments = Comment.where(id: comment_ids)
     target_comments.each do |comment|
       if user_likes[comment.user_id].nil?
         user_likes[comment.user_id] = comment.likes.where(id: like_ids).count
@@ -59,20 +61,35 @@ class User < ApplicationRecord
         user_likes[comment.user_id] += comment.likes.where(id: like_ids).count
       end
     end
+    return user_likes
+  end
+
+  def self.get_sorted_users_and_likes(user_likes, limit_num)
+    target_users = []
+    weekly_likes = []
+    i = 0
+    user_likes.each do |key, val|
+      target_users << User.find(key)
+      weekly_likes << val
+      i += 1
+      break if i >= limit_num
+    end
+    return target_users, weekly_likes
+  end
+
+  def self.rank_user(limit_num)
+    like_ids_within_one_week = get_like_ids_within_one_week
+
+    comment_ids_liked_within_one_week = get_comments_liked_within_one_week
+
+    #1週間以内にlikeされたコメントを取り出し、user_idでグループ化、keyがuser_id、valがlike数のハッシュを生成
+    user_likes = create_user_likes_hash(like_ids_within_one_week, comment_ids_liked_within_one_week)
 
     #Like数の多い順にハッシュをソート
     user_likes.sort_by {|k,v| -v}
 
     #like数の多い順にユーザーを取り出す
-    i = 0
-    target_users = []
-    weekly_likes = []
-    user_likes.each do |key, val|
-      target_users << User.find(key)
-      weekly_likes << val
-      i += 1
-      return if i >= limit_num
-    end
+    target_users, weekly_likes = get_sorted_users_and_likes(user_likes, limit_num)
 
     return target_users, weekly_likes
   end
@@ -100,4 +117,5 @@ class User < ApplicationRecord
       return user
     end
   end
+
 end
