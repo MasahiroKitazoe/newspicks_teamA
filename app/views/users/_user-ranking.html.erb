@@ -3,7 +3,7 @@
     <%= link_to user_path(user.id), class: "a-user-in-ranking" do %>
       <div class="user-ranking-wrapper">
         <div class="ranking-order">
-          <span class="_<%= i + 1 %>"><%= i + 1 %></span>
+          <span class="user-rank-<%= i + 1 %>"><%= i + 1 %></span>
         </div>
         <div class="usercover">
           <%= image_tag current_user.image.url, class: "usercover__icon" %>
