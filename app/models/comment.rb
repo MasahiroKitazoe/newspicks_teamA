@@ -5,7 +5,6 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
   validates :pick_id, presence: true
 
-
   def do_time(comment)
     Time.now - comment.created_at
   end
@@ -52,7 +51,6 @@ class Comment < ApplicationRecord
     if ranking.length == 0
       ranking = get_popular_comment_all_time(limit_num)
     end
-
     return ranking
   end
 end

@@ -17,7 +17,7 @@
           </a>
         </li>
         <li class="header__list__search">
-          <%= form_tag({controller: "picks", action: "lookup"}, method: "get", class: 'header__list__search-form') do %>
+          <%= form_tag({controller: "/picks", action: "lookup"}, method: "get", class: 'header__list__search-form') do %>
             <%= text_field_tag :keyword, '', class: 'header__list__input', placeholder: '検索する' %>
             <%= submit_tag "Search", class: 'header__list__search-btn' %>
           <% end %>
