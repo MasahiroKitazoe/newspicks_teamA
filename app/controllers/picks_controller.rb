@@ -19,9 +19,12 @@ class PicksController < ApplicationController
     @comments_recommend = []
     @comments_following = []
     @comments_other = []
+    @comments_garbage = []
     #注目のコメントとその他のコメントを分ける。
     @comments.each do |comment|
-      if current_user.following?(comment.user) or comment.user == current_user
+      if current_user.disliking?(comment.user)
+        @comments_garbage << comment
+      elsif current_user.following?(comment.user) or comment.user == current_user
         @comments_following << comment
       elsif comment.present?
         @comments_other << comment

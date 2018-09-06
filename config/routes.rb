@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :relationships, only: [:create, :destroy]
+  resources :dislikes, only: [:create, :destroy, :show]
+  post '/dislikes/:id', to: 'dislikes#create'
 
   get '/library', to: 'users#library'
   post '/follow/:id', to: 'users#follow'

@@ -78,5 +78,20 @@
       <% end %>
     </div>
     <% end %>
+    <div class="muted-panel-container" id="muted-panel-container-<%= comment.user.id %>" style="display: none">
+      <div class="muted-panel-wrapper">
+        <div class="muted-panel">
+          <div class="muted-icon">
+            <img src="/images/muted-btn.png">
+          </div>
+          <div class="muted-caption">ユーザーのコメントを非表示にしました。</div>
+          <div class="unmute-button">
+          <%= link_to "/dislikes/#{comment.user.id}", class: "dislike-destroy-buttton", data: comment.user.id,  method: :delete, remote: true do %>
+            <span>元に戻す</span>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

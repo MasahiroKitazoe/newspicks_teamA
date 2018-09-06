@@ -15,6 +15,14 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :likes
+  has_many :active_dislikes, class_name: "Dislike",
+                             foreign_key: "disliker_id",
+                             dependent: :destroy
+  has_many :passive_dislikes, class_name: "Dislike",
+                              foreign_key: "disliked_id",
+                              dependent: :destroy
+  has_many :disliking, through: :active_dislikes, source: :disliked
+  has_many :dislikers, through: :passive_dislikes, source: :disliker
 
   mount_uploader :image, ImageUploader
 
@@ -39,6 +47,18 @@ class User < ApplicationRecord
     else
       return false
     end
+  end
+
+  def dislike(other_user)
+    disliking << other_user
+  end
+
+  def undislike(other_user)
+    active_dislikes.find_by(disliked_id: other_user.id).destroy
+  end
+
+  def disliking?(other_user)
+    disliking.include?(other_user)
   end
 
   protected
