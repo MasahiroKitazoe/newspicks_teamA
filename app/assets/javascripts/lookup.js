@@ -290,7 +290,47 @@ $(function() {
     .fail(function() {
       alert('フィルタリングに失敗しました');
     })
-  })
+  });
+
+  $('.pick-sort').on('click', function(e) {
+    e.preventDefault();
+    var nodeList = document.querySelectorAll('.search-result__picks__news');
+    var pick_ids = [];
+    nodeList.forEach(function(ele) {
+      pick_ids.push($(ele).data('id'));
+    })
+    if (pick_ids.length > 0) {
+      $.ajax({
+        type: 'GET',
+        url: '/picks/lookup',
+        data: { pick_ids },
+        dataType: 'json'
+      })
+      .done(function(picks) {
+        // 既に表示しているpicksを空に
+        $('#searched-picks').empty();
+        // 取得したpicksを一個ずつappend
+        if (picks.length !== 0) {
+          picks.forEach(function(pick) {
+            appendPick(pick);
+          });
+        } else {
+          appendNoPick("該当する記事がありません")
+        }
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').text($(e.currentTarget).text());
+        // $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('data-pick-time', pick_time);
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "inline-block");
+        $('.search-result__pick-sort__desc').css("background-color", "#eee");
+        $('.search-result__pick-sort__desc__sort').css("display", "none");
+        $('.search-result__pick-sort__desc').css("border", "0");
+      })
+      .fail(function() {
+        alert('並び替えに失敗しました');
+      })
+    } else {
+      return false;
+    }
+  });
 
   // Commentsフィルター
   $('.comment-likes__filter').on('click', function(e) {
