@@ -222,13 +222,16 @@ $(function() {
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
     var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').data('pickTime');
+    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').data('sortKind');
+    console.log(sort_kind);
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       // pick_timeを送って再建策
       data: { pick_num,
               keyword,
-              pick_time },
+              pick_time,
+              sort_kind },
       dataType: 'json'
     })
     .done(function(picks) {
@@ -260,13 +263,15 @@ $(function() {
     var pick_time = $(e.currentTarget).data('pick-time');
     var keyword = $(e.currentTarget).data('keyword');
     var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').data('pickNum');
+    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').data('sortKind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       // pick_numを送って再建策
       data: { pick_time,
               keyword,
-              pick_num },
+              pick_num,
+              sort_kind },
       dataType: 'json'
     })
     .done(function(picks) {
