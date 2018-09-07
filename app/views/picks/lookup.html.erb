@@ -178,9 +178,7 @@
   <div class="search-result__comments" id="searched-comments">
     <% if @comments.length != 0 %>
       <% @comments.each do |comment| %>
-        <!-- 一つComment -->
         <div class="search-result__comments__comment">
-          <!-- ユーザー部分 -->
           <div class="search-result__comments__comment__user">
             <%= image_tag comment.user.image.url, class: 'search-result__comments__comment__user__image' %>
             <div class="search-result__comments__comment__user__info">
@@ -231,7 +229,6 @@
   </div>
   <!-- 検索結果（ユーザー） -->
   <div class="search-result__users"  id="searched-users">
-    <!-- 一つのユーザー -->
     <% if @users.length != 0 %>
       <% @users.each do |user| %>
         <div class="search-result__users__user">
