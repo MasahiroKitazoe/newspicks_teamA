@@ -300,8 +300,16 @@
       &__body {
         font-size: 14px;
         width: 900px;
+        max-height: 60px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
         padding-bottom: 16px;
         float: left;
+        &:hover {
+          opacity: 0.7;
+        }
       }
       &__like {
         float: right;

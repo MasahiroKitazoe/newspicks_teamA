@@ -186,8 +186,6 @@
       </div>
     <% end %>
   </div>
-
-
   <!-- 検索結果（コメント） -->
   <div class="search-result__comments" id="searched-comments">
     <% if @comments.length != 0 %>
@@ -211,9 +209,11 @@
               </div>
             </div>
           </div>
-          <div class="search-result__comments__comment__body">
-            <%= comment.comment %>
-          </div>
+          <%= link_to pick_path(comment.pick) do %>
+            <div class="search-result__comments__comment__body">
+              <%= comment.comment %>
+            </div>
+          <% end %>
           <div class="search-result__comments__comment__like like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
             <% if current_user.liked?(comment) %>
               <div class="liked" data="<%= comment.get_like_id %>">
