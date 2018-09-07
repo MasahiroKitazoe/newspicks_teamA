@@ -332,6 +332,15 @@
         &__title {
           font-size: 14px;
           font-weight: bold;
+          max-height: 20px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.7;
+          }
         }
         &__info {
           font-size: 12px;

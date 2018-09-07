@@ -232,9 +232,11 @@
             <% end %>
           </div>
           <div class="search-result__comments__comment__news">
-            <div class="search-result__comments__comment__news__title">
-              <%= comment.pick.title %>
-            </div>
+            <%= link_to pick_path(comment.pick) do %>
+              <div class="search-result__comments__comment__news__title">
+                <%= comment.pick.title %>
+              </div>
+            <% end %>
             <div class="search-result__comments__comment__news__info">
               <span class="search-result__comments__comment__news__info__source">
                 <%= comment.pick.source %>
