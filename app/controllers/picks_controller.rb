@@ -99,16 +99,20 @@ class PicksController < ApplicationController
       @picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     end
 
-    if params[:comment_num] && params[:comment_time]
-      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
-    elsif params[:comment_num]
-      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
-    elsif params[:comment_time]
-      @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
-    end
-
     if params[:pick_sort_kind] == "comments_count"
       @picks = @picks.sort{|a, b| b.comments.count <=> a.comments.count}
+    end
+
+    if params[:comment_num] && params[:comment_time]
+      @comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+    elsif params[:comment_num]
+      @comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
+    elsif params[:comment_time]
+      @comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+    end
+
+    if params[:comment_sort_kind] == "likes_count"
+      @comments = @comments.sort{|a, b| b.likes.count <=> a.likes.count}
     end
 
     respond_to do |format|

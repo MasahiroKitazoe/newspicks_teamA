@@ -8,7 +8,7 @@ json.array! @picks do |filtered_pick|
   json.body filtered_pick.body
 end
 
-json.array! @fitered_comments do |filtered_comment|
+json.array! @comments do |filtered_comment|
   json.id filtered_comment.id
   json.user_image filtered_comment.user.image.url
   json.user_last_name filtered_comment.user.last_name

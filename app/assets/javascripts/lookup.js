@@ -436,21 +436,21 @@ $(function() {
         type: 'GET',
         url: '/picks/lookup',
         data: { keyword,
-                pick_time,
-                pick_num,
+                comment_time,
+                comment_num,
                 comment_sort_kind },
         dataType: 'json'
       })
-      .done(function(picks) {
+      .done(function(comments) {
         // 既に表示しているpicksを空に
-        $('#searched-picks').empty();
+        $('#searched-comments').empty();
         // 取得したpicksを一個ずつappend
-        if (picks.length !== 0) {
-          picks.forEach(function(pick) {
-            appendPick(pick);
+        if (comments.length !== 0) {
+          comments.forEach(function(comment) {
+            appendComment(comment);
           });
         } else {
-          appendNoPick("該当する記事がありません")
+          appendNoComment("該当するコメントがありません")
         }
         $('.search-result__comment-sort__desc > .search-result__comment-sort__select').text($(e.currentTarget).text());
         $('.search-result__comment-sort__desc > .search-result__comment-sort__select').attr('comment-sort-kind', comment_sort_kind);
