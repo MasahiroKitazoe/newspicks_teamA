@@ -201,9 +201,11 @@ $(function() {
                       </div>
                     </div>
                   </div>
-                  <div class="search-result__comments__comment__body">
-                    ${comment.comment}
-                  </div>
+                  <a href="/picks/${comment.pick_id}">
+                    <div class="search-result__comments__comment__body">
+                      ${comment.comment}
+                    </div>
+                  </a>
                   <div class="search-result__comments__comment__like">
                     <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
                     <div class="search-result__comments__comment__like__likes-count">
@@ -211,9 +213,11 @@ $(function() {
                     </div>
                   </div>
                   <div class="search-result__comments__comment__news">
-                    <div class="search-result__comments__comment__news__title">
-                      ${comment.pick_title}
-                    </div>
+                    <a href="/picks/${comment.pick_id}">
+                      <div class="search-result__comments__comment__news__title">
+                        ${comment.pick_title}
+                      </div>
+                    </a>
                     <div class="search-result__comments__comment__news__info">
                       <span class="search-result__comments__comment__news__info__source">
                         ${comment.pick_source}
