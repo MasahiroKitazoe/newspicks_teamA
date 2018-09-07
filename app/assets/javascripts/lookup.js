@@ -186,6 +186,21 @@ $(function() {
                           ${comment.user_position}
                         </span>`
     }
+    if (comment.liked == true) {
+      var insertLikeBlock = `<div class="liked" data="${comment.like_id}">
+                              <img class="search-result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count-r">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`;
+    } else {
+      var insertLikeBlock = `<div class="like">
+                              <img class="search-result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`
+    }
     var html = `<div class="search-result__comments__comment">
                   <div class="search-result__comments__comment__user">
                     <img src="${comment.user_image}", class="search-result__comments__comment__user__image">
@@ -206,11 +221,8 @@ $(function() {
                       ${comment.comment}
                     </div>
                   </a>
-                  <div class="search-result__comments__comment__like">
-                    <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
-                    <div class="search-result__comments__comment__like__likes-count">
-                      ${comment.like_count} Likes
-                    </div>
+                  <div class="search-result__comments__comment__like like-wrapper" id="like${comment.id}" data="${comment.id}">
+                    ${insertLikeBlock}
                   </div>
                   <div class="search-result__comments__comment__news">
                     <a href="/picks/${comment.pick_id}">
