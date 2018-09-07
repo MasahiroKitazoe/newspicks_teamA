@@ -107,7 +107,7 @@ class PicksController < ApplicationController
       @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     end
 
-    if params[:sort_kind] == "comments_count"
+    if params[:pick_sort_kind] == "comments_count"
       @picks = @picks.sort{|a, b| b.comments.count <=> a.comments.count}
     end
 

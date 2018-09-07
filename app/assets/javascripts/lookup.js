@@ -237,7 +237,7 @@ $(function() {
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
     var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time');
-    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('sort-kind');
+    var pick_sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('pick-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
@@ -245,7 +245,7 @@ $(function() {
       data: { pick_num,
               keyword,
               pick_time,
-              sort_kind },
+              pick_sort_kind },
       dataType: 'json'
     })
     .done(function(picks) {
@@ -277,7 +277,7 @@ $(function() {
     var pick_time = $(e.currentTarget).data('pick-time');
     var keyword = $(e.currentTarget).data('keyword');
     var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num');
-    var sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('sort-kind');
+    var pick_sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('pick-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
@@ -285,7 +285,7 @@ $(function() {
       data: { pick_time,
               keyword,
               pick_num,
-              sort_kind },
+              pick_sort_kind },
       dataType: 'json'
     })
     .done(function(picks) {
@@ -316,14 +316,14 @@ $(function() {
     var keyword = $(e.currentTarget).data('keyword');
     var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time');
     var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num');
-    var sort_kind = $(e.currentTarget).data('pick-sort-kind');
+    var pick_sort_kind = $(e.currentTarget).data('pick-sort-kind');
       $.ajax({
         type: 'GET',
         url: '/picks/lookup',
         data: { keyword,
                 pick_time,
                 pick_num,
-                sort_kind },
+                pick_sort_kind },
         dataType: 'json'
       })
       .done(function(picks) {
@@ -338,7 +338,7 @@ $(function() {
           appendNoPick("該当する記事がありません")
         }
         $('.search-result__pick-sort__desc > .search-result__pick-sort__select').text($(e.currentTarget).text());
-        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('sort-kind', sort_kind);
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('pick-sort-kind', pick_sort_kind);
         $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "inline-block");
         $('.search-result__pick-sort__desc').css("background-color", "#eee");
         $('.search-result__pick-sort__desc__sort').css("display", "none");
@@ -354,13 +354,15 @@ $(function() {
     e.preventDefault();
     var comment_num = $(e.currentTarget).data('comment-num');
     var keyword = $(e.currentTarget).data('keyword');
-    var comment_time = $('.search-result__comment-sort__period > .search-result__comment-sort__select').data('commentTime');
+    var comment_time = $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('comment-time');
+    var comment_sort_kind = $('.search-result__comment-sort__desc > .search-result__comment-sort__select').attr('comment-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       data: { comment_num,
               keyword,
-              comment_time },
+              comment_time,
+              comment_sort_kind },
       dataType: 'json'
     })
     .done(function(comments) {
@@ -375,7 +377,7 @@ $(function() {
         appendNoComment("該当するコメントがありません")
       }
       $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text($(e.currentTarget).text());
-      $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('data-comment-num', comment_num);
+      $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('comment-num', comment_num);
       $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "inline-block");
       $('.search-result__comment-sort__like-count').css("background-color", "#eee");
       $('.search-result__comment-sort__like-count__filter').css("display", "none");
@@ -390,13 +392,15 @@ $(function() {
     e.preventDefault();
     var comment_time = $(e.currentTarget).data('comment-time');
     var keyword = $(e.currentTarget).data('keyword');
-    var comment_num = $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').data('commentNum');
+    var comment_num = $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('comment-num');
+    var comment_sort_kind = $('.search-result__comment-sort__desc > .search-result__comment-sort__select').attr('comment-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       data: { comment_time,
               keyword,
-              comment_num },
+              comment_num,
+              comment_sort_kind },
       dataType: 'json'
     })
     .done(function(comments) {
@@ -411,7 +415,7 @@ $(function() {
         appendNoComment("該当するコメントがありません")
       }
       $('.search-result__comment-sort__period > .search-result__comment-sort__select').text($(e.currentTarget).text());
-      $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('data-comment-time', comment_time);
+      $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('comment-time', comment_time);
       $('.search-result__comment-sort__period > .search-result__comment-sort__select').css("display", "inline-block");
       $('.search-result__comment-sort__period').css("background-color", "#eee");
       $('.search-result__comment-sort__period__filter').css("display", "none");
@@ -420,5 +424,43 @@ $(function() {
     .fail(function() {
       alert('フィルタリングに失敗しました');
     })
+  });
+
+  $('.comment-sort').on('click', function(e) {
+    e.preventDefault();
+    var keyword = $(e.currentTarget).data('keyword');
+    var comment_time = $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('comment-time');
+    var comment_num = $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('comment-num');
+    var comment_sort_kind = $(e.currentTarget).data('comment-sort-kind');
+      $.ajax({
+        type: 'GET',
+        url: '/picks/lookup',
+        data: { keyword,
+                pick_time,
+                pick_num,
+                comment_sort_kind },
+        dataType: 'json'
+      })
+      .done(function(picks) {
+        // 既に表示しているpicksを空に
+        $('#searched-picks').empty();
+        // 取得したpicksを一個ずつappend
+        if (picks.length !== 0) {
+          picks.forEach(function(pick) {
+            appendPick(pick);
+          });
+        } else {
+          appendNoPick("該当する記事がありません")
+        }
+        $('.search-result__comment-sort__desc > .search-result__comment-sort__select').text($(e.currentTarget).text());
+        $('.search-result__comment-sort__desc > .search-result__comment-sort__select').attr('comment-sort-kind', comment_sort_kind);
+        $('.search-result__comment-sort__desc > .search-result__comment-sort__select').css("display", "inline-block");
+        $('.search-result__comment-sort__desc').css("background-color", "#eee");
+        $('.search-result__comment-sort__desc__sort').css("display", "none");
+        $('.search-result__comment-sort__desc').css("border", "0");
+      })
+      .fail(function() {
+        alert('並び替えに失敗しました');
+      })
   });
 });
