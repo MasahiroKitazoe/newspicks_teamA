@@ -28,7 +28,7 @@ $(function() {
     return element.attr('data');
   }
 
-  $('.like-wrapper').on('click', '.liked', function(e){
+  $('.search-result').on('click', '.liked', function(e){
     e.preventDefault();
     var trigger_id = "#" + $(this).parent().attr('id')
     var unlike_ele = $(this)

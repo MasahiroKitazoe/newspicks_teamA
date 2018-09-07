@@ -199,7 +199,7 @@ $(function() {
                               <div class="search-result__comments__comment__like__likes-count count">
                                 ${comment.like_count} Likes
                               </div>
-                            </div>`
+                            </div>`;
     }
     var html = `<div class="search-result__comments__comment">
                   <div class="search-result__comments__comment__user">
