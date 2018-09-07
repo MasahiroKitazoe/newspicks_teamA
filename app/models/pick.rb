@@ -78,12 +78,46 @@ class Pick < ApplicationRecord
     return results
   end
 
-
   def upcheck(user)
     comments.find_by(user_id: user.id).update
   end
 
   def check?(user)
     check_users.include?(user)
+  end
+
+  def categorize
+    require 'net/http'
+    require 'uri'
+    require 'json'
+
+    uri = URI.parse("https://still-wildwood-92752.herokuapp.com/predict/iris_logreg")
+    request = Net::HTTP::Post.new(uri)
+    request.basic_auth(ENV['FLASK_BASIC_KEY'], ENV['FLASK_BASIC_SECRETS'])
+    request.content_type = "application/json"
+    request.body = JSON.dump({
+      "petal_length" => [
+        4.5
+      ],
+      "petal_width" => [
+        1.5
+      ],
+      "sepal_length" => [
+        6
+      ],
+      "sepal_width" => [
+        2.9
+      ]
+    })
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+
+    response.body
   end
 end
