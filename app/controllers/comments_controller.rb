@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
 
   def create
     @pick = Pick.find(comment_params[:pick_id])
-    if Comment.where("pick_id = ? and user_id = ?",comment_params[:pick_id], current_user).blank?
+    if Comment.where("pick_id = ? and user_id = ?",comment_params[:pick_id], current_user.id).blank?
+      PickUser.create(pick_users_params)
       @comment = Comment.create(comment_params)
       @pick.reload
       respond_to do |format|
@@ -43,6 +44,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @pick = @comment.pick
+    @pick_user = PickUser.where("pick_id = ? and user_id = ?", @pick.id, current_user.id)
+    @pick_user.destroy(@pick_user.ids)
     @comment.destroy
     respond_to do |format|
       format.html {redirect_to request.refferrer || root_url}
@@ -57,6 +61,10 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:comment, :pick_id).merge(user_id: current_user.id)
+  end
+
+  def pick_users_params
+    params.require(:comment).permit(:pick_id).merge(user_id: current_user.id)
   end
 
   def set_pick

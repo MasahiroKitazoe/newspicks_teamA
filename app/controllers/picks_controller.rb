@@ -14,6 +14,14 @@ class PicksController < ApplicationController
 
   def show
     @pick = Pick.find(params[:id])
+    @users = @pick.users
+    @users_nocomment = []
+    @users.each do |user|
+      if user.comments.where(pick_id: @pick.id).first.comment.blank?
+        @users_nocomment << user
+      end
+    end
+
     @comments = @pick.comments.includes(:user)
     #フォローは一旦自分自身のみで定義。コメントではfollowerに自分のコメントが表示される。なのでカレントユーザー情報を持ってくる必要はない。
     @comments_recommend = []
@@ -22,11 +30,11 @@ class PicksController < ApplicationController
     @comments_garbage = []
     #注目のコメントとその他のコメントを分ける。
     @comments.each do |comment|
-      if current_user.disliking?(comment.user)
+      if current_user.disliking?(comment.user) and !comment.comment.blank?
         @comments_garbage << comment
-      elsif current_user.following?(comment.user) or comment.user == current_user
+      elsif current_user.following?(comment.user) or comment.user == current_user and !comment.comment.blank?
         @comments_following << comment
-      elsif comment.present?
+      elsif comment.present? and !comment.comment.blank?
         @comments_other << comment
       end
     end
@@ -67,6 +75,7 @@ class PicksController < ApplicationController
   end
 
   def create
+    # binding.pry
     @pick = Pick.new(picks_params)
 
     # URLの記事をスクレイピングする
@@ -117,7 +126,8 @@ class PicksController < ApplicationController
         :url,
         :image,
         :title,
-        :body
+        :body,
+        {:user_ids => []}
         )
     end
 

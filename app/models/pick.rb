@@ -2,8 +2,8 @@ class Pick < ApplicationRecord
   validates :url, :image, :title, :body, presence: true
 
   has_many :comments, dependent: :destroy
-  has_many :users, through: :pick_users
   has_many :pick_users
+  has_many :users, through: :pick_users
   has_many :themes, through: :pick_themes
   has_many :pick_themes
   has_many :check_users, through: :comments, source: :user
