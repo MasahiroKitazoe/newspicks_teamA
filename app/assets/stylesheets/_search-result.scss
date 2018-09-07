@@ -57,9 +57,12 @@
   &__pick-sort {
     display: block;
     height: 50px;
+    width: calc(100% - 60px);
+    float: right;
     border-bottom: 1px solid #aaa;
     padding: 0 30px ;
     line-height: 50px;
+    position: relative;
     &__pick-count {
       display: inline-block;
       font-size: 12px;
@@ -67,7 +70,10 @@
       padding: 0 10px;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 30px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -80,10 +86,11 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
-      float: left;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      position: absolute;
+      left: 172.484px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -97,7 +104,9 @@
       color: #221f20;
       padding: 0 10px;
       cursor: pointer;
-      float: left;
+      position: absolute;
+      left: 284.968px;
+      top: 0;
       &__sort {
         display: none;
         &:hover {
@@ -159,6 +168,7 @@
     }
   }
   &__picks {
+    clear: both;
     padding: 20px 40px;
     display: block;
     &__news {
@@ -167,6 +177,7 @@
       margin-bottom: 16px;
       min-height: 108px;
       &__image {
+        z-index: 0;
         background-position: center;
         background-size: cover;
         margin-right: 16px;
