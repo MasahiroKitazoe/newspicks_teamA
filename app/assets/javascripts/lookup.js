@@ -138,6 +138,7 @@ $(function() {
   function appendPick(pick) {
     var html = `<div class="search-result__picks__news">
                   <div>
+                    <a href="/picks/${pick.id}">
                       <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
                         <div class="search-result__picks__news__image__back">
                         </div>
@@ -150,10 +151,13 @@ $(function() {
                           </span>
                         </span>
                       </div>
+                    </a>
                       <div class="search-result__picks__news__above">
-                        <div class="search-result__picks__news__above__title">
-                          ${pick.title}
-                        </div>
+                        <a href="/picks/${pick.id}">
+                          <div class="search-result__picks__news__above__title">
+                            ${pick.title}
+                          </div>
+                        </a>
                         <div class="search-result__picks__news__above__source">
                           ${pick.source} | ${pick.created_at}
                         </div>
