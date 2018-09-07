@@ -96,23 +96,34 @@ class PicksController < ApplicationController
   end
 
   def lookup
-    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
+    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").order("created_at DESC").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
-    @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
+    @users = User.where("first_name LIKE :keyword OR last_name LIKE :keyword OR company LIKE :keyword OR position LIKE :keyword OR profile LIKE :keyword", keyword: "%#{params[:keyword]}%")
+
     if params[:pick_num] && params[:pick_time]
-      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     elsif params[:pick_num]
-      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
+      @picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
     elsif params[:pick_time]
-      @filtered_picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     end
+
+    if params[:pick_sort_kind] == "comments_count"
+      @picks = @picks.sort{|a, b| b.comments.count <=> a.comments.count}
+    end
+
     if params[:comment_num] && params[:comment_time]
-      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+      @comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     elsif params[:comment_num]
-      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
+      @comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
     elsif params[:comment_time]
-      @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+      @comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     end
+
+    if params[:comment_sort_kind] == "likes_count"
+      @comments = @comments.sort{|a, b| b.likes.count <=> a.likes.count}
+    end
+
     respond_to do |format|
       format.html
       format.json

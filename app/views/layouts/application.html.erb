@@ -18,7 +18,11 @@
         </li>
         <li class="header__list__search">
           <%= form_tag({controller: "/picks", action: "lookup"}, method: "get", class: 'header__list__search-form') do %>
-            <%= text_field_tag :keyword, '', class: 'header__list__input', placeholder: '検索する' %>
+            <% if params[:keyword] %>
+              <%= text_field_tag :keyword, '', class: 'header__list__input', placeholder: '検索する', value: params[:keyword] %>
+            <% else %>
+              <%= text_field_tag :keyword, '', class: 'header__list__input', placeholder: '検索する' %>
+            <% end %>
             <%= submit_tag "Search", class: 'header__list__search-btn' %>
           <% end %>
           <!-- <input type="text" placeholder="検索する" class="header__list__input"> -->
