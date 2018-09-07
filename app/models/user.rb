@@ -25,6 +25,7 @@ class User < ApplicationRecord
                               dependent: :destroy
   has_many :disliking, through: :active_dislikes, source: :disliked
   has_many :dislikers, through: :passive_dislikes, source: :disliker
+  has_many :notifications, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 

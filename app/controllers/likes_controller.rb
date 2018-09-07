@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  after_action :create_notifications, only: [:create]
 
   def create
     @comment = Comment.find(params[:comment_id])
@@ -23,4 +24,10 @@ class LikesController < ApplicationController
       format.html { redirect_to root_path, flash: {alert: 'いいねに失敗しました'} }
       format.json
     end
+
+  private
+  def create_notifications
+    return if @comment.user.id == current_user.id
+    Notification.create(user_id: @comment.user.id, notified_by_id: current_user.id, article_id: @comment.id, notified_type: 'いいね')
+   end
 end

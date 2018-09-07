@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
   has_many :likes
   validates :user_id, presence: true
   validates :pick_id, presence: true
+  has_many :notifications, dependent: :destroy
 
   def do_time(comment)
     Time.now - comment.created_at
