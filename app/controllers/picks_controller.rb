@@ -17,7 +17,7 @@ class PicksController < ApplicationController
     @users = @pick.users
     @users_nocomment = []
     @users.each do |user|
-      if !user.comments.where(pick_id: @pick.id).first.nil? and user.comments.where(pick_id: @pick.id).first.comment.nil?
+      if user.comments.where(pick_id: @pick.id).first.comment.blank?
         @users_nocomment << user
       end
     end
@@ -30,11 +30,11 @@ class PicksController < ApplicationController
     @comments_garbage = []
     #注目のコメントとその他のコメントを分ける。
     @comments.each do |comment|
-      if current_user.disliking?(comment.user)
+      if current_user.disliking?(comment.user) and !comment.comment.blank?
         @comments_garbage << comment
-      elsif current_user.following?(comment.user) or comment.user == current_user
+      elsif current_user.following?(comment.user) or comment.user == current_user and !comment.comment.blank?
         @comments_following << comment
-      elsif comment.present?
+      elsif comment.present? and !comment.comment.blank?
         @comments_other << comment
       end
     end
