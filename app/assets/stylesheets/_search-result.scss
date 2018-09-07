@@ -88,6 +88,7 @@
       padding: 0 10px;
       min-width: 102.484px;
       cursor: pointer;
+      z-index: 1;
       position: absolute;
       left: 172.484px;
       top: 0;
@@ -104,8 +105,9 @@
       color: #221f20;
       padding: 0 10px;
       cursor: pointer;
+      z-index: 1;
       position: absolute;
-      left: 284.968px;
+      left: 309.968px;
       top: 0;
       &__sort {
         display: none;
@@ -121,9 +123,12 @@
   &__comment-sort {
     display: none;
     height: 50px;
+    width: calc(100% - 60px);
+    float: right;
     border-bottom: 1px solid #aaa;
     padding: 0 30px ;
     line-height: 50px;
+    position: relative;
     &__like-count {
       display: inline-block;
       font-size: 12px;
@@ -132,7 +137,10 @@
       float: left;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 30px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -148,7 +156,10 @@
       float: left;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 172.484px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -161,7 +172,10 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 309.968px;
+      top: 0;
     }
     &__select {
       color: #777;
@@ -237,6 +251,7 @@
   &__comments {
     padding: 20px 40px;
     display: none;
+    clear: both;
     &__comment {
       background-color: #fff;
       padding: 16px;
