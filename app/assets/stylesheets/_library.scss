@@ -1,36 +1,145 @@
 #library-wrapper{
   .library_page{
-    background: #EFEFEF;
+    background: $grayshwhite;
     float: right;
     width: calc(85vw - 10px);
-    height: 100%;
+    height: 100vh;
+    overflow: scroll;
     @include tab();
     .tab-content{
       width: 95%;
       margin: auto;
       margin-top: 30px;
-      background-color: #FFF;
+      background-color: $white;
       .tab-content-selected{
         .items{
           .recommended{
             .featured{
-              border-bottom: 8px solid #EAEAEA;
+              border-bottom: 8px solid $offwhite;
               @include main_card();
             }
             .categorized{
-              border-bottom: 8px solid #EAEAEA;
+              border-bottom: 8px solid $offwhite;
               @include main_card();
             }
           }
         }
       }
-      .comment-ranking-wrapper{
-        width: 100%;
-        background-color: black;
-        height: 100%;
-      }
       &__paragraf {
         @include one_comment();
+      }
+      .items-user-ranking{
+        background-color: $grayshwhite;
+        .a-user-in-ranking{
+          background: $white;
+          display: block;
+          position: relative;
+          color: inherit;
+          text-decoration: none;
+          outline: 0;
+          margin-bottom: 8px;
+          .user-ranking-wrapper{
+            height: 96px;
+            vertical-align: middle;
+            display: table;
+            .ranking-order{
+              display: table-cell;
+              vertical-align: middle;
+              height: 100%;
+              padding: 0 20px;
+              span{
+                border-radius: 20px;
+                border: 1px solid #666;
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                text-align: center;
+                line-height: 200%;
+              }
+              .user-rank-1{
+                border-color: $palegold;
+                background-color: $palegold;
+                color: $white;
+              }
+              .user-rank-2{
+                border-color: $darkblue;
+                background-color: $darkblue;
+                color: $white;
+              }
+              .user-rank-3{
+                border-color: $brushedorrange;
+                background-color: $brushedorrange;
+                color: $white;
+              }
+            }
+            .usercover{
+              display: table-cell;
+              vertical-align: middle;
+              height: 100%;
+              &__icon{
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+              }
+            }
+            .userinfo{
+              display: table-cell;
+              vertical-align: middle;
+              height: 100%;
+              padding: 0 20px;
+              max-width: 475px;
+              .name-wrapper{
+                height: 20px;
+                .username{
+                  display: inline-block;
+                  float: left;
+                  font-weight: 700;
+                  height: 100%;
+                }
+                .picker-badges{
+                  display: inline-block;
+                  vertical-align: top;
+                }
+                .picker-badges .small{
+                  margin-top: 0;
+                  font-size: 86%;
+                  margin-left: 8px;
+                  img{
+                    height: auto;
+                    width: 24px;
+                  }
+                }
+              }
+              .title{
+                color: $darkgray;
+                font-size: 12px;
+              }
+              .likes{
+                color: #999;
+                font-size: 12px;
+                .t{
+                  margin-right: 3px;
+                }
+                em{
+                  font-style: normal;
+                  color: $darkgray;
+                }
+              }
+            }
+            .follow-btn{
+                  position: absolute;
+                  right: 30px;
+                  top: 50%;
+                  margin-top: -14.5px;
+              a{
+                @include user_rank_follow();
+              }
+              div{
+                @include user_rank_follow();
+              }
+            }
+          }
+        }
       }
     }
   }

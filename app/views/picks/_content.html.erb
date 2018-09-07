@@ -284,13 +284,15 @@
   <div class="content__user-ranking">
     <div class="content__user-ranking__head">
       <p class="content__user-ranking__head__name">ユーザーランキング</p>
-      <p class="content__user-ranking__head__link">ユーザーランキング 一覧を見る</p>
+      <%= link_to library_path do %>
+        <p class="content__user-ranking__head__link">ユーザーランキング 一覧を見る</p>
+      <% end %>
     </div>
     <div class="content__user-ranking__users">
       <!-- １行目 -->
       <div class="content__user-ranking__users__paragraf-1">
-        <% (0..1).each do |i| %>
-          <% if @users[i] %>
+        <% @user_ranking.each_with_index do |user, i| %>
+          <% if user %>
           <!-- １ユーザー -->
             <div class="content__user-ranking__users__paragraf-1__user">
               <div class="content__user-ranking__users__paragraf-1__user__image">
@@ -300,16 +302,16 @@
                 <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
               </div>
               <div class="content__user-ranking__users__paragraf-1__user__info">
-                <p class="content__user-ranking__users__paragraf-1__user__info__name"><%= @users[i].last_name %> <%= @users[i].first_name %></p>
-                <p class="content__user-ranking__users__paragraf-1__user__info__position"><%= @users[i].position %></p>
-                <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num">2347</span></p>
+                <p class="content__user-ranking__users__paragraf-1__user__info__name"><%= user.last_name %> <%= user.first_name %></p>
+                <p class="content__user-ranking__users__paragraf-1__user__info__position"><%= user.position %></p>
+                <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num"><%= @weekly_likes[i] %></span></p>
               </div>
               <% if user_signed_in? %>
-                <% if @users[i].id != current_user.id %>
-                  <% if current_user.following?(@users[i]) %>
+                <% if user.id != current_user.id %>
+                  <% if current_user.following?(user) %>
                     <div class="content__user-ranking__users__paragraf-2__user__follow">
-                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
-                        <%= link_to "/unfollow/#{@users[i].id}", class: "destroy-relation", data: @users[i].id, method: :delete do %>
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
+                        <%= link_to user.show_unfollow_link, class: "destroy-relation", data: user.id, method: :delete do %>
                           <img src="images/following-btn.png">
                         <% end %>
                       </div>
@@ -317,49 +319,7 @@
                   <% else %>
                     <div class="content__user-ranking__users__paragraf-2__user__follow">
                       <div class="follow-btn" id="user-follow<%= @users[i].id %>">
-                        <%= link_to "/follow/#{@users[i].id}", class: "create-relation", data: @users[i].id, method: :post do %>
-                          <img src="images/follow-btn.png">
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-      <!-- ２行目 -->
-      <div class="content__user-ranking__users__paragraf-2">
-        <% (2..3).each do |i| %>
-          <% if @users[i] %>
-            <!-- １ユーザー -->
-            <div class="content__user-ranking__users__paragraf-2__user">
-              <div class="content__user-ranking__users__paragraf-2__user__image">
-                <div class="content__user-ranking__users__paragraf-2__user__image__rank">
-                  <%= i + 1 %>
-                </div>
-                <img class="content__user-ranking__users__paragraf-2__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
-              </div>
-              <div class="content__user-ranking__users__paragraf-2__user__info">
-                <p class="content__user-ranking__users__paragraf-2__user__info__name"><%= @users[i].last_name %> <%= @users[i].first_name %></p>
-                <p class="content__user-ranking__users__paragraf-2__user__info__position"><%= @users[i].position %></p>
-                <p class="content__user-ranking__users__paragraf-2__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-2__user__info__like-count__num">2347</span></p>
-              </div>
-              <% if user_signed_in? %>
-                <% if @users[i].id != current_user.id %>
-                  <% if current_user.following?(@users[i]) %>
-                    <div class="content__user-ranking__users__paragraf-2__user__follow">
-                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
-                        <%= link_to "/unfollow/#{@users[i].id}", class: "destroy-relation", data: @users[i].id, method: :delete do %>
-                          <img src="images/following-btn.png">
-                        <% end %>
-                      </div>
-                    </div>
-                  <% else %>
-                    <div class="content__user-ranking__users__paragraf-2__user__follow">
-                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
-                        <%= link_to "/follow/#{@users[i].id}", class: "create-relation", data: @users[i].id, method: :post do %>
+                        <%= link_to user.show_follow_link, class: "create-relation", data: user.id, method: :post do %>
                           <img src="images/follow-btn.png">
                         <% end %>
                       </div>
@@ -376,7 +336,9 @@
   <div class="content__comment-ranking">
     <div class="content__comment-ranking__head">
       <p class="content__comment-ranking__head__name">コメントランキング</p>
-      <p class="content__comment-ranking__head__link">コメントランキング 一覧を見る</p>
+      <%= link_to library_path do %>
+        <p class="content__comment-ranking__head__link">コメントランキング 一覧を見る</p>
+      <% end %>
       <div class="content__comment-ranking__comments">
         <!-- １行目 -->
         <div class="content__comment-ranking__comments__paragraf-1">
@@ -412,13 +374,13 @@
                     <% if current_user.id != comment.user.id %>
                       <% if current_user.following?(comment.user) %>
                         <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
-                          <%= link_to "/unfollow/#{comment.user.id}", class: "destroy-relation", data: comment.user.id, method: :delete do %>
+                          <%= link_to comment.user.show_unfollow_link, class: "destroy-relation", data: comment.user.id, method: :delete do %>
                             <img src="images/following-btn.png">
                           <% end %>
                         </div>
                       <% else %>
                         <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
-                          <%= link_to "/follow/#{comment.user.id}", class: "create-relation", data: comment.user.id, method: :post do %>
+                          <%= link_to comment.user.show_follow_link, class: "create-relation", data: comment.user.id, method: :post do %>
                             <img src="images/follow-btn.png">
                           <% end %>
                         </div>

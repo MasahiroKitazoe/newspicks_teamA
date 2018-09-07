@@ -14,7 +14,7 @@
   <div class="drop-down-button">
     <div class="drop-down-button-icon">⋮</div>
     <div class="popover" style="top: 30px; left: -280px;" >
-      <%= link_to "/follow/#{comment.user.id}", class: "create-relation", data: comment.user.id, method: :post do %>
+      <%= link_to comment.user.show_follow_link, class: "create-relation", data: comment.user.id, method: :post do %>
       <div class="menu-item follow-item follow" id="follow-<%= comment.user.id %> data-permitted="true" data-user="<%= comment.user.id %>" <% if current_user.following?(comment.user)%> style="display: none" <% end %>>
         <div class="menu-icon follow-icon">
           <div class="follow-button">
@@ -24,7 +24,7 @@
         <div class="description">このユーザーをフォロー</div>
       </div>
       <% end %>
-      <%= link_to "/unfollow/#{comment.user.id}", class: "destroy-relation", data: comment.user.id, method: :delete do %>
+      <%= link_to comment.user.show_unfollow_link, class: "destroy-relation", data: comment.user.id, method: :delete do %>
       <div class="menu-item follow-item following" id="following-<%= comment.user.id %> data-permitted="true" data-user="<%= comment.user.id %>" <% unless current_user.following?(comment.user) %>style= "display: none" <% end %>>
         <div class="menu-icon follow-icon">
           <div class="followed-button" >

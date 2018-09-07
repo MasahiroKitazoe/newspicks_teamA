@@ -49,6 +49,56 @@ class User < ApplicationRecord
     end
   end
 
+  class << self
+    def get_like_ids_within_one_week
+      tg_likes = Like.where(created_at: [7.days.ago..Time.now])
+      tg_likes.map { |like| like.id }
+    end
+
+    def get_comments_liked_within_one_week
+      grouped_likes = Like.group(:comment_id).where(created_at: [7.days.ago..Time.now])
+      comment_ids = grouped_likes.map { |like| like.comment_id }
+    end
+
+    def create_user_likes_hash(like_ids, comment_ids)
+      user_likes = {}
+      target_comments = Comment.where(id: comment_ids)
+      target_comments.each do |comment|
+        likes_count = comment.likes.where(id: like_ids).count
+        if user_likes[comment.user_id].nil?
+          user_likes[comment.user_id] = likes_count
+        else
+          user_likes[comment.user_id] += likes_count
+        end
+      end
+      user_likes
+    end
+
+    def get_sorted_users_and_likes(user_likes, limit_num)
+      target_users = []
+      weekly_likes = []
+      len_counter = 0
+      user_likes.each do |key, val|
+        target_users << User.find(key)
+        weekly_likes << val
+        len_counter += 1
+        break if len_counter >= limit_num
+      end
+      return target_users, weekly_likes
+    end
+
+    def rank_user(limit_num)
+      #1週間以内にlikeされたコメントを取り出し、user_idでグループ化、keyがuser_id、valがlike数のハッシュを生成
+      user_likes = create_user_likes_hash(get_like_ids_within_one_week, get_comments_liked_within_one_week)
+
+      #Like数の多い順にハッシュをソート
+      user_likes.sort_by {|k,v| -v}
+
+      #like数の多い順にユーザーを取り出す
+      target_users, weekly_likes = get_sorted_users_and_likes(user_likes, limit_num)
+    end
+  end
+
   def dislike(other_user)
     disliking << other_user
   end
@@ -59,6 +109,14 @@ class User < ApplicationRecord
 
   def disliking?(other_user)
     disliking.include?(other_user)
+  end
+
+  def show_follow_link
+    "/follow/#{self.id}"
+  end
+
+  def show_unfollow_link
+    "/unfollow/#{self.id}"
   end
 
   protected
@@ -84,4 +142,5 @@ class User < ApplicationRecord
       return user
     end
   end
+
 end

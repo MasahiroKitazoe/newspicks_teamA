@@ -2,9 +2,11 @@
 <div class="tab-content__content">
   <!-- ニュース本編 -->
   <div class="tab-content__content__news">
-    <div class="tab-content__content__news__image" style="background-image: url(<%= pick.image %>);">
-    </div>
-    <h1 class="tab-content__content__news__title"><%= pick.title %></h1>
+    <%= link_to pick, class: "content__top-news__side-news__content__news__link" do %>
+      <div class="tab-content__content__news__image" style="background-image: url(<%= pick.image %>);">
+      </div>
+      <h1 class="tab-content__content__news__title"><%= pick.title %></h1>
+    <% end %>
     <div class="tab-content__content__news__info">
       <p class="tab-content__content__news__source"><%= pick.source %></p>
       <p class="tab-content__content__news__time">11時間前</p>

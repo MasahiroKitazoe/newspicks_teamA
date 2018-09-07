@@ -85,3 +85,14 @@
     }
   }
 }
+
+@mixin user_rank_follow() {
+  img{
+    display: table-cell;
+    height: 24px;
+    width: auto;
+    transition: all .1s linear;
+    vertical-align: middle;
+    outline: 0;
+  }
+}

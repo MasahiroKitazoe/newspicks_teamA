@@ -6,6 +6,9 @@ class UsersController < ApplicationController
     @users = User.order('created_at ASC')
 
     @comment_ranking = Comment.rank_comment(30)
+
+    #まずは、likesテーブルから1週間以内にlikeされたものを取り出す
+    @user_ranking, @weekly_likes = User.rank_user(30)
   end
 
   def show
