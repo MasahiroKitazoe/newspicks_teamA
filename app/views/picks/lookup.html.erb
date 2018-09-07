@@ -64,12 +64,12 @@
     <div class="search-result__pick-sort__desc">
       ソート順:
       <span class="search-result__pick-sort__select">公開日</span>
-      <%= link_to "#", data: {sort_kind: "time", keyword: params[:keyword]}, class: 'pick-sort' do %>
+      <%= link_to "#", data: {pick_sort_kind: "time", keyword: params[:keyword]}, class: 'pick-sort' do %>
         <div class="search-result__pick-sort__desc__sort">
           公開日
         </div>
       <% end %>
-      <%= link_to "#", data: {sort_kind: "comments_count", keyword: params[:keyword]}, class: 'pick-sort' do %>
+      <%= link_to "#", data: {pick_sort_kind: "comments_count", keyword: params[:keyword]}, class: 'pick-sort' do %>
         <div class="search-result__pick-sort__desc__sort">
           PICK数
         </div>

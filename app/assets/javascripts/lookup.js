@@ -316,7 +316,7 @@ $(function() {
     var keyword = $(e.currentTarget).data('keyword');
     var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time');
     var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num');
-    var sort_kind = $(e.currentTarget).data('sort-kind');
+    var sort_kind = $(e.currentTarget).data('pick-sort-kind');
       $.ajax({
         type: 'GET',
         url: '/picks/lookup',
