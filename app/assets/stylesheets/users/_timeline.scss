@@ -19,6 +19,7 @@
       width: calc(50vw - 40px);
       min-width: 560px;
       padding: 25px 20px;
+      float: left;
       &__above {
         border-bottom: 1px solid #efefef;
         padding-bottom: 20px;
@@ -88,6 +89,35 @@
     }
   }
   &__keyword {
-
+    padding: 20px 30px;
+    float: left;
+    width: 300px;
+    &__head {
+      &:after {
+        clear: both;
+        content: '';
+        display: block;
+      }
+      &__title {
+        font-size: 14px;
+        font-weight: bold;
+        float: left;
+      }
+      &__more {
+        color: #37509C;
+        font-size: 12px;
+        float: right;
+      }
+    }
+    &__list {
+      margin-top: 20px;
+      background-color: #fff;
+      &__word {
+        color: #37509C;
+        font-size: 12px;
+        padding: 15px 30px;
+        border-bottom: 1px solid #ccc;
+      }
+    }
   }
 }
