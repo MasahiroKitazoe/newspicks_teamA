@@ -33,13 +33,13 @@
               <% if current_user.following?(comment.user) %>
                 <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
                   <%= link_to comment.user.show_unfollow_link, class: "destroy-relation", data: comment.user.id, method: :delete do %>
-                    <img src="images/following-btn.png">
+                    <img src="/images/following-btn.png">
                   <% end %>
                 </div>
               <% else %>
                 <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
                   <%= link_to comment.user.show_follow_link, class: "create-relation", data: comment.user.id, method: :post do %>
-                    <img src="images/follow-btn.png">
+                    <img src="/images/follow-btn.png">
                   <% end %>
                 </div>
               <% end %>

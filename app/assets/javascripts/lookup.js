@@ -138,6 +138,7 @@ $(function() {
   function appendPick(pick) {
     var html = `<div class="search-result__picks__news">
                   <div>
+                    <a href="/picks/${pick.id}">
                       <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
                         <div class="search-result__picks__news__image__back">
                         </div>
@@ -150,10 +151,13 @@ $(function() {
                           </span>
                         </span>
                       </div>
+                    </a>
                       <div class="search-result__picks__news__above">
-                        <div class="search-result__picks__news__above__title">
-                          ${pick.title}
-                        </div>
+                        <a href="/picks/${pick.id}">
+                          <div class="search-result__picks__news__above__title">
+                            ${pick.title}
+                          </div>
+                        </a>
                         <div class="search-result__picks__news__above__source">
                           ${pick.source} | ${pick.created_at}
                         </div>
@@ -182,6 +186,21 @@ $(function() {
                           ${comment.user_position}
                         </span>`
     }
+    if (comment.liked == true) {
+      var insertLikeBlock = `<div class="liked" data="${comment.like_id}">
+                              <img class="search-result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count-r">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`;
+    } else {
+      var insertLikeBlock = `<div class="like">
+                              <img class="search-result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`;
+    }
     var html = `<div class="search-result__comments__comment">
                   <div class="search-result__comments__comment__user">
                     <img src="${comment.user_image}", class="search-result__comments__comment__user__image">
@@ -197,19 +216,20 @@ $(function() {
                       </div>
                     </div>
                   </div>
-                  <div class="search-result__comments__comment__body">
-                    ${comment.comment}
-                  </div>
-                  <div class="search-result__comments__comment__like">
-                    <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
-                    <div class="search-result__comments__comment__like__likes-count">
-                      ${comment.like_count} Likes
+                  <a href="/picks/${comment.pick_id}">
+                    <div class="search-result__comments__comment__body">
+                      ${comment.comment}
                     </div>
+                  </a>
+                  <div class="search-result__comments__comment__like like-wrapper" id="like${comment.id}" data="${comment.id}">
+                    ${insertLikeBlock}
                   </div>
                   <div class="search-result__comments__comment__news">
-                    <div class="search-result__comments__comment__news__title">
-                      ${comment.pick_title}
-                    </div>
+                    <a href="/picks/${comment.pick_id}">
+                      <div class="search-result__comments__comment__news__title">
+                        ${comment.pick_title}
+                      </div>
+                    </a>
                     <div class="search-result__comments__comment__news__info">
                       <span class="search-result__comments__comment__news__info__source">
                         ${comment.pick_source}

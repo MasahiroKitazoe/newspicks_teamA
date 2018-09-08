@@ -10,6 +10,7 @@ end
 
 json.array! @comments do |filtered_comment|
   json.id filtered_comment.id
+  json.pick_id filtered_comment.pick.id
   json.user_image filtered_comment.user.image.url
   json.user_last_name filtered_comment.user.last_name
   json.user_first_name filtered_comment.user.first_name
@@ -20,4 +21,11 @@ json.array! @comments do |filtered_comment|
   json.pick_title filtered_comment.pick.title
   json.pick_source filtered_comment.pick.source
   json.pick_created_at filtered_comment.pick.created_at
+  like = Like.find_by(comment_id: filtered_comment.id, user_id: current_user.id)
+  if like
+    json.liked true
+    json.like_id like.id
+  else
+    json.liked false
+  end
 end

@@ -88,13 +88,13 @@
                   <% if current_user.following?(user) %>
                     <div class="follow-btn" id="user-follow<%= user.id %>">
                       <%= link_to user.show_unfollow_link, class: "destroy-relation", data: user.id, method: :delete do %>
-                        <img src="images/following-btn.png">
+                        <img src="/images/following-btn.png">
                       <% end %>
                     </div>
                   <% else %>
                     <div class="follow-btn" id="user-follow<%= user.id %>">
                       <%= link_to user.show_follow_link, class: "create-relation", data: user.id, method: :post do %>
-                        <img src="images/follow-btn.png">
+                        <img src="/images/follow-btn.png">
                       <% end %>
                     </div>
                   <% end %>
@@ -141,13 +141,13 @@
                   <% if current_user.following?(user) %>
                     <div class="follow-btn" id="user-follow<%= user.id %>">
                       <%= link_to user.show_unfollow_link, class: "destroy-relation", data: user.id, method: :delete do %>
-                        <img src="images/following-btn.png">
+                        <img src="/images/following-btn.png">
                       <% end %>
                     </div>
                   <% else %>
                     <div class="follow-btn" id="user-follow<%= user.id %>">
                       <%= link_to user.show_follow_link, class: "create-relation", data: user.id, method: :post do %>
-                        <img src="images/follow-btn.png">
+                        <img src="/images/follow-btn.png">
                       <% end %>
                     </div>
                   <% end %>
@@ -186,13 +186,13 @@
                   <% if current_user.following?(user) %>
                     <div class="follow-btn" id="user-follow<%= user.id %>">
                       <%= link_to user.show_unfollow_link, class: "destroy-relation", data: user.id, method: :delete do %>
-                        <img src="images/following-btn.png">
+                        <img src="/images/following-btn.png">
                       <% end %>
                     </div>
                   <% else %>
                     <div class="follow-btn" id="user-follow<%= user.id %>">
                       <%= link_to user.show_follow_link, class: "create-relation", data: user.id, method: :post do %>
-                        <img src="images/follow-btn.png">
+                        <img src="/images/follow-btn.png">
                       <% end %>
                     </div>
                   <% end %>

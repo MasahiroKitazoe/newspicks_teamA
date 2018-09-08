@@ -312,15 +312,15 @@
                     <div class="content__user-ranking__users__paragraf-2__user__follow">
                       <div class="follow-btn" id="user-follow<%= user.id %>">
                         <%= link_to user.show_unfollow_link, class: "destroy-relation", data: user.id, method: :delete do %>
-                          <img src="images/following-btn.png">
+                          <img src="/images/following-btn.png">
                         <% end %>
                       </div>
                     </div>
                   <% else %>
                     <div class="content__user-ranking__users__paragraf-2__user__follow">
-                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
                         <%= link_to user.show_follow_link, class: "create-relation", data: user.id, method: :post do %>
-                          <img src="images/follow-btn.png">
+                          <img src="/images/follow-btn.png">
                         <% end %>
                       </div>
                     </div>
@@ -375,13 +375,13 @@
                       <% if current_user.following?(comment.user) %>
                         <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
                           <%= link_to comment.user.show_unfollow_link, class: "destroy-relation", data: comment.user.id, method: :delete do %>
-                            <img src="images/following-btn.png">
+                            <img src="/images/following-btn.png">
                           <% end %>
                         </div>
                       <% else %>
                         <div class="follow-btn" id="user-follow-comment-ranking<%= comment.user.id %>">
                           <%= link_to comment.user.show_follow_link, class: "create-relation", data: comment.user.id, method: :post do %>
-                            <img src="images/follow-btn.png">
+                            <img src="/images/follow-btn.png">
                           <% end %>
                         </div>
                       <% end %>

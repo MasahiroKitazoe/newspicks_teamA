@@ -206,6 +206,10 @@
         height: 108px;
         float: left;
         position: relative;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.7
+        }
         &__back {
           position: absolute;
           height: 31px;
@@ -239,6 +243,10 @@
           font-weight: 700;
           font-size: 16px;
           max-height: 20px;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.7
+          }
         }
         &__source {
           font-size: 12px;
@@ -292,8 +300,16 @@
       &__body {
         font-size: 14px;
         width: 900px;
+        max-height: 60px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
         padding-bottom: 16px;
         float: left;
+        &:hover {
+          opacity: 0.7;
+        }
       }
       &__like {
         float: right;
@@ -302,6 +318,7 @@
         &__icon {
           width: 10px;
           height: 14px;
+          cursor: pointer;
         }
         &__likes-count {
           font-size: 90%;
@@ -315,6 +332,15 @@
         &__title {
           font-size: 14px;
           font-weight: bold;
+          max-height: 20px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.7;
+          }
         }
         &__info {
           font-size: 12px;
