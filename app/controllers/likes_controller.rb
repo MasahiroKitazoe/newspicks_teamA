@@ -27,7 +27,7 @@ class LikesController < ApplicationController
 
   private
   def create_notifications
-    return if @comment.user.id == current_user.id
-    Notification.create(user_id: @comment.user.id, notified_by_id: current_user.id, article_id: @comment.id, notified_type: 'いいね')
-   end
+    @comment = Comment.find(params[:comment_id])
+    Notification.create(user_id: @comment.user.id, notified_by_id: current_user.id, comment_id: @comment.id, notified_type: 'いいね')
+  end
 end

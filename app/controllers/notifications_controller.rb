@@ -4,9 +4,4 @@ class NotificationsController < ApplicationController
     @notifications = current_user.notifications
   end
 
-  def link_through
-    @notification = Notification.find(params[:id])
-    @notification.update read: true
-    redirect_to pick_path @notification.comment
-  end
 end

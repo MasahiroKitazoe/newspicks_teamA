@@ -1,2 +1,3 @@
-<h1>Notifications#link_through</h1>
-<p>Find me in app/views/notifications/link_through.html.erb</p>
+ <li>
+ <%= link_to "#{notification.notified_by.username}さんがあなたの記事に#{notification.notified_type}をしました", link_through_path(notification) %>
+ </li>
