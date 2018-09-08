@@ -1,30 +1,5 @@
 <div class="side-bar">
-  <div class="side-bar__user">
-    <div class="side-bar__user__info">
-      <% if user_signed_in? %>
-        <%= image_tag current_user.image.url, class: 'side-bar__user__info__icon' %>
-      <% else %>
-        <%= image_tag "https://newspicks.com/users/0/cover?width=96&height=96&circle=true", class: 'side-bar__user__info__icon' %>
-      <% end %>
-      <p class="side-bar__user__info__name">
-        <% if user_signed_in? %>
-          <%= current_user.last_name %> <%= current_user.first_name %>
-        <% else %>
-          Unknown
-        <% end %>
-      </p>
-    </div>
-    <div class="side-bar__user__follow-count">
-      <div class="side-bar__user__follow-count__follow">
-        <p class="side-bar__user__follow-count__follow__num"><%= current_user.following.count if user_signed_in? %></p>
-        <p class="side-bar__user__follow-count__follow__unit">フォロー</p>
-      </div>
-      <div class="side-bar__user__follow-count__follower">
-        <p class="side-bar__user__follow-count__follow__num"><%= current_user.followers.count if user_signed_in? %></p>
-        <p class="side-bar__user__follow-count__follow__unit">フォロワー</p>
-      </div>
-    </div>
-  </div>
+  <%= render partial: "./users/current_user" %>
   <% if user_signed_in? %>
     <%= link_to "/users/#{current_user.id}/timeline" do %>
       <div class="side-bar__my-news">
@@ -33,7 +8,6 @@
     <% end %>
   <% end %>
   <div class="side-bar__keyword-news">
-
     <div class="side-bar__keyword-news__news">
       <p class="side-bar__keyword-news__news__keyword"><span class="side-bar__keyword-news__news__keyword__em">[keyword]</span>の記事</p>
       <!-- 記事 -->
