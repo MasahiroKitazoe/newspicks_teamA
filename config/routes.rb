@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   resources :users, only: [:show]
+  get "users/:id/timeline", to: 'users#timeline'
   root 'picks#index'
   get '/picks/search', to: 'picks#search'
   get '/picks/lookup', to: 'picks#lookup'

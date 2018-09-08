@@ -25,9 +25,13 @@
       </div>
     </div>
   </div>
-  <div class="side-bar__my-news">
-    マイニュース
-  </div>
+  <% if user_signed_in? %>
+    <%= link_to "/users/#{current_user.id}/timeline" do %>
+      <div class="side-bar__my-news">
+        マイニュース
+      </div>
+    <% end %>
+  <% end %>
   <div class="side-bar__keyword-news">
 
     <div class="side-bar__keyword-news__news">
