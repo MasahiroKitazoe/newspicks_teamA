@@ -78,7 +78,7 @@ $(function() {
 
   // 背景をクリックするとモーダルを終了
   $('.user_menu__overlay').on('click', function(e) {
-    console.log(e.target);
+    e.preventDefault();
     if (e.target.className == "user_menu__overlay") {
       $('#user_menu').css("display", "none");
     }

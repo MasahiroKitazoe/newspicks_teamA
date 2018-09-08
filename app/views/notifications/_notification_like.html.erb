@@ -1,0 +1,12 @@
+<div class="notification" identifier="LN:2351416:2691253:1853472:1534165698225" score="1534159781813" type="LIKE">
+  <a class="picture-link" href="#">
+    <img src=<%= user.image %>>
+  </a>
+  <a class="label-link" href="#">
+    <div class="message">
+      <b><%= user.last_name %> <%= user.first_name %>様方</b>さんが、あなたのPickにいいね！しました。
+      <b><%= comment.pick.title %></b>
+    </div>
+    <div class="time"><%= comment_time(notification) %></div>
+  </a>
+</div>
