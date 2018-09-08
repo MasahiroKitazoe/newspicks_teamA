@@ -318,7 +318,7 @@
                     </div>
                   <% else %>
                     <div class="content__user-ranking__users__paragraf-2__user__follow">
-                      <div class="follow-btn" id="user-follow<%= @users[i].id %>">
+                      <div class="follow-btn" id="user-follow<%= user.id %>">
                         <%= link_to user.show_follow_link, class: "create-relation", data: user.id, method: :post do %>
                           <img src="images/follow-btn.png">
                         <% end %>

@@ -147,6 +147,7 @@
         <div class="search-result__picks__news">
           <div>
             <!-- 左部 -->
+            <%= link_to pick_path(pick) do %>
               <div class="search-result__picks__news__image" style="background-image: url(<%= pick.image %>)">
                 <div class="search-result__picks__news__image__back">
                 </div>
@@ -159,12 +160,15 @@
                   </span>
                 </span>
               </div>
+            <% end %>
             <!-- 右部 -->
               <!-- 上部 -->
               <div class="search-result__picks__news__above">
-                <div class="search-result__picks__news__above__title">
-                  <%= pick.title %>
-                </div>
+                <%= link_to pick_path(pick) do %>
+                  <div class="search-result__picks__news__above__title">
+                    <%= pick.title %>
+                  </div>
+                <% end %>
                 <div class="search-result__picks__news__above__source">
                   <%= pick.source %> | <%= pick.created_at %>
                 </div>
@@ -182,8 +186,6 @@
       </div>
     <% end %>
   </div>
-
-
   <!-- 検索結果（コメント） -->
   <div class="search-result__comments" id="searched-comments">
     <% if @comments.length != 0 %>
@@ -207,19 +209,34 @@
               </div>
             </div>
           </div>
-          <div class="search-result__comments__comment__body">
-            <%= comment.comment %>
-          </div>
-          <div class="search-result__comments__comment__like">
-            <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
-            <div class="search-result__comments__comment__like__likes-count">
-              <%= comment.likes.count %> Likes
+          <%= link_to pick_path(comment.pick) do %>
+            <div class="search-result__comments__comment__body">
+              <%= comment.comment %>
             </div>
+          <% end %>
+          <div class="search-result__comments__comment__like like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
+            <% if current_user.liked?(comment) %>
+              <div class="liked" data="<%= comment.get_like_id %>">
+                <img class="search-result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
+                <div class="search-result__comments__comment__like__likes-count count-r">
+                  <%= comment.likes.count %> Likes
+                </div>
+              </div>
+            <% else %>
+              <div class="like">
+                <img class="search-result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
+                <div class="search-result__comments__comment__like__likes-count count">
+                  <%= comment.likes.count %> Likes
+                </div>
+              </div>
+            <% end %>
           </div>
           <div class="search-result__comments__comment__news">
-            <div class="search-result__comments__comment__news__title">
-              <%= comment.pick.title %>
-            </div>
+            <%= link_to pick_path(comment.pick) do %>
+              <div class="search-result__comments__comment__news__title">
+                <%= comment.pick.title %>
+              </div>
+            <% end %>
             <div class="search-result__comments__comment__news__info">
               <span class="search-result__comments__comment__news__info__source">
                 <%= comment.pick.source %>
