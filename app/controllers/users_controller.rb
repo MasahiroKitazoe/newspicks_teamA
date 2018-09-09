@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
-    following_users = current_user.followers
+    following_users = current_user.following
     if following_users.length > 0
       @follow_user_comments = []
       following_users.each do |user|
@@ -36,6 +36,7 @@ class UsersController < ApplicationController
           @follow_user_comments << comment
         end
       end
+      @follow_user_comments = @follow_user_comments.sort_by{ |a| a[:created_at] }.reverse
     end
   end
 
