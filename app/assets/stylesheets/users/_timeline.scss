@@ -87,6 +87,30 @@
           float: right;
           height: 38px;
           line-height: 38px;
+          &__like {
+            height: 38px;
+            line-height: 38px;
+          }
+          &__liked {
+            height: 38px;
+            line-height: 38px;
+          }
+          &__btn {
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            float: left;
+          }
+          &__count {
+            height: 12px;
+            line-height: 12px;
+            float: left;
+          }
+          &__label {
+            float: left;
+            height: 12px;
+            line-height: 12px;
+          }
         }
       }
     }

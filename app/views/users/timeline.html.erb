@@ -56,8 +56,26 @@
           <div class="timeline__list__news__bottom__comment">
             <%= comment.comment %>
           </div>
-          <div class="timeline__list__news__bottom__like-wrapper">
-            いいね
+          <div class="timeline__list__news__bottom__like-wrapper like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
+            <% if current_user.liked?(comment) %>
+              <div class="liked timeline__list__news__bottom__like-wrapper__liked" data="<%= comment.get_like_id %>">
+                <img class="thumb-up-r timeline__list__news__bottom__like-wrapper__btn" src="/images/done-like-btn.png">
+                <div class="count-r timeline__list__news__bottom__like-wrapper__count">
+                  <%= comment.likes.count %>
+                </div>
+                <div class="like-label-r timeline__list__news__bottom__like-wrapper__label">Likes
+                </div>
+              </div>
+            <% else %>
+              <div class="like timeline__list__news__bottom__like-wrapper__like">
+                <img class="thumb-up-g timeline__list__news__bottom__like-wrapper__btn" src="/images/like-btn.png">
+                <div class="count timeline__list__news__bottom__like-wrapper__count">
+                  <%= comment.likes.count %>
+                </div>
+                <div class="like-label timeline__list__news__bottom__like-wrapper__label">Likes
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
