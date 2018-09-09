@@ -33,33 +33,30 @@
               <%= comment.pick.title %>
             </div>
             <div class="timeline__list__news__above__pick__info">
-              <span class="timeline__list__news__above__pick__info__source">スポニチ</span>
+              <span class="timeline__list__news__above__pick__info__source"><%= comment.pick.source %></span>
               <span class="timeline__list__news__above__pick__info__time">4時間前</span>
             </div>
           </div>
-          <div class="timeline__list__news__above__image" style="background-image:url(https://toretame.jp/wp-content/uploads/2018/07/nogizaka21th.jpg)">
+          <div class="timeline__list__news__above__image" style="background-image:url(<%= comment.pick.image %>)">
             <div class="timeline__list__news__above__image__pick-count">
-              <span class="timeline__list__news__above__image__pick-count__num">67</span>Picks
+              <span class="timeline__list__news__above__image__pick-count__num"><%= comment.likes.count %></span>Picks
             </div>
           </div>
         </div>
         <div class="timeline__list__news__bottom">
           <div class="timeline__list__news__bottom__user">
-            <img class="timeline__list__news__bottom__user__thumb" src="https://www.hochi.co.jp/photo/20180424/20180424-OHT1I50127-T.jpg" alt="">
+            <img class="timeline__list__news__bottom__user__thumb" src="<%= comment.user.image.url %>" alt="">
             <div class="timeline__list__news__bottom__user__info">
               <div class="timeline__list__news__bottom__user__info__name">
-                上田　晋也
+                <%= comment.user.last_name %>　<%= comment.user.first_name %>
               </div>
               <div class="timeline__list__news__bottom__user__info__more">
-                ナチュラルエイト　お笑い芸人
+                <%= comment.user.company %>　<%= comment.user.position %>
               </div>
             </div>
           </div>
           <div class="timeline__list__news__bottom__comment">
-            ・有田は明治大学の法学部二部に合格していたが、「一緒に早稲田に入ろう」と諭し、浪人につき合わせる
-            ・熊本予備校で一浪し、早稲田大学教育学部国語国文学科に合格
-            ・有田は早稲田に合格できなかったため、今度は上田が一緒に浪人に付き合ってくれるものと期待したが、上田は「お前は立教がいい」と言い放ち、ひとり早稲田大学に進学した
-            ・新歓コンパでは悉く一次会で帰される。場をわきまえず、周りに構わず下半身を露出しているなど、一人で騒ぎ過ぎたため
+            <%= comment.comment %>
           </div>
           <div class="timeline__list__news__bottom__like-wrapper">
             いいね
