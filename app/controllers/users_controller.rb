@@ -32,7 +32,9 @@ class UsersController < ApplicationController
     if following_users.length > 0
       @follow_user_comments = []
       following_users.each do |user|
-        @follow_user_comments << user.comments
+        user.comments.each do |comment|
+          @follow_user_comments << comment
+        end
       end
     end
   end

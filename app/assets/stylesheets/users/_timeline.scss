@@ -1,4 +1,4 @@
-.timeline {
+  .timeline {
   background-color: #efefef;
   width: calc(85vw - 10px);
   height: 100vh;
@@ -20,6 +20,7 @@
       min-width: 560px;
       padding: 25px 20px;
       float: left;
+      margin-bottom: 16px;
       &__above {
         border-bottom: 1px solid #efefef;
         padding-bottom: 20px;
