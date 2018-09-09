@@ -28,6 +28,13 @@ class UsersController < ApplicationController
   end
 
   def timeline
+    following_users = current_user.followers
+    if following_users.length > 0
+      @follow_user_comments = []
+      following_users.each do |user|
+        @follow_user_comments << user.comments
+      end
+    end
   end
 
 
