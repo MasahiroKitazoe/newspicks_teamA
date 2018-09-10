@@ -41,7 +41,45 @@
         }
       }
       &__result {
-
+        background-color: #efefef;
+        height: 500px;
+        overflow: scroll;
+        &__class {
+          background-color: #fff;
+          margin-bottom: 16px;
+          &:after {
+            clear: both;
+            content: '';
+            display: block;
+          }
+          &__news {
+            float: left;
+            width: 335px;
+            text-align: center;
+            color: #4277FB;
+            border-bottom: 2px solid #4277FB;
+            height: 50px;
+            line-height: 50px;
+            font-weight: bold;
+          }
+          &__comment {
+            float: right;
+            width: 335px;
+            text-align: center;
+            color: #999;
+            height: 50px;
+            line-height: 50px;
+          }
+        }
+        &__picks {
+          padding: 0 16px;
+          &__news {
+            @include one_news();
+          }
+        }
+        &__comments {
+          display: none;
+        }
       }
     }
   }
