@@ -96,7 +96,7 @@ class PicksController < ApplicationController
   end
 
   def lookup
-    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").order("created_at DESC").includes(:comments)
+    @picks = Pick.where('title LIKE :keyword OR body LIKE :keyword', keyword: "%#{params[:keyword]}%").order("created_at DESC").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
     @users = User.where("first_name LIKE :keyword OR last_name LIKE :keyword OR company LIKE :keyword OR position LIKE :keyword OR profile LIKE :keyword", keyword: "%#{params[:keyword]}%")
 
