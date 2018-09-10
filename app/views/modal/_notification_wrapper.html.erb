@@ -14,16 +14,15 @@
           <div class="nothing center font-bold" style="display: none;">お知らせはありません</div>
           <div class="error center font-bold" style="display: none;">お知らせが取得できませんでした</div>
           <div class="wrapper">
-            <% user_notifications(current_user).each do |notification| %>
-              <% if notification.comment_id.nil? %>
-                <%= render "notifications/notification_follow", {notification: notification, user: notification_by_user(notification)} %>
-              <% else %>
-                <%= render "notifications/notification_like", {notification: notification, user: notification_by_user(notification), comment: notification_at_comment(notification)} %>
+            <% if user_signed_in? %>
+              <% user_notifications(current_user).each do |notification| %>
+                <% if notification.comment_id.nil? %>
+                  <%= render "notifications/notification_follow", {notification: notification, user: notification_by_user(notification)} %>
+                <% else %>
+                  <%= render "notifications/notification_like", {notification: notification, user: notification_by_user(notification), comment: notification_at_comment(notification)} %>
+                <% end %>
               <% end %>
             <% end %>
-            </div>
-            <div class="loading center" style="display: none;">
-              <img src="/images/loading.e1ce83e8.gif">
             </div>
           </div>
         </div>

@@ -41,7 +41,9 @@ module ApplicationHelper
   end
 
   def user_notifications(user)
-    @notifications = user.notifications
-    return @notifications.order("id DESC")
+    if user_signed_in?
+      @notifications = user.notifications
+      return @notifications.order("id DESC")
+    end
   end
 end

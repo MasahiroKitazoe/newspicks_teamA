@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'notifications/link_through', as: :link_through
-
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: "users/sessions",
