@@ -8,8 +8,10 @@
 @import "pick_tag.scss";
 
 @import "./header.scss";
+@import "./side-bar.scss";
 @import "./users/form.scss";
 @import "./users/edit.scss";
+@import "./users/timeline.scss";
 @import "./modal/signup.scss";
 @import "./modal/signin.scss";
 @import "./modal/newpick.scss";
@@ -18,6 +20,8 @@
 @import "./modal/user_menu.scss";
 @import "./modal/notification.scss";
 @import "./side-bar.scss";
+
+
 
 @import "./mixin/content.scss";
 @import "./mixin/library.scss";

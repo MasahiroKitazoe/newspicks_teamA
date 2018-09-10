@@ -28,10 +28,24 @@ class UsersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def timeline
+    following_users = current_user.following
+    if following_users.length > 0
+      @follow_user_comments = []
+      following_users.each do |user|
+        user.comments.each do |comment|
+          @follow_user_comments << comment
+        end
+      end
+      @follow_user_comments = @follow_user_comments.sort_by{ |a| a[:created_at] }.reverse
+    end
+  end
+
   private
   def create_notifications
     user = User.find(params[:followed_id])
     Notification.create(user_id: user.id, notified_by_id: current_user.id, notified_type: 'フォロー')
   end
+  
 
 end
