@@ -2,7 +2,10 @@
   <div class="keyword-wrapper__overlay">
     <div class="keyword-wrapper__form">
       <div class="keyword-wrapper__form__above">
-        <input class="keyword-wrapper__form__above__input" type="text" name="" placeholder="キーワードを入力してEnterキーで検索">
+        <%= form_with url: picks_lookup_path, method: :get do |f| %>
+          <%= f.text_field :keyword, class: 'keyword-wrapper__form__above__input', placeholder: 'キーワードを入力してEnterキーで検索' %>
+          <% f.submit %>
+        <% end %>
       </div>
       <div class="keyword-wrapper__form__bottom">
         気になるキーワードを入力<br>
