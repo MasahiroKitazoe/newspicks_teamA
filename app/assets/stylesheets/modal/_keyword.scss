@@ -42,8 +42,9 @@
       }
       &__result {
         background-color: #efefef;
-        height: 500px;
+        height: 530px;
         overflow: scroll;
+        border-radius: 0 0 15px 15px;
         &__class {
           background-color: #fff;
           margin-bottom: 16px;
@@ -61,6 +62,7 @@
             height: 50px;
             line-height: 50px;
             font-weight: bold;
+            cursor: pointer;
           }
           &__comment {
             float: right;
@@ -69,16 +71,17 @@
             color: #999;
             height: 50px;
             line-height: 50px;
+            cursor: pointer;
           }
         }
         &__picks {
-          display: none;
           padding: 0 16px;
           &__news {
             @include one_news();
           }
         }
         &__comments {
+          display: none;
           padding: 0 16px;
           &__comment {
             @include one_pick-comment();
