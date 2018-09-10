@@ -72,13 +72,17 @@
           }
         }
         &__picks {
+          display: none;
           padding: 0 16px;
           &__news {
             @include one_news();
           }
         }
         &__comments {
-          display: none;
+          padding: 0 16px;
+          &__comment {
+            @include one_pick-comment();
+          }
         }
       }
     }
