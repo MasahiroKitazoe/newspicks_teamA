@@ -84,12 +84,10 @@ $(function() {
     }
   });
 
-  // 「キーワードを探す」クリック時、モーダルを表示
+  // keyword検索・登録
   $('#keyword-search').on('click', function(e) {
     e.preventDefault();
     $('.keyword-wrapper').css("display", "block");
-
-    // 背景をクリックするとモーダルを終了
     $('.keyword-wrapper__overlay').on('click', function(e) {
       if (e.target.className == "keyword-wrapper__overlay") {
         $('.keyword-wrapper').css("display", "none");

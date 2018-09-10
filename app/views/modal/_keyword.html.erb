@@ -2,14 +2,21 @@
   <div class="keyword-wrapper__overlay">
     <div class="keyword-wrapper__form">
       <div class="keyword-wrapper__form__above">
-        <%= form_with url: picks_lookup_path, method: :get do |f| %>
+        <%= form_with url: picks_lookup_path, method: :get, id: 'keyword-form' do |f| %>
           <%= f.text_field :keyword, class: 'keyword-wrapper__form__above__input', placeholder: 'キーワードを入力してEnterキーで検索' %>
           <% f.submit %>
         <% end %>
       </div>
       <div class="keyword-wrapper__form__bottom">
-        気になるキーワードを入力<br>
-        <span class="keyword-wrapper__form__bottom__text">「企業名」や「業界」など気になるキーワードを入力してみましょう</span>
+        <div class="keyword-wrapper__form__bottom__announce">
+          気になるキーワードを入力<br>
+          <span class="keyword-wrapper__form__bottom__announce__text">「企業名」や「業界」など気になるキーワードを入力してみましょう</span>
+        </div>
+        <div class="keyword-wrapper__form__bottom__result">
+          <div class="">
+
+          </div>
+        </div>
       </div>
     </div>
   </div>

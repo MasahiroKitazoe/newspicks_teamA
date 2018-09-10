@@ -31,11 +31,17 @@
       }
     }
     &__bottom {
-      padding: 20px 30px;
-      font-size: 20px;
-      color: #999;
-      &__text {
-        font-size: 16px;
+      &__announce {
+        display: none;
+        padding: 20px 30px;
+        font-size: 20px;
+        color: #999;
+        &__text {
+          font-size: 16px;
+        }
+      }
+      &__result {
+
       }
     }
   }
