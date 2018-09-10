@@ -1,0 +1,150 @@
+  .timeline {
+  background-color: #efefef;
+  width: calc(85vw - 10px);
+  height: calc(100vh - 100px);
+  float: right;
+  padding: 50px 0;
+  overflow: scroll;
+  &__header {
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    padding: 20px 20px 10px;
+  }
+  &__list {
+    margin: 20px 30px;
+    float: left;
+    &__news {
+      background-color: #fff;
+      width: calc(50vw - 40px);
+      min-width: 560px;
+      padding: 25px 20px;
+      margin-bottom: 16px;
+      &__above {
+        border-bottom: 1px solid #efefef;
+        padding-bottom: 20px;
+        &:after {
+          clear: both;
+          content: '';
+          display: block;
+        }
+        &__pick {
+          float: left;
+          &__title {
+            font-size: 20px;
+            font-weight: bold;
+            max-width: 416px;
+            min-height: 56px;
+            line-height: 28px;
+          }
+          &__info {
+            font-size: 12px;
+            color: #999;
+          }
+        }
+        &__image {
+          background-size: cover;
+          width: 160px;
+          height: 112px;
+          float: right;
+        }
+      }
+      &__bottom {
+        padding: 10px;
+        font-size: 14px;
+        &__user {
+          &__thumb {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            float: left;
+          }
+          &__info {
+            display: inline-block;
+            padding: 5px 20px;
+            &__name {
+            }
+            &__more {
+              font-size: 12px;
+              color: #999;
+            }
+          }
+        }
+        &__comment {
+          clear: both;
+          padding-left: 60px;
+          width: 480px;
+          max-height: 38px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          display: inline-block;
+        }
+        &__like-wrapper {
+          float: right;
+          height: 38px;
+          line-height: 38px;
+          &__like {
+            height: 38px;
+            line-height: 38px;
+          }
+          &__liked {
+            height: 38px;
+            line-height: 38px;
+          }
+          &__btn {
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            float: left;
+          }
+          &__count {
+            height: 12px;
+            line-height: 12px;
+            float: left;
+          }
+          &__label {
+            float: left;
+            height: 12px;
+            line-height: 12px;
+          }
+        }
+      }
+    }
+  }
+  &__keyword {
+    padding: 20px 30px;
+    float: left;
+    width: 300px;
+    &__head {
+      &:after {
+        clear: both;
+        content: '';
+        display: block;
+      }
+      &__title {
+        font-size: 14px;
+        font-weight: bold;
+        float: left;
+      }
+      &__more {
+        color: #37509C;
+        font-size: 12px;
+        float: right;
+      }
+    }
+    &__list {
+      margin-top: 20px;
+      background-color: #fff;
+      &__word {
+        color: #37509C;
+        font-size: 12px;
+        padding: 15px 30px;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+}
