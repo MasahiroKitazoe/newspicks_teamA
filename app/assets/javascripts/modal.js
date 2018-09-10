@@ -78,7 +78,6 @@ $(function() {
 
   // 背景をクリックするとモーダルを終了
   $('.user_menu__overlay').on('click', function(e) {
-    e.preventDefault();
     if (e.target.className == "user_menu__overlay") {
       $('#user_menu').css("display", "none");
     }
@@ -92,7 +91,6 @@ $(function() {
 
   // 背景をクリックするとモーダルを終了
   $('.notifications__overlay').on('click', function(e) {
-    e.preventDefault();
     if (e.target.className == "notifications__overlay") {
       $('#notifications').css("display", "none");
     }
