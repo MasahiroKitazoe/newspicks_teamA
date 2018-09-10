@@ -16,6 +16,7 @@
     width: 675px;
     height: 593px;
     border-radius: 15px;
+    position: relative;
     &__above {
       padding: 15px 20px;
       border-bottom: 1px solid #D3DDE9;
@@ -87,6 +88,36 @@
             @include one_pick-comment();
           }
         }
+      }
+    }
+    &__add {
+      display: none;
+      margin: 0 auto;
+      background-color: #4277FB;
+      width: 75%;
+      height: 87px;
+      border-radius: 43px;
+      position: absolute;
+      bottom: 30px;
+      left: 13%;
+      &__text-block {
+        color: #fff;
+        padding: 20px 40px;
+        float: left;
+        &__keyword {
+          font-weight: bold;
+        }
+        &__announce {
+
+        }
+      }
+      &__btn {
+        float: right;
+        margin: 18px 50px;
+        padding: 15px 30px;
+        background-color: #fff;
+        color: #4277FB;
+        border-radius: 30px;
       }
     }
   }
