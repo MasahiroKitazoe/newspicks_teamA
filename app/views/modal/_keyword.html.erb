@@ -30,15 +30,18 @@
       <div class="keyword-wrapper__form__add">
         <div class="keyword-wrapper__form__add__text-block">
           <div class="keyword-wrapper__form__add__text-block__keyword">
+            <!-- ここのテキストを書き換える -->
             「アート」
           </div>
           <div class="keyword-wrapper__form__add__text-block__announce">
             このキーワードを追加しよう
           </div>
         </div>
-        <div class="keyword-wrapper__form__add__btn">
-          + 追加
-        </div>
+        <!-- ここにフォームを作成 -->
+        <%= form_for @keyword do |f| %>
+          <% f.text_field :keyword %>
+          <%= f.button "+ 追加", type: "submit", class: 'keyword-wrapper__form__add__btn' %>
+        <% end %>
       </div>
     </div>
   </div>

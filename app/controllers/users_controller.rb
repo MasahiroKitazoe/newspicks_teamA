@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
+    @keyword = Keyword.new
     following_users = current_user.following
     if following_users.length > 0
       @follow_user_comments = []
