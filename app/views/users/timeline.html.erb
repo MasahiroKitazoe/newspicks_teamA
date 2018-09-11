@@ -97,9 +97,11 @@
       </div>
     </div>
     <div class="timeline__keyword__list">
-      <div class="timeline__keyword__list__word">
-        IT
-      </div>
+      <% current_user.keywords.each do |keyword| %>
+        <div class="timeline__keyword__list__word">
+          <%= keyword.keyword %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
