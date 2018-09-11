@@ -80,6 +80,9 @@
             max-width: 416px;
             min-height: 56px;
             line-height: 28px;
+            &:hover {
+              opacity: 0.7;
+            }
           }
           &__info {
             font-size: 12px;
@@ -91,6 +94,9 @@
           width: 160px;
           height: 112px;
           float: right;
+          &:hover {
+            opacity: 0.7;
+          }
         }
       }
       &__bottom {

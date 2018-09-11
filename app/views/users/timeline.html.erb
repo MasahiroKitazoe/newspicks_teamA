@@ -34,23 +34,27 @@
         <div class="timeline__list__news">
           <div class="timeline__list__news__above">
             <div class="timeline__list__news__above__pick">
-              <div class="timeline__list__news__above__pick__title">
-                <%= comment.pick.title %>
-              </div>
+              <%= link_to pick_path(comment.pick) do %>
+                <div class="timeline__list__news__above__pick__title">
+                  <%= comment.pick.title %>
+                </div>
+              <% end %>
               <div class="timeline__list__news__above__pick__info">
                 <span class="timeline__list__news__above__pick__info__source"><%= comment.pick.source %></span>
                 <span class="timeline__list__news__above__pick__info__time"><%= comment.pick.created_at %></span>
               </div>
             </div>
-            <div class="timeline__list__news__above__image" style="background-image:url(<%= comment.pick.image %>)">
-              <div class="timeline__list__news__above__image__back">
+            <%= link_to pick_path(comment.pick) do %>
+              <div class="timeline__list__news__above__image" style="background-image:url(<%= comment.pick.image %>)">
+                <div class="timeline__list__news__above__image__back">
 
+                </div>
+                <div class="timeline__list__news__above__image__pick-count">
+                  <span class="timeline__list__news__above__image__pick-count__num"><%= comment.likes.count %></span>
+                  <span class="timeline__list__news__above__image__pick-count__text">Picks</span>
+                </div>
               </div>
-              <div class="timeline__list__news__above__image__pick-count">
-                <span class="timeline__list__news__above__image__pick-count__num"><%= comment.likes.count %></span>
-                <span class="timeline__list__news__above__image__pick-count__text">Picks</span>
-              </div>
-            </div>
+              <% end %>
           </div>
           <div class="timeline__list__news__bottom">
             <div class="timeline__list__news__bottom__user">
