@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   delete '/unfollow/:id', to: 'users#unfollow'
 
   resources :likes, only: [:create, :destroy]
+  resources :keywords, only: :create
 
 end
