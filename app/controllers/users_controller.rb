@@ -30,15 +30,28 @@ class UsersController < ApplicationController
   def timeline
     @keyword = Keyword.new
     following_users = current_user.following
+    @my_comments = []
     if following_users.length > 0
-      @follow_user_comments = []
       following_users.each do |user|
         user.comments.each do |comment|
-          @follow_user_comments << comment
+          @my_comments << comment
         end
       end
-      @follow_user_comments = @follow_user_comments.sort_by{ |a| a[:created_at] }.reverse
     end
+
+    # 登録しているキーワードにヒットしているニュースの最新コメントを取得
+    # users_nocommentは一旦無視
+    keywords = current_user.keywords
+    keywords.each do |keyword|
+      picks = Pick.where('title LIKE :keyword OR body LIKE :keyword', keyword: keyword).order("created_at DESC").includes(:comments)
+      picks.each do |pick|
+        if pick.comments
+          @my_comments << pick.comments.last
+        end
+      end
+    end
+
+    @my_comments = @my_comments.sort_by{ |a| a[:created_at] }.reverse
   end
 
 
