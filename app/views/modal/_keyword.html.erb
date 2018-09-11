@@ -39,7 +39,7 @@
         </div>
         <!-- ここにフォームを作成 -->
         <%= form_for @keyword do |f| %>
-          <% f.text_field :keyword %>
+          <%= f.text_field :keyword, class: 'keyword-wrapper__form__add__value' %>
           <%= f.button "+ 追加", type: "submit", class: 'keyword-wrapper__form__add__btn' %>
         <% end %>
       </div>

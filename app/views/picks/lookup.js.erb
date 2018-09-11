@@ -98,4 +98,6 @@ $(function() {
     commentHTMLs.push(commentHTML);
   <% end %>
   $('.keyword-wrapper__form__bottom__result__comments').append(commentHTMLs);
+  $('.keyword-wrapper__form__add__text-block__keyword').text('「' + "<%= params[:keyword] %>" + '」');
+  $('#new_keyword > input[name="keyword[keyword]"]').val("<%= params[:keyword] %>");
 });

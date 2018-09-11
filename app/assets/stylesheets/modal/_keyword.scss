@@ -111,6 +111,9 @@
 
         }
       }
+      &__value {
+        display: none;
+      }
       &__btn {
         float: right;
         margin: 18px 50px;
