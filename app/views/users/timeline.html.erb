@@ -24,6 +24,62 @@
   </div>
   <% if @follow_user_comments %>
     <div class="timeline__list">
+
+      <!-- キーワード用 -->
+      <div class="timeline__list__keyword-block">
+        <span class="timeline__list__keyword-block__keyword">
+          [キーワード]
+        </span>
+        のキーワードにヒット
+      </div>
+      <div class="timeline__list__news">
+        <div class="timeline__list__news__above">
+          <div class="timeline__list__news__above__pick">
+            <div class="timeline__list__news__above__pick__title">
+              タイトル
+            </div>
+            <div class="timeline__list__news__above__pick__info">
+              <span class="timeline__list__news__above__pick__info__source">ソース</span>
+              <span class="timeline__list__news__above__pick__info__time">4時間前</span>
+            </div>
+          </div>
+          <div class="timeline__list__news__above__image" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_42oUiRcRx1vCWdpFNlN36LTKBipApgOndkM5X3daEN60Bxs9dw)">
+            <div class="timeline__list__news__above__image__back">
+
+            </div>
+            <div class="timeline__list__news__above__image__pick-count">
+              <span class="timeline__list__news__above__image__pick-count__num">33</span>
+              <span class="timeline__list__news__above__image__pick-count__text">Picks</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline__list__news__bottom">
+          <div class="timeline__list__news__bottom__user">
+            <img class="timeline__list__news__bottom__user__thumb" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_42oUiRcRx1vCWdpFNlN36LTKBipApgOndkM5X3daEN60Bxs9dw" alt="">
+            <div class="timeline__list__news__bottom__user__info">
+              <div class="timeline__list__news__bottom__user__info__name">
+                土屋　太鳳
+              </div>
+              <div class="timeline__list__news__bottom__user__info__more">
+                会社名　女優
+              </div>
+            </div>
+          </div>
+          <div class="timeline__list__news__bottom__comment">
+            コメント本文
+          </div>
+          <div class="timeline__list__news__bottom__like-wrapper like-wrapper">
+            いいね
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
       <% @follow_user_comments.each do |comment| %>
         <div class="timeline__list__news">
           <div class="timeline__list__news__above">
