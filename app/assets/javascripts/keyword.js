@@ -157,7 +157,7 @@ $(function() {
         buildPicks.push(buildNoPick("該当する記事がありません"));
         $('.keyword-wrapper__form__bottom__result__picks').append(buildPicks);
       }
-      $('#searched-comments').empty();
+      $('.keyword-wrapper__form__bottom__result__comments').empty();
       var buildComments =[];
       if (comments.length !== 0) {
         comments.forEach(function(comment) {
@@ -166,7 +166,7 @@ $(function() {
         $('.keyword-wrapper__form__bottom__result__comments').append(buildComments);
       } else {
         buildComments.push(buildNoComment("該当するコメントがありません"));
-        $('.keyword-wrapper__form__bottom__result__picks').append(buildComments);
+        $('.keyword-wrapper__form__bottom__result__comments').append(buildComments);
       }
     })
     .fail(function() {
