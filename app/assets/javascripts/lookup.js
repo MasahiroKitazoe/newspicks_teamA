@@ -181,7 +181,7 @@ $(function() {
   // フィルター後のcommentをappendする処理
   function appendComment(comment) {
     var insertPositon = '';
-    if (comment.user_positon) {
+    if (comment.user_position) {
       insertPositon = `<span class="search-result__comments__comment__user__info__more__position">
                           ${comment.user_position}
                         </span>`
@@ -268,7 +268,8 @@ $(function() {
               pick_sort_kind },
       dataType: 'json'
     })
-    .done(function(picks) {
+    .done(function(data) {
+      var picks = data.picks;
       // 既に表示しているpicksを空に
       $('#searched-picks').empty();
       // 取得したpicksを一個ずつappend
@@ -308,7 +309,8 @@ $(function() {
               pick_sort_kind },
       dataType: 'json'
     })
-    .done(function(picks) {
+    .done(function(data) {
+      var picks = data.picks;
       // 既に表示しているpicksを空に
       $('#searched-picks').empty();
       // 取得したpicksを一個ずつappend
@@ -346,7 +348,8 @@ $(function() {
                 pick_sort_kind },
         dataType: 'json'
       })
-      .done(function(picks) {
+      .done(function(data) {
+        var picks = data.picks;
         // 既に表示しているpicksを空に
         $('#searched-picks').empty();
         // 取得したpicksを一個ずつappend
@@ -385,7 +388,8 @@ $(function() {
               comment_sort_kind },
       dataType: 'json'
     })
-    .done(function(comments) {
+    .done(function(data) {
+      var comments = data.comments;
       // 既に表示しているpicksを空に
       $('#searched-comments').empty();
       // 取得したpicksを一個ずつappend
@@ -423,7 +427,8 @@ $(function() {
               comment_sort_kind },
       dataType: 'json'
     })
-    .done(function(comments) {
+    .done(function(data) {
+      var comments = data.comments;
       // 既に表示しているpicksを空に
       $('#searched-comments').empty();
       // 取得したpicksを一個ずつappend
@@ -461,7 +466,8 @@ $(function() {
                 comment_sort_kind },
         dataType: 'json'
       })
-      .done(function(comments) {
+      .done(function(data) {
+        var comments = data.comments;
         // 既に表示しているpicksを空に
         $('#searched-comments').empty();
         // 取得したpicksを一個ずつappend
