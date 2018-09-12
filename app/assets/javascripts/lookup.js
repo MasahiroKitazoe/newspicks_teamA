@@ -180,7 +180,7 @@ $(function() {
 
   // フィルター後のcommentをappendする処理
   function appendComment(comment) {
-    var insertPositon = '';
+    var insertPosition = '';
     if (comment.user_position) {
       insertPositon = `<span class="search-result__comments__comment__user__info__more__position">
                           ${comment.user_position}
@@ -209,7 +209,7 @@ $(function() {
                         ${comment.user_last_name} ${comment.user_first_name}
                       </div>
                       <div class="search-result__comments__comment__user__info__more">
-                        ${insertPositon}
+                        ${insertPosition}
                         <span class="search-result__comments__comment__user__info__more__date">
                           ${comment.created_at}
                         </span>

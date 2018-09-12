@@ -51,6 +51,84 @@ $(function() {
     return html;
   }
 
+  function buildNoPick(message) {
+    var html = `<div class="keyword-wrapper__form__bottom__result__picks__news">
+                  ${message}
+                </div>`
+    return html;
+  }
+
+  function buildComment(comment) {
+    var insertPositon = '';
+    if (comment.user_position) {
+      insertPosition = `<span class="keyword-wrapper__form__bottom__result__comments__comment__user__info__more__position">
+                                  ${comment.user_position}
+                                </span>`
+    }
+    if (comment.liked == true) {
+      var insertLikeBlock = `<div class="liked" data="${comment.like_id}">
+                              <img class="search-result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count-r">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`;
+    } else {
+      var insertLikeBlock = `<div class="like">
+                              <img class="search-result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`;
+    }
+    var html = `<div class="keyword-wrapper__form__bottom__result__comments__comment">
+                        <div class="keyword-wrapper__form__bottom__result__comments__comment__user">
+                          <img src="${comment.user_image}" class="keyword-wrapper__form__bottom__result__comments__comment__user__image">
+                          <div class="keyword-wrapper__form__bottom__result__comments__comment__user__info">
+                            <div class="keyword-wrapper__form__bottom__result__comments__comment__user__info__name">
+                              ${comment.user_last_name} ${comment.user_first_name}
+                            </div>
+                            <div class="keyword-wrapper__form__bottom__result__comments__comment__user__info__more">
+                              ${insertPosition}
+                              <span class="keyword-wrapper__form__bottom__result__comments__comment__user__info__more__date">
+                                ${comment.created_at}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="keyword-wrapper__form__bottom__result__comments__comment__body">
+                          ${comment.comment}
+                        </div>
+
+
+                  <div class="search-result__comments__comment__like like-wrapper" id="like${comment.id}" data="${comment.id}">
+                    ${insertLikeBlock}
+                  </div>
+
+
+                  <div class="keyword-wrapper__form__bottom__result__comments__comment__news">
+                          <div class="keyword-wrapper__form__bottom__result__comments__comment__news__title">
+                            ${comment.pick_title}
+                          </div>
+                          <div class="keyword-wrapper__form__bottom__result__comments__comment__news__info">
+                            <span class="keyword-wrapper__form__bottom__result__comments__comment__news__info__source">
+                              ${comment.pick_source}
+                            </span> |
+                            <span class="keyword-wrapper__form__bottom__result__comments__comment__news__info__date">
+                              ${comment.pick_created_at}
+                            </span>
+                          </div>
+                        </div>
+                      </div>`
+    return html;
+  }
+
+  function buildNoComment(message) {
+    var html = `<div class="keyword-wrapper__form__bottom__result__comments__comment">
+                  ${message}
+                </div>`
+    return html;
+  }
+
   $('.fixed_keyword').on('click', function(e) {
     var keyword = $(e.currentTarget).data('keyword');
     $('.keyword-wrapper').css("display", "block");
@@ -65,7 +143,9 @@ $(function() {
       data: { keyword },
       dataType: 'json'
     })
-    .done(function(picks) {
+    .done(function(data) {
+        var picks = data.picks
+        var comments = data.comments
       $('.keyword-wrapper__form__bottom__result__picks').empty();
       var buildPicks = [];
       if (picks.length !== 0) {
@@ -76,6 +156,17 @@ $(function() {
       } else {
         buildPicks.push(buildNoPick("該当する記事がありません"));
         $('.keyword-wrapper__form__bottom__result__picks').append(buildPicks);
+      }
+      $('#searched-comments').empty();
+      var buildComments =[];
+      if (comments.length !== 0) {
+        comments.forEach(function(comment) {
+          buildComments.push(buildComment(comment));
+        });
+        $('.keyword-wrapper__form__bottom__result__comments').append(buildComments);
+      } else {
+        buildComments.push(buildNoComment("該当するコメントがありません"));
+        $('.keyword-wrapper__form__bottom__result__picks').append(buildComments);
       }
     })
     .fail(function() {
