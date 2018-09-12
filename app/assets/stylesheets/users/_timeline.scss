@@ -1,5 +1,5 @@
   .timeline {
-  background-color: #efefef;
+  background-color: $background-gray;
   width: calc(85vw - 10px);
   height: calc(100vh - 100px);
   float: right;
@@ -18,15 +18,15 @@
     float: left;
   }
   &__keyword-block {
-    color: #999;
+    color: $unempha-gray;
     font-size: 12px;
     background-color: #fff;
     width: calc(50vw - 40px);
     min-width: 560px;
     padding: 5px 20px;
-    border-bottom: 1px solid #efefef;
+    border-bottom: 1px solid $background-gray;
     &__keyword {
-      color: #222;
+      color: $main-black;
       font-weight: bold;
     }
   }
@@ -37,7 +37,7 @@
     padding: 25px 20px 0;
     margin-bottom: 16px;
     &__above {
-      border-bottom: 1px solid #efefef;
+      border-bottom: 1px solid $background-gray;
       padding-bottom: 20px;
       &:after {
         clear: both;
@@ -48,8 +48,7 @@
     &__image {
       position: relative;
       &__back {
-        background-color: rgb(0, 0, 0);
-        opacity: 0.3;
+        background-color: rgba(0, 0, 0, 0.3);
         height: 28px;
         width: 50px;
         position: absolute;
@@ -88,7 +87,7 @@
       }
       &__info {
         font-size: 12px;
-        color: #999;
+        color: $unempha-gray;
       }
     }
     &__image {
@@ -117,7 +116,7 @@
       }
       &__more {
         font-size: 12px;
-        color: #999;
+        color: $unempha-gray;
       }
     }
     &__comment {
@@ -160,13 +159,6 @@
         line-height: 12px;
       }
     }
-
-
-
-
-
-
-
   }
   &__keyword {
     padding: 20px 30px;
@@ -184,7 +176,7 @@
         float: left;
       }
       &__more {
-        color: #37509C;
+        color: $keyword-blue;
         font-size: 12px;
         float: right;
         cursor: pointer;
@@ -194,7 +186,7 @@
       margin-top: 20px;
       background-color: #fff;
       &__word {
-        color: #37509C;
+        color: $keyword-blue;
         font-size: 12px;
         padding: 15px 30px;
         border-bottom: 1px solid #ccc;

@@ -131,11 +131,12 @@
         float: left;
         display: inline-block;
         max-width: 117px;
-        overflow: hidden;
+        color: $main-black;
       }
       &__position {
         font-size: 12px;
-        color: #999;
+        color: $unempha-gray;
+        overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
