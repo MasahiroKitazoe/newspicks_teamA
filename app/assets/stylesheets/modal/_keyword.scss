@@ -35,11 +35,17 @@
         font-size: 24px;
         font-weight: bold;
         padding: 0 20px;
-        &__btn {
-          width: 85px;
-          height: 28px;
-          float: right;
-        }
+        position: relative;
+      }
+      &__btn-tag {
+      }
+      &__btn {
+        display: none;
+        width: 85px;
+        height: 28px;
+        position: absolute;
+        right: 20px;
+        top: 17px;
       }
     }
     &__bottom {
