@@ -27,7 +27,7 @@
       <% @my_comments.each do |comment| %>
         <% if comment.keyword %>
           <div class="timeline__list__keyword-block">
-            <%= link_to "#", id: 'fixed_keyword', data: {keyword: comment.keyword} do %>
+            <%= link_to "#", class: 'fixed_keyword', data: {keyword: comment.keyword} do %>
               <span class="timeline__list__keyword-block__keyword">
                 <%= comment.keyword %>
               </span>
@@ -112,7 +112,7 @@
     </div>
     <div class="timeline__keyword__list">
       <% current_user.keywords.each do |keyword| %>
-        <%= link_to "#", id: 'fixed_keyword', data: {keyword: keyword.keyword} do %>
+        <%= link_to "#", class: 'fixed_keyword', data: {keyword: keyword.keyword} do %>
           <div class="timeline__keyword__list__word">
             <%= keyword.keyword %>
           </div>

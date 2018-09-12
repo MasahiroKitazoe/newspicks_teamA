@@ -30,6 +30,17 @@
         font-size: 14px;
         padding-left: 30px;
       }
+      &__keyword {
+        display: none;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 0 20px;
+        &__btn {
+          width: 85px;
+          height: 28px;
+          float: right;
+        }
+      }
     }
     &__bottom {
       &__announce {

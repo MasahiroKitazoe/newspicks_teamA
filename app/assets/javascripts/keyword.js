@@ -20,5 +20,21 @@ $(function() {
     $('.keyword-wrapper__form__bottom__result__comments').css("display", "block");
   });
 
+  $('.fixed_keyword').on('click', function() {
+    $('.keyword-wrapper').css("display", "block");
+    $('.keyword-wrapper__form__above__input').css("display", "none");
+    $('.keyword-wrapper__form__above__keyword').css("display", "block");
+    $('.keyword-wrapper__form__bottom__announce').css("display", "none");
+    $('.keyword-wrapper__form__bottom__result').css("display", "block");
+    $('.keyword-wrapper__overlay').on('click', function(e) {
+      if (e.target.className == "keyword-wrapper__overlay") {
+        $('.keyword-wrapper').css("display", "none");
+        $('.keyword-wrapper__form__above__keyword').css("display", "none");
+        $('.keyword-wrapper__form__above__input').css("display", "block");
+        $('.keyword-wrapper__form__bottom__result').css("display", "none");
+        $('.keyword-wrapper__form__bottom__announce').css("display", "block");
+      }
+    });
+  });
 
 });
