@@ -49,62 +49,60 @@
         top: 17px;
       }
     }
-    &__bottom {
-      &__announce {
-        padding: 20px 30px;
-        font-size: 20px;
-        color: #999;
-        &__text {
-          font-size: 16px;
+    &__announce {
+      padding: 20px 30px;
+      font-size: 20px;
+      color: #999;
+    }
+    &__text {
+      font-size: 16px;
+    }
+    &__result {
+      display: none;
+      background-color: #efefef;
+      height: 530px;
+      overflow: scroll;
+      border-radius: 0 0 15px 15px;
+      &__class {
+        background-color: #fff;
+        margin-bottom: 16px;
+        &:after {
+          clear: both;
+          content: '';
+          display: block;
         }
       }
-      &__result {
+      &__news-tab {
+        float: left;
+        width: 335px;
+        text-align: center;
+        color: #4277FB;
+        border-bottom: 2px solid #4277FB;
+        height: 50px;
+        line-height: 50px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      &__comment-tab {
+        float: right;
+        width: 335px;
+        text-align: center;
+        color: #999;
+        height: 50px;
+        line-height: 50px;
+        cursor: pointer;
+      }
+      &__picks {
+        padding: 0 16px;
+        &__news {
+          @include one_news();
+        }
+      }
+      &__comments {
         display: none;
-        background-color: #efefef;
-        height: 530px;
-        overflow: scroll;
-        border-radius: 0 0 15px 15px;
-        &__class {
-          background-color: #fff;
-          margin-bottom: 16px;
-          &:after {
-            clear: both;
-            content: '';
-            display: block;
-          }
-          &__news {
-            float: left;
-            width: 335px;
-            text-align: center;
-            color: #4277FB;
-            border-bottom: 2px solid #4277FB;
-            height: 50px;
-            line-height: 50px;
-            font-weight: bold;
-            cursor: pointer;
-          }
-          &__comment {
-            float: right;
-            width: 335px;
-            text-align: center;
-            color: #999;
-            height: 50px;
-            line-height: 50px;
-            cursor: pointer;
-          }
-        }
-        &__picks {
-          padding: 0 16px;
-          &__news {
-            @include one_news();
-          }
-        }
-        &__comments {
-          display: none;
-          padding: 0 16px;
-          &__comment {
-            @include one_pick-comment();
-          }
+        padding: 0 16px;
+        &__comment {
+          @include one_pick-comment();
         }
       }
     }
