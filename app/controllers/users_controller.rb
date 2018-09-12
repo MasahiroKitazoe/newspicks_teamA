@@ -43,9 +43,10 @@ class UsersController < ApplicationController
     # users_nocommentは一旦無視
     keywords = current_user.keywords
     keywords.each do |keyword|
-      picks = Pick.where('title LIKE :keyword OR body LIKE :keyword', keyword: keyword).order("created_at DESC").includes(:comments)
+      picks = Pick.where('title LIKE :keyword OR body LIKE :keyword', keyword: "%#{keyword.keyword}%").order("created_at DESC").includes(:comments)
       picks.each do |pick|
-        if pick.comments
+        if pick.comments.length > 0
+          pick.comments.last.keyword = keyword.keyword
           @my_comments << pick.comments.last
         end
       end

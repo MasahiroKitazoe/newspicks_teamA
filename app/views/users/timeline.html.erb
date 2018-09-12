@@ -25,12 +25,14 @@
   <% if @my_comments %>
     <div class="timeline__list">
       <% @my_comments.each do |comment| %>
-        <!-- <div class="timeline__list__keyword-block">
-          <span class="timeline__list__keyword-block__keyword">
-            [キーワード]
-          </span>
-          のキーワードにヒット
-        </div> -->
+        <% if comment.keyword %>
+          <div class="timeline__list__keyword-block">
+            <span class="timeline__list__keyword-block__keyword">
+              <%= comment.keyword %>
+            </span>
+            のキーワードにヒット
+          </div>
+        <% end %>
         <div class="timeline__list__news">
           <div class="timeline__list__news__above">
             <div class="timeline__list__news__above__pick">
