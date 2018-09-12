@@ -5,7 +5,8 @@ class KeywordsController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    keyword = Keyword.find_by(keyword: params[:keyword][:keyword], user_id: current_user)
+    keyword.destroy
     redirect_to "/users/#{current_user.id}/timeline"
   end
 end

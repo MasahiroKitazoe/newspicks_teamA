@@ -10,7 +10,8 @@
           デザイナー
         </div>
         <%= form_tag keyword_path, method: :delete do %>
-          <input type="image" class="keyword-wrapper__form__above__btn" src="https://newspicks.com/images/keyword-followed-button.e354d7ff.png" alt="フォローボタン">
+          <%= text_field :keyword, :keyword, class: 'keyword-wrapper__form__above__text' %>
+          <%= image_submit_tag "https://newspicks.com/images/keyword-followed-button.e354d7ff.png", class: 'keyword-wrapper__form__above__btn' %>
         <% end %>
       </div>
       <div class="keyword-wrapper__form__bottom">

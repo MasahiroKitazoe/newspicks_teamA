@@ -135,6 +135,7 @@ $(function() {
     $('.keyword-wrapper__form__above__input').css("display", "none");
     $('.keyword-wrapper__form__above__keyword').text(keyword);
     $('.keyword-wrapper__form__above__keyword').css("display", "block");
+    $('.keyword-wrapper__form__above__text').val(keyword);
     $('.keyword-wrapper__form__above__btn').css("display", "block");
     $('.keyword-wrapper__form__bottom__announce').css("display", "none");
     $('.keyword-wrapper__form__bottom__result').css("display", "block");
