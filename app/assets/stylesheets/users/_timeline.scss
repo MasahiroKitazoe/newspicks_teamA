@@ -16,152 +16,157 @@
   &__list {
     margin: 20px 30px;
     float: left;
-    &__keyword-block {
-      color: #999;
-      font-size: 12px;
-      background-color: #fff;
-      width: calc(50vw - 40px);
-      min-width: 560px;
-      padding: 5px 20px;
+  }
+  &__keyword-block {
+    color: #999;
+    font-size: 12px;
+    background-color: #fff;
+    width: calc(50vw - 40px);
+    min-width: 560px;
+    padding: 5px 20px;
+    border-bottom: 1px solid #efefef;
+    &__keyword {
+      color: #222;
+      font-weight: bold;
+    }
+  }
+  &__news {
+    background-color: #fff;
+    width: calc(50vw - 40px);
+    min-width: 560px;
+    padding: 25px 20px 0;
+    margin-bottom: 16px;
+    &__above {
       border-bottom: 1px solid #efefef;
-      &__keyword {
-        color: #222;
+      padding-bottom: 20px;
+      &:after {
+        clear: both;
+        content: '';
+        display: block;
+      }
+    }
+    &__image {
+      position: relative;
+      &__back {
+        background-color: rgb(0, 0, 0);
+        opacity: 0.3;
+        height: 28px;
+        width: 50px;
+        position: absolute;
+        top: 20px;
+        right: 0;
+      }
+      &__pick-count {
+        display: inline-block;
+        border: 1px solid #fff;
+        padding: 2px 5px;
+        position: absolute;
+        top: 20px;
+        right: 0;
+        &__num {
+          color: #fff;
+          font-size: 12px;
+          font-weight: bold;
+        }
+        &__text {
+          color: #fff;
+          font-size: 10px;
+        }
+      }
+    }
+    &__pick {
+      float: left;
+      &__title {
+        font-size: 20px;
         font-weight: bold;
+        max-width: 416px;
+        min-height: 56px;
+        line-height: 28px;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+      &__info {
+        font-size: 12px;
+        color: #999;
       }
     }
-    &__news {
-      background-color: #fff;
-      width: calc(50vw - 40px);
-      min-width: 560px;
-      padding: 25px 20px;
-      margin-bottom: 16px;
-      &__above {
-        border-bottom: 1px solid #efefef;
-        padding-bottom: 20px;
-        &:after {
-          clear: both;
-          content: '';
-          display: block;
-        }
-        &__image {
-          position: relative;
-          &__back {
-            background-color: rgb(0, 0, 0);
-            opacity: 0.3;
-            height: 28px;
-            width: 50px;
-            position: absolute;
-            top: 20px;
-            right: 0;
-          }
-          &__pick-count {
-            display: inline-block;
-            border: 1px solid #fff;
-            padding: 2px 5px;
-            position: absolute;
-            top: 20px;
-            right: 0;
-            &__num {
-              color: #fff;
-              font-size: 12px;
-              font-weight: bold;
-            }
-            &__text {
-              color: #fff;
-              font-size: 10px;
-            }
-          }
-        }
-        &__pick {
-          float: left;
-          &__title {
-            font-size: 20px;
-            font-weight: bold;
-            max-width: 416px;
-            min-height: 56px;
-            line-height: 28px;
-            &:hover {
-              opacity: 0.7;
-            }
-          }
-          &__info {
-            font-size: 12px;
-            color: #999;
-          }
-        }
-        &__image {
-          background-size: cover;
-          width: 160px;
-          height: 112px;
-          float: right;
-          &:hover {
-            opacity: 0.7;
-          }
-        }
-      }
-      &__bottom {
-        padding: 10px;
-        font-size: 14px;
-        &__user {
-          &__thumb {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            float: left;
-          }
-          &__info {
-            display: inline-block;
-            padding: 5px 20px;
-            &__name {
-            }
-            &__more {
-              font-size: 12px;
-              color: #999;
-            }
-          }
-        }
-        &__comment {
-          clear: both;
-          padding-left: 60px;
-          width: 480px;
-          max-height: 38px;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          display: inline-block;
-        }
-        &__like-wrapper {
-          float: right;
-          height: 38px;
-          line-height: 38px;
-          &__like {
-            height: 38px;
-            line-height: 38px;
-          }
-          &__liked {
-            height: 38px;
-            line-height: 38px;
-          }
-          &__btn {
-            width: 12px;
-            height: 12px;
-            line-height: 12px;
-            float: left;
-          }
-          &__count {
-            height: 12px;
-            line-height: 12px;
-            float: left;
-          }
-          &__label {
-            float: left;
-            height: 12px;
-            line-height: 12px;
-          }
-        }
+    &__image {
+      background-size: cover;
+      width: 160px;
+      height: 112px;
+      float: right;
+      &:hover {
+        opacity: 0.7;
       }
     }
+    &__bottom {
+      padding: 10px;
+      font-size: 14px;
+    }
+    &__user {
+      &__thumb {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        float: left;
+      }
+      &__info {
+        display: inline-block;
+        padding: 5px 20px;
+      }
+      &__more {
+        font-size: 12px;
+        color: #999;
+      }
+    }
+    &__comment {
+      clear: both;
+      padding-left: 60px;
+      width: 480px;
+      max-height: 38px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      display: inline-block;
+    }
+    &__like-wrapper {
+      float: right;
+      height: 38px;
+      line-height: 38px;
+      &__like {
+        height: 38px;
+        line-height: 38px;
+      }
+      &__liked {
+        height: 38px;
+        line-height: 38px;
+      }
+      &__btn {
+        width: 12px;
+        height: 12px;
+        line-height: 12px;
+        float: left;
+      }
+      &__count {
+        height: 12px;
+        line-height: 12px;
+        float: left;
+      }
+      &__label {
+        float: left;
+        height: 12px;
+        line-height: 12px;
+      }
+    }
+
+
+
+
+
+
+
   }
   &__keyword {
     padding: 20px 30px;

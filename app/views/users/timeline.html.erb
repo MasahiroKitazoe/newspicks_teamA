@@ -24,72 +24,72 @@
     <div class="timeline__list">
       <% @my_comments.each do |comment| %>
         <% if comment.keyword %>
-          <div class="timeline__list__keyword-block">
+          <div class="timeline__keyword-block">
             <%= link_to "#", class: 'fixed_keyword', data: {keyword: comment.keyword} do %>
-              <span class="timeline__list__keyword-block__keyword">
+              <span class="timeline__keyword-block__keyword">
                 <%= comment.keyword %>
               </span>
             <% end %>
             のキーワードにヒット
           </div>
         <% end %>
-        <div class="timeline__list__news">
-          <div class="timeline__list__news__above">
-            <div class="timeline__list__news__above__pick">
+        <div class="timeline__news">
+          <div class="timeline__news__above">
+            <div class="timeline__news__pick">
               <%= link_to pick_path(comment.pick) do %>
-                <div class="timeline__list__news__above__pick__title">
+                <div class="timeline__news__pick__title">
                   <%= comment.pick.title %>
                 </div>
               <% end %>
-              <div class="timeline__list__news__above__pick__info">
-                <span class="timeline__list__news__above__pick__info__source"><%= comment.pick.source %></span>
-                <span class="timeline__list__news__above__pick__info__time"><%= comment.pick.created_at %></span>
+              <div class="timeline__news__pick__info">
+                <span class="timeline__news__pick__info__source"><%= comment.pick.source %></span>
+                <span class="timeline__news__pick__info__time"><%= comment.pick.created_at %></span>
               </div>
             </div>
             <%= link_to pick_path(comment.pick) do %>
-              <div class="timeline__list__news__above__image" style="background-image:url(<%= comment.pick.image %>)">
-                <div class="timeline__list__news__above__image__back">
+              <div class="timeline__news__image" style="background-image:url(<%= comment.pick.image %>)">
+                <div class="timeline__news__image__back">
 
                 </div>
-                <div class="timeline__list__news__above__image__pick-count">
-                  <span class="timeline__list__news__above__image__pick-count__num"><%= comment.likes.count %></span>
-                  <span class="timeline__list__news__above__image__pick-count__text">Picks</span>
+                <div class="timeline__news__image__pick-count">
+                  <span class="timeline__news__image__pick-count__num"><%= comment.likes.count %></span>
+                  <span class="timeline__news__image__pick-count__text">Picks</span>
                 </div>
               </div>
               <% end %>
           </div>
-          <div class="timeline__list__news__bottom">
-            <div class="timeline__list__news__bottom__user">
-              <img class="timeline__list__news__bottom__user__thumb" src="<%= comment.user.image.url %>" alt="">
-              <div class="timeline__list__news__bottom__user__info">
-                <div class="timeline__list__news__bottom__user__info__name">
+          <div class="timeline__news__bottom">
+            <div class="timeline__news__user">
+              <img class="timeline__news__user__thumb" src="<%= comment.user.image.url %>" alt="">
+              <div class="timeline__news__user__info">
+                <div class="timeline__news__user__name">
                   <%= comment.user.last_name %>　<%= comment.user.first_name %>
                 </div>
-                <div class="timeline__list__news__bottom__user__info__more">
+                <div class="timeline__news__user__more">
                   <%= comment.user.company %>　<%= comment.user.position %>
                 </div>
               </div>
             </div>
-            <div class="timeline__list__news__bottom__comment">
+            <div class="timeline__news__comment">
               <%= comment.comment %>
             </div>
-            <div class="timeline__list__news__bottom__like-wrapper like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
+            <div class="timeline__news__like-wrapper like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
               <% if current_user.liked?(comment) %>
-                <div class="liked timeline__list__news__bottom__like-wrapper__liked" data="<%= comment.get_like_id %>">
-                  <img class="thumb-up-r timeline__list__news__bottom__like-wrapper__btn" src="/images/done-like-btn.png">
-                  <div class="count-r timeline__list__news__bottom__like-wrapper__count">
+                <div class="liked timeline__news__like-wrapper__liked" data="<%= comment.get_like_id %>">
+                  <img class="thumb-up-r timeline__news__like-wrapper__btn" src="/images/done-like-btn.png">
+                  <div class="count-r timeline__news__like-wrapper__count">
                     <%= comment.likes.count %>
                   </div>
-                  <div class="like-label-r timeline__list__news__bottom__like-wrapper__label">Likes
+                  <div class="like-label-r timeline__news__like-wrapper__label">Likes
                   </div>
                 </div>
               <% else %>
-                <div class="like timeline__list__news__bottom__like-wrapper__like">
-                  <img class="thumb-up-g timeline__list__news__bottom__like-wrapper__btn" src="/images/like-btn.png">
-                  <div class="count timeline__list__news__bottom__like-wrapper__count">
+                <div class="like timeline__news__like-wrapper__like">
+                  <img class="thumb-up-g timeline__news__like-wrapper__btn" src="/images/like-btn.png">
+                  <div class="count timeline__news__like-wrapper__count">
                     <%= comment.likes.count %>
                   </div>
-                  <div class="like-label timeline__list__news__bottom__like-wrapper__label">Likes
+                  <div class="like-label timeline__news__like-wrapper__label">Likes
                   </div>
                 </div>
               <% end %>
