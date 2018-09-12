@@ -114,44 +114,40 @@
   &__recomended-user {
       padding: 10px;
       overflow: scroll;
-    &__title {
       font-size: 12px;
       color: #999;
-      padding-bottom: 10px;
-    }
     &__user {
+      padding-top: 10px;
       border-bottom: 1px solid #ddd;
-      &__info {
-        &__image {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          float: left;
-          margin: 0 10px;
-        }
-        &__name {
-          font-size: 14px;
-          float: left;
-          display: inline-block;
-          max-width: 117px;
-          overflow: hidden;
-          &__more {
-            font-size: 12px;
-            color: #999;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-          }
-        }
+      &__image {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        float: left;
+        margin: 0 10px;
+      }
+      &__name {
+        font-size: 14px;
+        float: left;
+        display: inline-block;
+        max-width: 117px;
+        overflow: hidden;
+      }
+      &__position {
+        font-size: 12px;
+        color: #999;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
       }
       &__follow {
         clear: both;
         text-align: center;
         padding: 10px;
-        &__btn {
-          width: 104px;
-          height: 24px;
-        }
+      }
+      &__btn {
+        width: 104px;
+        height: 24px;
       }
     }
   }
