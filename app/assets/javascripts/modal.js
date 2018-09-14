@@ -56,7 +56,7 @@ $(function() {
       }
     });
   })
-  
+
     // 「Pick」クリック時
   $('#new-pick-btn').on('click', function(e) {
     e.preventDefault();
@@ -69,7 +69,7 @@ $(function() {
       }
     });
   });
-  
+
   // navbarのユーザ名をクリックした時
   $('#user-menu-trigger').on('click', function(e){
     e.preventDefault();
@@ -82,5 +82,16 @@ $(function() {
     if (e.target.className == "user_menu__overlay") {
       $('#user_menu').css("display", "none");
     }
+  });
+
+  // keyword検索・登録
+  $('#keyword-search').on('click', function(e) {
+    e.preventDefault();
+    $('.keyword-wrapper').css("display", "block");
+    $('.keyword-wrapper__overlay').on('click', function(e) {
+      if (e.target.className == "keyword-wrapper__overlay") {
+        $('.keyword-wrapper').css("display", "none");
+      }
+    });
   });
 });

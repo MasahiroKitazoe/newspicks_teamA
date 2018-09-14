@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i(google)
 
   has_many :comments
+  has_many :keywords
   has_many :pick_users
   has_many :picks, through: :pick_users
   has_many :active_relationships, class_name:  "Relationship",

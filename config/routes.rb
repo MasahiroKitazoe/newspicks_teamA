@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-  resources :users, only: [:show]
-  get "users/:id/timeline", to: 'users#timeline'
+  resources :users, only: [:show] do
+    get 'timeline', on: :member
+  end
   root 'picks#index'
   get '/picks/search', to: 'picks#search'
   get '/picks/lookup', to: 'picks#lookup'
@@ -22,5 +23,6 @@ Rails.application.routes.draw do
   delete '/unfollow/:id', to: 'users#unfollow'
 
   resources :likes, only: [:create, :destroy]
+  resources :keywords, only: [:create, :destroy]
 
 end

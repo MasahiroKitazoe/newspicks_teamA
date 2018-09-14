@@ -1,0 +1,9 @@
+$(function() {
+  if (<%= @keyword.errors.full_messages.length %> > 0) {
+    $('.keyword-wrapper__form').css("display", "none");
+    $('.keyword-wrapper__errors__title').text("<%= @keyword.errors.full_messages[0] %>");
+    $('.keyword-wrapper__errors').css("display", "block");
+  } else {
+    window.location.replace('/users/' + <%= current_user.id %> + '/timeline');
+  }
+});
