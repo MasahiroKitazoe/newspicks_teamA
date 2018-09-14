@@ -13,7 +13,7 @@ class KeywordsController < ApplicationController
   def destroy
     keyword = Keyword.find_by(keyword: params[:keyword][:keyword], user_id: current_user)
     if keyword.destroy
-      redirect_to controller: 'users', action: 'timeline'
+      redirect_to timeline_user_path
     else
       render controller: 'users', action: 'timeline'
     end
