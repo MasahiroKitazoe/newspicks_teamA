@@ -1,6 +1,6 @@
 class KeywordsController < ApplicationController
   def create
-    @keyword = Keyword.new(keyword: params[:keyword][:keyword], user_id: current_user.id)
+    @keyword = current_user.keywords.build(keyword: params[:keyword][:keyword])
     @keyword.save
   end
 
