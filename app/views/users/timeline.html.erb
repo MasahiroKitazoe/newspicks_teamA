@@ -35,13 +35,7 @@
       </div>
     </div>
     <div class="timeline__keyword__list">
-      <% current_user.keywords.each do |keyword| %>
-        <%= link_to "#", class: 'fixed_keyword', data: {keyword: keyword.keyword} do %>
-          <div class="timeline__keyword__list__word">
-            <%= keyword.keyword %>
-          </div>
-        <% end %>
-      <% end %>
+      <%= render partial: 'users/keyword-list', collection: current_user.keywords, as: 'keyword' %>
     </div>
   </div>
 </div>
