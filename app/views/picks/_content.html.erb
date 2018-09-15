@@ -299,7 +299,7 @@
                 <div class="content__user-ranking__users__paragraf-1__user__image__rank">
                   <%= i + 1 %>
                 </div>
-                <img class="content__user-ranking__users__paragraf-1__user__image__user" src="https://geinou-navi.com/wp-content/uploads/2018/07/ishiharasatomi2-5.jpg" alt="アイコン">
+                <%= image_tag user.image.url, class: "content__user-ranking__users__paragraf-1__user__image__user", alt: "アイコン" %>
               </div>
               <div class="content__user-ranking__users__paragraf-1__user__info">
                 <p class="content__user-ranking__users__paragraf-1__user__info__name"><%= user.last_name %> <%= user.first_name %></p>
@@ -351,7 +351,7 @@
                   <div class="content__comment-ranking__comments__paragraf-1__comment__user__image__rank">
                     <%= i + 1 %>
                   </div>
-                  <%= image_tag "https://img-mdpr.freetls.fastly.net/article/XivX/nm/XivXbktSszs_je4SpZtjLS8zK9ZoyznUdVkG4nAFiVU.jpg?width=700&disable=upscale&auto=webp", alt: 'ユーザーイメージ', class: 'content__comment-ranking__comments__paragraf-1__comment__user__image__user' %>
+                  <%= image_tag comment.user.image.url, alt: 'ユーザーイメージ', class: 'content__comment-ranking__comments__paragraf-1__comment__user__image__user' %>
                 </div>
                 <div class="content__comment-ranking__comments__paragraf-1__comment__user__info">
                   <div class="content__comment-ranking__comments__paragraf-1__comment__user__info__name">
