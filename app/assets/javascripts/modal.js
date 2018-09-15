@@ -95,4 +95,15 @@ $(function() {
       $('#notifications').css("display", "none");
     }
   });
+   
+  // keyword検索・登録
+  $('#keyword-search').on('click', function(e) {
+    e.preventDefault();
+    $('.keyword-wrapper').css("display", "block");
+    $('.keyword-wrapper__overlay').on('click', function(e) {
+      if (e.target.className == "keyword-wrapper__overlay") {
+        $('.keyword-wrapper').css("display", "none");
+      }
+    });
+  });
 });

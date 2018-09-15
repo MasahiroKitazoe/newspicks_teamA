@@ -1,4 +1,4 @@
-json.array! @picks do |filtered_pick|
+json.picks @picks do |filtered_pick|
   json.id filtered_pick.id
   json.image filtered_pick.image
   json.comments_count filtered_pick.comments.count
@@ -8,13 +8,13 @@ json.array! @picks do |filtered_pick|
   json.body filtered_pick.body
 end
 
-json.array! @comments do |filtered_comment|
+json.comments @comments do |filtered_comment|
   json.id filtered_comment.id
   json.pick_id filtered_comment.pick.id
   json.user_image filtered_comment.user.image.url
   json.user_last_name filtered_comment.user.last_name
   json.user_first_name filtered_comment.user.first_name
-  json.user_positon filtered_comment.user.position
+  json.user_position filtered_comment.user.position
   json.created_at filtered_comment.created_at
   json.comment filtered_comment.comment
   json.like_count filtered_comment.likes.count

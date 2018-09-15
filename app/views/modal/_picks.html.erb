@@ -20,7 +20,7 @@
               </div>
               <hr id="hr-pick">
               <div id="newpick-comment">
-                <img class="side-bar__user__info__icon" id="pick-user-thumb" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="">
+                <%= image_tag current_user.image.url, class: "side-bar__user__info__icon", id: "pick-user-thumb" %>
                 <%= f.fields_for :comments do |comment_form| %>
                   <%= comment_form.text_area :comment, class: "pick-form", id: "comment-in-modal", placeholder: "コメントを書く(任意)" %>
                 <% end %>

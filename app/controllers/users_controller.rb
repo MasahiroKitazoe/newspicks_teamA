@@ -29,17 +29,32 @@ class UsersController < ApplicationController
   end
 
   def timeline
-    following_users = current_user.following
-    if following_users.length > 0
-      @follow_user_comments = []
-      following_users.each do |user|
-        user.comments.each do |comment|
-          @follow_user_comments << comment
+    @keyword = Keyword.new
+    # 登録しているキーワードにヒットしているニュースの最新コメントを取得
+    # users_nocommentは一旦無視
+    @my_comments = []
+    keywords = current_user.keywords
+    keywords.each do |keyword|
+      picks = Pick.where('title LIKE :keyword OR body LIKE :keyword', keyword: "%#{keyword.keyword}%").order("created_at DESC").includes(:comments)
+      picks.each do |pick|
+        if pick.comments.length > 0
+          pick.comments.last.keyword = keyword.keyword
+          @my_comments << pick.comments.last
         end
       end
-      @follow_user_comments = @follow_user_comments.sort_by{ |a| a[:created_at] }.reverse
     end
+    following_users = current_user.following
+    if following_users.length > 0
+      following_users.each do |user|
+        user.comments.each do |comment|
+          @my_comments << comment
+        end
+      end
+    end
+    @my_comments = @my_comments.uniq {|comment| comment.pick.id}
+    @my_comments = @my_comments.sort_by{ |a| a[:created_at] }.reverse
   end
+
 
   private
   def create_notifications
@@ -47,5 +62,4 @@ class UsersController < ApplicationController
     Notification.create(user_id: user.id, notified_by_id: current_user.id, notified_type: 'フォロー')
   end
   
-
 end
