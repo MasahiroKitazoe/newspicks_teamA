@@ -91,24 +91,11 @@ class Pick < ApplicationRecord
     require 'uri'
     require 'json'
 
-    uri = URI.parse("https://still-wildwood-92752.herokuapp.com/predict/iris_logreg")
+    uri = URI.parse("http://localhost:4000/classify/text_logreg")
     request = Net::HTTP::Post.new(uri)
     request.basic_auth(ENV['FLASK_BASIC_KEY'], ENV['FLASK_BASIC_SECRETS'])
     request.content_type = "application/json"
-    request.body = JSON.dump({
-      "petal_length" => [
-        4.5
-      ],
-      "petal_width" => [
-        1.5
-      ],
-      "sepal_length" => [
-        6
-      ],
-      "sepal_width" => [
-        2.9
-      ]
-    })
+    request.body = JSON.dump(text: '大坂なおみの優勝にブーイング　２０歳の新女王が涙の謝罪「こんな終わり方ですみません」')
 
     req_options = {
       use_ssl: uri.scheme == "https",
