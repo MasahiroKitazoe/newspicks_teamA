@@ -17,7 +17,7 @@ class PicksController < ApplicationController
     @users = @pick.users
     @users_nocomment = []
     @users.each do |user|
-      if user.comments.where(pick_id: @pick.id).first.comment.blank?
+      if user.comments.where(pick_id: @pick.id).first.nil?
         @users_nocomment << user
       end
     end
