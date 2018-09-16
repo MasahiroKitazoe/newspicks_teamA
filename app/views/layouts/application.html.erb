@@ -34,7 +34,7 @@
               <%= fa_icon "share lg silver" %>
             <% end %>
           </li>
-          <li class="header__list__news">
+          <li class="header__list__news" id="notification-up-btn">
             <a href="#" class="header__list__link"><img src="/images/flag.png" style="height: 23px; width: 23px;"></a>
           </li>
           <li class="header__list__user" id="user-menu-trigger">
@@ -63,7 +63,7 @@
             <%= link_to "アカウント登録", new_user_registration_path, class: 'header__list__link' %>
           </li>
         <% end %>
-        <li class="header__list__logo">
+        <li class="header__list__logo" >
           <%= link_to root_path, class: 'header__list__link' do %>
             <%= image_tag '/images/main_logo.png', class: 'header__list__logo__image' %>
           <% end %>
@@ -76,5 +76,6 @@
     <%= render partial: "./modal/signin" %>
     <%= render partial: "./modal/picks" %>
     <%= render partial: "./modal/comment_confirm" %>
+    <%= render partial: "./modal/notification_wrapper" %>
   </body>
 </html>

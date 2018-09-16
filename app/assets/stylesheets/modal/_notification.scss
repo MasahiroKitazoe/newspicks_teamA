@@ -1,0 +1,13 @@
+#notifications {
+  display: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.notifications {
+  z-index: 2;
+  &__overlay {
+    padding: 80px;
+    z-index: 3;
+    height: 100%;
+  }
+}

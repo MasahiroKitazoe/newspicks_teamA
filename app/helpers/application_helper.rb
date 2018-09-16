@@ -27,4 +27,23 @@ module ApplicationHelper
       p comment.created_at.strftime("%Y年%m月%d日")
     end
   end
+
+  def notification_by_user(notification)
+    user_id = notification.notified_by_id
+    user = User.find(user_id)
+    return user
+  end
+
+  def notification_at_comment(notification)
+    comment_id = notification.comment_id
+    comment = Comment.find(comment_id)
+    return comment
+  end
+
+  def user_notifications(user)
+    if user_signed_in?
+      @notifications = user.notifications
+      return @notifications.order("id DESC")
+    end
+  end
 end
