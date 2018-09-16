@@ -27,5 +27,30 @@ class UsersController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-
+  def timeline
+    @keyword = Keyword.new
+    # 登録しているキーワードにヒットしているニュースの最新コメントを取得
+    # users_nocommentは一旦無視
+    @my_comments = []
+    keywords = current_user.keywords
+    keywords.each do |keyword|
+      picks = Pick.where('title LIKE :keyword OR body LIKE :keyword', keyword: "%#{keyword.keyword}%").order("created_at DESC").includes(:comments)
+      picks.each do |pick|
+        if pick.comments.length > 0
+          pick.comments.last.keyword = keyword.keyword
+          @my_comments << pick.comments.last
+        end
+      end
+    end
+    following_users = current_user.following
+    if following_users.length > 0
+      following_users.each do |user|
+        user.comments.each do |comment|
+          @my_comments << comment
+        end
+      end
+    end
+    @my_comments = @my_comments.uniq {|comment| comment.pick.id}
+    @my_comments = @my_comments.sort_by{ |a| a[:created_at] }.reverse
+  end
 end

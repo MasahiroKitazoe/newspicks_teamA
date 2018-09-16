@@ -1,0 +1,199 @@
+  .timeline {
+  background-color: $background-gray;
+  width: calc(85vw - 10px);
+  height: calc(100vh - 100px);
+  float: right;
+  padding: 50px 0;
+  overflow: scroll;
+  &__header {
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    padding: 20px 20px 10px;
+  }
+  &__list {
+    margin: 20px 30px;
+    float: left;
+  }
+  &__keyword-block {
+    color: $unempha-gray;
+    font-size: 12px;
+    background-color: #fff;
+    width: calc(50vw - 40px);
+    min-width: 560px;
+    padding: 5px 20px;
+    border-bottom: 1px solid $background-gray;
+    &__keyword {
+      color: $main-black;
+      font-weight: bold;
+    }
+  }
+  &__news {
+    background-color: #fff;
+    width: calc(50vw - 40px);
+    min-width: 560px;
+    padding: 25px 20px 0;
+    margin-bottom: 16px;
+    &__above {
+      border-bottom: 1px solid $background-gray;
+      padding-bottom: 20px;
+      &:after {
+        clear: both;
+        content: '';
+        display: block;
+      }
+    }
+    &__image {
+      position: relative;
+      &__back {
+        background-color: rgba(0, 0, 0, 0.3);
+        height: 28px;
+        width: 50px;
+        position: absolute;
+        top: 20px;
+        right: 0;
+      }
+      &__pick-count {
+        display: inline-block;
+        border: 1px solid #fff;
+        padding: 2px 5px;
+        position: absolute;
+        top: 20px;
+        right: 0;
+        &__num {
+          color: #fff;
+          font-size: 12px;
+          font-weight: bold;
+        }
+        &__text {
+          color: #fff;
+          font-size: 10px;
+        }
+      }
+    }
+    &__pick {
+      float: left;
+      &__title {
+        font-size: 20px;
+        font-weight: bold;
+        max-width: 416px;
+        min-height: 56px;
+        line-height: 28px;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+      &__info {
+        font-size: 12px;
+        color: $unempha-gray;
+      }
+    }
+    &__image {
+      background-size: cover;
+      width: 160px;
+      height: 112px;
+      float: right;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    &__bottom {
+      padding: 10px;
+      font-size: 14px;
+    }
+    &__user {
+      &__thumb {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        float: left;
+      }
+      &__info {
+        display: inline-block;
+        padding: 5px 20px;
+      }
+      &__more {
+        font-size: 12px;
+        color: $unempha-gray;
+      }
+    }
+    &__comment {
+      clear: both;
+      padding-left: 60px;
+      width: 480px;
+      max-height: 38px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      display: inline-block;
+    }
+    &__like-wrapper {
+      float: right;
+      height: 38px;
+      line-height: 38px;
+      &__like {
+        height: 38px;
+        line-height: 38px;
+      }
+      &__liked {
+        height: 38px;
+        line-height: 38px;
+      }
+      &__btn {
+        width: 12px;
+        height: 12px;
+        line-height: 12px;
+        float: left;
+      }
+      &__count {
+        height: 12px;
+        line-height: 12px;
+        float: left;
+      }
+      &__label {
+        float: left;
+        height: 12px;
+        line-height: 12px;
+      }
+    }
+  }
+  &__keyword {
+    padding: 20px 30px;
+    float: left;
+    width: 300px;
+    &__head {
+      &:after {
+        clear: both;
+        content: '';
+        display: block;
+      }
+      &__title {
+        font-size: 14px;
+        font-weight: bold;
+        float: left;
+      }
+      &__more {
+        color: $keyword-blue;
+        font-size: 12px;
+        float: right;
+        cursor: pointer;
+      }
+    }
+    &__list {
+      margin-top: 20px;
+      background-color: #fff;
+      &__word {
+        color: $keyword-blue;
+        font-size: 12px;
+        padding: 15px 30px;
+        border-bottom: 1px solid #ccc;
+        &:hover {
+          box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.1);
+        }
+      }
+    }
+  }
+}

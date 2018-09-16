@@ -2,6 +2,7 @@
   display: table-cell;
   vertical-align: middle;
   cursor: pointer;
+  font-size: 14px;
   .thumb-up-r {
     display: inline;
     width: 10px;
@@ -13,9 +14,12 @@
     height: 14px;
   }
   .count-r{
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 70%;
     color: #D74029;
   }
   .like-label-r{
+    font-size: 60%;
     color: #D74029;
   }
 }

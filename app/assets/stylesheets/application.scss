@@ -1,22 +1,26 @@
 @import "config/colors";
 @import "./reset.scss";
 @import "./color/fontawesome";
+@import "./color/variable";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "./mixin/content.scss";
 @import "./mixin/form.scss";
+@import "./mixin/search-result.scss";
 @import "pick_tag.scss";
 
 @import "./header.scss";
+@import "./side-bar.scss";
 @import "./users/form.scss";
 @import "./users/edit.scss";
+@import "./users/timeline.scss";
 @import "./modal/signup.scss";
 @import "./modal/signin.scss";
+@import "./modal/keyword.scss";
 @import "./modal/newpick.scss";
 @import "./modal/comment_confirm.scss";
 @import "./modal/comment_confirm_text.scss";
 @import "./modal/user_menu.scss";
-@import "./side-bar.scss";
 
 @import "./mixin/content.scss";
 @import "./mixin/library.scss";

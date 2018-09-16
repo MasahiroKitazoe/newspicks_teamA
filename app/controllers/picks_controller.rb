@@ -14,6 +14,14 @@ class PicksController < ApplicationController
 
   def show
     @pick = Pick.find(params[:id])
+    @users = @pick.users
+    @users_nocomment = []
+    @users.each do |user|
+      if user.comments.where(pick_id: @pick.id).first.nil?
+        @users_nocomment << user
+      end
+    end
+
     @comments = @pick.comments.includes(:user)
     #フォローは一旦自分自身のみで定義。コメントではfollowerに自分のコメントが表示される。なのでカレントユーザー情報を持ってくる必要はない。
     @comments_recommend = []
@@ -22,11 +30,11 @@ class PicksController < ApplicationController
     @comments_garbage = []
     #注目のコメントとその他のコメントを分ける。
     @comments.each do |comment|
-      if current_user.disliking?(comment.user)
+      if current_user.disliking?(comment.user) and !comment.comment.blank?
         @comments_garbage << comment
-      elsif current_user.following?(comment.user) or comment.user == current_user
+      elsif current_user.following?(comment.user) or comment.user == current_user and !comment.comment.blank?
         @comments_following << comment
-      elsif comment.present?
+      elsif comment.present? and !comment.comment.blank?
         @comments_other << comment
       end
     end
@@ -67,6 +75,7 @@ class PicksController < ApplicationController
   end
 
   def create
+    # binding.pry
     @pick = Pick.new(picks_params)
 
     # URLの記事をスクレイピングする
@@ -87,26 +96,38 @@ class PicksController < ApplicationController
   end
 
   def lookup
-    @picks = Pick.where('body LIKE(?)', "%#{params[:keyword]}%").includes(:comments)
+    @picks = Pick.where('title LIKE :keyword OR body LIKE :keyword', keyword: "%#{params[:keyword]}%").order("created_at DESC").includes(:comments)
     @comments = Comment.where('comment LIKE(?)', "%#{params[:keyword]}%").includes(:user, :pick)
-    @users = User.where('profile LIKE(?)', "%#{params[:keyword]}%")
+    @users = User.where("first_name LIKE :keyword OR last_name LIKE :keyword OR company LIKE :keyword OR position LIKE :keyword OR profile LIKE :keyword", keyword: "%#{params[:keyword]}%")
+
     if params[:pick_num] && params[:pick_time]
-      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     elsif params[:pick_num]
-      @filtered_picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
+      @picks = @picks.select{|pick| pick.comments.count >= params[:pick_num].to_i}
     elsif params[:pick_time]
-      @filtered_picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
+      @picks = @picks.select{|pick| pick.created_at >= params[:pick_time].to_datetime}
     end
+
+    if params[:pick_sort_kind] == "comments_count"
+      @picks = @picks.sort{|a, b| b.comments.count <=> a.comments.count}
+    end
+
     if params[:comment_num] && params[:comment_time]
-      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+      @comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     elsif params[:comment_num]
-      @fitered_comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
+      @comments = @comments.select{|comment| comment.likes.count >= params[:comment_num].to_i}
     elsif params[:comment_time]
-      @fitered_comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
+      @comments = @comments.select{|comment| comment.created_at >= params[:comment_time].to_datetime}
     end
+
+    if params[:comment_sort_kind] == "likes_count"
+      @comments = @comments.sort{|a, b| b.likes.count <=> a.likes.count}
+    end
+
     respond_to do |format|
       format.html
       format.json
+      format.js
     end
   end
 
@@ -117,7 +138,8 @@ class PicksController < ApplicationController
         :url,
         :image,
         :title,
-        :body
+        :body,
+        {:user_ids => []}
         )
     end
 

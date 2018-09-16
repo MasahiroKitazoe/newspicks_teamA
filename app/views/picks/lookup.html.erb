@@ -19,7 +19,6 @@
     <div class="search-result__pick-sort__pick-count">
       PICK数：
       <span class="search-result__pick-sort__select">指定なし</span>
-      <!-- 以下はクリック時出現 -->
       <%= link_to "#", data: {pick_num: 0, keyword: params[:keyword]}, class: 'pick-comments__filter' do %>
         <div class="search-result__pick-sort__pick-count__filter">
           指定なし
@@ -40,7 +39,6 @@
     <div class="search-result__pick-sort__period">
       期間：
       <span class="search-result__pick-sort__select">指定なし</span>
-      <!-- 以下はクリック時出現 -->
       <%= link_to "#", data: {pick_time: Time.current.years_ago(1), keyword: params[:keyword]}, class: 'pick-period__filter' do %>
         <div class="search-result__pick-sort__period__filter">
           指定なし
@@ -66,6 +64,16 @@
     <div class="search-result__pick-sort__desc">
       ソート順:
       <span class="search-result__pick-sort__select">公開日</span>
+      <%= link_to "#", data: {pick_sort_kind: "time", keyword: params[:keyword]}, class: 'pick-sort' do %>
+        <div class="search-result__pick-sort__desc__sort">
+          公開日
+        </div>
+      <% end %>
+      <%= link_to "#", data: {pick_sort_kind: "comments_count", keyword: params[:keyword]}, class: 'pick-sort' do %>
+        <div class="search-result__pick-sort__desc__sort">
+          PICK数
+        </div>
+      <% end %>
     </div>
   </div>
   <!-- Commentsのソート/フィルター -->
@@ -118,6 +126,17 @@
     <div class="search-result__comment-sort__desc">
       ソート順：
       <span class="search-result__comment-sort__select">公開日</span>
+      <!-- 以下はクリック時出現 -->
+      <%= link_to "#", data: {comment_sort_kind: "time", keyword: params[:keyword]}, class: 'comment-sort' do %>
+        <div class="search-result__comment-sort__desc__sort">
+          公開日
+        </div>
+      <% end %>
+      <%= link_to "#", data: {comment_sort_kind: "likes_count", keyword: params[:keyword]}, class: 'comment-sort' do %>
+        <div class="search-result__comment-sort__desc__sort">
+          LIKE数
+        </div>
+      <% end %>
     </div>
   </div>
   <!-- 検索結果（PICKS） -->
@@ -128,6 +147,7 @@
         <div class="search-result__picks__news">
           <div>
             <!-- 左部 -->
+            <%= link_to pick_path(pick) do %>
               <div class="search-result__picks__news__image" style="background-image: url(<%= pick.image %>)">
                 <div class="search-result__picks__news__image__back">
                 </div>
@@ -140,12 +160,15 @@
                   </span>
                 </span>
               </div>
+            <% end %>
             <!-- 右部 -->
               <!-- 上部 -->
               <div class="search-result__picks__news__above">
-                <div class="search-result__picks__news__above__title">
-                  <%= pick.title %>
-                </div>
+                <%= link_to pick_path(pick) do %>
+                  <div class="search-result__picks__news__above__title">
+                    <%= pick.title %>
+                  </div>
+                <% end %>
                 <div class="search-result__picks__news__above__source">
                   <%= pick.source %> | <%= pick.created_at %>
                 </div>
@@ -163,15 +186,11 @@
       </div>
     <% end %>
   </div>
-
-
   <!-- 検索結果（コメント） -->
   <div class="search-result__comments" id="searched-comments">
     <% if @comments.length != 0 %>
       <% @comments.each do |comment| %>
-        <!-- 一つComment -->
         <div class="search-result__comments__comment">
-          <!-- ユーザー部分 -->
           <div class="search-result__comments__comment__user">
             <%= image_tag comment.user.image.url, class: 'search-result__comments__comment__user__image' %>
             <div class="search-result__comments__comment__user__info">
@@ -190,19 +209,34 @@
               </div>
             </div>
           </div>
-          <div class="search-result__comments__comment__body">
-            <%= comment.comment %>
-          </div>
-          <div class="search-result__comments__comment__like">
-            <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
-            <div class="search-result__comments__comment__like__likes-count">
-              <%= comment.likes.count %> Likes
+          <%= link_to pick_path(comment.pick) do %>
+            <div class="search-result__comments__comment__body">
+              <%= comment.comment %>
             </div>
+          <% end %>
+          <div class="search-result__comments__comment__like like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
+            <% if current_user.liked?(comment) %>
+              <div class="liked" data="<%= comment.get_like_id %>">
+                <img class="search-result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
+                <div class="search-result__comments__comment__like__likes-count count-r">
+                  <%= comment.likes.count %> Likes
+                </div>
+              </div>
+            <% else %>
+              <div class="like">
+                <img class="search-result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
+                <div class="search-result__comments__comment__like__likes-count count">
+                  <%= comment.likes.count %> Likes
+                </div>
+              </div>
+            <% end %>
           </div>
           <div class="search-result__comments__comment__news">
-            <div class="search-result__comments__comment__news__title">
-              <%= comment.pick.title %>
-            </div>
+            <%= link_to pick_path(comment.pick) do %>
+              <div class="search-result__comments__comment__news__title">
+                <%= comment.pick.title %>
+              </div>
+            <% end %>
             <div class="search-result__comments__comment__news__info">
               <span class="search-result__comments__comment__news__info__source">
                 <%= comment.pick.source %>
@@ -222,7 +256,6 @@
   </div>
   <!-- 検索結果（ユーザー） -->
   <div class="search-result__users"  id="searched-users">
-    <!-- 一つのユーザー -->
     <% if @users.length != 0 %>
       <% @users.each do |user| %>
         <div class="search-result__users__user">

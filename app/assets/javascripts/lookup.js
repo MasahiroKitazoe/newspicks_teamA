@@ -73,6 +73,21 @@ $(function() {
     });
   });
 
+  $('.search-result__pick-sort__desc').on('click', function() {
+    $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "none");
+    $(this).css("background-color", "#fff");
+    $('.search-result__pick-sort__desc__sort').css("display", "block");
+    $(this).css("border", "1px solid #aaa");
+    $('.search-result').on('click', function(e) {
+      if (e.target.className != "search-result__pick-sort__desc" && e.target.className != "search-result__pick-sort__desc__sort" && e.target.className != "search-result__pick-sort__select") {
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "inline-block");
+        $('.search-result__pick-sort__desc').css("background-color", "#eee");
+        $('.search-result__pick-sort__desc__sort').css("display", "none");
+        $('.search-result__pick-sort__desc').css("border", "0");
+      }
+    });
+  });
+
   // Comment
   $('.search-result__comment-sort__like-count').on('click', function() {
     $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "none");
@@ -104,10 +119,26 @@ $(function() {
     });
   });
 
+  $('.search-result__comment-sort__desc').on('click', function() {
+    $('.search-result__comment-sort__desc > .search-result__comment-sort__select').css("display", "none");
+    $(this).css("background-color", "#fff");
+    $('.search-result__comment-sort__desc__sort').css("display", "block");
+    $(this).css("border", "1px solid #aaa");
+    $('.search-result').on('click', function(e) {
+      if (e.target.className != "search-result__comment-sort__desc" && e.target.className != "search-result__comment-sort__desc__sort" && e.target.className != "search-result__comment-sort__select") {
+        $('.search-result__comment-sort__desc > .search-result__comment-sort__select').css("display", "inline-block");
+        $('.search-result__comment-sort__desc').css("background-color", "#eee");
+        $('.search-result__comment-sort__desc__sort').css("display", "none");
+        $('.search-result__comment-sort__desc').css("border", "0");
+      }
+    });
+  });
+
   // フィルター後のpickをappendする処理
   function appendPick(pick) {
     var html = `<div class="search-result__picks__news">
                   <div>
+                    <a href="/picks/${pick.id}">
                       <div class="search-result__picks__news__image" style="background-image: url(${pick.image})">
                         <div class="search-result__picks__news__image__back">
                         </div>
@@ -120,10 +151,13 @@ $(function() {
                           </span>
                         </span>
                       </div>
+                    </a>
                       <div class="search-result__picks__news__above">
-                        <div class="search-result__picks__news__above__title">
-                          ${pick.title}
-                        </div>
+                        <a href="/picks/${pick.id}">
+                          <div class="search-result__picks__news__above__title">
+                            ${pick.title}
+                          </div>
+                        </a>
                         <div class="search-result__picks__news__above__source">
                           ${pick.source} | ${pick.created_at}
                         </div>
@@ -146,11 +180,26 @@ $(function() {
 
   // フィルター後のcommentをappendする処理
   function appendComment(comment) {
-    var insertPositon = '';
-    if (comment.user_positon) {
+    var insertPosition = '';
+    if (comment.user_position) {
       insertPositon = `<span class="search-result__comments__comment__user__info__more__position">
                           ${comment.user_position}
                         </span>`
+    }
+    if (comment.liked == true) {
+      var insertLikeBlock = `<div class="liked" data="${comment.like_id}">
+                              <img class="search-result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count-r">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`;
+    } else {
+      var insertLikeBlock = `<div class="like">
+                              <img class="search-result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
+                              <div class="search-result__comments__comment__like__likes-count count">
+                                ${comment.like_count} Likes
+                              </div>
+                            </div>`;
     }
     var html = `<div class="search-result__comments__comment">
                   <div class="search-result__comments__comment__user">
@@ -160,26 +209,27 @@ $(function() {
                         ${comment.user_last_name} ${comment.user_first_name}
                       </div>
                       <div class="search-result__comments__comment__user__info__more">
-                        ${insertPositon}
+                        ${insertPosition}
                         <span class="search-result__comments__comment__user__info__more__date">
                           ${comment.created_at}
                         </span>
                       </div>
                     </div>
                   </div>
-                  <div class="search-result__comments__comment__body">
-                    ${comment.comment}
-                  </div>
-                  <div class="search-result__comments__comment__like">
-                    <img class="search-result__comments__comment__like__icon" src="/images/like-btn.png" alt="LikesImage">
-                    <div class="search-result__comments__comment__like__likes-count">
-                      ${comment.like_count} Likes
+                  <a href="/picks/${comment.pick_id}">
+                    <div class="search-result__comments__comment__body">
+                      ${comment.comment}
                     </div>
+                  </a>
+                  <div class="search-result__comments__comment__like like-wrapper" id="like${comment.id}" data="${comment.id}">
+                    ${insertLikeBlock}
                   </div>
                   <div class="search-result__comments__comment__news">
-                    <div class="search-result__comments__comment__news__title">
-                      ${comment.pick_title}
-                    </div>
+                    <a href="/picks/${comment.pick_id}">
+                      <div class="search-result__comments__comment__news__title">
+                        ${comment.pick_title}
+                      </div>
+                    </a>
                     <div class="search-result__comments__comment__news__info">
                       <span class="search-result__comments__comment__news__info__source">
                         ${comment.pick_source}
@@ -206,17 +256,20 @@ $(function() {
     e.preventDefault();
     var pick_num = $(e.currentTarget).data('pick-num');
     var keyword = $(e.currentTarget).data('keyword');
-    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').data('pickTime');
+    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time');
+    var pick_sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('pick-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       // pick_timeを送って再建策
       data: { pick_num,
               keyword,
-              pick_time },
+              pick_time,
+              pick_sort_kind },
       dataType: 'json'
     })
-    .done(function(picks) {
+    .done(function(data) {
+      var picks = data.picks;
       // 既に表示しているpicksを空に
       $('#searched-picks').empty();
       // 取得したpicksを一個ずつappend
@@ -229,7 +282,7 @@ $(function() {
       }
       $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').text($(e.currentTarget).text());
       // ここにデータをセットして期間フィルタ時にリクエストと一緒に送信する
-      $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('data-pick-num', pick_num);
+      $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num', pick_num);
       $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').css("display", "inline-block");
       $('.search-result__pick-sort__pick-count').css("background-color", "#eee");
       $('.search-result__pick-sort__pick-count__filter').css("display", "none");
@@ -244,17 +297,20 @@ $(function() {
     e.preventDefault();
     var pick_time = $(e.currentTarget).data('pick-time');
     var keyword = $(e.currentTarget).data('keyword');
-    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').data('pickNum');
+    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num');
+    var pick_sort_kind = $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('pick-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       // pick_numを送って再建策
       data: { pick_time,
               keyword,
-              pick_num },
+              pick_num,
+              pick_sort_kind },
       dataType: 'json'
     })
-    .done(function(picks) {
+    .done(function(data) {
+      var picks = data.picks;
       // 既に表示しているpicksを空に
       $('#searched-picks').empty();
       // 取得したpicksを一個ずつappend
@@ -266,7 +322,7 @@ $(function() {
         appendNoPick("該当する記事がありません")
       }
       $('.search-result__pick-sort__period > .search-result__pick-sort__select').text($(e.currentTarget).text());
-      $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('data-pick-time', pick_time);
+      $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time', pick_time);
       $('.search-result__pick-sort__period > .search-result__pick-sort__select').css("display", "inline-block");
       $('.search-result__pick-sort__period').css("background-color", "#eee");
       $('.search-result__pick-sort__period__filter').css("display", "none");
@@ -275,23 +331,65 @@ $(function() {
     .fail(function() {
       alert('フィルタリングに失敗しました');
     })
-  })
+  });
+
+  $('.pick-sort').on('click', function(e) {
+    e.preventDefault();
+    var keyword = $(e.currentTarget).data('keyword');
+    var pick_time = $('.search-result__pick-sort__period > .search-result__pick-sort__select').attr('pick-time');
+    var pick_num = $('.search-result__pick-sort__pick-count > .search-result__pick-sort__select').attr('pick-num');
+    var pick_sort_kind = $(e.currentTarget).data('pick-sort-kind');
+      $.ajax({
+        type: 'GET',
+        url: '/picks/lookup',
+        data: { keyword,
+                pick_time,
+                pick_num,
+                pick_sort_kind },
+        dataType: 'json'
+      })
+      .done(function(data) {
+        var picks = data.picks;
+        // 既に表示しているpicksを空に
+        $('#searched-picks').empty();
+        // 取得したpicksを一個ずつappend
+        if (picks.length !== 0) {
+          picks.forEach(function(pick) {
+            appendPick(pick);
+          });
+        } else {
+          appendNoPick("該当する記事がありません")
+        }
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').text($(e.currentTarget).text());
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').attr('pick-sort-kind', pick_sort_kind);
+        $('.search-result__pick-sort__desc > .search-result__pick-sort__select').css("display", "inline-block");
+        $('.search-result__pick-sort__desc').css("background-color", "#eee");
+        $('.search-result__pick-sort__desc__sort').css("display", "none");
+        $('.search-result__pick-sort__desc').css("border", "0");
+      })
+      .fail(function() {
+        alert('並び替えに失敗しました');
+      })
+  });
 
   // Commentsフィルター
   $('.comment-likes__filter').on('click', function(e) {
     e.preventDefault();
     var comment_num = $(e.currentTarget).data('comment-num');
     var keyword = $(e.currentTarget).data('keyword');
-    var comment_time = $('.search-result__comment-sort__period > .search-result__comment-sort__select').data('commentTime');
+    var comment_time = $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('comment-time');
+    var comment_sort_kind = $('.search-result__comment-sort__desc > .search-result__comment-sort__select').attr('comment-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       data: { comment_num,
               keyword,
-              comment_time },
+              comment_time,
+              comment_sort_kind },
       dataType: 'json'
     })
-    .done(function(comments) {
+    .done(function(data) {
+      var comments = data.comments;
       // 既に表示しているpicksを空に
       $('#searched-comments').empty();
       // 取得したpicksを一個ずつappend
@@ -303,7 +401,7 @@ $(function() {
         appendNoComment("該当するコメントがありません")
       }
       $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').text($(e.currentTarget).text());
-      $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('data-comment-num', comment_num);
+      $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('comment-num', comment_num);
       $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').css("display", "inline-block");
       $('.search-result__comment-sort__like-count').css("background-color", "#eee");
       $('.search-result__comment-sort__like-count__filter').css("display", "none");
@@ -318,16 +416,19 @@ $(function() {
     e.preventDefault();
     var comment_time = $(e.currentTarget).data('comment-time');
     var keyword = $(e.currentTarget).data('keyword');
-    var comment_num = $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').data('commentNum');
+    var comment_num = $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('comment-num');
+    var comment_sort_kind = $('.search-result__comment-sort__desc > .search-result__comment-sort__select').attr('comment-sort-kind');
     $.ajax({
       type: 'GET',
       url: '/picks/lookup',
       data: { comment_time,
               keyword,
-              comment_num },
+              comment_num,
+              comment_sort_kind },
       dataType: 'json'
     })
-    .done(function(comments) {
+    .done(function(data) {
+      var comments = data.comments;
       // 既に表示しているpicksを空に
       $('#searched-comments').empty();
       // 取得したpicksを一個ずつappend
@@ -339,7 +440,7 @@ $(function() {
         appendNoComment("該当するコメントがありません")
       }
       $('.search-result__comment-sort__period > .search-result__comment-sort__select').text($(e.currentTarget).text());
-      $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('data-comment-time', comment_time);
+      $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('comment-time', comment_time);
       $('.search-result__comment-sort__period > .search-result__comment-sort__select').css("display", "inline-block");
       $('.search-result__comment-sort__period').css("background-color", "#eee");
       $('.search-result__comment-sort__period__filter').css("display", "none");
@@ -348,5 +449,44 @@ $(function() {
     .fail(function() {
       alert('フィルタリングに失敗しました');
     })
+  });
+
+  $('.comment-sort').on('click', function(e) {
+    e.preventDefault();
+    var keyword = $(e.currentTarget).data('keyword');
+    var comment_time = $('.search-result__comment-sort__period > .search-result__comment-sort__select').attr('comment-time');
+    var comment_num = $('.search-result__comment-sort__like-count > .search-result__comment-sort__select').attr('comment-num');
+    var comment_sort_kind = $(e.currentTarget).data('comment-sort-kind');
+      $.ajax({
+        type: 'GET',
+        url: '/picks/lookup',
+        data: { keyword,
+                comment_time,
+                comment_num,
+                comment_sort_kind },
+        dataType: 'json'
+      })
+      .done(function(data) {
+        var comments = data.comments;
+        // 既に表示しているpicksを空に
+        $('#searched-comments').empty();
+        // 取得したpicksを一個ずつappend
+        if (comments.length !== 0) {
+          comments.forEach(function(comment) {
+            appendComment(comment);
+          });
+        } else {
+          appendNoComment("該当するコメントがありません")
+        }
+        $('.search-result__comment-sort__desc > .search-result__comment-sort__select').text($(e.currentTarget).text());
+        $('.search-result__comment-sort__desc > .search-result__comment-sort__select').attr('comment-sort-kind', comment_sort_kind);
+        $('.search-result__comment-sort__desc > .search-result__comment-sort__select').css("display", "inline-block");
+        $('.search-result__comment-sort__desc').css("background-color", "#eee");
+        $('.search-result__comment-sort__desc__sort').css("display", "none");
+        $('.search-result__comment-sort__desc').css("border", "0");
+      })
+      .fail(function() {
+        alert('並び替えに失敗しました');
+      })
   });
 });

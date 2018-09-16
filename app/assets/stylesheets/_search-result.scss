@@ -57,9 +57,12 @@
   &__pick-sort {
     display: block;
     height: 50px;
+    width: calc(100% - 60px);
+    float: right;
     border-bottom: 1px solid #aaa;
     padding: 0 30px ;
     line-height: 50px;
+    position: relative;
     &__pick-count {
       display: inline-block;
       font-size: 12px;
@@ -67,7 +70,10 @@
       padding: 0 10px;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 30px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -80,10 +86,12 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
-      float: left;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 172.484px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -96,7 +104,17 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
-      float: left;
+      cursor: pointer;
+      z-index: 1;
+      position: absolute;
+      left: 309.968px;
+      top: 0;
+      &__sort {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__select {
       color: #777;
@@ -105,9 +123,12 @@
   &__comment-sort {
     display: none;
     height: 50px;
+    width: calc(100% - 60px);
+    float: right;
     border-bottom: 1px solid #aaa;
     padding: 0 30px ;
     line-height: 50px;
+    position: relative;
     &__like-count {
       display: inline-block;
       font-size: 12px;
@@ -116,7 +137,10 @@
       float: left;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 30px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -132,7 +156,10 @@
       float: left;
       min-width: 102.484px;
       cursor: pointer;
-      float: left;
+      z-index: 1;
+      position: absolute;
+      left: 172.484px;
+      top: 0;
       &__filter {
         display: none;
         &:hover {
@@ -145,148 +172,36 @@
       font-size: 12px;
       color: #221f20;
       padding: 0 10px;
-      float: left;
+      cursor: pointer;
+      z-index: 1;
+      position: absolute;
+      left: 309.968px;
+      top: 0;
+      &__sort {
+        display: none;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     &__select {
       color: #777;
     }
   }
   &__picks {
+    clear: both;
     padding: 20px 40px;
     display: block;
     &__news {
-      background-color: #fff;
-      padding: 16px;
-      margin-bottom: 16px;
-      min-height: 108px;
-      &__image {
-        background-position: center;
-        background-size: cover;
-        margin-right: 16px;
-        width: 250px;
-        height: 108px;
-        float: left;
-        position: relative;
-        &__back {
-          position: absolute;
-          height: 31px;
-          width: 61px;
-          right: 0;
-          top: 10px;
-          background-color: rgb(0, 0, 0);
-          opacity: 0.3;
-        }
-        &__picks-count {
-          position: absolute;
-          right: 0;
-          top: 10px;
-          padding: 3px;
-          height: 25px;
-          width: 55px;
-          border: 1px solid #fff;
-          &__num {
-            font-weight: bold;
-            font-size: 12px;
-            color: #FFF;
-          }
-          &__text {
-            font-size: 12px;
-            color: #FFF;
-          }
-        }
-      }
-      &__above {
-        &__title {
-          font-weight: 700;
-          font-size: 16px;
-          max-height: 20px;
-        }
-        &__source {
-          font-size: 12px;
-          color: #999;
-          padding: 7px 0;
-        }
-      }
-      &__body {
-        font-size: 14px;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-      }
+      @include one_news();
     }
   }
   &__comments {
     padding: 20px 40px;
     display: none;
+    clear: both;
     &__comment {
-      background-color: #fff;
-      padding: 16px;
-      margin-bottom: 16px;
-      &__user {
-        &__image {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          float: left;
-        }
-        &__info {
-          padding: 0 0 16px 20px;
-          display: inline-block;
-          &__name {
-            font-size: 14px;
-            font-weight: bold;
-          }
-          &__more {
-            color: #999;
-            font-size: 12px;
-            &__position {
-
-            }
-            &__date {
-
-            }
-          }
-        }
-      }
-      &__body {
-        font-size: 14px;
-        width: 900px;
-        padding-bottom: 16px;
-        float: left;
-      }
-      &__like {
-        float: right;
-        margin-right: 16px;
-        text-align: center;
-        &__icon {
-          width: 10px;
-          height: 14px;
-        }
-        &__likes-count {
-          font-size: 90%;
-          color: #B1B1B3;
-        }
-      }
-      &__news {
-        clear: both;
-        border-top: 1px solid #eee;
-        padding-top: 15px;
-        &__title {
-          font-size: 14px;
-          font-weight: bold;
-        }
-        &__info {
-          font-size: 12px;
-          color: #999;
-          &__source {
-
-          }
-          &__date {
-
-          }
-        }
-      }
+      @include one_pick-comment();
     }
   }
   &__users {
