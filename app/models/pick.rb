@@ -86,7 +86,7 @@ class Pick < ApplicationRecord
     check_users.include?(user)
   end
 
-  def categorize
+  def categorize(text)
     require 'net/http'
     require 'uri'
     require 'json'
@@ -95,7 +95,7 @@ class Pick < ApplicationRecord
     request = Net::HTTP::Post.new(uri)
     request.basic_auth(ENV['FLASK_BASIC_KEY'], ENV['FLASK_BASIC_SECRETS'])
     request.content_type = "application/json"
-    request.body = JSON.dump(text: '大坂なおみの優勝にブーイング　２０歳の新女王が涙の謝罪「こんな終わり方ですみません」')
+    request.body = JSON.dump(text: text)
 
     req_options = {
       use_ssl: uri.scheme == "https",
