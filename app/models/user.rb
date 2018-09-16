@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i(google)
 
   has_many :comments
+  has_many :keywords
   has_many :pick_users
   has_many :picks, through: :pick_users
   has_many :active_relationships, class_name:  "Relationship",
@@ -25,6 +26,7 @@ class User < ApplicationRecord
                               dependent: :destroy
   has_many :disliking, through: :active_dislikes, source: :disliked
   has_many :dislikers, through: :passive_dislikes, source: :disliker
+  has_many :notifications, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 

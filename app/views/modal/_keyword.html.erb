@@ -1,0 +1,59 @@
+<div class="keyword-wrapper">
+  <div class="keyword-wrapper__overlay">
+    <div class="keyword-wrapper__form">
+      <div class="keyword-wrapper__form__above">
+        <%= form_with url: picks_lookup_path, method: :get, id: 'keyword-form' do |f| %>
+          <%= f.text_field :keyword, class: 'keyword-wrapper__form__above__input', placeholder: 'キーワードを入力してEnterキーで検索' %>
+          <% f.submit %>
+        <% end %>
+        <div class="keyword-wrapper__form__above__keyword">
+          デザイナー
+        </div>
+        <%= form_tag keyword_path, method: :delete do %>
+          <%= text_field :keyword, :keyword, class: 'keyword-wrapper__form__above__text' %>
+          <%= image_submit_tag "https://newspicks.com/images/keyword-followed-button.e354d7ff.png", class: 'keyword-wrapper__form__above__btn' %>
+        <% end %>
+      </div>
+      <div class="keyword-wrapper__form__bottom">
+        <div class="keyword-wrapper__form__announce">
+          気になるキーワードを入力<br>
+          <span class="keyword-wrapper__form__text">「企業名」や「業界」など気になるキーワードを入力してみましょう</span>
+        </div>
+        <div class="keyword-wrapper__form__result">
+          <div class="keyword-wrapper__form__result__class">
+            <div class="keyword-wrapper__form__result__news-tab" id="keyword-class-news">
+              ニュース
+            </div>
+            <div class="keyword-wrapper__form__result__comment-tab"  id="keyword-class-comment">
+              コメント
+            </div>
+          </div>
+          <div class="keyword-wrapper__form__result__picks">
+          </div>
+          <div class="keyword-wrapper__form__result__comments">
+          </div>
+        </div>
+      </div>
+      <div class="keyword-wrapper__form__add">
+        <div class="keyword-wrapper__form__add__text-block">
+          <div class="keyword-wrapper__form__add__text-block__keyword">
+            「検索されたキーワード」
+          </div>
+          <div class="keyword-wrapper__form__add__text-block__announce">
+            このキーワードを追加しよう
+          </div>
+        </div>
+        <!-- ここにフォームを作成 -->
+        <%= form_for @keyword, remote: true do |f| %>
+          <%= f.text_field :keyword, class: 'keyword-wrapper__form__add__value' %>
+          <%= f.button "+ 追加", type: "submit", class: 'keyword-wrapper__form__add__btn' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="keyword-wrapper__errors">
+      <h2 class="keyword-wrapper__errors__title">入力されたキーワードは不正です。</h3>
+      <p class="keyword-wrapper__errors__text">キーワードを確認してください。</p>
+    </div>
+  </div>
+</div>
