@@ -91,7 +91,7 @@ class Pick < ApplicationRecord
     require 'uri'
     require 'json'
 
-    uri = URI.parse("http://localhost:5000/classify/text_logreg")
+    uri = URI.parse("https://serene-crag-46893.herokuapp.com/classify/text_logreg")
     request = Net::HTTP::Post.new(uri)
     request.basic_auth(ENV['FLASK_BASIC_KEY'], ENV['FLASK_BASIC_SECRETS'])
     request.content_type = "application/json"
