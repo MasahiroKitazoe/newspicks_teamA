@@ -86,7 +86,7 @@ class Pick < ApplicationRecord
     check_users.include?(user)
   end
 
-  def categorize(text)
+  def self.categorize(text)
     require 'net/http'
     require 'uri'
     require 'json'
@@ -105,6 +105,8 @@ class Pick < ApplicationRecord
       http.request(request)
     end
 
-    response.body
+    result = response.body
+    res_num = result[1].to_i
+    res_num + 1
   end
 end

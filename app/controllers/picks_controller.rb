@@ -75,7 +75,6 @@ class PicksController < ApplicationController
   end
 
   def create
-    # binding.pry
     @pick = Pick.new(picks_params)
 
     # URLの記事をスクレイピングする
@@ -87,8 +86,14 @@ class PicksController < ApplicationController
     @pick.image = article_info[:image]
     @pick.source = article_info[:source]
 
+    #カテゴリー分け
+    text = @pick.title + ' ' + @pick.source
+    theme_id = Pick.categorize(text)
+
     if @pick.save
       flash[:notice] = "Pickしました"
+       pick_theme = PickTheme.new(pick_id: @pick.id, theme_id: theme_id)
+       pick_theme.save
       redirect_to :root
     else
       render action: :new
@@ -140,6 +145,7 @@ class PicksController < ApplicationController
         :title,
         :body,
         {:user_ids => []}
+        # {:theme_ids => []}
         )
     end
 
