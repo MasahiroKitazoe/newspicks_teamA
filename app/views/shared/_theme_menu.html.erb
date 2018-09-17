@@ -2,6 +2,23 @@
   <div class="theme_menu__overlay">
     <div class="themes_bar_container">
       <div class="themes_bar">
+        <div class="main_menu">
+          <%= link_to "総合トップ", root_path %>
+          <%= link_to "マイニュース", timeline_user_path(current_user.id) if user_signed_in? %>
+        </div>
+        <div class="themes_menu">
+          <div class="theme_titles">
+            テーマ一覧
+          </div>
+          <%= link_to "テクノロジー", root_path %>
+          <%= link_to "ビジネス", root_path %>
+          <%= link_to "政治・経済", root_path %>
+          <%= link_to "金融・マーケット", root_path %>
+          <%= link_to "キャリア・教育", root_path %>
+          <%= link_to "社会・スポーツ", root_path %>
+          <%= link_to "イノベーション", root_path %>
+          <%= link_to "ジョブオファー", root_path %>
+        </div>
       </div>
     </div>
   </div>

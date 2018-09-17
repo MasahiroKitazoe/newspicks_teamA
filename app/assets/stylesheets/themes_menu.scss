@@ -11,5 +11,19 @@
     left: auto;
     bottom: 10px;
     box-shadow: 2px 2px 8px #CCC;
+    .main_menu{
+      margin: 16px 0;
+      @include one_theme_link();
+    }
+    .themes_menu{
+      border-top: 1px solid #CCC;
+      overflow: auto;
+      .theme_titles{
+        margin: 16px 0 16px 24px;
+        color: #221f20;
+        font-size: 12px;
+      }
+      @include one_theme_link();
+    }
   }
 }
