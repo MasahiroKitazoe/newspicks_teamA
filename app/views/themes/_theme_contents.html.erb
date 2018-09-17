@@ -1,2 +1,67 @@
-<%= popular[0].title %>
-<%= newests[0].title %>
+<div class="theme-page">
+  <div class="theme-title">
+    <div class="centering-theme-title">
+      <%= @theme.theme %>
+    </div>
+  </div>
+  <div class="theme-news">
+    <div class="left-theme-news">
+      <div class="news-card">
+        <%= link_to pick_path(@top.id) do %>
+          <div class="theme-top-thumbnail" style="background-image: url(<%= @top.image %>)">
+          </div>
+          <div class="theme-news-title">
+            <%= @top.title %>
+          </div>
+        <% end %>
+        <div class="meta">
+          <div class="publisher-container">
+            <div class="publisher">
+              <%= @top.source %>
+            </div>
+          </div>
+        </div>
+        <div class="theme-news-user-comment">
+          <% if @top.comments.length != 0 %>
+            <%= link_to user_path(@top.comments.first.user_id) do %>
+              <div class="profile">
+                <%= image_tag @top.comments.first.user.image.url %>
+                <div class="details">
+                  <span class="name"><%= @top.comments.first.user.last_name %> <%= @top.comments.first.user.first_name %></span>
+                  <span class="job"><%= @top.comments.first.user.position %></span>
+                </div>
+              </div>
+            <% end %>
+            <%= link_to pick_path(@top.id) do %>
+              <div class="comment">
+                <%= @top.comments.first.comment %>
+              </div>
+            <% end %>
+            <% if @top.get_pickers(@top.comments.first.user).present? %>
+              <div class="pickers">
+                <ul>
+                  <% @top.get_pickers(@top.comments.first.user).each do |picker| %>
+                  <li>
+                    <%= link_to user_path(picker) do %>
+                      <%= image_tag picker.image.url %>
+                    <% end %>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="no-comment">
+              コメントはまだありません
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% popular.each do |pick| %>
+        <%= render partial: "one_theme_news", locals: {pick: pick} %>
+      <% end %>
+    </div>
+    <div class="right-theme-news">
+    </div>
+  </div>
+</div>

@@ -109,4 +109,10 @@ class Pick < ApplicationRecord
     res_num = result[1].to_i
     res_num + 1
   end
+
+  def get_pickers(excluded_user)
+    pickers = self.comments.map { |comment| comment.user }
+    pickers.delete(excluded_user)
+    pickers
+  end
 end
