@@ -1,39 +1,13 @@
 <div class="side-bar">
   <%= render partial: "./users/current_user" %>
   <% if user_signed_in? %>
-    <%= link_to "/users/#{current_user.id}/timeline" do %>
+    <%= link_to "/users/#{current_user.id}/timeline", id: 'my-news' do %>
       <div class="side-bar__my-news">
         マイニュース
       </div>
     <% end %>
   <% end %>
   <div class="side-bar__keyword-news">
-    <div class="side-bar__keyword-news__news">
-      <p class="side-bar__keyword-news__news__keyword"><span class="side-bar__keyword-news__news__keyword__em">[keyword]</span>の記事</p>
-      <!-- 記事 -->
-      <div class="side-bar__keyword-news__news__user">
-        <img class="side-bar__keyword-news__news__user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-        <div class="side-bar__keyword-news__news__user__info">
-          <a href="#" class="side-bar__keyword-news__news__user__name">滝藤賢一</a>
-          <p class="side-bar__keyword-news__news__user__time">1時間前</p>
-        </div>
-      </div>
-      <p class="side-bar__keyword-news__news__comment">桜そないなことになってんの。もう夏なんやけど。それ春の話じゃない？だってさぁ、いつの間にか夏なんだもん。困っちゃうよなぁ。</p>
-      <p class="side-bar__keyword-news__news__text">今年の桜は例年よりも散るのが早く、例年より綺麗です。恋人との儚いお別れを表すかのように、花はただそこに咲いています。ぜひ見に行ってはいかがでしょうか？</p>
-    </div>
-    <div class="side-bar__keyword-news__news">
-      <p class="side-bar__keyword-news__news__keyword"><span class="side-bar__keyword-news__news__keyword__em">[keyword]</span>の記事</p>
-      <!-- 記事 -->
-      <div class="side-bar__keyword-news__news__user">
-        <img class="side-bar__keyword-news__news__user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
-        <div class="side-bar__keyword-news__news__user__info">
-          <a href="#" class="side-bar__keyword-news__news__user__name">滝藤賢一</a>
-          <p class="side-bar__keyword-news__news__user__time">1時間前</p>
-        </div>
-      </div>
-      <p class="side-bar__keyword-news__news__comment">桜そないなことになってんの。もう夏なんやけど。それ春の話じゃない？だってさぁ、いつの間にか夏なんだもん。困っちゃうよなぁ。</p>
-      <p class="side-bar__keyword-news__news__text">今年の桜は例年よりも散るのが早く、例年より綺麗です。恋人との儚いお別れを表すかのように、花はただそこに咲いています。ぜひ見に行ってはいかがでしょうか？</p>
-    </div>
     <div class="side-bar__keyword-news__news">
       <p class="side-bar__keyword-news__news__keyword"><span class="side-bar__keyword-news__news__keyword__em">[keyword]</span>の記事</p>
       <!-- 記事 -->
