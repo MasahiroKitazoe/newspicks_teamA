@@ -75,8 +75,14 @@
           font-weight: bold;
           font-size: 14px;
           padding-right: 2.5vw;
-          float: right;
+          max-width: 190px;
+          margin-left: 50px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
           &__position {
+            max-width: 100px;
             padding-left: 7px;
             font-size: 12px;
             color: #bbb;
