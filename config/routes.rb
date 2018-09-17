@@ -25,4 +25,13 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
   resources :keywords, only: [:create, :destroy]
 
+  get '/themes/technology', to: 'themes#technology'
+  get '/themes/business', to: 'themes#business'
+  get '/themes/politics_economics', to: 'themes#politics_economics'
+  get '/themes/finance', to: 'themes#finance'
+  get '/themes/carrier_education', to: 'themes#carrier_education'
+  get '/themes/society_sports', to: 'themes#society_sports'
+  get '/themes/innovation', to: 'themes#innovation'
+  get '/themes/joboffer', to: 'themes#joboffer'
+
 end
