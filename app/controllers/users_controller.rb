@@ -53,6 +53,15 @@ class UsersController < ApplicationController
     end
     @my_comments = @my_comments.uniq {|comment| comment.pick.id}
     @my_comments = @my_comments.sort_by{ |a| a[:created_at] }.reverse
+
+    if params[:comment_id]
+      @latest_comments = @my_comments.select {|comment| comment.id > params[:comment_id].to_i}
+    end
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
 
@@ -61,5 +70,5 @@ class UsersController < ApplicationController
     user = User.find(params[:followed_id])
     Notification.create(user_id: user.id, notified_by_id: current_user.id, notified_type: 'フォロー')
   end
-  
+
 end
