@@ -57,25 +57,25 @@
       }
     }
     &__users {
-      padding: 0 15px 15px;
+      padding: 0 15px 10px;
       &::after {
         clear: both;
         content: '';
         display: block;
       }
       &__top-user {
+        margin-bottom: 10px;
         &__image {
           width: 28px;
           height: 28px;
           border-radius: 50%;
           float: left;
-          margin-right: 15px;
         }
         &__name {
           font-weight: bold;
           font-size: 14px;
           padding-right: 2.5vw;
-          float: left;
+          float: right;
           &__position {
             padding-left: 7px;
             font-size: 12px;
