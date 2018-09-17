@@ -1,0 +1,13 @@
+#theme_menu {
+  display: block;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.theme_menu {
+  z-index: 2;
+  &__overlay {
+    padding: 55px 0px;
+    height: 100%;
+    width: 100%;
+  }
+}

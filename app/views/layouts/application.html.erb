@@ -70,6 +70,7 @@
         </li>
       </ul>
     </nav>
+    <%= render partial: "./shared/theme_menu" %>
     <%= render partial: "./shared/user_menu" if user_signed_in? %>
     <%= yield %>
     <%= render partial: "./modal/signup" %>

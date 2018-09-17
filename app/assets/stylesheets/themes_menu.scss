@@ -1,0 +1,15 @@
+.themes_bar_container{
+   position: relative;
+  .themes_bar{
+    display: flex;
+    flex-direction: column;
+    background: #FFF;
+    width: 240px;
+    z-index: 5000;
+    position: fixed;
+    top: 51px;
+    left: auto;
+    bottom: 10px;
+    box-shadow: 2px 2px 8px #CCC;
+  }
+}
