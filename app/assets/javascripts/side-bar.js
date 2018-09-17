@@ -6,6 +6,9 @@ $(function() {
                                 ${comment.keyword}
                               </span>の記事
                             </p>`
+    } else {
+      var insertKeyword = `<p class="side-bar__keyword-news__news__keyword">
+                            </p>`
     }
     var html = `<div class="side-bar__keyword-news__news">
                   ${insertKeyword}
@@ -40,7 +43,7 @@ $(function() {
       if (data.length !== 0) {
         var comments = [];
         data.forEach(function(comment) {
-          comments.push(buildHTML);
+          comments.push(buildHTML(comment));
         })
         $('.side-bar__keyword-news').append(comments);
       }
