@@ -1,6 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.11.0'
 
+SSHKit.config.command_map[:rake] = 'bundle exec rake'
+
 set :application, 'newspicks_teamA'
 set :repo_url,  'git@github.com:MasahiroKitazoe/newspicks_teamA.git'
 
@@ -45,8 +47,14 @@ namespace :deploy do
 end
 
 namespace :deploy do
-  desc "reload the database with seed data"
-  task :seed do
-    run "cd #{current_path}; bundle exec rake db:seed"
+  desc 'db_seed must be run only one time right after the first deploy'
+  task :db_seed do
+    on roles(:db) do |host|
+      within current_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'db:seed'
+        end
+      end
+    end
   end
 end

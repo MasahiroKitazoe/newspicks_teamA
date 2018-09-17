@@ -1,67 +1,67 @@
 class ThemesController < ApplicationController
 
   def technology
-    @popular = get_popular(8)
+    @theme = Theme.find_by(theme: "テクノロジー")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(8)
-    @theme = Theme.find(8)
+    @newests = get_newests(@theme.id)
   end
 
   def business
-    @popular = get_popular(1)
+    @theme = Theme.find_by(theme: "ビジネス")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(1)
-    @theme = Theme.find(1)
+    @newests = get_newests(@theme.id)
   end
 
   def politics_economics
-    @popular = get_popular(6)
+    @theme = Theme.find_by(theme: "政治・経済")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(6)
-    @theme = Theme.find(6)
+    @newests = get_newests(@theme.id)
   end
 
   def finance
-    @popular = get_popular(3)
+    @theme = Theme.find_by(theme: "金融・マーケット")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(3)
-    @theme = Theme.find(3)
+    @newests = get_newests(@theme.id)
   end
 
   def carrier_education
-    @popular = get_popular(2)
+    @theme = Theme.find_by(theme: "キャリア・教育")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(2)
-    @theme = Theme.find(2)
+    @newests = get_newests(@theme.id)
   end
 
   def society_sports
-    @popular = get_popular(7)
+    @theme = Theme.find_by(theme: "社会・スポーツ")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(7)
-    @theme = Theme.find(7)
+    @newests = get_newests(@theme.id)
   end
 
   def innovation
-    @popular = get_popular(4)
+    @theme = Theme.find_by(theme: "イノベーション")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(4)
-    @theme = Theme.find(4)
+    @newests = get_newests(@theme.id)
   end
 
   def joboffer
-    @popular = get_popular(5)
+    @theme = Theme.find_by(theme: "ジョブオファー")
+    @popular = get_popular(@theme.id)
     @top = @popular[0]
     @popular = @popular.drop(1)
-    @newests = get_newests(5)
-    @theme = Theme.find(5)
+    @newests = get_newests(@theme.id)
   end
 
     private
