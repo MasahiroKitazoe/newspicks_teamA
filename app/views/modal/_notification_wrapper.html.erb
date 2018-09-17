@@ -1,0 +1,32 @@
+<div class="back notification" id="notifications">
+  <div class="notifications__overlay">
+    <div class="notification-container" style="display: block;">
+      <div class="popover">
+        <div class="nozzle-border"></div>
+        <div class="nozzle"></div>
+        <div class="notification-header">
+          <div class="title">お知らせ</div>
+          <div class="query-link">
+            <a href="/settings/query/">キーワード設定/編集</a>
+          </div>
+        </div>
+        <div class="notification-content">
+          <div class="nothing center font-bold" style="display: none;">お知らせはありません</div>
+          <div class="error center font-bold" style="display: none;">お知らせが取得できませんでした</div>
+          <div class="wrapper">
+            <% if user_signed_in? %>
+              <% user_notifications(current_user).each do |notification| %>
+                <% if notification.comment_id.nil? %>
+                  <%= render "notifications/notification_follow", {notification: notification, user: notification_by_user(notification)} %>
+                <% else %>
+                  <%= render "notifications/notification_like", {notification: notification, user: notification_by_user(notification), comment: notification_at_comment(notification)} %>
+                <% end %>
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -78,7 +78,6 @@ $(function() {
 
   // 背景をクリックするとモーダルを終了
   $('.user_menu__overlay').on('click', function(e) {
-    console.log(e.target);
     if (e.target.className == "user_menu__overlay") {
       $('#user_menu').css("display", "none");
     }
@@ -98,6 +97,19 @@ $(function() {
     }
   });
 
+  // 旗印をクリックした時
+  $('#notification-up-btn').on('click', function(e){
+    e.preventDefault();
+    $('#notifications').css('display', 'block');
+  });
+
+  // 背景をクリックするとモーダルを終了
+  $('.notifications__overlay').on('click', function(e) {
+    if (e.target.className == "notifications__overlay") {
+      $('#notifications').css("display", "none");
+    }
+  });
+   
   // keyword検索・登録
   $('#keyword-search').on('click', function(e) {
     e.preventDefault();

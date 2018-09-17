@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
+  after_action :create_notifications, only: [:follow]
 
   def library
     @users = User.order('created_at ASC')
@@ -53,4 +54,12 @@ class UsersController < ApplicationController
     @my_comments = @my_comments.uniq {|comment| comment.pick.id}
     @my_comments = @my_comments.sort_by{ |a| a[:created_at] }.reverse
   end
+
+
+  private
+  def create_notifications
+    user = User.find(params[:followed_id])
+    Notification.create(user_id: user.id, notified_by_id: current_user.id, notified_type: 'フォロー')
+  end
+  
 end
