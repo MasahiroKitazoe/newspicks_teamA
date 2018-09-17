@@ -40,10 +40,10 @@ $(function() {
         dataType: 'json'
       })
       .done(function(data) {
-        var my_comments = data.my_comments
-        if (my_comments.length !== 0) {
+        var myNews = data.my_comments
+        if (myNews.length !== 0) {
           var comments = [];
-          my_comments.forEach(function(comment) {
+          myNews.forEach(function(comment) {
             comments.push(buildHTML(comment));
           })
           $('.side-bar__keyword-news').append(comments);
@@ -62,10 +62,10 @@ $(function() {
         dataType: 'json'
       })
       .done(function(data) {
-        var latest_comments = data.latest_comments
-        if (latest_comments.length !== 0) {
+        var latestNews = data.latest_comments
+        if (latestNews.length !== 0) {
           var comments = [];
-          latest_comments.forEach(function(comment) {
+          latestNews.forEach(function(comment) {
             comments.push(buildHTML(comment));
           })
           $('.side-bar__keyword-news').prepend(comments);
