@@ -53,13 +53,13 @@ $(function() {
         alert('マイニュースの取得に失敗しました');
       });
 
-      setInterval(function() {
-        var comment_id = $('.side-bar__keyword-news__news:first').data('id');
-        $.ajax({
-        type: 'GET',
-        url: url,
-        data: { comment_id },
-        dataType: 'json'
+    setInterval(function() {
+      var comment_id = $('.side-bar__keyword-news__news:first').data('id');
+      $.ajax({
+      type: 'GET',
+      url: url,
+      data: { comment_id },
+      dataType: 'json'
       })
       .done(function(data) {
         var latestNews = data.latest_comments
@@ -74,6 +74,6 @@ $(function() {
       .fail(function(data) {
         alert('マイニュースの取得に失敗しました');
       })
-      }, 5000);
+    }, 5000);
   }
 });
