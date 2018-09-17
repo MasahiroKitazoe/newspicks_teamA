@@ -10,7 +10,7 @@ $(function() {
       var insertKeyword = `<p class="side-bar__keyword-news__news__keyword">
                             </p>`
     }
-    var html = `<div class="side-bar__keyword-news__news">
+    var html = `<div class="side-bar__keyword-news__news" data-id=${comment.id}>
                   ${insertKeyword}
                   <div class="side-bar__keyword-news__news__user">
                     <img class="side-bar__keyword-news__news__user__image" src="${comment.user_image}">
@@ -40,9 +40,10 @@ $(function() {
         dataType: 'json'
       })
       .done(function(data) {
-        if (data.length !== 0) {
+        var my_comments = data.my_comments
+        if (my_comments.length !== 0) {
           var comments = [];
-          data.forEach(function(comment) {
+          my_comments.forEach(function(comment) {
             comments.push(buildHTML(comment));
           })
           $('.side-bar__keyword-news').append(comments);
@@ -50,7 +51,31 @@ $(function() {
       })
       .fail(function() {
         alert('マイニュースの取得に失敗しました');
-      })
+      });
 
+      setInterval(function() {
+        var id = $('.side-bar__keyword-news__news:first').data('id');
+        $.ajax({
+        type: 'GET',
+        url: url,
+        data: { id },
+        dataType: 'json'
+      })
+      .done(function(data) {
+        var latest_comments = data.latest_comments
+        if (latest_comments.length !== 0) {
+          var comments = [];
+          latest_comments.forEach(function(comment) {
+            comments.push(buildHTML(comment));
+          })
+          $('.side-bar__keyword-news').prepend(comments);
+        } else {
+          return false;
+        }
+      })
+      .fail(function(data) {
+        alert('マイニュースの取得に失敗しました');
+      })
+      }, 5000);
   }
 });
