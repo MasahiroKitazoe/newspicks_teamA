@@ -69,8 +69,6 @@ $(function() {
             comments.push(buildHTML(comment));
           })
           $('.side-bar__keyword-news').prepend(comments);
-        } else {
-          return false;
         }
       })
       .fail(function(data) {
