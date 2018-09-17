@@ -32,23 +32,25 @@ $(function() {
                 </div>`
     return html;
   }
+  if ($('#my-news').length) {
+      var url = $('#my-news').attr('href');
+      $.ajax({
+        type: 'GET',
+        url: url,
+        dataType: 'json'
+      })
+      .done(function(data) {
+        if (data.length !== 0) {
+          var comments = [];
+          data.forEach(function(comment) {
+            comments.push(buildHTML(comment));
+          })
+          $('.side-bar__keyword-news').append(comments);
+        }
+      })
+      .fail(function() {
+        alert('マイニュースの取得に失敗しました');
+      })
 
-  var url = $('#my-news').attr('href');
-  $.ajax({
-      type: 'GET',
-      url: url,
-      dataType: 'json'
-    })
-    .done(function(data) {
-      if (data.length !== 0) {
-        var comments = [];
-        data.forEach(function(comment) {
-          comments.push(buildHTML(comment));
-        })
-        $('.side-bar__keyword-news').append(comments);
-      }
-    })
-    .fail(function() {
-      alert('マイニュースの取得に失敗しました');
-    })
+  }
 });
