@@ -13,7 +13,7 @@
         </div>
         <div class="content__eyecatch__main__info">
           <p class="content__eyecatch__main__info__media"><%= @top_picks[0].source %></p>
-          <p class="content__eyecatch__main__info__time"><%= @top_picks[0].created_at.strftime("%m月%d日 %H時%M分") %></p>
+          <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[0]) %></p>
         </div>
       </div>
     <% end %>
@@ -65,7 +65,7 @@
               <% end %>
               <div class="content__top-news__side-news__content__news__info">
                 <p class="content__top-news__side-news__content__news__source"><%= @picks[i].source %></p>
-                <p class="content__top-news__side-news__content__news__time"><%= @picks[i].created_at.strftime("%m月%d日 %H時%M分") %></p>
+                <p class="content__top-news__side-news__content__news__time"><%= calc_time(@picks[i]) %></p>
               </div>
             </div>
             <!-- コメントしたユーザー -->
@@ -142,7 +142,7 @@
               <% end %>
               <div class="content__top-news__side-news__content__news__info">
                 <p class="content__top-news__side-news__content__news__source"><%= @picks[i].source %></p>
-                <p class="content__top-news__side-news__content__news__time">11時間前</p>
+                <p class="content__top-news__side-news__content__news__time"><%= calc_time(@picks[i]) %></p>
               </div>
             </div>
             <!-- コメントしたユーザー -->

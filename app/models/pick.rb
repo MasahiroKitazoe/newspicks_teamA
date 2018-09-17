@@ -78,12 +78,41 @@ class Pick < ApplicationRecord
     return results
   end
 
-
   def upcheck(user)
     comments.find_by(user_id: user.id).update
   end
 
   def check?(user)
     check_users.include?(user)
+  end
+
+  def self.categorize(text)
+    require 'net/http'
+    require 'uri'
+    require 'json'
+
+    uri = URI.parse("https://serene-crag-46893.herokuapp.com/classify/text_logreg")
+    request = Net::HTTP::Post.new(uri)
+    request.basic_auth(ENV['FLASK_BASIC_KEY'], ENV['FLASK_BASIC_SECRETS'])
+    request.content_type = "application/json"
+    request.body = JSON.dump(text: text)
+
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+
+    result = response.body
+    res_num = result[1].to_i
+    res_num + 1
+  end
+
+  def get_pickers(excluded_user)
+    pickers = self.comments.map { |comment| comment.user }
+    pickers.delete(excluded_user)
+    pickers
   end
 end
