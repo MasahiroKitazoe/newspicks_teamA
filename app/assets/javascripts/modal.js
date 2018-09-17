@@ -84,6 +84,20 @@ $(function() {
     }
   });
 
+  // themeのメニューをクリックした時
+  $('#theme-menu-trigger').on('click', function(e){
+    e.preventDefault();
+    $('.theme_menu').css('display', 'block');
+  });
+
+  // 背景をクリックするとモーダルを終了
+  $('.theme_menu__overlay').on('click', function(e) {
+    console.log(e.target);
+    if (e.target.className == "theme_menu__overlay") {
+      $('#theme_menu').css("display", "none");
+    }
+  });
+
   // keyword検索・登録
   $('#keyword-search').on('click', function(e) {
     e.preventDefault();
