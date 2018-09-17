@@ -54,11 +54,11 @@ $(function() {
       });
 
       setInterval(function() {
-        var id = $('.side-bar__keyword-news__news:first').data('id');
+        var comment_id = $('.side-bar__keyword-news__news:first').data('id');
         $.ajax({
         type: 'GET',
         url: url,
-        data: { id },
+        data: { comment_id },
         dataType: 'json'
       })
       .done(function(data) {

@@ -54,8 +54,8 @@ class UsersController < ApplicationController
     @my_comments = @my_comments.uniq {|comment| comment.pick.id}
     @my_comments = @my_comments.sort_by{ |a| a[:created_at] }.reverse
 
-    if params[:id]
-      @latest_comments = @my_comments.select {|comment| comment.id > params[:id].to_i}
+    if params[:comment_id]
+      @latest_comments = @my_comments.select {|comment| comment.id > params[:comment_id].to_i}
     end
 
     respond_to do |format|
