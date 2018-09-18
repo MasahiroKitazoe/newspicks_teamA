@@ -13,24 +13,8 @@ class Pick < ApplicationRecord
     results = {}
     page = agent.get(url)
 
-    # 記事タイトルを取得
-    if page.at('h1')
-      results[:title] = page.at('h1').inner_text
-    elsif page.at('h2')
-      results[:title] = page.at('h2').inner_text
-    elsif page.at('h3')
-      results[:title] = page.at('h3').inner_text
-    elsif page.at('h4')
-      results[:title] = page.at('h4').inner_text
-    elsif page.at('h5')
-      results[:title] = page.at('h5').inner_text
-    elsif page.at('title')
-      results[:title] = page.at('title').inner_text
-    else
-      results[:title] = 'タイトルが見つかりませんでした'
-    end
-
-    # 画像とsourceを取得
+    # metaタグを取得
+    title_meta = ""
     img_meta = ""
     source_meta = ""
     elements = page.search('meta')
@@ -39,6 +23,31 @@ class Pick < ApplicationRecord
         img_meta = ele
       elsif ele.get_attribute('property') == "og:site_name"
         source_meta = ele
+      elsif ele.get_attribute('property') == "og:title"
+        title_meta = ele
+      end
+    end
+
+    # 記事タイトルを取得
+    if title_meta.present?
+      if title_meta.get_attribute('content')
+        results[:title] = title_meta.get_attribute('content')
+      end
+    else
+      if page.at('h1')
+        results[:title] = page.at('h1').inner_text
+      elsif page.at('h2')
+        results[:title] = page.at('h2').inner_text
+      elsif page.at('h3')
+        results[:title] = page.at('h3').inner_text
+      elsif page.at('h4')
+        results[:title] = page.at('h4').inner_text
+      elsif page.at('h5')
+        results[:title] = page.at('h5').inner_text
+      elsif page.at('title')
+        results[:title] = page.at('title').inner_text
+      else
+        results[:title] = 'タイトルが見つかりませんでした'
       end
     end
 
