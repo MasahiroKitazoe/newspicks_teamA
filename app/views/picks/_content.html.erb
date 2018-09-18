@@ -2,48 +2,105 @@
   <!-- トップアイキャッチ -->
   <div class="content__eyecatch">
     <!-- メイン -->
-    <%= link_to "/picks/#{@top_picks[0].id}", class: "content__eyecatch__link" do %>
-      <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[0].image %>);">
-        <div class="content__eyecatch__main__pick-count">
-          <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[0].comments.length %></span>
-          Picks
+    <div class="content__eyecatch__main__slick">
+
+      <%= link_to "/picks/#{@top_picks[0].id}", class: "content__eyecatch__link" do %>
+        <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[0].image %>);">
+          <div class="content__eyecatch__main__cover">
+            <div class="content__eyecatch__main__pick-count">
+              <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[0].comments.length %></span>
+              Picks
+            </div>
+            <div class="content__eyecatch__main__title">
+              <%= @top_picks[0].title %>
+            </div>
+            <div class="content__eyecatch__main__info">
+              <p class="content__eyecatch__main__info__media"><%= @top_picks[0].source %></p>
+              <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[0]) %></p>
+            </div>
+          </div>
         </div>
-        <div class="content__eyecatch__main__title">
-          <%= @top_picks[0].title %>
+      <% end %>
+      <%= link_to "/picks/#{@top_picks[1].id}", class: "content__eyecatch__link" do %>
+        <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[1].image %>);">
+          <div class="content__eyecatch__main__cover">
+            <div class="content__eyecatch__main__pick-count">
+              <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[1].comments.length %></span>
+              Picks
+            </div>
+            <div class="content__eyecatch__main__title">
+              <%= @top_picks[1].title %>
+            </div>
+            <div class="content__eyecatch__main__info">
+              <p class="content__eyecatch__main__info__media"><%= @top_picks[1].source %></p>
+              <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[1]) %></p>
+            </div>
+          </div>
         </div>
-        <div class="content__eyecatch__main__info">
-          <p class="content__eyecatch__main__info__media"><%= @top_picks[0].source %></p>
-          <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[0]) %></p>
+      <% end %>
+      <%= link_to "/picks/#{@top_picks[2].id}", class: "content__eyecatch__link" do %>
+        <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[2].image %>);">
+          <div class="content__eyecatch__main__cover">
+            <div class="content__eyecatch__main__pick-count">
+              <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[2].comments.length %></span>
+              Picks
+            </div>
+            <div class="content__eyecatch__main__title">
+              <%= @top_picks[2].title %>
+            </div>
+            <div class="content__eyecatch__main__info">
+              <p class="content__eyecatch__main__info__media"><%= @top_picks[2].source %></p>
+              <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[2]) %></p>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+
+    </div>
+
+
+
+
+
+
+
+
+
     <div class="content__eyecatch__sub">
       <!-- サブ１ -->
-      <%= link_to "/picks/#{@top_picks[1].id}", class: "content__eyecatch__link" do %>
-        <div class="content__eyecatch__sub-1" style="background-image: url(<%= @top_picks[1].image %>);">
-          <div class="content__eyecatch__sub-1__special">
-            <div class="content__eyecatch__sub-1__special__logo">
-              特集
+      <%= link_to "/picks/#{@top_picks[3].id}", class: "content__eyecatch__link" do %>
+        <div class="content__eyecatch__sub-1" style="background-image: url(<%= @top_picks[3].image %>);">
+          <div class="content__eyecatch__sub-1__cover">
+            <div class="content__eyecatch__sub-1__special">
+              <div class="content__eyecatch__sub-1__special__logo">
+                特集
+              </div>
+              ライブリポート
+                <div class="content__eyecatch__sub-1__title">
+                  <%= @top_picks[3].title %>
+                </div>
             </div>
-            ライブリポート
-          </div>
-          <div class="content__eyecatch__sub-1__title">
-            <%= @top_picks[1].title %>
           </div>
         </div>
       <% end %>
       <!-- サブ２ -->
-      <%= link_to "/picks/#{@top_picks[2].id}", class: "content__eyecatch__sub__link" do %>
-        <div class="content__eyecatch__sub-2" style="background-image: url(<%= @top_picks[2].image %>);">
-          <div class="content__eyecatch__sub-2__special">
-              <div class="content__eyecatch__sub-2__special__logo">
-                特集
-              </div>
-              リリース情報
+      <%= link_to "/picks/#{@top_picks[4].id}", class: "content__eyecatch__sub__link" do %>
+        <div class="content__eyecatch__sub-2" style="background-image: url(<%= @top_picks[4].image %>);">
+          <div class="content__eyecatch__sub-2__cover">
+
+            <div class="content__eyecatch__sub-2__special">
+                <div class="content__eyecatch__sub-2__special__logo">
+                  特集
+                </div>
+                リリース情報
+                <div class="content__eyecatch__sub-2__title">
+                  <%= @top_picks[4].title %>
+                </div>
+            </div>
           </div>
-          <div class="content__eyecatch__sub-2__title">
-            <%= @top_picks[2].title %>
-          </div>
+
+
+
         </div>
       <% end %>
     </div>
@@ -84,11 +141,15 @@
                   </p>
                 </div>
                 <div class="content__top-news__side-news__content__users__others">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                  <% if @picks[i].comments.length > 5 %>
+                    <% @picks[i].comments[1..5].each do |comment| %>
+                      <%= image_tag comment.user.image.url, class: 'content__top-news__side-news__content__users__others__image' %>
+                    <% end %>
+                  <% elsif @picks[i].comments.length > 1 %>
+                    <% @picks[i].comments[1..-1].each do |comment| %>
+                      <%= image_tag comment.user.image.url, class: 'content__top-news__side-news__content__users__others__image' %>
+                    <% end %>
+                  <% end %>
                   <p class="content__top-news__side-news__content__users__others__pick-count">
                     <span class="content__top-news__side-news__content__users__others__pick-count__num">
                       <%= @picks[i].comments.length %>
@@ -161,11 +222,15 @@
                   </p>
                 </div>
                 <div class="content__top-news__side-news__content__users__others">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-                  <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+                  <% if @picks[i].comments.length > 5 %>
+                    <% @picks[i].comments[1..5].each do |comment| %>
+                      <%= image_tag comment.user.image.url, class: 'content__top-news__side-news__content__users__others__image' %>
+                    <% end %>
+                  <% elsif @picks[i].comments.length > 1 %>
+                    <% @picks[i].comments[1..-1].each do |comment| %>
+                      <%= image_tag comment.user.image.url, class: 'content__top-news__side-news__content__users__others__image' %>
+                    <% end %>
+                  <% end %>
                   <p class="content__top-news__side-news__content__users__others__pick-count">
                     <span class="content__top-news__side-news__content__users__others__pick-count__num">
                       <%= @picks[i].comments.length %>
