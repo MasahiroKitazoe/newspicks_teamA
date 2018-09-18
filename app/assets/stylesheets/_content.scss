@@ -6,17 +6,17 @@
   padding-top: 50px;
   overflow: scroll;
   &__eyecatch {
-    height: 45vh;
+    height: 50vh;
     width: 100%;
     color: #fff;
     cursor: pointer;
     &__main {
       &__slick {
         width: calc(55vw - 6px);
-        height: 45vh;
+        height: 50vh;
         float: left;
       }
-      height: 45vh;
+      height: 50vh;
       width: calc(55vw - 6px);
       float: left;
       background-size: cover;
@@ -57,13 +57,13 @@
     &__sub {
       float: right;
       width: calc(30vw - 4px);
-      height: 45vh;
+      height: 50vh;
     }
     &__sub-1 {
-      height: 24vh;
-      margin-bottom: 4px;
+      height: 25vh;
       background-size: cover;
       position: relative;
+      padding: 5px 10px;
       @include cover-darken();
       &__special {
         font-size: 10px;
@@ -86,11 +86,12 @@
       }
     }
     &__sub-2 {
-      height: 23vh;
+      height: 25vh;
       margin-bottom: 4px;
       background-size: cover;
       position: relative;
       @include cover-darken();
+      padding: 5px 10px;
       &__special {
         font-size: 10px;
         margin: 0 15px 7px;
