@@ -4,7 +4,7 @@ json.picks @picks do |filtered_pick|
   json.comments_count filtered_pick.comments.count
   json.title filtered_pick.title
   json.source filtered_pick.source
-  json.created_at filtered_pick.created_at
+  json.created_at calc_time(filtered_pick)
   json.body filtered_pick.body
 end
 
@@ -15,7 +15,7 @@ json.comments @comments do |filtered_comment|
   json.user_last_name filtered_comment.user.last_name
   json.user_first_name filtered_comment.user.first_name
   json.user_position filtered_comment.user.position
-  json.created_at filtered_comment.created_at
+  json.created_at calc_time(filtered_comment)
   json.comment filtered_comment.comment
   json.like_count filtered_comment.likes.count
   json.pick_title filtered_comment.pick.title
