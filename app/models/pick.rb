@@ -123,4 +123,26 @@ class Pick < ApplicationRecord
     pickers.delete(excluded_user)
     pickers
   end
+
+  def get_popular_comment
+    target_ids = self.comments.ids
+    ids = Like.group(:comment_id).where(comment_id: target_ids).order('count_comment_id DESC').limit(1).count(:comment_id).keys
+    if ids[0].nil?
+      comments = self.comments.order('created_at DESC')
+      result = ""
+      comments.each do |comment|
+        if comment.comment.present?
+          result = comment
+          break
+        end
+      end
+      if result.class == String && result.empty?
+        "コメントはまだありません"
+      else
+        result
+      end
+    else
+      Comment.find(ids[0])
+    end
+  end
 end

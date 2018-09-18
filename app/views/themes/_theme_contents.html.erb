@@ -23,7 +23,7 @@
           <span><%= calc_time(@top) %></span>
         </div>
         <div class="theme-news-user-comment">
-          <% if @top.comments.length != 0 %>
+          <% if @top.get_popular_comment.class != String && @top.get_popular_comment.comment.present? %>
             <%= link_to user_path(@top.comments.first.user_id) do %>
               <div class="profile">
                 <%= image_tag @top.comments.first.user.image.url %>
@@ -59,7 +59,7 @@
         </div>
       </div>
       <% popular.each do |pick| %>
-        <%= render partial: "one_theme_news", locals: {pick: pick} %>
+        <%= render partial: "one_theme_news", locals: {pick: pick, comment: pick.get_popular_comment} %>
       <% end %>
     </div>
     <div class="right-theme-news">
