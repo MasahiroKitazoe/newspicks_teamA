@@ -6,24 +6,26 @@
   padding-top: 50px;
   overflow: scroll;
   &__eyecatch {
-    height: 45vh;
+    height: 50vh;
     width: 100%;
     color: #fff;
     cursor: pointer;
-    &__link{
-      :hover{
-        opacity: 0.7;
-      }
-    }
     &__main {
-      height: 100%;
-      width: calc(55vw - 30px);
+      &__slick {
+        width: calc(55vw - 6px);
+        height: 50vh;
+        float: left;
+      }
+      height: 50vh;
+      width: calc(55vw - 6px);
       float: left;
       background-size: cover;
       padding: 10px;
+      position: relative;
+      @include cover-darken();
       &__pick-count {
         margin-top: 23vh;
-        margin-left: 30px;
+        margin-left: 50px;
         border: 1px solid #fff;
         font-size: 10px;
         width: 80px;
@@ -37,10 +39,10 @@
       &__title {
         font-size: 4vh;
         font-weight: bold;
-        padding: 0 30px 0;
+        padding: 0 50px 0;
       }
       &__info {
-        padding-left: 30px;
+        padding-left: 50px;
         font-size: 14px;
         color: #ccc;
         &__media {
@@ -55,21 +57,18 @@
     &__sub {
       float: right;
       width: calc(30vw - 4px);
-      height: 45vh;
-      &__link{
-        :hover{
-          opacity: 0.7;
-        }
-      }
+      height: 50vh;
     }
     &__sub-1 {
-      height: 14vh;
-      margin-bottom: 4px;
+      height: 25vh;
       background-size: cover;
-      padding: 10vh 15px 0;
+      position: relative;
+      padding: 5px 10px;
+      @include cover-darken();
       &__special {
         font-size: 10px;
-        margin-bottom: 7px;
+        margin: 0 15px 7px;
+        padding-top: 10vh;
         &__logo {
           border: 1px solid #fff;
           width: 30px;
@@ -87,13 +86,16 @@
       }
     }
     &__sub-2 {
-      height: 13vh;
+      height: 25vh;
       margin-bottom: 4px;
       background-size: cover;
-      padding: 10vh 15px 0;
+      position: relative;
+      @include cover-darken();
+      padding: 5px 10px;
       &__special {
         font-size: 10px;
-        margin-bottom: 7px;
+        margin: 0 15px 7px;
+        padding-top: 10vh;
         &__logo {
           border: 1px solid #fff;
           width: 30px;

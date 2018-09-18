@@ -1,7 +1,7 @@
 class PicksController < ApplicationController
   def index
     # top_picksと普通のpicksを分けておく事で、今後のアルゴリズム追加の土台にする
-    @top_picks = Pick.order('created_at DESC').limit(3)
+    @top_picks = Pick.order('created_at DESC').limit(5)
     top_picks_ids = @top_picks.map { |pick| pick.id }
     @picks = Pick.where.not(id: top_picks_ids).order('created_at DESC')
 
