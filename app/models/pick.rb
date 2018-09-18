@@ -93,7 +93,6 @@ class Pick < ApplicationRecord
 
     uri = URI.parse("https://serene-crag-46893.herokuapp.com/classify/text_logreg")
     request = Net::HTTP::Post.new(uri)
-    request.basic_auth(ENV['FLASK_BASIC_KEY'], ENV['FLASK_BASIC_SECRETS'])
     request.content_type = "application/json"
     request.body = JSON.dump(text: text)
 
