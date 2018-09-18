@@ -11,7 +11,11 @@
     color: #fff;
     cursor: pointer;
     &__main {
-      height: 100%;
+      &__slick {
+        width: calc(55vw - 30px);
+        float: left;
+      }
+      height: 45vh;
       width: calc(55vw - 30px);
       float: left;
       background-size: cover;
