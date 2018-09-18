@@ -27,9 +27,35 @@
 .slide-dots {
   position: absolute;
   bottom: 0;
-  left: 25.7vw;
-}
-
-.slide-dots > li {
-  display: inline-block;
+  left: 22vw;
+    li {
+    display: inline-block;
+    margin: 0 15px;
+      button {
+        position: relative;
+        text-indent: -9999px;
+        background: none;
+        border: none;
+        border-radius: 0;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        color: #fff;
+        opacity: 0.3;
+        &:before {
+          content: '●';
+          font-size: 12px;
+          text-indent: 0px;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+      &.slick-active {
+        button {
+          opacity: 0.8;
+        }
+      }
+    }
 }
