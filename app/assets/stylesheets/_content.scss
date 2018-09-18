@@ -25,7 +25,7 @@
       @include cover-darken();
       &__pick-count {
         margin-top: 23vh;
-        margin-left: 30px;
+        margin-left: 50px;
         border: 1px solid #fff;
         font-size: 10px;
         width: 80px;
@@ -39,10 +39,10 @@
       &__title {
         font-size: 4vh;
         font-weight: bold;
-        padding: 0 30px 0;
+        padding: 0 50px 0;
       }
       &__info {
-        padding-left: 30px;
+        padding-left: 50px;
         font-size: 14px;
         color: #ccc;
         &__media {

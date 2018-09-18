@@ -1,13 +1,35 @@
 .slick-prev {
   position: absolute;
-  top: 22vh;
-  left: 0;
+  top: 20.5vh;
+  left: 10px;
   z-index: 1;
+  width: 24px;
+  height: auto;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .slick-next {
   position: absolute;
-  top: 22vh;
-  right: 0;
+  top: 20.5vh;
+  right: 10px;
   z-index: 1;
+  width: 24px;
+  height: auto;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.slide-dots {
+  position: absolute;
+  bottom: 0;
+  left: 25.7vw;
+}
+
+.slide-dots > li {
+  display: inline-block;
 }
