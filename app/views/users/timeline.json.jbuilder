@@ -8,6 +8,7 @@ json.my_comments @my_comments do |comment|
   json.user_first_name comment.user.first_name
   json.created_at calc_time(comment)
   json.comment comment.comment
+  json.pick_id comment.pick.id
   json.pick_title comment.pick.title
 end
 
@@ -21,5 +22,6 @@ json.latest_comments @latest_comments do |comment|
   json.user_first_name comment.user.first_name
   json.created_at calc_time(comment)
   json.comment comment.comment
+  json.pick_id comment.pick.id
   json.pick_title comment.pick.title
 end
