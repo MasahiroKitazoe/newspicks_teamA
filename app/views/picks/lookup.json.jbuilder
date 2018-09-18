@@ -20,7 +20,7 @@ json.comments @comments do |filtered_comment|
   json.like_count filtered_comment.likes.count
   json.pick_title filtered_comment.pick.title
   json.pick_source filtered_comment.pick.source
-  json.pick_created_at filtered_comment.pick.created_at
+  json.pick_created_at calc_time(filtered_comment.pick)
   like = Like.find_by(comment_id: filtered_comment.id, user_id: current_user.id)
   if like
     json.liked true
