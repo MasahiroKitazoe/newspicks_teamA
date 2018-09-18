@@ -9,7 +9,7 @@
           <div class="tab-content__paragraf__comment__user__image__rank">
             <%= i + 1 %>
           </div>
-          <%= image_tag "https://img-mdpr.freetls.fastly.net/article/XivX/nm/XivXbktSszs_je4SpZtjLS8zK9ZoyznUdVkG4nAFiVU.jpg?width=700&disable=upscale&auto=webp", alt: 'ユーザーイメージ', class: 'tab-content__paragraf__comment__user__image__user' %>
+          <%= image_tag comment.user.image.url, alt: 'ユーザーイメージ', class: 'tab-content__paragraf__comment__user__image__user' %>
         </div>
         <div class="tab-content__paragraf__comment__user__info">
           <div class="tab-content__paragraf__comment__user__info__name">
