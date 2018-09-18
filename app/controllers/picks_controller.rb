@@ -92,8 +92,10 @@ class PicksController < ApplicationController
 
     if @pick.save
       flash[:notice] = "Pickしました"
-       pick_theme = PickTheme.new(pick_id: @pick.id, theme_id: theme_id)
-       pick_theme.save
+      pick_theme = PickTheme.new(pick_id: @pick.id, theme_id: theme_id)
+      pick_theme.save
+      comment = Comment.new(pick_id: @pick.id, user_id: current_user.id, comment: params[:pick][:comments][:comment])
+      comment.save
       redirect_to :root
     else
       render action: :new
