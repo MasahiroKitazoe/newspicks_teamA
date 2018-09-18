@@ -31,7 +31,9 @@
       </div>
       <div class="content__top-news__side-news__content__users__others">
         <% pick.get_pickers(comment.user).each do |picker| %>
-          <%= image_tag picker.image, class: "content__top-news__side-news__content__users__others__image", alt: "ユーザーイメージ" %>
+          <%= link_to user_path(picker.id) do %>
+            <%= image_tag picker.image, class: "content__top-news__side-news__content__users__others__image", alt: "ユーザーイメージ" %>
+          <% end %>
         <% end %>
         <p class="content__top-news__side-news__content__users__others__pick-count">
           <span class="content__top-news__side-news__content__users__others__pick-count__num">

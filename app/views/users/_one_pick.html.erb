@@ -15,18 +15,24 @@
   <!-- コメントしたユーザー -->
   <div class="tab-content__content__users">
     <div class="tab-content__content__users__top-user">
-      <img class="tab-content__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+      <%= image_tag comment.user.image.url, class: "tab-content__content__users__top-user__image" %>
       <p class="tab-content__content__users__top-user__name"><%= comment.user.last_name %><%= comment.user.first_name %>
         <span class="tab-content__content__users__top-user__name__position"><%= comment.user.position %></span>
       </p>
-      <p class="tab-content__content__users__top-user__comment"><%= comment.comment %></p>
+      <p class="tab-content__content__users__top-user__comment">
+        <% if comment.comment.blank? %>
+          コメントはまだありません
+        <% else %>
+          <%= comment.comment %>
+        <% end %>
+      </p>
     </div>
     <div class="tab-content__content__users__others">
-      <img class="tab-content__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="tab-content__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="tab-content__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="tab-content__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="tab-content__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
+      <% pick.get_pickers(comment.user).each do |picker| %>
+        <%= link_to user_path(picker.id) do %>
+          <%= image_tag picker.image, class: "content__top-news__side-news__content__users__others__image", alt: "ユーザーイメージ" %>
+        <% end %>
+      <% end %>
       <p class="tab-content__content__users__others__pick-count">
         <span class="tab-content__content__users__others__pick-count__num">
           <%= pick.comments.count %>
