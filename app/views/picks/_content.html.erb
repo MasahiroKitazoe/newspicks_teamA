@@ -21,36 +21,36 @@
           </div>
         </div>
       <% end %>
-      <%= link_to "/picks/#{@top_picks[0].id}", class: "content__eyecatch__link" do %>
-        <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[0].image %>);">
+      <%= link_to "/picks/#{@top_picks[1].id}", class: "content__eyecatch__link" do %>
+        <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[1].image %>);">
           <div class="content__eyecatch__main__cover">
             <div class="content__eyecatch__main__pick-count">
-              <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[0].comments.length %></span>
+              <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[1].comments.length %></span>
               Picks
             </div>
             <div class="content__eyecatch__main__title">
-              <%= @top_picks[0].title %>
+              <%= @top_picks[1].title %>
             </div>
             <div class="content__eyecatch__main__info">
-              <p class="content__eyecatch__main__info__media"><%= @top_picks[0].source %></p>
-              <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[0]) %></p>
+              <p class="content__eyecatch__main__info__media"><%= @top_picks[1].source %></p>
+              <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[1]) %></p>
             </div>
           </div>
         </div>
       <% end %>
-      <%= link_to "/picks/#{@top_picks[0].id}", class: "content__eyecatch__link" do %>
-        <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[0].image %>);">
+      <%= link_to "/picks/#{@top_picks[2].id}", class: "content__eyecatch__link" do %>
+        <div class="content__eyecatch__main" style="background-image: url(<%= @top_picks[2].image %>);">
           <div class="content__eyecatch__main__cover">
             <div class="content__eyecatch__main__pick-count">
-              <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[0].comments.length %></span>
+              <span class="content__eyecatch__main__pick-count__num"><%= @top_picks[2].comments.length %></span>
               Picks
             </div>
             <div class="content__eyecatch__main__title">
-              <%= @top_picks[0].title %>
+              <%= @top_picks[2].title %>
             </div>
             <div class="content__eyecatch__main__info">
-              <p class="content__eyecatch__main__info__media"><%= @top_picks[0].source %></p>
-              <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[0]) %></p>
+              <p class="content__eyecatch__main__info__media"><%= @top_picks[2].source %></p>
+              <p class="content__eyecatch__main__info__time"><%= calc_time(@top_picks[2]) %></p>
             </div>
           </div>
         </div>

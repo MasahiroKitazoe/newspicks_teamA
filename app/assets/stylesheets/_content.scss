@@ -12,11 +12,12 @@
     cursor: pointer;
     &__main {
       &__slick {
-        width: calc(55vw - 30px);
+        width: calc(55vw - 6px);
+        height: 45vh;
         float: left;
       }
       height: 45vh;
-      width: calc(55vw - 30px);
+      width: calc(55vw - 6px);
       float: left;
       background-size: cover;
       padding: 10px;
