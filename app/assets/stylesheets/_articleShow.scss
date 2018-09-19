@@ -176,20 +176,20 @@ input, textarea, select, button {
                   float: left;
                   margin-top: 16px;
                   #comment-space {
-                    width: 284px;
+                    width: 256px;
                     resize: none;
                     border: 1px solid rgba(34,31,32,.12);
                     border-radius: 6px;
                     padding: 13px;
                     height: 16px;
                     line-height: 16px;
+                    font: inherit;
                     transition: box-shadow .1s linear,border 1s linear;
                   }
                 }
                 .pick-control {
                   float: right;
-                  margin-top: 16px;
-                  margin: 9px 0;
+                  margin-top: 20px;
                   line-height: 40px;
                   text-align: center;
                   .description {
@@ -208,7 +208,7 @@ input, textarea, select, button {
                     }
                   }
                   .pick {
-                    width: 100px;
+                    width: 110px;
                     cursor: pointer;
                     display: table-cell;
                     vertical-align: middle;
