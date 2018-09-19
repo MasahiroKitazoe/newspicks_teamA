@@ -83,4 +83,3 @@ gem 'rmagick'
 
 gem 'sassc'
 
-gem 'rack-cors'
