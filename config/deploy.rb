@@ -1,8 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.11.0'
 
-SSHKit.config.command_map[:rake] = 'bundle exec rake'
-
 set :application, 'newspicks_teamA'
 set :repo_url,  'git@github.com:MasahiroKitazoe/newspicks_teamA.git'
 
@@ -45,6 +43,8 @@ namespace :deploy do
   before :starting, 'deploy:upload'
   after :finishing, 'deploy:cleanup'
 end
+
+SSHKit.config.command_map[:rake] = 'bundle exec rake'
 
 namespace :deploy do
   desc 'db_seed must be run only one time right after the first deploy'

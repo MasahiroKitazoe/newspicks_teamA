@@ -11,27 +11,37 @@
       <p class="content__top-news__side-news__content__news__time"><%= calc_time(pick) %></p>
     </div>
   </div>
+  <% if comment.class == String %>
+    <p class="no_comment" style="margin-left: 10px; font-size: 13px;">
+      <%= comment %>
+    </p>
+  <% elsif comment.comment.blank? %>
+    <p class="no_comment" style="margin-left: 10px; font-size: 13px;">
+      コメントはまだありません
+    </p>
+  <% else %>
   <!-- コメントしたユーザー -->
-  <div class="content__top-news__side-news__content__users">
-    <div class="content__top-news__side-news__content__users__top-user">
-      <img class="content__top-news__side-news__content__users__top-user__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <p class="content__top-news__side-news__content__users__top-user__name">田中太郎
-        <span class="content__top-news__side-news__content__users__top-user__name__position">コンドミニアムオーナー</span>
-      </p>
-      <p class="content__top-news__side-news__content__users__top-user__comment">やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。やっときたか。売れてからライブ行けてない。行きたい。夏フェスは楽しむがモットーですね。</p>
+    <div class="content__top-news__side-news__content__users">
+      <div class="content__top-news__side-news__content__users__top-user">
+        <%= image_tag comment.user.image.url, class: "content__top-news__side-news__content__users__top-user__image", alt: "ユーザーイメージ" %>
+        <p class="content__top-news__side-news__content__users__top-user__name"><%= comment.user.last_name %> <%= comment.user.first_name %>
+          <span class="content__top-news__side-news__content__users__top-user__name__position"><%= comment.user.position %></span>
+        </p>
+        <p class="content__top-news__side-news__content__users__top-user__comment"><%= comment.comment %></p>
+      </div>
+      <div class="content__top-news__side-news__content__users__others">
+        <% pick.get_pickers(comment.user).each do |picker| %>
+          <%= link_to user_path(picker.id) do %>
+            <%= image_tag picker.image, class: "content__top-news__side-news__content__users__others__image", alt: "ユーザーイメージ" %>
+          <% end %>
+        <% end %>
+        <p class="content__top-news__side-news__content__users__others__pick-count">
+          <span class="content__top-news__side-news__content__users__others__pick-count__num">
+            <%= pick.comments.length %>
+          </span>
+           Picks
+        </p>
+      </div>
     </div>
-    <div class="content__top-news__side-news__content__users__others">
-      <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <img class="content__top-news__side-news__content__users__others__image" src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg" alt="ユーザーイメージ">
-      <p class="content__top-news__side-news__content__users__others__pick-count">
-        <span class="content__top-news__side-news__content__users__others__pick-count__num">
-          <%= pick.comments.length %>
-        </span>
-         Picks
-      </p>
-    </div>
-  </div>
+  <% end %>
 </div>

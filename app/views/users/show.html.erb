@@ -4,7 +4,7 @@
       <div class="detail-wrapper">
         <div class="detail">
           <div class="user-image">
-            <img src="https://pbs.twimg.com/profile_images/1000993501415329792/EVcLnIF-_400x400.jpg">
+            <%= image_tag @user.image %>
           </div>
           <div class="user-detail">
             <div class="user-name">
@@ -69,8 +69,8 @@
   </div>
   <div class="tab-wrapper">
     <div class="tab-content" id="tab-selected-picks">
-      <% if @user.comments.present? %>
-        <% @user.comments.each do |comment| %>
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
           <%= render partial: "one_pick", locals: {comment: comment, pick: comment.pick} %>
         <% end %>
         <% else %>

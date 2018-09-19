@@ -68,10 +68,10 @@ class ThemesController < ApplicationController
     def get_popular(theme_id)
       theme = Theme.find(theme_id)
       picks = theme.picks
-      ids = Comment.group(:pick_id).order('count_pick_id DESC').limit(15).count(:pick_id).keys
+      picks_ids = picks.ids
+      ids = Comment.where(pick_id: picks_ids).group(:pick_id).order('count_pick_id DESC').limit(15).order('created_at DESC').count(:pick_id).keys
       if picks.length != 0
-        target_ids = ids & picks.ids
-        ranking =  target_ids.map { |id| picks.find(id) }
+        ranking =  ids.map { |id| picks.find(id) }
         ranking.length == 0 ? picks.order('created_at DESC').limit(15) : ranking
       else
         ranking =  ids.map { |id| Pick.find(id) }

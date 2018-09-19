@@ -1,7 +1,7 @@
 class PicksController < ApplicationController
   def index
     # top_picksと普通のpicksを分けておく事で、今後のアルゴリズム追加の土台にする
-    @top_picks = Pick.order('created_at DESC').limit(3)
+    @top_picks = Pick.order('created_at DESC').limit(5)
     top_picks_ids = @top_picks.map { |pick| pick.id }
     @picks = Pick.where.not(id: top_picks_ids).order('created_at DESC')
 
@@ -97,8 +97,10 @@ class PicksController < ApplicationController
 
     if @pick.save
       flash[:notice] = "Pickしました"
-       pick_theme = PickTheme.new(pick_id: @pick.id, theme_id: theme_id)
-       pick_theme.save
+      pick_theme = PickTheme.new(pick_id: @pick.id, theme_id: theme_id)
+      pick_theme.save
+      comment = Comment.new(pick_id: @pick.id, user_id: current_user.id, comment: params[:pick][:comments][:comment])
+      comment.save
       redirect_to :root
     else
       render action: :new

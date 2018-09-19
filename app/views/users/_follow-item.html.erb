@@ -2,7 +2,7 @@
   <% users.each do |user| %>
     <%= link_to user_path(user.id), class: "usertile" do %>
       <div class="follow-item-wrapper">
-        <img src="https://pbs.twimg.com/profile_images/1009220670826295297/qfHNpNPM_400x400.jpg">
+        <%= image_tag user.image.url %>
         <div class="profile-container">
           <div class="name-wrapper">
             <div class="username"><%= user.last_name %> <%= user.first_name %></div>
