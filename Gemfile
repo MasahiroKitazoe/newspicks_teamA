@@ -85,3 +85,4 @@ gem 'fog-aws'
 gem 'sassc'
 
 gem 'delayed_job_active_record'
+gem "daemons"

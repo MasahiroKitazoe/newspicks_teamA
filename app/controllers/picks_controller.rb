@@ -146,7 +146,6 @@ class PicksController < ApplicationController
         :title,
         :body,
         {:user_ids => []}
-        # {:theme_ids => []}
         )
     end
 
