@@ -50,7 +50,8 @@ $(function() {
         }
       })
       .fail(function() {
-        alert('マイニュースの取得に失敗しました');
+        alert('ページを再読み込みしてください');
+        // location.reload();
       });
 
     setInterval(function() {
@@ -72,7 +73,8 @@ $(function() {
         }
       })
       .fail(function(data) {
-        alert('マイニュースの取得に失敗しました');
+        alert('ページを再読み込みしてください');
+        // location.reload();
       })
     }, 5000);
   }

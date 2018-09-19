@@ -13,24 +13,8 @@ class Pick < ApplicationRecord
     results = {}
     page = agent.get(url)
 
-    # 記事タイトルを取得
-    if page.at('h1')
-      results[:title] = page.at('h1').inner_text
-    elsif page.at('h2')
-      results[:title] = page.at('h2').inner_text
-    elsif page.at('h3')
-      results[:title] = page.at('h3').inner_text
-    elsif page.at('h4')
-      results[:title] = page.at('h4').inner_text
-    elsif page.at('h5')
-      results[:title] = page.at('h5').inner_text
-    elsif page.at('title')
-      results[:title] = page.at('title').inner_text
-    else
-      results[:title] = 'タイトルが見つかりませんでした'
-    end
-
-    # 画像とsourceを取得
+    # metaタグを取得
+    title_meta = ""
     img_meta = ""
     source_meta = ""
     elements = page.search('meta')
@@ -39,6 +23,31 @@ class Pick < ApplicationRecord
         img_meta = ele
       elsif ele.get_attribute('property') == "og:site_name"
         source_meta = ele
+      elsif ele.get_attribute('property') == "og:title"
+        title_meta = ele
+      end
+    end
+
+    # 記事タイトルを取得
+    if title_meta.present?
+      if title_meta.get_attribute('content')
+        results[:title] = title_meta.get_attribute('content')
+      end
+    else
+      if page.at('h1')
+        results[:title] = page.at('h1').inner_text
+      elsif page.at('h2')
+        results[:title] = page.at('h2').inner_text
+      elsif page.at('h3')
+        results[:title] = page.at('h3').inner_text
+      elsif page.at('h4')
+        results[:title] = page.at('h4').inner_text
+      elsif page.at('h5')
+        results[:title] = page.at('h5').inner_text
+      elsif page.at('title')
+        results[:title] = page.at('title').inner_text
+      else
+        results[:title] = 'タイトルが見つかりませんでした'
       end
     end
 
@@ -93,7 +102,6 @@ class Pick < ApplicationRecord
 
     uri = URI.parse("https://serene-crag-46893.herokuapp.com/classify/text_logreg")
     request = Net::HTTP::Post.new(uri)
-    request.basic_auth(ENV['FLASK_BASIC_KEY'], ENV['FLASK_BASIC_SECRETS'])
     request.content_type = "application/json"
     request.body = JSON.dump(text: text)
 
@@ -114,5 +122,27 @@ class Pick < ApplicationRecord
     pickers = self.comments.map { |comment| comment.user }
     pickers.delete(excluded_user)
     pickers
+  end
+
+  def get_popular_comment
+    target_ids = self.comments.ids
+    ids = Like.group(:comment_id).where(comment_id: target_ids).order('count_comment_id DESC').limit(1).count(:comment_id).keys
+    if ids[0].nil?
+      comments = self.comments.order('created_at DESC')
+      result = ""
+      comments.each do |comment|
+        if comment.comment.present?
+          result = comment
+          break
+        end
+      end
+      if result.class == String && result.empty?
+        "コメントはまだありません"
+      else
+        result
+      end
+    else
+      Comment.find(ids[0])
+    end
   end
 end

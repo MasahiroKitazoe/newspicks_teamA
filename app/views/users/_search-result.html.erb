@@ -18,7 +18,7 @@
       <% end %>
       <div class="timeline__news__pick__info">
         <span class="timeline__news__pick__info__source"><%= comment.pick.source %></span>
-        <span class="timeline__news__pick__info__time"><%= comment.pick.created_at %></span>
+        <span class="timeline__news__pick__info__time"><%= calc_time(comment.pick) %></span>
       </div>
     </div>
     <%= link_to pick_path(comment.pick) do %>

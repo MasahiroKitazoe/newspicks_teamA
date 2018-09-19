@@ -9,21 +9,25 @@
           <div class="tab-content__paragraf__comment__user__image__rank">
             <%= i + 1 %>
           </div>
-          <%= image_tag "https://img-mdpr.freetls.fastly.net/article/XivX/nm/XivXbktSszs_je4SpZtjLS8zK9ZoyznUdVkG4nAFiVU.jpg?width=700&disable=upscale&auto=webp", alt: 'ユーザーイメージ', class: 'tab-content__paragraf__comment__user__image__user' %>
+          <%= link_to user_path(comment.user) do %>
+            <%= image_tag comment.user.image.url, alt: 'ユーザーイメージ', class: 'tab-content__paragraf__comment__user__image__user' %>
+          <% end %>
         </div>
-        <div class="tab-content__paragraf__comment__user__info">
-          <div class="tab-content__paragraf__comment__user__info__name">
-            <%= comment.user.last_name %>  <%= comment.user.first_name %>
-            <% if comment.user.pro %>
-              <div class="badge">
-                <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
-              </div>
-            <% end %>
+        <%= link_to user_path(comment.user) do %>
+          <div class="tab-content__paragraf__comment__user__info">
+            <div class="tab-content__paragraf__comment__user__info__name">
+              <%= comment.user.last_name %>  <%= comment.user.first_name %>
+              <% if comment.user.pro %>
+                <div class="badge">
+                  <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                </div>
+              <% end %>
+            </div>
+            <div class="tab-content__paragraf__comment__user__info__position">
+              <%= comment.user.position %>
+            </div>
           </div>
-          <div class="tab-content__paragraf__comment__user__info__position">
-            <%= comment.user.position %>
-          </div>
-        </div>
+        <% end %>
         <div class="tab-content__paragraf__comment__user__right-block">
           <div class="tab-content__paragraf__comment__user__like-count">
             <span class="tab-content__paragraf__comment__user__like-count__num"><%= comment.likes.count %></span> Likes
@@ -48,19 +52,21 @@
         </div>
       </div>
       <!-- ニュース部分 -->
-      <div class="tab-content__paragraf__comment__news">
-        <div class="tab-content__paragraf__comment__news__comment">
-          <%= comment.comment %>
-        </div>
-        <div class="tab-content__paragraf__comment__news__pick">
-          <div class="tab-content__paragraf__comment__news__pick__title">
-            <%= comment.pick.title %>
+      <%= link_to pick_path(comment.pick.id) do %>
+        <div class="tab-content__paragraf__comment__news">
+          <div class="tab-content__paragraf__comment__news__comment">
+            <%= comment.comment %>
           </div>
-          <div class="tab-content__paragraf__comment__news__pick__source">
-            <%= comment.pick.source %>
+          <div class="tab-content__paragraf__comment__news__pick">
+            <div class="tab-content__paragraf__comment__news__pick__title">
+              <%= comment.pick.title %>
+            </div>
+            <div class="tab-content__paragraf__comment__news__pick__source">
+              <%= comment.pick.source %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 <% end %>

@@ -4,16 +4,18 @@ class UsersController < ApplicationController
   after_action :create_notifications, only: [:follow]
 
   def library
-    @users = User.order('created_at ASC')
-
     @comment_ranking = Comment.rank_comment(30)
 
-    #まずは、likesテーブルから1週間以内にlikeされたものを取り出す
     @user_ranking, @weekly_likes = User.rank_user(30)
+
+    @users = User.order('created_at DESC').limit(10)
+
+    @user_popular = @user_ranking[0..9]
   end
 
   def show
     @user = User.find(params[:id])
+    @comments = @user.comments.order('updated_at DESC')
   end
 
   def follow
