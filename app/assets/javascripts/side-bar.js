@@ -56,28 +56,28 @@ $(function() {
         // location.reload();
       });
 
-    // setInterval(function() {
-    //   var comment_id = $('.side-bar__keyword-news__news:first').data('id');
-    //   $.ajax({
-    //   type: 'GET',
-    //   url: url,
-    //   data: { comment_id },
-    //   dataType: 'json'
-    //   })
-    //   .done(function(data) {
-    //     var latestNews = data.latest_comments
-    //     if (latestNews.length !== 0) {
-    //       var comments = [];
-    //       latestNews.forEach(function(comment) {
-    //         comments.push(buildHTML(comment));
-    //       })
-    //       $('.side-bar__keyword-news').prepend(comments);
-    //     }
-    //   })
-    //   .fail(function(data) {
-    //     alert('ページを再読み込みしてください');
-    //     // location.reload();
-    //   })
-    // }, 5000);
+    setInterval(function() {
+      var comment_id = $('.side-bar__keyword-news__news:first').data('id');
+      $.ajax({
+      type: 'GET',
+      url: url,
+      data: { comment_id },
+      dataType: 'json'
+      })
+      .done(function(data) {
+        var latestNews = data.latest_comments
+        if (latestNews.length !== 0) {
+          var comments = [];
+          latestNews.forEach(function(comment) {
+            comments.push(buildHTML(comment));
+          })
+          $('.side-bar__keyword-news').prepend(comments);
+        }
+      })
+      .fail(function(data) {
+        alert('ページを再読み込みしてください');
+        // location.reload();
+      })
+    }, 5000);
   }
 });
