@@ -44,17 +44,27 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
 end
 
-SSHKit.config.command_map[:rake] = 'bundle exec rake'
+require "delayed/recipes"
 
-namespace :deploy do
-  desc 'db_seed must be run only one time right after the first deploy'
-  task :db_seed do
-    on roles(:db) do |host|
-      within current_path do
-        with rails_env: fetch(:rails_env) do
-          execute :rake, 'db:seed'
-        end
-      end
-    end
-  end
-end
+role :delayed_job, 'delayed_job.example.com' # ワーカ用サーバの指定
+set :delayed_job_server_role, :delayed_job   # delayed_jobのワーカを動かすロール名の設定
+set :delayed_job_command, defer { "#{bundle_cmd} exec bin/delayed_job" }
+
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
+
+# SSHKit.config.command_map[:rake] = 'bundle exec rake'
+
+# namespace :deploy do
+#   desc 'db_seed must be run only one time right after the first deploy'
+#   task :db_seed do
+#     on roles(:db) do |host|
+#       within current_path do
+#         with rails_env: fetch(:rails_env) do
+#           execute :rake, 'db:seed'
+#         end
+#       end
+#     end
+#   end
+# end

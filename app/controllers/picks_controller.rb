@@ -91,16 +91,15 @@ class PicksController < ApplicationController
     @pick.image = article_info[:image]
     @pick.source = article_info[:source]
 
-    #カテゴリー分け
-    text = @pick.title + ' ' + @pick.source
-    theme_id = Pick.categorize(text)
-
     if @pick.save
       flash[:notice] = "Pickしました"
-      pick_theme = PickTheme.new(pick_id: @pick.id, theme_id: theme_id)
-      pick_theme.save
       comment = Comment.new(pick_id: @pick.id, user_id: current_user.id, comment: params[:pick][:comments][:comment])
       comment.save
+
+      #カテゴリー分けバックグラウンド処理
+      text = @pick.title + ' ' + @pick.source
+      PickTheme.delay.register_theme(@pick, text)
+
       redirect_to :root
     else
       render action: :new
@@ -152,7 +151,6 @@ class PicksController < ApplicationController
         :title,
         :body,
         {:user_ids => []}
-        # {:theme_ids => []}
         )
     end
 

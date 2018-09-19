@@ -22,5 +22,6 @@ module NewspicksTeama
       controller_specs: false
     end
     config.i18n.default_locale = :ja
+    config.active_job.queue_adapter = :delayed_job
   end
 end
