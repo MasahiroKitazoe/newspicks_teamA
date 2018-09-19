@@ -43,6 +43,11 @@
         color: #bbb;
         float: left;
         padding-left: 7px;
+        max-width: 170px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
       }
       &__time {
         font-size: 10px;
@@ -52,26 +57,32 @@
       }
     }
     &__users {
-      padding: 0 15px 15px;
+      padding: 0 15px 10px;
       &::after {
         clear: both;
         content: '';
         display: block;
       }
       &__top-user {
+        margin-bottom: 10px;
         &__image {
           width: 28px;
           height: 28px;
           border-radius: 50%;
           float: left;
-          margin-right: 15px;
         }
         &__name {
           font-weight: bold;
           font-size: 14px;
           padding-right: 2.5vw;
-          float: left;
+          max-width: 190px;
+          margin-left: 50px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
           &__position {
+            max-width: 100px;
             padding-left: 7px;
             font-size: 12px;
             color: #bbb;

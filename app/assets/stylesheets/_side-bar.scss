@@ -32,6 +32,7 @@
         text-align: center;
         &__num {
           font-size: 18px;
+          min-height: 18px;
         }
         &__unit {
           font-size: 8px;
@@ -54,7 +55,7 @@
     font-weight: bold;
   }
   &__keyword-news {
-    height: calc(100vh - 190px - 90px);
+    height: calc(100vh - 190px - 80px);
     overflow: scroll;
     &__news {
       padding: 10px 10px 20px;

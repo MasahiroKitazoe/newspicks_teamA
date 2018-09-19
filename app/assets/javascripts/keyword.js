@@ -65,15 +65,15 @@ $(function() {
     }
     if (comment.liked == true) {
       var insertLikeBlock = `<div class="liked" data="${comment.like_id}">
-                              <img class="search-result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
-                              <div class="search-result__comments__comment__like__likes-count count-r">
+                              <img class="keyword-wrapper__form__result__comments__comment__like__icon thumb-up-r" src="/images/done-like-btn.png" alt="LikesImage">
+                              <div class="keyword-wrapper__form__result__comments__comment__like__likes-count count-r">
                                 ${comment.like_count} Likes
                               </div>
                             </div>`;
     } else {
       var insertLikeBlock = `<div class="like">
-                              <img class="search-result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
-                              <div class="search-result__comments__comment__like__likes-count count">
+                              <img class="keyword-wrapper__form__result__comments__comment__like__icon thumb-up-g" src="/images/like-btn.png" alt="LikesImage">
+                              <div class="keyword-wrapper__form__result__comments__comment__like__likes-count count">
                                 ${comment.like_count} Likes
                               </div>
                             </div>`;

@@ -1,0 +1,9 @@
+@mixin one_theme_link() {
+  a{
+    display: block;
+    cursor: pointer;
+    padding: 16px 0 16px 32px;
+    color: #666;
+    transition: all .15s linear;
+  }
+}

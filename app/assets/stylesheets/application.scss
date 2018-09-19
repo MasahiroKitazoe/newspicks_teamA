@@ -21,15 +21,16 @@
 @import "./modal/comment_confirm.scss";
 @import "./modal/comment_confirm_text.scss";
 @import "./modal/user_menu.scss";
+@import "./modal/theme_menu.scss";
 @import "./modal/notification.scss";
 @import "./side-bar.scss";
-
-
 
 @import "./mixin/content.scss";
 @import "./mixin/library.scss";
 @import "./mixin/tab.scss";
 @import "./mixin/like.scss";
+@import "./mixin/theme.scss";
+
 @import "./comments_wrapper.scss";
 @import "./content.scss";
 @import "./articleShow.scss";
@@ -44,4 +45,6 @@
 @import "./users.scss";
 @import "./library.scss";
 @import "./user_page.scss";
+@import "./themes_menu.scss";
+@import "./theme_content.scss";
 @import "./notifications.scss";

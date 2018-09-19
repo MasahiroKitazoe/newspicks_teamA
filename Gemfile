@@ -82,3 +82,5 @@ gem 'rmagick'
 # gem 'fog-aws'
 
 gem 'sassc'
+
+gem 'rack-cors'
