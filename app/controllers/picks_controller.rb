@@ -104,7 +104,7 @@ class PicksController < ApplicationController
 
   def lookup
     params[:keyword] ||= ""
-    keyword_array = params[:keyword].split(' ')
+    keyword_array = params[:keyword].split(/[[:blank:]]+/)
     @picks = []
     @comments = []
     @users = []
