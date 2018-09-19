@@ -44,15 +44,15 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
 end
 
-require "delayed/recipes"
+# require "delayed/recipes"
 
-role :delayed_job, 'delayed_job.example.com' # ワーカ用サーバの指定
-set :delayed_job_server_role, :delayed_job   # delayed_jobのワーカを動かすロール名の設定
-set :delayed_job_command, defer { "#{bundle_cmd} exec bin/delayed_job" }
+# role :delayed_job, 'delayed_job.example.com' # ワーカ用サーバの指定
+# set :delayed_job_server_role, :delayed_job   # delayed_jobのワーカを動かすロール名の設定
+# set :delayed_job_command, defer { "#{bundle_cmd} exec bin/delayed_job" }
 
-after "deploy:stop",    "delayed_job:stop"
-after "deploy:start",   "delayed_job:start"
-after "deploy:restart", "delayed_job:restart"
+# after "deploy:stop",    "delayed_job:stop"
+# after "deploy:start",   "delayed_job:start"
+# after "deploy:restart", "delayed_job:restart"
 
 # SSHKit.config.command_map[:rake] = 'bundle exec rake'
 
