@@ -72,11 +72,11 @@
     </nav>
     <%= render partial: "./shared/theme_menu" %>
     <%= render partial: "./shared/user_menu" if user_signed_in? %>
+    <%= render partial: "./modal/notification_wrapper" if user_signed_in? %>
     <%= yield %>
     <%= render partial: "./modal/signup" %>
     <%= render partial: "./modal/signin" %>
     <%= render partial: "./modal/picks" %>
     <%= render partial: "./modal/comment_confirm" %>
-    <%= render partial: "./modal/notification_wrapper" %>
   </body>
 </html>

@@ -46,10 +46,6 @@ $(function() {
       }, 500);
     });
   });
-
-  $(document).on('ajax:complete', '#news-recommendation-btn', function() {
-    console.log('hello');
-  });
 });
 
 
