@@ -103,19 +103,6 @@ $(function() {
     $("#muted-panel-container-" + user_id).css('display', 'none');
   });
 
-
-  // var windowWidth = $(window).width();
-  // レスポンシブ対応
-  // windowWidthが1300px以下条件分岐
-  // if (windowWidth < 1250) {
-  //   $('.side-bar').css("display", "none");
-  //   $('.content').css("width", "100vw");
-  //   $('.content__eyecatch__main').css("width", "100vw");
-  //   $('.content__eyecatch__sub').css("display", "none");
-  //   $('.content__top-news__newest').css("display", "none");
-  //   $('.content__top-news__side-news').css("width", "100vw");
-  // }
-
   $(window).on('load resize', function(){
   // 処理を記載
     var windowWidth = $(window).width();
@@ -124,6 +111,7 @@ $(function() {
       $('.content').css("width", "100vw");
       $('.search-result').css("width", "100vw");
       $('.content__eyecatch__main').css("width", "100vw");
+      $('.content__eyecatch__main__slick').css("width", "100vw");
       $('.content__eyecatch__sub').css("display", "none");
       $('.content__top-news__newest').css("display", "none");
       $('.content__top-news__side-news').css("width", "100vw");
@@ -131,14 +119,11 @@ $(function() {
       $('.side-bar').css("display", "block");
       $('.content').css("width", "calc(85vw - 10px)");
       $('.search-result').css("width", "calc(85vw - 11px)");
-      $('.content__eyecatch__main').css("width", "calc(55vw - 30px)");
+      $('.content__eyecatch__main').css("width", "calc(55vw - 6px)");
+      $('.content__eyecatch__main__slick').css("width", "calc(55vw - 6px)");
       $('.content__eyecatch__sub').css("display", "block");
       $('.content__top-news__newest').css("display", "block");
       $('.content__top-news__side-news').css("width", "50vw");
     }
   });
-
-  // リサイズで1300px以下になた時の条件分岐
-
-
 });
