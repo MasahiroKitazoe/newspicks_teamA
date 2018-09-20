@@ -15,10 +15,18 @@ class PicksController < ApplicationController
   def show
     @pick = Pick.find(params[:id])
     @users = @pick.users
+    @pick.comments.where(comment: "").each do |comment|
+      if !@users.include?(comment.user)
+        @users << comment.user
+      end
+    end
     @users_nocomment = []
     @users.each do |user|
-      if user.comments.where(pick_id: @pick.id).first.nil?
-        @users_nocomment << user
+      if user.comments.where(pick_id: @pick.id).first.nil? or user.comments.where("pick_id = ? and comment = ?", @pick.id, nil)
+        if user_signed_in? and user == current_user
+        else
+          @users_nocomment << user
+        end
       end
     end
 
@@ -30,9 +38,9 @@ class PicksController < ApplicationController
     @comments_garbage = []
     #注目のコメントとその他のコメントを分ける。
     @comments.each do |comment|
-      if current_user.disliking?(comment.user) and !comment.comment.blank?
+      if current_user.disliking?(comment.user)
         @comments_garbage << comment
-      elsif current_user.following?(comment.user) or comment.user == current_user and !comment.comment.blank?
+      elsif (current_user.following?(comment.user) and !comment.comment.blank?) or comment.user == current_user
         @comments_following << comment
       elsif comment.present? and !comment.comment.blank?
         @comments_other << comment
