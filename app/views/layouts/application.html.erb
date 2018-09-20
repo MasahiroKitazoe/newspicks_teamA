@@ -74,9 +74,9 @@
     <%= render partial: "./shared/user_menu" if user_signed_in? %>
     <%= render partial: "./modal/notification_wrapper" if user_signed_in? %>
     <%= render partial: "./modal/picks" if user_signed_in? %>
-    <%= yield %>
     <%= render partial: "./modal/signup" %>
     <%= render partial: "./modal/signin" %>
+    <%= yield %>
     <%= render partial: "./modal/comment_confirm" %>
   </body>
 </html>

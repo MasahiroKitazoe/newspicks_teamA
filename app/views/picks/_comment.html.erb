@@ -28,7 +28,7 @@
       </div>
       <div class="like-panel">
         <div class="like-wrapper" id="like<%= comment.id %>" data="<%= comment.id %>">
-          <% if current_user.liked?(comment) %>
+          <% if user_signed_in? and current_user.liked?(comment) %>
             <div class="liked" data="<%= comment.get_like_id %>">
               <img class="thumb-up-r" src="/images/done-like-btn.png">
               <div class="count-r">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <% if !pick.comments.find_by(user_id: current_user.id).nil? %>
+    <% if user_signed_in? and !pick.comments.find_by(user_id: current_user.id).nil? %>
     <div class="embedded-pick-editor" >
       <%= form_for(pick.comments.build, remote: true) do |f| %>
       <div class="pick-area comment-edit">
