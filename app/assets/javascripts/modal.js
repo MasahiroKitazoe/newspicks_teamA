@@ -109,7 +109,7 @@ $(function() {
       $('#notifications').css("display", "none");
     }
   });
-   
+
   // keyword検索・登録
   $('#keyword-search').on('click', function(e) {
     e.preventDefault();

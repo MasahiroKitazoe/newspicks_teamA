@@ -8,8 +8,10 @@ $(function() {
   });
   // コメント入力から離れた場合は画面を小さく
   $("#comment-space").focusout(function(e) {
-    e.preventDefault();
-    $(this).css("width", "284px");
+    if ($(this).val()=="") {
+      e.preventDefault();
+      $(this).css("width", "256px");
+    }
   });
 
 // 表示されたpopoverの非表示に戻す条件
