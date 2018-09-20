@@ -4,7 +4,7 @@
       <div class="form" id="newpick-form">
         <h2 class="pick-demand">URLを入力して<br>おすすめの記事を共有しましょう</h2>
         <div class="pick-window">
-          <%= form_for @pick do |f| %>
+          <%= form_for(@new_pick) do |f| %>
             <%= f.text_area :url, class: "pick-form", id: "newpick-box", placeholder: "URLを入力" %>
             <div class="pick-site">
               <div class="site-info">

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ready_new_pick
-    @pick = Pick.new
+    @new_pick = Pick.new
   end
 end
 
