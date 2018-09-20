@@ -372,6 +372,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   sass-rails (~> 5.0)
+  sassc
   selenium-webdriver
   spring
   spring-commands-rspec
