@@ -40,7 +40,7 @@ class PicksController < ApplicationController
     @comments.each do |comment|
       if user_signed_in? and current_user.disliking?(comment.user)
         @comments_garbage << comment
-      elsif user_signed_in? and (current_user.following?(comment.user) and !comment.comment.blank?) or comment.user == current_user
+      elsif (user_signed_in? and current_user.following?(comment.user) and !comment.comment.blank?) or comment.user == current_user
         @comments_following << comment
       elsif comment.present? and !comment.comment.blank?
         @comments_other << comment
