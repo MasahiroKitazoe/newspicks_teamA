@@ -66,7 +66,7 @@ class Pick < ApplicationRecord
         results[:source] = source_meta.get_attribute('content')
       end
     else
-      results[:source] = url.match(/http[s]:\/\/([-_\w.]+)\//)[1]
+      results[:source] = url.match(/https?:\/\/([-_\w.]+)\//)[1]
     end
 
     # bodyを取得
