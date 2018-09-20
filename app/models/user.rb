@@ -96,7 +96,7 @@ class User < ApplicationRecord
       user_likes = create_user_likes_hash(get_like_ids_within_one_week, get_comments_liked_within_one_week)
 
       #Like数の多い順にハッシュをソート
-      user_likes.sort_by {|k,v| -v}
+      user_likes = user_likes.sort_by {|k,v| -v}
 
       #like数の多い順にユーザーを取り出す
       target_users, weekly_likes = get_sorted_users_and_likes(user_likes, limit_num)
