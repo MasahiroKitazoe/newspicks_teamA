@@ -88,6 +88,13 @@
       &__info {
         font-size: 12px;
         color: $unempha-gray;
+        max-width: 416px;
+        &__source {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+        }
       }
     }
     &__image {

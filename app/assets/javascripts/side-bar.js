@@ -26,9 +26,11 @@ $(function() {
                   <p class="side-bar__keyword-news__news__comment">
                     ${comment.comment}
                   </p>
-                  <p class="side-bar__keyword-news__news__text">
-                    ${comment.pick_title}
-                  </p>
+                  <a href="/picks/${comment.pick_id}">
+                    <p class="side-bar__keyword-news__news__text">
+                      ${comment.pick_title}
+                    </p>
+                  </a>
                 </div>`
     return html;
   }
