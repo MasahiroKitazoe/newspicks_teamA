@@ -1,5 +1,5 @@
 <div class="comment-area">
-  <img class="cover" src=<%= current_user.image %>>
+  <img class="cover" <% if user_signed_in? %> src=<%= current_user.image %> <% else %> src ="/images/no_image_user.png" <% end %> >
   <%= form_for(pick.comments.build, remote: true) do |f| %>
   <div class="comment-container">
     <%= f.text_field :comment, id: 'comment-space', placeholder: 'コメントを書く（任意）' %>
