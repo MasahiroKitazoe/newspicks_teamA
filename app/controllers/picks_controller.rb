@@ -106,7 +106,7 @@ class PicksController < ApplicationController
 
       #カテゴリー分けバックグラウンド処理
       text = @pick.title + ' ' + @pick.source
-      PickTheme.delay.register_theme(@pick, text)
+      PickTheme.register_theme(@pick, text)
 
       redirect_to :root
     else
