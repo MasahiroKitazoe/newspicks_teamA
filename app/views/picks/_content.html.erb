@@ -386,13 +386,15 @@
                 <div class="content__user-ranking__users__paragraf-1__user__image__rank">
                   <%= i + 1 %>
                 </div>
+              <%= link_to user do %>
                 <%= image_tag user.image.url, class: "content__user-ranking__users__paragraf-1__user__image__user", alt: "アイコン" %>
               </div>
-              <div class="content__user-ranking__users__paragraf-1__user__info">
-                <p class="content__user-ranking__users__paragraf-1__user__info__name"><%= user.last_name %> <%= user.first_name %></p>
-                <p class="content__user-ranking__users__paragraf-1__user__info__position"><%= user.position %></p>
-                <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num"><%= @weekly_likes[i] %></span></p>
-              </div>
+                <div class="content__user-ranking__users__paragraf-1__user__info">
+                  <p class="content__user-ranking__users__paragraf-1__user__info__name"><%= user.last_name %> <%= user.first_name %></p>
+                  <p class="content__user-ranking__users__paragraf-1__user__info__position"><%= user.position %></p>
+                  <p class="content__user-ranking__users__paragraf-1__user__info__like-count">週間 Liked ユーザー数: <span class="content__user-ranking__users__paragraf-1__user__info__like-count__num"><%= @weekly_likes[i] %></span></p>
+                </div>
+              <% end %>
               <% if user_signed_in? %>
                 <% if user.id != current_user.id %>
                   <% if current_user.following?(user) %>
@@ -438,21 +440,23 @@
                   <div class="content__comment-ranking__comments__paragraf-1__comment__user__image__rank">
                     <%= i + 1 %>
                   </div>
+                <%= link_to comment.user do %>
                   <%= image_tag comment.user.image.url, alt: 'ユーザーイメージ', class: 'content__comment-ranking__comments__paragraf-1__comment__user__image__user' %>
-                </div>
-                <div class="content__comment-ranking__comments__paragraf-1__comment__user__info">
-                  <div class="content__comment-ranking__comments__paragraf-1__comment__user__info__name">
-                    <%= comment.user.last_name %>  <%= comment.user.first_name %>
-                    <% if comment.user.pro %>
-                      <div class="badge">
-                        <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
-                      </div>
-                    <% end %>
                   </div>
-                  <div class="content__comment-ranking__comments__paragraf-1__comment__user__info__position">
-                    <%= comment.user.position %>
+                  <div class="content__comment-ranking__comments__paragraf-1__comment__user__info">
+                    <div class="content__comment-ranking__comments__paragraf-1__comment__user__info__name">
+                      <%= comment.user.last_name %>  <%= comment.user.first_name %>
+                      <% if comment.user.pro %>
+                        <div class="badge">
+                          <img src="https://resources.newspicks.com/for_clients/icons/pro_black.png">
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="content__comment-ranking__comments__paragraf-1__comment__user__info__position">
+                      <%= comment.user.position %>
+                    </div>
                   </div>
-                </div>
+                <% end %>
                 <div class="content__comment-ranking__comments__paragraf-1__comment__user__right-block">
                   <div class="content__comment-ranking__comments__paragraf-1__comment__user__like-count">
                     <span class="content__comment-ranking__comments__paragraf-1__comment__user__like-count__num"><%= comment.likes.count %></span> Likes
@@ -477,19 +481,21 @@
                 </div>
               </div>
               <!-- ニュース部分 -->
-              <div class="content__comment-ranking__comments__paragraf-1__comment__news">
-                <div class="content__comment-ranking__comments__paragraf-1__comment__news__comment">
-                  <%= comment.comment %>
-                </div>
-                <div class="content__comment-ranking__comments__paragraf-1__comment__news__pick">
-                  <div class="content__comment-ranking__comments__paragraf-1__comment__news__pick__title">
-                    <%= comment.pick.title %>
+              <%= link_to comment.pick do %>
+                <div class="content__comment-ranking__comments__paragraf-1__comment__news">
+                  <div class="content__comment-ranking__comments__paragraf-1__comment__news__comment">
+                    <%= comment.comment %>
                   </div>
-                  <div class="content__comment-ranking__comments__paragraf-1__comment__news__pick__source">
-                    <%= comment.pick.source %>
+                  <div class="content__comment-ranking__comments__paragraf-1__comment__news__pick">
+                    <div class="content__comment-ranking__comments__paragraf-1__comment__news__pick__title">
+                      <%= comment.pick.title %>
+                    </div>
+                    <div class="content__comment-ranking__comments__paragraf-1__comment__news__pick__source">
+                      <%= comment.pick.source %>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
             </div>
           <% end %>
         </div>
