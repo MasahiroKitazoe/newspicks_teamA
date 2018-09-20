@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
-gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'mechanize'
@@ -82,8 +81,6 @@ gem 'omniauth-google-oauth2'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
-
-gem 'sassc'
 
 gem 'delayed_job_active_record'
 gem "daemons"
