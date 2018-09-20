@@ -13,6 +13,7 @@ gem 'mysql2', '0.4.10'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
+gem 'sassc'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -82,8 +83,6 @@ gem 'omniauth-google-oauth2'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
-
-gem 'sassc'
 
 gem 'delayed_job_active_record'
 gem "daemons"
