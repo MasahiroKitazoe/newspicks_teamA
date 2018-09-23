@@ -1,17 +1,15 @@
 <div class="comment-container" id="comment_number_<%= comment.id %>">
   <div class="comment-row with-border" data-user="267866" data-news="3250274" follow-user="false" data-comment-version="1" mute-disable="false">
     <div class="user-space">
-      <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
+      <%= link_to comment.user do %>
         <%= image_tag comment.user.image.url, class: "user-cover" %>
-      </a>
       <div class="user-profile">
-        <a onclick="NP.showUserSummary(event)" data-user="267866" href="/user/267866?ref=news-summary_3250274">
           <div class="name-wrapper">
             <div class="name">
               <%= comment.user.last_name %> <%= comment.user.first_name %>
             </div>
           </div>
-        </a>
+        <% end %>
         <div class="job">
           <%= comment.user.company %>
         </div>

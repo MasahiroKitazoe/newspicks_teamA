@@ -145,4 +145,8 @@ class Pick < ApplicationRecord
       Comment.find(ids[0])
     end
   end
+
+  def already_picked?
+    Pick.find_by(url: self.url).present?
+  end
 end
