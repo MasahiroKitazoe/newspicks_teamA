@@ -55,7 +55,6 @@ class PicksController < ApplicationController
 
   def search
     # URLの記事をスクレイピングする
-    puts params[:url]
     article_info = scrape_info(params[:url])
 
     @pick = Pick.new()
@@ -90,27 +89,40 @@ class PicksController < ApplicationController
   def create
     @pick = Pick.new(picks_params)
 
-    # URLの記事をスクレイピングする
-    article_info = scrape_info(params[:pick][:url])
-
-    #スクレイピングの結果を格納
-    @pick.title = article_info[:title]
-    @pick.body = article_info[:body]
-    @pick.image = article_info[:image]
-    @pick.source = article_info[:source]
-
-    if @pick.save
-      flash[:notice] = "Pickしました"
-      comment = Comment.new(pick_id: @pick.id, user_id: current_user.id, comment: params[:pick][:comments][:comment])
-      comment.save
-
-      #カテゴリー分けバックグラウンド処理
-      text = @pick.title + ' ' + @pick.source
-      PickTheme.delay.register_theme(@pick, text)
-
+    if @pick.already_picked?
+      @pick = Pick.find_by(url: picks_params[:url])
+      if Comment.find_by(pick_id: @pick.id, user_id: current_user.id).nil?
+        comment = Comment.new(pick_id: @pick.id, user_id: current_user.id, comment: params[:pick][:comments][:comment])
+        comment.save
+      else
+        comment = Comment.find_by(pick_id: @pick.id, user_id: current_user.id)
+        comment.comment = params[:pick][:comments][:comment]
+        comment.save
+      end
       redirect_to :root
     else
-      render action: :new
+      # URLの記事をスクレイピングする
+      article_info = scrape_info(params[:pick][:url])
+
+      #スクレイピングの結果を格納
+      @pick.title = article_info[:title]
+      @pick.body = article_info[:body]
+      @pick.image = article_info[:image]
+      @pick.source = article_info[:source]
+
+      if @pick.save
+        flash[:notice] = "Pickしました"
+        comment = Comment.new(pick_id: @pick.id, user_id: current_user.id, comment: params[:pick][:comments][:comment])
+        comment.save
+
+        #カテゴリー分けバックグラウンド処理
+        text = @pick.title + ' ' + @pick.source
+        PickTheme.delay.register_theme(@pick, text)
+
+        redirect_to :root
+      else
+        render action: :new
+      end
     end
   end
 
