@@ -12,4 +12,3 @@ csv_data = CSV.read('db/theme.csv', headers: true)
 csv_data.each do |data|
   Theme.create!(data.to_hash)
 end
-
